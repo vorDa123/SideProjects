@@ -75,6 +75,30 @@ $spacers: map-merge($spacers, $custom-spacers);
 }
 
 .subtitle{
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.25rem;
+}
+
+.concertCard{
+  border: 1px solid #c6c8cc;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.concertSubtitle{
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.concertDescription{
+  font-size: 0.8rem;
+}
+
+.pointerElement{
+  cursor: pointer;
+}
+
+.upcomingContainer{
+  height: calc(100vh - 200px);
+  overflow-y: scroll;
 }
