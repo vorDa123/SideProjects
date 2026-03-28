@@ -114,3 +114,11 @@ $spacers: map-merge($spacers, $custom-spacers);
 .concertNumber{
   font-size: 2.75rem;
 }
+
+.favoriteGenreList{
+  margin-top: -15px;
+}
+
+.favoriteGenreList li{
+  line-height: 25pt;
+}
