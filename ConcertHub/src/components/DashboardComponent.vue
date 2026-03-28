@@ -6,7 +6,7 @@ import NumberOfConcert from './NumberOfConcert.vue'
 import UpcomingConcert from './UpcomingConcert.vue'
 </script>
 <template>
-  <section class="col-md-10 pt-4 dashboard">
+  <section class="col-md-9 col-xxl-10 pt-4 dashboard">
     <div>
       <p class="title">Dashboard</p>
       <div class="row gx-3 gy-2 mb-2 mb-md-0">

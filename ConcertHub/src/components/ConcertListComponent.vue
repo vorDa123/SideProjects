@@ -2,7 +2,7 @@
 import ConcertListCard from './ConcertListCard.vue'
 </script>
 <template>
-  <section class="col-md-10 pt-4 dashboard overflowScroll">
+  <section class="col-md-9 col-xxl-10 pt-4 dashboard overflowScroll">
     <div>
       <p class="title">Concerts</p>
       <div class="row gx-3 gy-2 mb-2 mb-md-0">
