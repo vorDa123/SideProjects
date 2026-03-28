@@ -1,0 +1,17 @@
+// @import "bootstrap/scss/bootstrap";
+#bgImageLogin {
+  background-image: url(../assets/images/loginRegister.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#app{
+    height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
