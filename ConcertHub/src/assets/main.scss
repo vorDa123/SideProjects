@@ -99,6 +99,18 @@ $spacers: map-merge($spacers, $custom-spacers);
 }
 
 .upcomingContainer{
-  height: calc(100vh - 200px);
+  height: calc(100vh - 300px);
   overflow-y: scroll;
+}
+
+.containerHeight{
+  height: 180px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.concertNumber{
+  font-size: 2.75rem;
 }
