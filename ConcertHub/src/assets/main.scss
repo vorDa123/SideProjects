@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
 
 $font-family-base: 'Poppins', sans-serif;
 
@@ -11,7 +11,7 @@ $custom-spacers: (
   9: 10rem,
   10: 12rem,
   11: 14rem,
-  12: 16rem
+  12: 16rem,
 );
 
 $spacers: map-merge($spacers, $custom-spacers);
@@ -74,51 +74,100 @@ $spacers: map-merge($spacers, $custom-spacers);
   font-size: 1.25rem;
 }
 
-.subtitle{
+.subtitle {
   font-weight: 600;
   font-size: 1.25rem;
 }
 
-.concertCard{
+.concertCard {
   border: 1px solid #c6c8cc;
   border-radius: 10px;
   padding: 10px;
 }
 
-.concertSubtitle{
+.concertSubtitle {
   font-weight: 400;
   font-size: 1.1rem;
 }
 
-.concertDescription{
+.concertDescription {
   font-size: 0.8rem;
 }
 
-.pointerElement{
+.pointerElement {
   cursor: pointer;
 }
 
-.upcomingContainer{
+.upcomingContainer {
   height: calc(100vh - 300px);
   overflow-y: scroll;
 }
 
-.containerHeight{
+.containerHeight {
   height: 180px;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }
 
-.concertNumber{
+.concertNumber {
   font-size: 2.75rem;
 }
 
-.favoriteGenreList{
+.favoriteGenreList {
   margin-top: -15px;
 }
 
-.favoriteGenreList li{
+.favoriteGenreList li {
   line-height: 25pt;
+}
+
+.countdownNumber {
+  background-color: #33363d;
+  color: #ebf0f7;
+  border-radius: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.countdownNumberFontSize {
+  font-size: 3.5rem;
+}
+
+.countdownNumberDelimiter {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.gapContent {
+  gap: 1rem;
+}
+
+@media (1170px <= width <= 1550px) {
+  .countdownNumberFontSize {
+    font-size: 1.7rem;
+  }
+}
+
+@media (1015px <= width <= 1169px) {
+  .countdownNumberFontSize {
+    font-size: 1rem;
+  }
+}
+
+@media (867px <= width <= 1014px) {
+  .countdownNumberFontSize {
+    font-size: 0.8rem;
+  }
+}
+
+@media (768px <= width <= 866px) {
+  .countdownNumberFontSize {
+    font-size: 0.8rem;
+  }
+
+  .gapContent {
+    gap: 0.5rem;
+  }
 }
