@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-    <nav class="col-md-2 d-flex flex-column align-items-center align-items-md-stretch p-4 navigation">
+    <nav class="col-md-2 d-flex flex-column align-items-center align-items-md-stretch p-4 position-sticky navigation">
         <div class="d-flex flex-md-wrap align-items-center justify-content-end gap-12 gap-md-1 justify-content-md-between title">
           <span>ConcertHub</span><i class="bi bi-box-arrow-left hideNavIcon"></i>
         </div>

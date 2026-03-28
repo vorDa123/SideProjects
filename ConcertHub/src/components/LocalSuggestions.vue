@@ -1,6 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LocalSuggestionCard from './LocalSuggestionCard.vue'
+</script>
 <template>
-  <div class="p-3 h-100 containerBorder">
+  <div class="p-3 upcomingContainer containerBorder">
     <p class="subtitle">Local suggestions</p>
+    <LocalSuggestionCard />
+    <LocalSuggestionCard />
+    <LocalSuggestionCard />
+    <LocalSuggestionCard />
   </div>
 </template>
