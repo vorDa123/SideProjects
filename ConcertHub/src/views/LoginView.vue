@@ -4,7 +4,7 @@
     <div class="row vh-100">
       <div id="bgImageLogin" class="col-md-6"></div>
       <div class="col-md-6 align-self-md-center">
-        <h2 class="mx-auto w-75 mt-2">ConcertHub</h2>
+        <p class="mx-auto w-75 mt-2 title">ConcertHub</p>
         <form>
           <div class="form-group mx-auto w-75">
             <label for="username" class="mt-3"> Username: </label>

@@ -1,4 +1,23 @@
-// @import "bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$font-family-base: 'Poppins', sans-serif;
+
+$custom-spacers: (
+  6: 4rem,
+  7: 5rem,
+  8: 8rem,
+  9: 10rem,
+  10: 12rem,
+  11: 14rem,
+  12: 16rem
+);
+
+$spacers: map-merge($spacers, $custom-spacers);
+
+@import 'bootstrap/scss/bootstrap';
+
 #bgImageLogin {
   background-image: url(../assets/images/loginRegister.jpg);
   background-size: cover;
@@ -6,12 +25,56 @@
   background-position: center;
 }
 
-#app{
-    height: 100vh;
+#app {
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.navigation {
+  height: 100vh;
+  background-color: #1e66c9;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.navigation * {
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
+  color: #ebf0f7;
+}
+
+.dashboard {
+  height: 100vh;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.containerBorder {
+  border: 1px solid #c6c8cc;
+  border-radius: 10px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.hideNavIcon {
+  cursor: pointer;
+}
+
+.navTitle {
+  font-size: 1.25rem;
+}
+
+.subtitle{
+  font-weight: 400;
+  font-size: 1.25rem;
 }

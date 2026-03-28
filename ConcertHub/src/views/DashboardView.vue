@@ -1,12 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Navigation from '../components/NavigationComponent.vue'
+import Dashboard from '../components/DashboardComponent.vue'
+</script>
 <template>
-    <div>
-        <h1>Dashboard</h1>
-        <div>
-            <h2>Number of saved concerts</h2>
-        </div>
-        <div>
-            <h2>Upcoming concerts</h2>
-        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <Navigation />
+      <Dashboard />
     </div>
+  </div>
 </template>
