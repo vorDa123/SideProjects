@@ -22,7 +22,7 @@
             <button type="button" class="btn btn-primary mt-5 form-control">Register</button>
           </div>
         </form>
-        <p class="mx-auto w-75 mt-2">Already have an account? <a href="/login">Log in here!</a></p>
+        <p class="mx-auto w-75 mt-2">Already have an account? <RouterLink to="/">Log in here!</RouterLink></p>
       </div>
     </div>
   </div>

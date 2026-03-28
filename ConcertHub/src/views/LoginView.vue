@@ -18,7 +18,7 @@
             <button type="button" class="btn btn-primary mt-5 form-control">Log in</button>
           </div>
         </form>
-        <p class="mx-auto w-75 mt-2">Don't have an account? <a href="/register">Register here!</a></p>
+        <p class="mx-auto w-75 mt-2">Don't have an account? <RouterLink to="/register">Register here!</RouterLink></p>
       </div>
     </div>
   </div>
