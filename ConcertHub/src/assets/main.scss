@@ -144,6 +144,26 @@ $spacers: map-merge($spacers, $custom-spacers);
   gap: 1rem;
 }
 
+.overflowScroll{
+  overflow-y: scroll;
+}
+
+.searchInput{
+  border-radius: 20px;
+  padding-left: 15px;
+}
+
+.imageContainer{
+  width: inherit;
+  height: 175px;
+  background-image: url(../assets/images/loginRegister.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
 @media (1170px <= width <= 1550px) {
   .countdownNumberFontSize {
     font-size: 1.7rem;
