@@ -66,6 +66,11 @@ router.get("/api/get-concert-list", async (req, res) => {
   try {
     const response = await axios.get(
       `https://app.ticketmaster.com/discovery/v2/events.json?size=50&apikey=${APIKey}&locale=*&sort=date,name,asc&classificationName=Music`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
     );
 
     console.log("Fetched data:", response.data);
