@@ -103,6 +103,11 @@ $spacers: map-merge($spacers, $custom-spacers);
   overflow-y: scroll;
 }
 
+.myListContainers {
+  height: calc(100vh - 40px);
+  overflow-y: scroll;
+}
+
 .containerHeight {
   height: 180px;
 }
