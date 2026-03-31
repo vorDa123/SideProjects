@@ -36,7 +36,6 @@ const fetchConcerts = async () => {
     console.error('Server down ili error')
     concerts.value = []
   } finally {
-    isLoading.value = false
   }
 }
 
@@ -50,7 +49,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   clearInterval(interval ?? undefined)
-  isLoading.value = true
 })
 </script>
 <template>
