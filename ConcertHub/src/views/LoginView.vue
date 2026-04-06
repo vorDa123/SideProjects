@@ -15,7 +15,9 @@
             <input type="password" name="password" class="form-control" />
           </div>          
           <div class="form-group mx-auto w-75">
-            <button type="button" class="btn btn-primary mt-5 form-control">Log in</button>
+            <RouterLink to="/dashboard">
+              <button type="button" class="btn btn-primary mt-5 form-control">Log in</button>
+            </RouterLink>
           </div>
         </form>
         <p class="mx-auto w-75 mt-2">Don't have an account? <RouterLink to="/register">Register here!</RouterLink></p>
