@@ -85,7 +85,7 @@ $spacers: map-merge($spacers, $custom-spacers);
   padding: 10px;
 }
 
-.loadingIcon{
+.loadingIcon {
   font-size: 3rem;
   transform: rotate(90deg);
 }
@@ -93,6 +93,9 @@ $spacers: map-merge($spacers, $custom-spacers);
 .concertSubtitle {
   font-weight: 400;
   font-size: 1.1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .concertDescription {
@@ -154,16 +157,16 @@ $spacers: map-merge($spacers, $custom-spacers);
   gap: 1rem;
 }
 
-.overflowScroll{
+.overflowScroll {
   overflow-y: scroll;
 }
 
-.searchInput{
+.searchInput {
   border-radius: 20px;
   padding-left: 15px;
 }
 
-.imageContainer{
+.imageContainer {
   width: inherit;
   height: 175px;
   background-image: url(../assets/images/loginRegister.jpg);
