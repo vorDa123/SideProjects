@@ -60,8 +60,11 @@ const EuropeCountries = [
   "VA",
 ];
 
-// router.post("/api/add-concert", (req, res, next) => { });
+let favoriteConcerts = {};
 
+let filteredEvents = {};
+
+// Get me all the concerts and filter only those in Europe
 router.get("/api/get-concert-list", async (req, res) => {
   try {
     const response = await axios.get(
@@ -90,7 +93,7 @@ router.get("/api/get-concert-list", async (req, res) => {
       countryCode: event?._embedded?.venues[0]?.country?.countryCode,
     }));
 
-    const filteredEvents = formattedEvents.filter((event) => {
+    filteredEvents = formattedEvents.filter((event) => {
       const country = event.countryCode;
 
       return EuropeCountries.includes(country);
@@ -102,5 +105,7 @@ router.get("/api/get-concert-list", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch concerts" });
   }
 });
+
+// router.post("/api/add-to-favourite", (req, res, next) => { });
 
 module.exports = router;

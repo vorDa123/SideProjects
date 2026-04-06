@@ -26,8 +26,11 @@ let imageStyle = computed(() => {
 <template>
   <div class="col-lg-2 col-md-4">
     <div class="concertCard my-3 pointerElement" @click="handleGetPlaylistID">
-      <div class="imageContainer" :style="{...imageStyle}"></div>
-      <p class="concertSubtitle">{{ props.data?.name }}</p>
+      <div class="imageContainer" :style="{ ...imageStyle }"></div>
+      <div class="d-flex align-items-start justify-content-between gap-2">
+        <p class="concertSubtitle">{{ props.data?.name }}</p>
+        <i class="bi bi-heart" style="font-size: 1.47rem;"></i>
+      </div>
       <p class="concertDescription">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna
         accumsan, a faucibus massa lobortis.
