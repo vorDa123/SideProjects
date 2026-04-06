@@ -85,6 +85,11 @@ $spacers: map-merge($spacers, $custom-spacers);
   padding: 10px;
 }
 
+.loadingIcon{
+  font-size: 3rem;
+  transform: rotate(90deg);
+}
+
 .concertSubtitle {
   font-weight: 400;
   font-size: 1.1rem;

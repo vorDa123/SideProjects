@@ -1,22 +1,21 @@
 <script setup lang="ts">
 import ConcertListCard from './ConcertListCard.vue'
 import axios from 'axios'
+import { motion } from 'motion-v'
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 
 const emit = defineEmits(['get-concert-id'])
 
 let concerts = ref<any[]>([])
 const selectedConcertId = ref<string>('')
-const isLoading = ref<boolean>(false)
+let isPlaylistFetched = ref<boolean>(false)
 let model = defineModel<string>({ default: '' })
 const concertCardSearch = computed(() => {
   const search = model.value?.toLowerCase() || ''
 
   if (!search) return concerts.value
 
-  return concerts.value.filter((el: any) =>
-    el.name.toLowerCase().includes(search)
-  )
+  return concerts.value.filter((el: any) => el.name.toLowerCase().includes(search))
 })
 
 let interval: ReturnType<typeof setInterval> | undefined = undefined
@@ -32,10 +31,11 @@ const fetchConcerts = async () => {
   try {
     const res = await axios.get('http://localhost:3000/api/get-concert-list')
     concerts.value = res.data || []
+    isPlaylistFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
     concerts.value = []
-  } finally {
+    isPlaylistFetched.value = false
   }
 }
 
@@ -49,12 +49,12 @@ onMounted(() => {
 
 onUnmounted(() => {
   clearInterval(interval ?? undefined)
+  isPlaylistFetched.value = false
 })
 </script>
 <template>
   <section class="col-md-9 col-xxl-10 pt-4 dashboard overflowScroll">
-    <div v-if="isLoading">Loading...</div>
-    <div v-else>
+    <div v-if="isPlaylistFetched">
       <p class="title">Concerts</p>
       <div class="row gx-3 gy-2 mb-2 mb-md-0">
         <div class="d-flex gap-2 justify-content-start align-items-center">
@@ -70,6 +70,13 @@ onUnmounted(() => {
           />
         </div>
       </div>
+    </div>
+    <div v-else class="d-flex justify-content-center align-items-center" style="height: inherit">
+      <motion.i
+        class="bi bi-arrow-clockwise loadingIcon"
+        :animate="{ rotate: 360 }"
+        :transition="{ repeat: Infinity, duration: 2 }"
+      />
     </div>
   </section>
 </template>
