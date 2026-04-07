@@ -8,7 +8,7 @@ const emit = defineEmits(['get-concert-id'])
 
 let concerts = ref<any[]>([])
 const selectedConcertId = ref<string>('')
-let isPlaylistFetched = ref<boolean>(false)
+let isConcertsFetched = ref<boolean>(false)
 let model = defineModel<string>({ default: '' })
 const concertCardSearch = computed(() => {
   const search = model.value?.toLowerCase() || ''
@@ -31,11 +31,11 @@ const fetchConcerts = async () => {
   try {
     const res = await axios.get('http://localhost:3000/api/get-concert-list')
     concerts.value = res.data || []
-    isPlaylistFetched.value = true
+    isConcertsFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
     concerts.value = []
-    isPlaylistFetched.value = false
+    isConcertsFetched.value = false
   }
 }
 
@@ -49,12 +49,12 @@ onMounted(() => {
 
 onUnmounted(() => {
   clearInterval(interval ?? undefined)
-  isPlaylistFetched.value = false
+  isConcertsFetched.value = false
 })
 </script>
 <template>
   <section class="col-md-9 col-xxl-10 pt-4 dashboard overflowScroll">
-    <div v-if="isPlaylistFetched">
+    <div v-if="isConcertsFetched">
       <p class="title">Concerts</p>
       <div class="row gx-3 gy-2 mb-2 mb-md-0">
         <div class="d-flex gap-2 justify-content-start align-items-center">

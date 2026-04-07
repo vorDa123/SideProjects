@@ -1,15 +1,44 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
+import axios from 'axios'
 
 const props = defineProps({
   data: Object,
 })
 
+const addedToFavorite = ref<boolean>(false)
+
 const emit = defineEmits(['get-concert-id'])
 
-const handleGetPlaylistID = () => {
+const handleGetConcertID = () => {
   if (!props.data) return
   emit('get-concert-id', props.data.id)
+}
+
+const handleFavoriteConcerts = async () => {
+  try {
+    const res = await axios.post('http://localhost:3000/api/add-to-favourite', {
+      id: props.data?.id,
+      name: props.data?.name,
+      image: props.data?.image,
+      date: props.data?.date,
+      time: props.data?.time,
+      genre: props.data?.genre,
+      venue: props.data?.venue,
+      city: props.data?.city,
+      country: props.data?.country,
+      countryCode: props.data?.countryCode,
+    })
+    console.log('Poslani podaci: ', res.data)
+    addedToFavorite.value = true
+    return res.data
+  } catch (error) {
+    console.error('ID se nije poslao')
+  }
+}
+
+const handleRemoveFromFavoriteConcerts = () => {
+  addedToFavorite.value = false
 }
 
 let imageStyle = computed(() => {
@@ -25,11 +54,22 @@ let imageStyle = computed(() => {
 </script>
 <template>
   <div class="col-lg-2 col-md-4">
-    <div class="concertCard my-3 pointerElement" @click="handleGetPlaylistID">
+    <div class="concertCard my-3 pointerElement" @click="handleGetConcertID">
       <div class="imageContainer" :style="{ ...imageStyle }"></div>
       <div class="d-flex align-items-start justify-content-between gap-2">
         <p class="concertSubtitle">{{ props.data?.name }}</p>
-        <i class="bi bi-heart" style="font-size: 1.47rem;"></i>
+        <i
+          v-if="!addedToFavorite"
+          class="bi bi-heart"
+          style="font-size: 1.47rem"
+          @click="handleFavoriteConcerts"
+        ></i>
+        <i
+          v-else
+          class="bi bi-heart-fill"
+          style="font-size: 1.47rem"
+          @click="handleRemoveFromFavoriteConcerts"
+        ></i>
       </div>
       <p class="concertDescription">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna

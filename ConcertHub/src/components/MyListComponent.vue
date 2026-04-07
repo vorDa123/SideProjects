@@ -1,6 +1,40 @@
 <script setup lang="ts">
 import PreviousConcerts from './PreviousConcerts.vue'
 import SavedConcerts from './SavedConcerts.vue'
+import axios from 'axios'
+import { motion } from 'motion-v'
+import { ref, computed, onMounted, onUnmounted, watch, toRaw } from 'vue'
+
+let favoriteConcerts = ref<any[]>([])
+let isFavoritesFetched = ref<boolean>(false)
+
+let interval: ReturnType<typeof setInterval> | undefined = undefined
+
+const fetchFavourites = async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/get-favourites')
+    favoriteConcerts.value = res.data || []
+    // console.log('Fetched data:', res.data)
+    isFavoritesFetched.value = true
+  } catch (error) {
+    console.error('Server down ili error')
+    favoriteConcerts.value = []
+    isFavoritesFetched.value = false
+  }
+}
+
+onMounted(() => {
+  fetchFavourites()
+
+  interval = setInterval(() => {
+    fetchFavourites()
+  }, 5000)
+})
+
+onUnmounted(() => {
+  clearInterval(interval ?? undefined)
+  isFavoritesFetched.value = false
+})
 </script>
 <template>
   <section class="col-md-9 col-xxl-10 pt-4 dashboard">
@@ -13,14 +47,14 @@ import SavedConcerts from './SavedConcerts.vue'
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" class="searchInput" />
             </div>
-            <SavedConcerts />
-            <SavedConcerts />
-            <SavedConcerts />
-            <SavedConcerts />
-            <SavedConcerts />
-            <SavedConcerts />
-            <SavedConcerts />
-            <SavedConcerts />
+            <div v-if="isFavoritesFetched && favoriteConcerts.length > 0">
+              <SavedConcerts
+                v-for="concert in favoriteConcerts"
+                :key="concert.id"
+                :data="concert"
+              />
+            </div>
+            <div v-else>There are no favorite concerts.</div>
           </div>
         </div>
         <div class="col-md-6">

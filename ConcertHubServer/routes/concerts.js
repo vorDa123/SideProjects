@@ -60,7 +60,9 @@ const EuropeCountries = [
   "VA",
 ];
 
-let favoriteConcerts = {};
+let favoriteConcerts = {
+  favorites: [],
+};
 
 let filteredEvents = {};
 
@@ -106,6 +108,29 @@ router.get("/api/get-concert-list", async (req, res) => {
   }
 });
 
-// router.post("/api/add-to-favourite", (req, res, next) => { });
+router.post("/api/add-to-favourite", (req, res, next) => {
+  favoriteConcerts.favorites.push({
+    id: req.body.id,
+    name: req.body.name,
+    image: req.body.image,
+    date: req.body.date,
+    time: req.body.time,
+    genre: req.body.genre,
+    venue: req.body.venue,
+    city: req.body.city,
+    country: req.body.country,
+    countryCode: req.body.countryCode,
+  });
+  res.json(favoriteConcerts);
+});
+
+router.get("/api/get-favourites", async (req, res) => {
+  try {
+    res.json(favoriteConcerts.favorites);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Failed to fetch favourites" });
+  }
+});
 
 module.exports = router;
