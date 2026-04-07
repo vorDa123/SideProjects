@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch, } from 'vue'
 import axios from 'axios'
 
 const props = defineProps({
   data: Object,
 })
+
+let favoriteConcerts = ref<any[]>([])
 
 const addedToFavorite = ref<boolean>(false)
 
@@ -51,6 +53,31 @@ let imageStyle = computed(() => {
     backgroundSize: 'cover',
   }
 })
+
+watch(
+  addedToFavorite,
+  async () => {
+    try {
+      const res = await axios.get('http://localhost:3000/api/get-favourites')
+      favoriteConcerts.value = res.data || []
+      // console.log('Fetched data:', res.data)
+    } catch (error) {
+      console.error('Server down ili error')
+      favoriteConcerts.value = []
+    } finally {
+      const isConcertFavorite = favoriteConcerts.value.some(
+        (concert: any) => concert.id === props.data?.id,
+      )
+
+      if (isConcertFavorite) {
+        addedToFavorite.value = true
+      } else {
+        addedToFavorite.value = false
+      }
+    }
+  },
+  { immediate: true },
+)
 </script>
 <template>
   <div class="col-lg-2 col-md-4">
