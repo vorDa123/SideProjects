@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, } from 'vue'
+import { ref, computed, watch } from 'vue'
 import axios from 'axios'
 
 const props = defineProps({
@@ -39,7 +39,19 @@ const handleFavoriteConcerts = async () => {
   }
 }
 
-const handleRemoveFromFavoriteConcerts = () => {
+const handleRemoveFromFavoriteConcerts = async () => {
+  try {
+    const res = await axios.delete('http://localhost:3000/api/remove-from-favourite', {
+      data: {
+        id: props.data?.id,
+      },
+    })
+    console.log('Poslani podaci: ', res.data)
+    addedToFavorite.value = false
+    return res.data
+  } catch (error) {
+    console.error('Dogodila se greška prilikom brisanja')
+  }
   addedToFavorite.value = false
 }
 

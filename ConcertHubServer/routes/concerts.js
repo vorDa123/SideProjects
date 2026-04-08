@@ -64,6 +64,10 @@ let favoriteConcerts = {
   favorites: [],
 };
 
+let removedConcerts = {
+  removed: [],
+};
+
 let filteredEvents = {};
 
 // Get me all the concerts and filter only those in Europe
@@ -131,6 +135,20 @@ router.get("/api/get-favourites", async (req, res) => {
     console.error(error.message);
     res.status(500).json({ error: "Failed to fetch favourites" });
   }
+});
+
+router.delete("/api/remove-from-favourite", (req, res, next) => {
+  const idToRemove = req.body.id;
+  const indexOfRemoved = favoriteConcerts.favorites.findIndex(
+    (el) => el.id === idToRemove,
+  );
+
+  removedConcerts.removed = favoriteConcerts.favorites.splice(
+    indexOfRemoved,
+    1,
+  );
+
+  res.json(favoriteConcerts.favorites);
 });
 
 module.exports = router;
