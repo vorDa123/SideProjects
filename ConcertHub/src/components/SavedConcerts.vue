@@ -8,7 +8,13 @@ const props = defineProps({
 </script>
 <template>
   <div class="concertCard my-3 pointerElement">
-    <p class="concertSubtitle">{{ props.data?.name }}</p>
+    <div class="d-flex align-items-center justify-content-between">
+      <p class="concertSubtitle">{{ props.data?.name }}</p>
+      <span>
+        <i class="bi bi-plus-square" style="font-size: 1rem"></i>
+        Attended
+      </span>
+    </div>
     <p class="concertDescription">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna
       accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem,
