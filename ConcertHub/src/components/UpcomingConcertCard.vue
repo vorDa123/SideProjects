@@ -1,7 +1,95 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, computed, watch } from 'vue'
+import axios from 'axios'
+
+const props = defineProps({
+  data: Object,
+})
+
+const addedToFavorite = ref<boolean>(false)
+
+let favoriteConcerts = ref<any[]>([])
+
+const handleFavoriteConcerts = async () => {
+  try {
+    const res = await axios.post('http://localhost:3000/api/add-to-favourite', {
+      id: props.data?.id,
+      name: props.data?.name,
+      image: props.data?.image,
+      date: props.data?.date,
+      time: props.data?.time,
+      genre: props.data?.genre,
+      venue: props.data?.venue,
+      city: props.data?.city,
+      country: props.data?.country,
+      countryCode: props.data?.countryCode,
+    })
+    console.log('Poslani podaci: ', res.data)
+    addedToFavorite.value = true
+    return res.data
+  } catch (error) {
+    console.error('ID se nije poslao')
+  }
+}
+
+const handleRemoveFromFavoriteConcerts = async () => {
+  try {
+    const res = await axios.delete('http://localhost:3000/api/remove-from-favourite', {
+      data: {
+        id: props.data?.id,
+      },
+    })
+    console.log('Poslani podaci: ', res.data)
+    addedToFavorite.value = false
+    return res.data
+  } catch (error) {
+    console.error('Dogodila se greška prilikom brisanja')
+  }
+  addedToFavorite.value = false
+}
+
+watch(
+  addedToFavorite,
+  async () => {
+    try {
+      const res = await axios.get('http://localhost:3000/api/get-favourites')
+      favoriteConcerts.value = res.data || []
+      // console.log('Fetched data:', res.data)
+    } catch (error) {
+      console.error('Server down ili error')
+      favoriteConcerts.value = []
+    } finally {
+      const isConcertFavorite = favoriteConcerts.value.some(
+        (concert: any) => concert.id === props.data?.id,
+      )
+
+      if (isConcertFavorite) {
+        addedToFavorite.value = true
+      } else {
+        addedToFavorite.value = false
+      }
+    }
+  },
+  { immediate: true },
+)
+</script>
 <template>
   <div class="concertCard my-3 pointerElement">
-    <p class="concertSubtitle">Concert name</p>
+    <div class="d-flex align-items-start justify-content-between gap-2">
+      <p class="concertSubtitle">{{ props.data?.name }}</p>
+      <i
+        v-if="!addedToFavorite"
+        class="bi bi-heart"
+        style="font-size: 1.47rem"
+        @click="handleFavoriteConcerts"
+      ></i>
+      <i
+        v-else
+        class="bi bi-heart-fill"
+        style="font-size: 1.47rem"
+        @click="handleRemoveFromFavoriteConcerts"
+      ></i>
+    </div>
     <p class="concertDescription">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna
       accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem,
@@ -11,15 +99,15 @@
     <div class="d-flex align-items-center justify-content-start gap-4 gap-md-12">
       <div class="d-flex gap-2">
         <i class="bi bi-calendar"></i>
-        <span>28.03.2026.</span>
+        <span>{{ props.data?.date }}</span>
       </div>
       <div class="d-flex gap-2">
         <i class="bi bi-clock"></i>
-        <span>18:45</span>
+        <span>{{ props.data?.time }}</span>
       </div>
       <div class="d-flex gap-2">
         <i class="bi bi-geo-alt"></i>
-        <span>Zagreb</span>
+        <span>{{ props.data?.city }}</span>
       </div>
     </div>
   </div>

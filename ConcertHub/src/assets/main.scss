@@ -166,6 +166,17 @@ $spacers: map-merge($spacers, $custom-spacers);
   padding-left: 15px;
 }
 
+.showMoreConcertsButton {
+  text-align: center;
+  padding: 10px 15px;
+  width: 300px;
+  border-radius: 15px;
+  background-color: #1e66c9;
+  text-decoration: none;
+  color: #ebf0f7;
+  font-weight: 600;
+}
+
 .imageContainer {
   width: inherit;
   height: 175px;
