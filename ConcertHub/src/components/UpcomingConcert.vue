@@ -3,7 +3,6 @@ import ConcertCard from './UpcomingConcertCard.vue'
 import axios from 'axios'
 import { motion } from 'motion-v'
 import { ref, onMounted, onUnmounted } from 'vue'
-import { p, P } from 'vue-router/dist/index-BzEKChPW.js'
 
 let concerts = ref<any[]>([])
 let isConcertsFetched = ref<boolean>(false)
