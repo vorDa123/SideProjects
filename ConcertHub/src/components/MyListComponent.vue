@@ -46,7 +46,7 @@ onMounted(() => {
   interval = setInterval(() => {
     fetchFavourites()
     fetchAttended()
-  }, 5000)
+  }, 1000)
 })
 
 onUnmounted(() => {
