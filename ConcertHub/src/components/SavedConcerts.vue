@@ -21,6 +21,7 @@ const handleAttendedConcerts = () => {
       city: props.data?.city,
       country: props.data?.country,
       countryCode: props.data?.countryCode,
+      description: props.data?.description,
     })
     .then((response) => {
       console.log('Poslani podaci: ', response.data)
@@ -51,7 +52,7 @@ const handleRemoveFromFavoriteConcerts = async () => {
 </script>
 <template>
   <div class="concertCard my-3 pointerElement">
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center justify-content-between gap-4">
       <p class="concertSubtitle">{{ props.data?.name }}</p>
       <span @click="handleAttendedConcerts">
         <i class="bi bi-plus-square" style="font-size: 1rem"></i>
@@ -59,10 +60,7 @@ const handleRemoveFromFavoriteConcerts = async () => {
       </span>
     </div>
     <p class="concertDescription">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna
-      accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem,
-      tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut
-      semper faucibus.
+      {{ props.data?.description }}
     </p>
     <div class="d-flex align-items-center justify-content-start gap-4 gap-md-12">
       <div class="d-flex gap-2">

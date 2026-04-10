@@ -101,6 +101,8 @@ router.get("/api/get-concert-list", async (req, res) => {
       city: event?._embedded?.venues[0]?.city?.name,
       country: event?._embedded?.venues[0]?.country?.name,
       countryCode: event?._embedded?.venues[0]?.country?.countryCode,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem, tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut semper faucibus.",
     }));
 
     filteredEvents = formattedEvents.filter((event) => {
@@ -128,6 +130,7 @@ router.post("/api/add-to-favourite", (req, res, next) => {
     city: req.body.city,
     country: req.body.country,
     countryCode: req.body.countryCode,
+    description: req.body.description,
   });
   res.json(favoriteConcerts);
 });
@@ -144,6 +147,7 @@ router.post("/api/add-to-attended", (req, res, next) => {
     city: req.body.city,
     country: req.body.country,
     countryCode: req.body.countryCode,
+    description: req.body.description,
   });
   res.json(attendedConcerts);
 });
@@ -186,10 +190,7 @@ router.delete("/api/remove-from-attended", (req, res, next) => {
     (el) => el.id === idToRemove,
   );
 
-  removedConcerts.removed = attendedConcerts.attended.splice(
-    indexOfRemoved,
-    1,
-  );
+  removedConcerts.removed = attendedConcerts.attended.splice(indexOfRemoved, 1);
 
   res.json(attendedConcerts.attended);
 });

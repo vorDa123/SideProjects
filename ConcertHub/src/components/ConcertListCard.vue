@@ -30,6 +30,7 @@ const handleFavoriteConcerts = async () => {
       city: props.data?.city,
       country: props.data?.country,
       countryCode: props.data?.countryCode,
+      description: props.data?.description,
     })
     console.log('Poslani podaci: ', res.data)
     addedToFavorite.value = true
@@ -111,8 +112,7 @@ watch(
         ></i>
       </div>
       <p class="concertDescription">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna
-        accumsan, a faucibus massa lobortis.
+        {{ props.data?.description }}
       </p>
       <div class="d-flex flex-wrap align-items-center justify-content-start gap-4 gap-md-12">
         <div class="d-flex gap-2">
