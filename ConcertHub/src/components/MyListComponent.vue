@@ -6,12 +6,28 @@ import { motion } from 'motion-v'
 import { ref, computed, onMounted, onUnmounted, watch, toRaw } from 'vue'
 
 let favoriteConcerts = ref<any[]>([])
+let favoriteModel = defineModel<string>('favorite', { default: '' })
+let attendedModel = defineModel<string>('attended', { default: '' })
 let isFavoritesFetched = ref<boolean>(false)
-
 let attendedConcerts = ref<any[]>([])
 let isAttendedFetched = ref<boolean>(false)
-
 let interval: ReturnType<typeof setInterval> | undefined = undefined
+
+const favoriteConcertSearch = computed(() => {
+  const search = favoriteModel.value?.toLowerCase() || ''
+
+  if (!search) return favoriteConcerts.value
+
+  return favoriteConcerts.value.filter((el: any) => el.name.toLowerCase().includes(search))
+})
+
+const attendedConcertSearch = computed(() => {
+  const search = attendedModel.value?.toLowerCase() || ''
+
+  if (!search) return attendedConcerts.value
+
+  return attendedConcerts.value.filter((el: any) => el.name.toLowerCase().includes(search))
+})
 
 const fetchFavourites = async () => {
   try {
@@ -64,11 +80,11 @@ onUnmounted(() => {
             <p class="title">My concerts</p>
             <div class="d-flex gap-2 justify-content-start align-items-center">
               <i class="bi bi-search"></i>
-              <input type="text" placeholder="Search" class="searchInput" />
+              <input type="text" placeholder="Search" v-model="favoriteModel" class="searchInput" />
             </div>
-            <div v-if="isFavoritesFetched && favoriteConcerts.length > 0">
+            <div v-if="isFavoritesFetched && favoriteConcertSearch.length > 0">
               <SavedConcerts
-                v-for="concert in favoriteConcerts"
+                v-for="concert in favoriteConcertSearch"
                 :key="concert.id"
                 :data="concert"
               />
@@ -78,14 +94,14 @@ onUnmounted(() => {
         </div>
         <div class="col-md-6">
           <div class="containerBorder p-2 myListContainers">
-            <p class="title">Previous concerts</p>
+            <p class="title">Attended concerts</p>
             <div class="d-flex gap-2 justify-content-start align-items-center">
               <i class="bi bi-search"></i>
-              <input type="text" placeholder="Search" class="searchInput" />
+              <input type="text" placeholder="Search" v-model="attendedModel" class="searchInput" />
             </div>
-            <div v-if="isAttendedFetched && attendedConcerts.length > 0">
+            <div v-if="isAttendedFetched && attendedConcertSearch.length > 0">
               <PreviousConcerts
-                v-for="concert in attendedConcerts"
+                v-for="concert in attendedConcertSearch"
                 :key="concert.id"
                 :data="concert"
               />
