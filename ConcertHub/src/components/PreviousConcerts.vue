@@ -1,7 +1,30 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import axios from 'axios'
+
+const props = defineProps({
+  data: Object,
+})
+
+const handleRemoveFromFavoriteConcerts = async () => {
+  try {
+    const res = await axios.delete('http://localhost:3000/api/remove-from-attended', {
+      data: {
+        id: props.data?.id,
+      },
+    })
+    console.log('Poslani podaci: ', res.data)
+    return res.data
+  } catch (error) {
+    console.error('Dogodila se greška prilikom brisanja')
+  }
+}
+</script>
 <template>
   <div class="concertCard my-3 pointerElement">
-    <p class="concertSubtitle">Concert name</p>
+    <div class="d-flex align-items-center justify-content-between">
+      <p class="concertSubtitle">{{ props.data?.name }}</p>
+      <i class="bi bi-trash" style="font-size: 1.4rem" @click="handleRemoveFromFavoriteConcerts"></i>
+    </div>
     <p class="concertDescription">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna
       accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem,
@@ -11,15 +34,15 @@
     <div class="d-flex align-items-center justify-content-start gap-4 gap-md-12">
       <div class="d-flex gap-2">
         <i class="bi bi-calendar"></i>
-        <span>28.03.2026.</span>
+        <span>{{ props.data?.date }}</span>
       </div>
       <div class="d-flex gap-2">
         <i class="bi bi-clock"></i>
-        <span>18:45</span>
+        <span>{{ props.data?.time }}</span>
       </div>
       <div class="d-flex gap-2">
         <i class="bi bi-geo-alt"></i>
-        <span>Zagreb</span>
+        <span>{{ props.data?.city }}</span>
       </div>
     </div>
   </div>

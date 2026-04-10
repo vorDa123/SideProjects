@@ -8,6 +8,9 @@ import { ref, computed, onMounted, onUnmounted, watch, toRaw } from 'vue'
 let favoriteConcerts = ref<any[]>([])
 let isFavoritesFetched = ref<boolean>(false)
 
+let attendedConcerts = ref<any[]>([])
+let isAttendedFetched = ref<boolean>(false)
+
 let interval: ReturnType<typeof setInterval> | undefined = undefined
 
 const fetchFavourites = async () => {
@@ -23,17 +26,33 @@ const fetchFavourites = async () => {
   }
 }
 
+const fetchAttended = async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/get-attended')
+    attendedConcerts.value = res.data || []
+    // console.log('Fetched data:', res.data)
+    isAttendedFetched.value = true
+  } catch (error) {
+    console.error('Server down ili error')
+    attendedConcerts.value = []
+    isAttendedFetched.value = false
+  }
+}
+
 onMounted(() => {
   fetchFavourites()
+  fetchAttended()
 
   interval = setInterval(() => {
     fetchFavourites()
+    fetchAttended()
   }, 5000)
 })
 
 onUnmounted(() => {
   clearInterval(interval ?? undefined)
   isFavoritesFetched.value = false
+  isAttendedFetched.value = false
 })
 </script>
 <template>
@@ -64,7 +83,14 @@ onUnmounted(() => {
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" class="searchInput" />
             </div>
-            <PreviousConcerts />
+            <div v-if="isAttendedFetched && attendedConcerts.length > 0">
+              <PreviousConcerts
+                v-for="concert in attendedConcerts"
+                :key="concert.id"
+                :data="concert"
+              />
+            </div>
+            <div v-else>There are no attended concerts.</div>
           </div>
         </div>
       </div>

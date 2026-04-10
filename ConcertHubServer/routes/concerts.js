@@ -68,6 +68,10 @@ let removedConcerts = {
   removed: [],
 };
 
+let attendedConcerts = {
+  attended: [],
+};
+
 let filteredEvents = {};
 
 // Get me all the concerts and filter only those in Europe
@@ -128,6 +132,31 @@ router.post("/api/add-to-favourite", (req, res, next) => {
   res.json(favoriteConcerts);
 });
 
+router.post("/api/add-to-attended", (req, res, next) => {
+  attendedConcerts.attended.push({
+    id: req.body.id,
+    name: req.body.name,
+    image: req.body.image,
+    date: req.body.date,
+    time: req.body.time,
+    genre: req.body.genre,
+    venue: req.body.venue,
+    city: req.body.city,
+    country: req.body.country,
+    countryCode: req.body.countryCode,
+  });
+  res.json(attendedConcerts);
+});
+
+router.get("/api/get-attended", async (req, res) => {
+  try {
+    res.json(attendedConcerts.attended);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Failed to fetch attended" });
+  }
+});
+
 router.get("/api/get-favourites", async (req, res) => {
   try {
     res.json(favoriteConcerts.favorites);
@@ -149,6 +178,20 @@ router.delete("/api/remove-from-favourite", (req, res, next) => {
   );
 
   res.json(favoriteConcerts.favorites);
+});
+
+router.delete("/api/remove-from-attended", (req, res, next) => {
+  const idToRemove = req.body.id;
+  const indexOfRemoved = attendedConcerts.attended.findIndex(
+    (el) => el.id === idToRemove,
+  );
+
+  removedConcerts.removed = attendedConcerts.attended.splice(
+    indexOfRemoved,
+    1,
+  );
+
+  res.json(attendedConcerts.attended);
 });
 
 module.exports = router;
