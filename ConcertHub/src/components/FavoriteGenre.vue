@@ -30,7 +30,7 @@ const listOfGenreSave = () => {
 
   if (listOfGenres.length === 0) return
 
-  //This will return an array with the number of occurence of each element
+  //This will return an object with the number of occurence of each array element
   listOfGenresWithNumber = listOfGenres.reduce((acc, curr) => {
     acc[curr] = (acc[curr] || 0) + 1
     return acc
