@@ -53,7 +53,6 @@ const handleRemoveFromFavoriteConcerts = async () => {
   } catch (error) {
     console.error('Dogodila se greška prilikom brisanja')
   }
-  addedToFavorite.value = false
 }
 
 let imageStyle = computed(() => {
