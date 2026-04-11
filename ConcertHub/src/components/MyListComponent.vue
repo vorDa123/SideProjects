@@ -13,6 +13,16 @@ let attendedConcerts = ref<any[]>([])
 let isAttendedFetched = ref<boolean>(false)
 let interval: ReturnType<typeof setInterval> | undefined = undefined
 
+const showModal = ref<boolean>(false)
+
+const emit = defineEmits(['get-showModal'])
+
+const handleShowModal = (shownModal: boolean) => {
+  showModal.value = shownModal
+
+  emit('get-showModal', shownModal)
+}
+
 const favoriteConcertSearch = computed(() => {
   const search = favoriteModel.value?.toLowerCase() || ''
 
@@ -104,6 +114,7 @@ onUnmounted(() => {
                 v-for="concert in attendedConcertSearch"
                 :key="concert.id"
                 :data="concert"
+                @get-showModal="handleShowModal"
               />
             </div>
             <div v-else>There are no attended concerts.</div>

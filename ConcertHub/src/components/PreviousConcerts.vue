@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import EditConcerts from './EditConcertDataModal.vue'
+
 import axios from 'axios'
+import { ref } from 'vue'
 
 const props = defineProps({
   data: Object,
 })
+
+const showModal = ref<boolean>(false)
+const emit = defineEmits(['get-showModal', 'close'])
 
 const handleRemoveFromFavoriteConcerts = async () => {
   try {
@@ -18,12 +24,29 @@ const handleRemoveFromFavoriteConcerts = async () => {
     console.error('Dogodila se greška prilikom brisanja')
   }
 }
+
+const handleShowModal = () => {
+  showModal.value = !showModal.value
+  emit('get-showModal', showModal.value)
+}
 </script>
 <template>
   <div class="concertCard my-3 pointerElement">
+    <EditConcerts v-if="showModal" :data="props.data" @close="showModal = false" />
     <div class="d-flex align-items-center justify-content-between">
       <p class="concertSubtitle">{{ props.data?.name }}</p>
-      <i class="bi bi-trash" style="font-size: 1.4rem" @click="handleRemoveFromFavoriteConcerts"></i>
+      <div>
+        <i
+          class="bi bi-pencil-square"
+          style="font-size: 1.4rem; padding-right: 1rem"
+          @click="handleShowModal"
+        ></i>
+        <i
+          class="bi bi-trash"
+          style="font-size: 1.4rem"
+          @click="handleRemoveFromFavoriteConcerts"
+        ></i>
+      </div>
     </div>
     <p class="concertDescription">
       {{ props.data?.description }}

@@ -86,8 +86,6 @@ router.get("/api/get-concert-list", async (req, res) => {
       },
     );
 
-    console.log("Fetched data:", response.data);
-
     const events = response.data._embedded.events;
 
     const formattedEvents = events.map((event) => ({
@@ -192,6 +190,29 @@ router.delete("/api/remove-from-attended", (req, res, next) => {
 
   removedConcerts.removed = attendedConcerts.attended.splice(indexOfRemoved, 1);
 
+  res.json(attendedConcerts.attended);
+});
+
+router.patch("/api/update-attended-concert-data", (req, res, next) => {
+  const idToUpdate = req.body.id;
+  const indexOfUpdate = attendedConcerts.attended.findIndex(
+    (el) => el.id === idToUpdate,
+  );
+
+  const concert = attendedConcerts.attended[indexOfUpdate];
+  if (!concert) {
+    return res
+      .status(404)
+      .json({
+        message: "Concert not found",
+      });
+  }
+  const updates = req.body;
+  for (let key in updates) {
+    if (concert[key] !== undefined) {
+      concert[key] = updates[key];
+    }
+  }
   res.json(attendedConcerts.attended);
 });
 

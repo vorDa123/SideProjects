@@ -188,6 +188,29 @@ $spacers: map-merge($spacers, $custom-spacers);
   margin-bottom: 15px;
 }
 
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 98;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.modalContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  width: 100%;
+  max-width: 400px;
+  background-color: #f7f4f2;
+  border-radius: 16px;
+  padding: 25px;
+}
+
 @media (1170px <= width <= 1550px) {
   .countdownNumberFontSize {
     font-size: 1.7rem;
