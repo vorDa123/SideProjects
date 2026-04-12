@@ -3,7 +3,7 @@ import PreviousConcerts from './PreviousConcerts.vue'
 import SavedConcerts from './SavedConcerts.vue'
 import axios from 'axios'
 import { motion } from 'motion-v'
-import { ref, computed, onMounted, onUnmounted, watch, toRaw } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 let favoriteConcerts = ref<any[]>([])
 let favoriteModel = defineModel<string>('favorite', { default: '' })

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, watch } from 'vue'
 import axios from 'axios'
 
 const props = defineProps({
@@ -24,6 +24,7 @@ const handleFavoriteConcerts = async () => {
       city: props.data?.city,
       country: props.data?.country,
       countryCode: props.data?.countryCode,
+      description: props.data?.description,
     })
     console.log('Poslani podaci: ', res.data)
     addedToFavorite.value = true

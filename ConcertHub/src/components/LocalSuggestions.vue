@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LocalSuggestionCard from './LocalSuggestionCard.vue'
-import { ref, onMounted, onBeforeMount } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
 let longitude = ref<number>(0)
