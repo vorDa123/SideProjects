@@ -72,6 +72,10 @@ let attendedConcerts = {
   attended: [],
 };
 
+let geolocationData = {
+  geolocation: [],
+};
+
 let filteredEvents = {};
 
 // Get me all the concerts and filter only those in Europe
@@ -116,6 +120,41 @@ router.get("/api/get-concert-list", async (req, res) => {
   }
 });
 
+router.get("/api/get-concert-by-location", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://app.ticketmaster.com/discovery/v2/events.json?size=10&apikey=${APIKey}&latlong=${geolocationData.geolocation[0].lat},${geolocationData.geolocation[0].long}&radius=500&unit=km&locale=*&sort=date,asc&classificationName=Music`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+
+    const events = response.data._embedded.events;
+
+    const formattedEvents = events.map((event) => ({
+      id: event?.id,
+      name: event?.name,
+      image: event?.images[0]?.url,
+      date: event?.dates?.start?.localDate,
+      time: event?.dates?.start?.localTime,
+      genre: event?.classifications[0]?.genre?.name,
+      venue: event?._embedded?.venues[0]?.name,
+      city: event?._embedded?.venues[0]?.city?.name,
+      country: event?._embedded?.venues[0]?.country?.name,
+      countryCode: event?._embedded?.venues[0]?.country?.countryCode,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem, tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut semper faucibus.",
+    }));   
+
+    res.json(formattedEvents);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Failed to fetch concerts" });
+  }
+});
+
 router.post("/api/add-to-favourite", (req, res, next) => {
   favoriteConcerts.favorites.push({
     id: req.body.id,
@@ -148,6 +187,14 @@ router.post("/api/add-to-attended", (req, res, next) => {
     description: req.body.description,
   });
   res.json(attendedConcerts);
+});
+
+router.post("/api/send-geolocation-data", (req, res, next) => {
+  geolocationData.geolocation.push({
+    lat: req.body.lat,
+    long: req.body.long,
+  });
+  res.json(geolocationData);
 });
 
 router.get("/api/get-attended", async (req, res) => {

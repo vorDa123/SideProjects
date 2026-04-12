@@ -1,26 +1,26 @@
 <script setup lang="ts">
+const props = defineProps({
+  data: Object,
+})
 </script>
 <template>
   <div class="concertCard my-3 pointerElement">
-    <p class="concertSubtitle">Concert name</p>
+    <p class="concertSubtitle">{{ props.data?.name }}</p>
     <p class="concertDescription">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna
-      accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem,
-      tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut
-      semper faucibus.
+      {{ props.data?.description }}
     </p>
     <div class="d-flex flex-wrap align-items-center justify-content-start gap-4 gap-md-12">
       <div class="d-flex gap-2">
         <i class="bi bi-calendar"></i>
-        <span>28.03.2026.</span>
+        <span>{{ props.data?.date }}</span>
       </div>
       <div class="d-flex gap-2">
         <i class="bi bi-clock"></i>
-        <span>18:45</span>
+        <span>{{ props.data?.time }}</span>
       </div>
       <div class="d-flex gap-2">
         <i class="bi bi-geo-alt"></i>
-        <span>Zagreb</span>
+        <span>{{ props.data?.city }}</span>
       </div>
       <div class="d-flex gap-2">
         <i class="bi bi-cash"></i>
