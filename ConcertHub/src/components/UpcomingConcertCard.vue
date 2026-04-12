@@ -18,6 +18,7 @@ const handleFavoriteConcerts = async () => {
       image: props.data?.image,
       date: props.data?.date,
       time: props.data?.time,
+      dateTime: props.data?.dateTime,
       genre: props.data?.genre,
       venue: props.data?.venue,
       city: props.data?.city,
