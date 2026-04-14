@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import ConcertListCard from './ConcertListCard.vue'
-import axios from 'axios'
 import { motion } from 'motion-v'
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useFetchConcertsStore } from '../stores/ConcertsStore.ts'
 
 const emit = defineEmits(['get-concert-id'])
 
@@ -10,6 +10,7 @@ let concerts = ref<any[]>([])
 const selectedConcertId = ref<string>('')
 let isConcertsFetched = ref<boolean>(false)
 let model = defineModel<string>({ default: '' })
+const fetchConcertsStore = useFetchConcertsStore()
 const concertCardSearch = computed(() => {
   const search = model.value?.toLowerCase() || ''
 
@@ -29,7 +30,7 @@ const handleGetConcertID = (concertId: string) => {
 
 const fetchConcerts = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/get-concert-list')
+    const res = await fetchConcertsStore.getConcerts
     concerts.value = res.data || []
     isConcertsFetched.value = true
   } catch (error) {

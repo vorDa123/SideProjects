@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import ConcertCard from './UpcomingConcertCard.vue'
-import axios from 'axios'
 import { motion } from 'motion-v'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useFetchConcertsStore } from '../stores/ConcertsStore.ts'
 
 let concerts = ref<any[]>([])
 let isConcertsFetched = ref<boolean>(false)
 
 let interval: ReturnType<typeof setInterval> | undefined = undefined
 
+const fetchConcertsStore = useFetchConcertsStore()
+
 const fetchConcerts = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/get-concert-list')
+    const res = await fetchConcertsStore.getConcerts
     concerts.value = res.data || []
     isConcertsFetched.value = true
   } catch (error) {
