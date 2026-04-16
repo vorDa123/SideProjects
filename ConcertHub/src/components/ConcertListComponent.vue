@@ -2,21 +2,24 @@
 import ConcertListCard from './ConcertListCard.vue'
 import { motion } from 'motion-v'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useFetchConcertsStore } from '../stores/ConcertsStore.ts'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
 const emit = defineEmits(['get-concert-id'])
 
-let concerts = ref<any[]>([])
 const selectedConcertId = ref<string>('')
+
 let isConcertsFetched = ref<boolean>(false)
+
 let model = defineModel<string>({ default: '' })
-const fetchConcertsStore = useFetchConcertsStore()
+
+const fetchConcertsStore = useHandleConcertStore()
+
 const concertCardSearch = computed(() => {
   const search = model.value?.toLowerCase() || ''
 
-  if (!search) return concerts.value
+  if (!search) return fetchConcertsStore.concerts
 
-  return concerts.value.filter((el: any) => el.name.toLowerCase().includes(search))
+  return fetchConcertsStore.concerts.filter((el: any) => el.name.toLowerCase().includes(search))
 })
 
 let interval: ReturnType<typeof setInterval> | undefined = undefined
@@ -30,12 +33,10 @@ const handleGetConcertID = (concertId: string) => {
 
 const fetchConcerts = async () => {
   try {
-    const res = await fetchConcertsStore.getConcerts
-    concerts.value = res.data || []
+    await fetchConcertsStore.getConcerts()
     isConcertsFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
-    concerts.value = []
     isConcertsFetched.value = false
   }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import axios from 'axios'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
 const props = defineProps({
   data: Object,
@@ -8,60 +8,47 @@ const props = defineProps({
 
 const addedToFavorite = ref<boolean>(false)
 
-let favoriteConcerts = ref<any[]>([])
+const handleFavoriteStore = useHandleConcertStore()
+
+const concertDataPayload = {
+  id: props.data?.id,
+  name: props.data?.name,
+  image: props.data?.image,
+  date: props.data?.date,
+  time: props.data?.time,
+  dateTime: props.data?.dateTime,
+  genre: props.data?.genre,
+  venue: props.data?.venue,
+  city: props.data?.city,
+  country: props.data?.country,
+  countryCode: props.data?.countryCode,
+  description: props.data?.description,
+}
 
 const handleFavoriteConcerts = async () => {
-  try {
-    const res = await axios.post('http://localhost:3000/api/add-to-favourite', {
-      id: props.data?.id,
-      name: props.data?.name,
-      image: props.data?.image,
-      date: props.data?.date,
-      time: props.data?.time,
-      dateTime: props.data?.dateTime,
-      genre: props.data?.genre,
-      venue: props.data?.venue,
-      city: props.data?.city,
-      country: props.data?.country,
-      countryCode: props.data?.countryCode,
-      description: props.data?.description,
-    })
-    console.log('Poslani podaci: ', res.data)
+  if (concertDataPayload) {
+    await handleFavoriteStore.addToFavorite(concertDataPayload)
     addedToFavorite.value = true
-    return res.data
-  } catch (error) {
-    console.error('ID se nije poslao')
   }
 }
 
 const handleRemoveFromFavoriteConcerts = async () => {
-  try {
-    const res = await axios.delete('http://localhost:3000/api/remove-from-favourite', {
-      data: {
-        id: props.data?.id,
-      },
-    })
-    console.log('Poslani podaci: ', res.data)
+  const id = props.data?.id
+  if (id) {
+    await handleFavoriteStore.removeFavorite(id)
     addedToFavorite.value = false
-    return res.data
-  } catch (error) {
-    console.error('Dogodila se greška prilikom brisanja')
   }
-  addedToFavorite.value = false
 }
 
 watch(
   addedToFavorite,
   async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/get-favourites')
-      favoriteConcerts.value = res.data || []
-      // console.log('Fetched data:', res.data)
+      await handleFavoriteStore.getFavorites()
     } catch (error) {
       console.error('Server down ili error')
-      favoriteConcerts.value = []
     } finally {
-      const isConcertFavorite = favoriteConcerts.value.some(
+      const isConcertFavorite = handleFavoriteStore.favorites.some(
         (concert: any) => concert.id === props.data?.id,
       )
 

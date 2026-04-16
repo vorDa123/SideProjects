@@ -2,23 +2,20 @@
 import ConcertCard from './UpcomingConcertCard.vue'
 import { motion } from 'motion-v'
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useFetchConcertsStore } from '../stores/ConcertsStore.ts'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
-let concerts = ref<any[]>([])
 let isConcertsFetched = ref<boolean>(false)
 
 let interval: ReturnType<typeof setInterval> | undefined = undefined
 
-const fetchConcertsStore = useFetchConcertsStore()
+const fetchConcertsStore = useHandleConcertStore()
 
 const fetchConcerts = async () => {
   try {
-    const res = await fetchConcertsStore.getConcerts
-    concerts.value = res.data || []
+    await fetchConcertsStore.getConcerts()
     isConcertsFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
-    concerts.value = []
     isConcertsFetched.value = false
   }
 }
@@ -40,7 +37,7 @@ onUnmounted(() => {
   <div class="p-3 upcomingContainer containerBorder">
     <div v-if="isConcertsFetched" class="d-flex flex-column">
       <p class="subtitle">Upcoming concerts</p>
-      <ConcertCard v-for="concert in concerts.splice(0, 5)" :key="concert.id" :data="concert" />
+      <ConcertCard v-for="concert in fetchConcertsStore.concerts.slice(0, 5)" :key="concert.id" :data="concert" />
       <div class="py-3 align-self-end">
         <RouterLink to="/concerts" class="showMoreConcertsButton"
           >Show more upcoming concerts <i class="bi bi-arrow-right"></i
