@@ -20,6 +20,7 @@ export const useHandleConcertStore = defineStore('favorite', {
       try {
         const res = await axios.post('http://localhost:3000/api/add-to-favourite', concertData)
         console.log('Poslani podaci pinia: ', res.data)
+        this.favorites.push(concertData)
         return res.data
       } catch (error) {
         console.error('ID se nije poslao')
@@ -33,6 +34,7 @@ export const useHandleConcertStore = defineStore('favorite', {
           },
         })
         console.log('Poslani podaci: ', res.data)
+        this.favorites = this.favorites.filter(c => c.id !== concertID)
         return res.data
       } catch (error) {
         console.error('Dogodila se greška prilikom brisanja')

@@ -2,8 +2,11 @@
 import PreviousConcerts from './PreviousConcerts.vue'
 import SavedConcerts from './SavedConcerts.vue'
 import axios from 'axios'
-import { motion } from 'motion-v'
+import { motion, AnimatePresence } from 'motion-v'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+
+const MotionPreviousConcerts = motion.create(PreviousConcerts)
+const MotionSavedConcerts = motion.create(SavedConcerts)
 
 let favoriteConcerts = ref<any[]>([])
 let favoriteModel = defineModel<string>('favorite', { default: '' })
@@ -43,7 +46,6 @@ const fetchFavourites = async () => {
   try {
     const res = await axios.get('http://localhost:3000/api/get-favourites')
     favoriteConcerts.value = res.data || []
-    // console.log('Fetched data:', res.data)
     isFavoritesFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
@@ -56,7 +58,6 @@ const fetchAttended = async () => {
   try {
     const res = await axios.get('http://localhost:3000/api/get-attended')
     attendedConcerts.value = res.data || []
-    // console.log('Fetched data:', res.data)
     isAttendedFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
@@ -93,11 +94,16 @@ onUnmounted(() => {
               <input type="text" placeholder="Search" v-model="favoriteModel" class="searchInput" />
             </div>
             <div v-if="isFavoritesFetched && favoriteConcertSearch.length > 0">
-              <SavedConcerts
-                v-for="concert in favoriteConcertSearch"
-                :key="concert.id"
-                :data="concert"
-              />
+              <AnimatePresence>
+                <MotionSavedConcerts
+                  v-for="concert in favoriteConcertSearch"
+                  :key="concert.id"
+                  :data="concert"
+                  :initial="{ y: 300, opacity: 0 }"
+                  :animate="{ y: 0, opacity: 1 }"
+                  :exit="{ y: -300, opacity: 0 }"
+                />
+              </AnimatePresence>
             </div>
             <div v-else>There are no favorite concerts.</div>
           </div>
@@ -110,12 +116,17 @@ onUnmounted(() => {
               <input type="text" placeholder="Search" v-model="attendedModel" class="searchInput" />
             </div>
             <div v-if="isAttendedFetched && attendedConcertSearch.length > 0">
-              <PreviousConcerts
-                v-for="concert in attendedConcertSearch"
-                :key="concert.id"
-                :data="concert"
-                @get-showModal="handleShowModal"
-              />
+              <AnimatePresence>
+                <MotionPreviousConcerts
+                  v-for="concert in attendedConcertSearch"
+                  :key="concert.id"
+                  :data="concert"
+                  :initial="{ y: 300, opacity: 0 }"
+                  :animate="{ y: 0, opacity: 1 }"
+                  :exit="{ y: -300, opacity: 0 }"
+                  @get-showModal="handleShowModal"
+                />
+              </AnimatePresence>
             </div>
             <div v-else>There are no attended concerts.</div>
           </div>

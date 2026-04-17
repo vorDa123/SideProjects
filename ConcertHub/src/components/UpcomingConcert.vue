@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import ConcertCard from './UpcomingConcertCard.vue'
-import { motion } from 'motion-v'
+import { motion, AnimatePresence } from 'motion-v'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+
+const MotionConcertCard = motion.create(ConcertCard)
 
 let isConcertsFetched = ref<boolean>(false)
 
@@ -35,9 +37,21 @@ onUnmounted(() => {
 </script>
 <template>
   <div class="p-3 upcomingContainer containerBorder">
-    <div v-if="isConcertsFetched" class="d-flex flex-column">
+    <div
+      v-if="isConcertsFetched && fetchConcertsStore.concerts.length > 0"
+      class="d-flex flex-column"
+    >
       <p class="subtitle">Upcoming concerts</p>
-      <ConcertCard v-for="concert in fetchConcertsStore.concerts.slice(0, 5)" :key="concert.id" :data="concert" />
+      <AnimatePresence>
+        <MotionConcertCard
+          v-for="concert in fetchConcertsStore.concerts.slice(0, 5)"
+          :key="concert.id"
+          :data="concert"
+          :initial="{ y: 300, opacity: 0 }"
+          :animate="{ y: 0, opacity: 1 }"
+          :exit="{ y: -300, opacity: 0 }"
+        />
+      </AnimatePresence>
       <div class="py-3 align-self-end">
         <RouterLink to="/concerts" class="showMoreConcertsButton"
           >Show more upcoming concerts <i class="bi bi-arrow-right"></i

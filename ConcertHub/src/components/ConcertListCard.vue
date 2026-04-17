@@ -17,7 +17,8 @@ const handleGetConcertID = () => {
   emit('get-concert-id', props.data.id)
 }
 
-const concertDataPayload = {
+const handleFavoriteConcerts = async () => {
+  const concertDataPayload = {
   id: props.data?.id,
   name: props.data?.name,
   image: props.data?.image,
@@ -31,8 +32,6 @@ const concertDataPayload = {
   countryCode: props.data?.countryCode,
   description: props.data?.description,
 }
-
-const handleFavoriteConcerts = async () => {
   if (concertDataPayload) {
     await handleFavoriteStore.addToFavorite(concertDataPayload)
     addedToFavorite.value = true

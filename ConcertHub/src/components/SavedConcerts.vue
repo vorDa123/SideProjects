@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import axios from 'axios'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
 const props = defineProps({
   data: Object,
 })
+
+const handleFavoriteStore = useHandleConcertStore()
 
 const addedToAttended = ref<boolean>(false)
 
@@ -36,19 +39,11 @@ const handleAttendedConcerts = () => {
 }
 
 const handleRemoveFromFavoriteConcerts = async () => {
-  try {
-    const res = await axios.delete('http://localhost:3000/api/remove-from-favourite', {
-      data: {
-        id: props.data?.id,
-      },
-    })
-    console.log('Poslani podaci: ', res.data)
+  const id = props.data?.id
+  if (id) {
+    await handleFavoriteStore.removeFavorite(id)
     addedToAttended.value = false
-    return res.data
-  } catch (error) {
-    console.error('Dogodila se greška prilikom brisanja')
   }
-  addedToAttended.value = false
 }
 </script>
 <template>

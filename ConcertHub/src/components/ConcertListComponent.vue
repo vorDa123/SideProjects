@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import ConcertListCard from './ConcertListCard.vue'
-import { motion } from 'motion-v'
+import { motion, AnimatePresence } from 'motion-v'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+
+const MotionConcertListCard = motion.create(ConcertListCard)
 
 const emit = defineEmits(['get-concert-id'])
 
@@ -56,7 +58,7 @@ onUnmounted(() => {
 </script>
 <template>
   <section class="col-md-9 col-xxl-10 pt-4 dashboard overflowScroll">
-    <div v-if="isConcertsFetched">
+    <div v-if="isConcertsFetched && concertCardSearch.length > 0">
       <p class="title">Concerts</p>
       <div class="row gx-3 gy-2 mb-2 mb-md-0">
         <div class="d-flex gap-2 justify-content-start align-items-center">
@@ -64,12 +66,17 @@ onUnmounted(() => {
           <input type="text" placeholder="Search" v-model="model" class="searchInput" />
         </div>
         <div class="d-flex flex-wrap gap-4 justify-content-evenly">
-          <ConcertListCard
-            v-for="concert in concertCardSearch"
-            :key="concert.id"
-            :data="concert"
-            @get-concert-id="handleGetConcertID"
-          />
+          <AnimatePresence>
+            <MotionConcertListCard
+              v-for="concert in concertCardSearch"
+              :key="concert.id"
+              :data="concert"
+              :initial="{ y: 300, opacity: 0 }"
+              :animate="{ y: 0, opacity: 1 }"
+              :exit="{ y: -300, opacity: 0 }"
+              @get-concert-id="handleGetConcertID"
+            />
+          </AnimatePresence>
         </div>
       </div>
     </div>

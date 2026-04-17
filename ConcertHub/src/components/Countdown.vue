@@ -1,24 +1,19 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import axios from 'axios'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
-let favoriteConcerts = ref<any[]>([])
+const handleFavoriteStore = useHandleConcertStore()
+
 let interval: ReturnType<typeof setInterval> | undefined = undefined
 let todayDate = ref(new Date())
 const fetchFavourites = async () => {
-  try {
-    const res = await axios.get('http://localhost:3000/api/get-favourites')
-    favoriteConcerts.value = res.data || []
-  } catch (error) {
-    console.error('Server down ili error')
-    favoriteConcerts.value = []
-  }
+  await handleFavoriteStore.getFavorites()
 }
 
 const timeLeft = computed(() => {
-  if (!favoriteConcerts.value.length) return null
+  if (!handleFavoriteStore.favorites.length) return null
 
-  const concertDate = new Date(favoriteConcerts.value[0].dateTime)
+  const concertDate = new Date(handleFavoriteStore.favorites[0].dateTime)
   const diff = Number(concertDate) - Number(todayDate.value)
 
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0 }
