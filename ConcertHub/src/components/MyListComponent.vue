@@ -2,11 +2,8 @@
 import PreviousConcerts from './PreviousConcerts.vue'
 import SavedConcerts from './SavedConcerts.vue'
 import axios from 'axios'
-import { motion, AnimatePresence } from 'motion-v'
+import { gsap } from 'gsap'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-
-const MotionPreviousConcerts = motion.create(PreviousConcerts)
-const MotionSavedConcerts = motion.create(SavedConcerts)
 
 let favoriteConcerts = ref<any[]>([])
 let favoriteModel = defineModel<string>('favorite', { default: '' })
@@ -94,16 +91,11 @@ onUnmounted(() => {
               <input type="text" placeholder="Search" v-model="favoriteModel" class="searchInput" />
             </div>
             <div v-if="isFavoritesFetched && favoriteConcertSearch.length > 0">
-              <AnimatePresence>
-                <MotionSavedConcerts
-                  v-for="concert in favoriteConcertSearch"
-                  :key="concert.id"
-                  :data="concert"
-                  :initial="{ y: 300, opacity: 0 }"
-                  :animate="{ y: 0, opacity: 1 }"
-                  :exit="{ y: -300, opacity: 0 }"
-                />
-              </AnimatePresence>
+              <SavedConcerts
+                v-for="concert in favoriteConcertSearch"
+                :key="concert.id"
+                :data="concert"
+              />
             </div>
             <div v-else>There are no favorite concerts.</div>
           </div>
@@ -116,17 +108,12 @@ onUnmounted(() => {
               <input type="text" placeholder="Search" v-model="attendedModel" class="searchInput" />
             </div>
             <div v-if="isAttendedFetched && attendedConcertSearch.length > 0">
-              <AnimatePresence>
-                <MotionPreviousConcerts
-                  v-for="concert in attendedConcertSearch"
-                  :key="concert.id"
-                  :data="concert"
-                  :initial="{ y: 300, opacity: 0 }"
-                  :animate="{ y: 0, opacity: 1 }"
-                  :exit="{ y: -300, opacity: 0 }"
-                  @get-showModal="handleShowModal"
-                />
-              </AnimatePresence>
+              <PreviousConcerts
+                v-for="concert in attendedConcertSearch"
+                :key="concert.id"
+                :data="concert"
+                @get-showModal="handleShowModal"
+              />
             </div>
             <div v-else>There are no attended concerts.</div>
           </div>

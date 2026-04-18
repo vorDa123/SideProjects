@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import ConcertCard from './UpcomingConcertCard.vue'
-import { motion, AnimatePresence } from 'motion-v'
+import { gsap } from 'gsap'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
-
-const MotionConcertCard = motion.create(ConcertCard)
 
 let isConcertsFetched = ref<boolean>(false)
 
@@ -27,7 +25,7 @@ onMounted(() => {
 
   interval = setInterval(() => {
     fetchConcerts()
-  }, 5000)
+  }, 60000)
 })
 
 onUnmounted(() => {
@@ -42,16 +40,11 @@ onUnmounted(() => {
       class="d-flex flex-column"
     >
       <p class="subtitle">Upcoming concerts</p>
-      <AnimatePresence>
-        <MotionConcertCard
-          v-for="concert in fetchConcertsStore.concerts.slice(0, 5)"
-          :key="concert.id"
-          :data="concert"
-          :initial="{ y: 300, opacity: 0 }"
-          :animate="{ y: 0, opacity: 1 }"
-          :exit="{ y: -300, opacity: 0 }"
-        />
-      </AnimatePresence>
+      <ConcertCard
+        v-for="concert in fetchConcertsStore.concerts.slice(0, 5)"
+        :key="concert.id"
+        :data="concert"
+      />
       <div class="py-3 align-self-end">
         <RouterLink to="/concerts" class="showMoreConcertsButton"
           >Show more upcoming concerts <i class="bi bi-arrow-right"></i
@@ -59,11 +52,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div v-else class="d-flex justify-content-center align-items-center" style="height: inherit">
-      <motion.i
-        class="bi bi-arrow-clockwise loadingIcon"
-        :animate="{ rotate: 360 }"
-        :transition="{ repeat: Infinity, duration: 2 }"
-      />
+      <i class="bi bi-arrow-clockwise loadingIcon rotate-animation"></i>
     </div>
   </div>
 </template>

@@ -211,6 +211,22 @@ $spacers: map-merge($spacers, $custom-spacers);
   padding: 25px;
 }
 
+.rotate-animation {
+  animation-name: rotate-element;
+  animation-duration: 1.75s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate-element {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (1170px <= width <= 1550px) {
   .countdownNumberFontSize {
     font-size: 1.7rem;

@@ -2,9 +2,7 @@
 import LocalSuggestionCard from './LocalSuggestionCard.vue'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { motion, AnimatePresence } from 'motion-v'
-
-const MotionLocalSuggestionCard = motion.create(LocalSuggestionCard)
+import { gsap } from "gsap";
 
 let longitude = ref<number>(0)
 let latitude = ref<number>(0)
@@ -65,16 +63,11 @@ onMounted(async () => {
   <div class="p-3 upcomingContainer containerBorder">
     <p class="subtitle">Local suggestions</p>
     <div v-if="concertsByLocation.length > 0">
-      <AnimatePresence>
-        <MotionLocalSuggestionCard
-          v-for="concert in concertsByLocation"
-          :key="concert.id"
-          :data="concert"
-          :initial="{ y: 300, opacity: 0 }"
-          :animate="{ y: 0, opacity: 1 }"
-          :exit="{ y: -300, opacity: 0 }"
-        />
-      </AnimatePresence>
+      <LocalSuggestionCard
+        v-for="concert in concertsByLocation"
+        :key="concert.id"
+        :data="concert"
+      />
     </div>
     <div v-else>
       <p>There are no concerts near your location.</p>

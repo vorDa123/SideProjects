@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import ConcertListCard from './ConcertListCard.vue'
-import { motion, AnimatePresence } from 'motion-v'
+import { gsap } from 'gsap'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
-
-const MotionConcertListCard = motion.create(ConcertListCard)
 
 const emit = defineEmits(['get-concert-id'])
 
@@ -48,7 +46,7 @@ onMounted(() => {
 
   interval = setInterval(() => {
     fetchConcerts()
-  }, 5000)
+  }, 60000)
 })
 
 onUnmounted(() => {
@@ -66,26 +64,20 @@ onUnmounted(() => {
           <input type="text" placeholder="Search" v-model="model" class="searchInput" />
         </div>
         <div class="d-flex flex-wrap gap-4 justify-content-evenly">
-          <AnimatePresence>
-            <MotionConcertListCard
-              v-for="concert in concertCardSearch"
-              :key="concert.id"
-              :data="concert"
-              :initial="{ y: 300, opacity: 0 }"
-              :animate="{ y: 0, opacity: 1 }"
-              :exit="{ y: -300, opacity: 0 }"
-              @get-concert-id="handleGetConcertID"
-            />
-          </AnimatePresence>
+          <ConcertListCard
+            v-for="concert in concertCardSearch"
+            :key="concert.id"
+            :data="concert"
+            :initial="{ y: 300, opacity: 0 }"
+            :animate="{ y: 0, opacity: 1 }"
+            :exit="{ y: -300, opacity: 0 }"
+            @get-concert-id="handleGetConcertID"
+          />
         </div>
       </div>
     </div>
     <div v-else class="d-flex justify-content-center align-items-center" style="height: inherit">
-      <motion.i
-        class="bi bi-arrow-clockwise loadingIcon"
-        :animate="{ rotate: 360 }"
-        :transition="{ repeat: Infinity, duration: 2 }"
-      />
+      <i class="bi bi-arrow-clockwise loadingIcon rotate-animation"></i>
     </div>
   </section>
 </template>
