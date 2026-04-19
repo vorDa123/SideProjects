@@ -68,9 +68,6 @@ onUnmounted(() => {
             v-for="concert in concertCardSearch"
             :key="concert.id"
             :data="concert"
-            :initial="{ y: 300, opacity: 0 }"
-            :animate="{ y: 0, opacity: 1 }"
-            :exit="{ y: -300, opacity: 0 }"
             @get-concert-id="handleGetConcertID"
           />
         </div>
