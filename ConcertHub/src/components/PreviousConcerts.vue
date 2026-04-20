@@ -33,7 +33,9 @@ const handleAttendedRemoved = () => {
 </script>
 <template>
   <div class="concertCard my-3 pointerElement">
-    <EditConcerts v-if="showModal" :data="props.data" @close="showModal = false" />
+    <Teleport to="body">
+      <EditConcerts v-if="showModal" :data="props.data" @close="showModal = false" />
+    </Teleport>
     <div class="d-flex align-items-center justify-content-between">
       <p class="concertSubtitle">{{ props.data?.name }}</p>
       <div>
