@@ -27,8 +27,6 @@ const concertCardSearch = computed(() => {
   return fetchConcertsStore.concerts.filter((el: any) => el.name.toLowerCase().includes(search))
 })
 
-let interval: ReturnType<typeof setInterval> | undefined = undefined
-
 const handleGetConcertID = (concertId: string) => {
   selectedConcertId.value = concertId
   console.log('Selected Concert ID:', concertId)
@@ -73,14 +71,9 @@ watch(concertCardSearch, () => {
 
 onMounted(() => {
   fetchConcerts()
-
-  interval = setInterval(() => {
-    fetchConcerts()
-  }, 60000)
 })
 
 onUnmounted(() => {
-  clearInterval(interval ?? undefined)
   isConcertsFetched.value = false
 })
 </script>

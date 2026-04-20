@@ -5,6 +5,7 @@ export const useHandleConcertStore = defineStore('favorite', {
   state: () => ({
     favorites: [] as any[],
     concerts: [] as any[],
+    attended: [] as any[],
   }),
   actions: {
     async getConcerts() {
@@ -19,8 +20,16 @@ export const useHandleConcertStore = defineStore('favorite', {
     async addToFavorite(concertData: any) {
       try {
         const res = await axios.post('http://localhost:3000/api/add-to-favourite', concertData)
-        console.log('Poslani podaci pinia: ', res.data)
         this.favorites.push(concertData)
+        return res.data
+      } catch (error) {
+        console.error('ID se nije poslao')
+      }
+    },
+    async addToAttended(concertData: any) {
+      try {
+        const res = await axios.post('http://localhost:3000/api/add-to-attended', concertData)
+        this.attended.push(concertData)
         return res.data
       } catch (error) {
         console.error('ID se nije poslao')
@@ -40,6 +49,20 @@ export const useHandleConcertStore = defineStore('favorite', {
         console.error('Dogodila se greška prilikom brisanja')
       }
     },
+    async removeAttended(concertID: any) {
+      try {
+        const res = await axios.delete('http://localhost:3000/api/remove-from-attended', {
+          data: {
+            id: concertID,
+          },
+        })
+        console.log('Poslani podaci: ', res.data)
+        this.attended = this.attended.filter(c => c.id !== concertID)
+        return res.data
+      } catch (error) {
+        console.error('Dogodila se greška prilikom brisanja')
+      }
+    },
     async getFavorites() {
       try {
         const res = await axios.get('http://localhost:3000/api/get-favourites')
@@ -47,6 +70,15 @@ export const useHandleConcertStore = defineStore('favorite', {
       } catch (error) {
         console.error('Server down ili error')
         this.favorites = []
+      }
+    },
+     async getAttended() {
+      try {
+        const res = await axios.get('http://localhost:3000/api/get-attended')
+        this.attended = res.data || []
+      } catch (error) {
+        console.error('Server down ili error')
+        this.attended = []
       }
     },
   },

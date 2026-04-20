@@ -1,21 +1,27 @@
 <script setup lang="ts">
 import PreviousConcerts from './PreviousConcerts.vue'
 import SavedConcerts from './SavedConcerts.vue'
-import axios from 'axios'
 import { gsap } from 'gsap'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
-let favoriteConcerts = ref<any[]>([])
 let favoriteModel = defineModel<string>('favorite', { default: '' })
 let attendedModel = defineModel<string>('attended', { default: '' })
 let isFavoritesFetched = ref<boolean>(false)
-let attendedConcerts = ref<any[]>([])
 let isAttendedFetched = ref<boolean>(false)
-let interval: ReturnType<typeof setInterval> | undefined = undefined
+let attendedRemoved = ref<boolean>(false)
+
+const fetchConcertsStore = useHandleConcertStore()
 
 const showModal = ref<boolean>(false)
 
-const emit = defineEmits(['get-showModal'])
+const addedToAttended = ref<boolean>(false)
+
+const favoriteCardAnimation = ref<any>(null)
+const attendedCardAnimation = ref<any>(null)
+const removedCardAnimation = ref<any>(null)
+
+const emit = defineEmits(['get-showModal', 'get-addedToAttended', 'get-attendedRemoved'])
 
 const handleShowModal = (shownModal: boolean) => {
   showModal.value = shownModal
@@ -23,58 +29,117 @@ const handleShowModal = (shownModal: boolean) => {
   emit('get-showModal', shownModal)
 }
 
+const handleAttendedRemoved = (removed: boolean) => {
+  attendedRemoved.value = removed
+
+  emit('get-attendedRemoved', removed)
+}
+
+const handleAddedToAttended = (addedAttended: boolean) => {
+  addedToAttended.value = addedAttended
+
+  emit('get-addedToAttended', addedAttended)
+}
+
 const favoriteConcertSearch = computed(() => {
   const search = favoriteModel.value?.toLowerCase() || ''
 
-  if (!search) return favoriteConcerts.value
+  if (!search) return fetchConcertsStore.favorites
 
-  return favoriteConcerts.value.filter((el: any) => el.name.toLowerCase().includes(search))
+  return fetchConcertsStore.favorites.filter((el: any) => el.name.toLowerCase().includes(search))
 })
 
 const attendedConcertSearch = computed(() => {
   const search = attendedModel.value?.toLowerCase() || ''
 
-  if (!search) return attendedConcerts.value
+  if (!search) return fetchConcertsStore.attended
 
-  return attendedConcerts.value.filter((el: any) => el.name.toLowerCase().includes(search))
+  return fetchConcertsStore.attended.filter((el: any) => el.name.toLowerCase().includes(search))
 })
 
 const fetchFavourites = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/get-favourites')
-    favoriteConcerts.value = res.data || []
+    await fetchConcertsStore.getFavorites()
     isFavoritesFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
-    favoriteConcerts.value = []
     isFavoritesFetched.value = false
   }
 }
 
 const fetchAttended = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/get-attended')
-    attendedConcerts.value = res.data || []
+    await fetchConcertsStore.getAttended()
     isAttendedFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
-    attendedConcerts.value = []
     isAttendedFetched.value = false
   }
 }
 
+const playFavoriteCardAnimation = () => {
+  nextTick(() => {
+    if (favoriteCardAnimation.value) {
+      gsap.from(favoriteCardAnimation.value.children, {
+        y: 100,
+        delay: 0.2,
+        duration: 1,
+        autoAlpha: 0,
+        stagger: 0.3,
+        ease: 'back.out(1)',
+      })
+    }
+  })
+}
+
+const playAttendedCardAnimation = () => {
+  nextTick(() => {
+    if (attendedCardAnimation.value) {
+      gsap.from(attendedCardAnimation.value.children, {
+        y: 100,
+        delay: 0.2,
+        duration: 1,
+        autoAlpha: 0,
+        stagger: 0.3,
+        ease: 'back.out(1)',
+      })
+    }
+  })
+}
+
+const playRemovedCardAnimation = () => {
+  nextTick(() => {
+    if (attendedCardAnimation.value) {
+      gsap.from(attendedCardAnimation.value.children, {
+        y: 100,
+        delay: 0.2,
+        duration: 1,
+        autoAlpha: 0,
+        stagger: 0.3,
+        ease: 'back.out(1)',
+      })
+    }
+  })
+}
+
+watch([favoriteConcertSearch, isFavoritesFetched], () => {
+  playFavoriteCardAnimation()
+})
+
+watch([addedToAttended, isAttendedFetched, attendedConcertSearch], () => {
+  playAttendedCardAnimation()
+})
+
+watch(attendedRemoved, () => {
+  playRemovedCardAnimation()
+})
+
 onMounted(() => {
   fetchFavourites()
   fetchAttended()
-
-  interval = setInterval(() => {
-    fetchFavourites()
-    fetchAttended()
-  }, 1000)
 })
 
 onUnmounted(() => {
-  clearInterval(interval ?? undefined)
   isFavoritesFetched.value = false
   isAttendedFetched.value = false
 })
@@ -90,11 +155,15 @@ onUnmounted(() => {
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" v-model="favoriteModel" class="searchInput" />
             </div>
-            <div v-if="isFavoritesFetched && favoriteConcertSearch.length > 0">
+            <div
+              v-if="isFavoritesFetched && favoriteConcertSearch.length > 0"
+              ref="favoriteCardAnimation"
+            >
               <SavedConcerts
                 v-for="concert in favoriteConcertSearch"
                 :key="concert.id"
                 :data="concert"
+                @get-addedToAttended="handleAddedToAttended"
               />
             </div>
             <div v-else>There are no favorite concerts.</div>
@@ -107,11 +176,15 @@ onUnmounted(() => {
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" v-model="attendedModel" class="searchInput" />
             </div>
-            <div v-if="isAttendedFetched && attendedConcertSearch.length > 0">
+            <div
+              v-if="isAttendedFetched && attendedConcertSearch.length > 0"
+              ref="attendedCardAnimation"
+            >
               <PreviousConcerts
                 v-for="concert in attendedConcertSearch"
                 :key="concert.id"
                 :data="concert"
+                @get-attendedRemoved="handleAttendedRemoved"
                 @get-showModal="handleShowModal"
               />
             </div>

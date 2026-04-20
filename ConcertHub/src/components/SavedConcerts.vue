@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import axios from 'axios'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
 const props = defineProps({
@@ -11,38 +10,37 @@ const handleFavoriteStore = useHandleConcertStore()
 
 const addedToAttended = ref<boolean>(false)
 
-const handleAttendedConcerts = () => {
-  axios
-    .post('http://localhost:3000/api/add-to-attended', {
-      id: props.data?.id,
-      name: props.data?.name,
-      image: props.data?.image,
-      date: props.data?.date,
-      time: props.data?.time,
-      dateTime: props.data?.dateTime,
-      genre: props.data?.genre,
-      venue: props.data?.venue,
-      city: props.data?.city,
-      country: props.data?.country,
-      countryCode: props.data?.countryCode,
-      description: props.data?.description,
-    })
-    .then((response) => {
-      console.log('Poslani podaci: ', response.data)
-      addedToAttended.value = true
-      return response.data
-    })
-    .then(() => {
-      handleRemoveFromFavoriteConcerts()
-    })
-    .catch((error) => console.log(error.message))
+const emit = defineEmits(['get-addedToAttended'])
+
+const handleAttendedConcerts = async () => {
+  const concertDataPayload = {
+    id: props.data?.id,
+    name: props.data?.name,
+    image: props.data?.image,
+    date: props.data?.date,
+    time: props.data?.time,
+    dateTime: props.data?.dateTime,
+    genre: props.data?.genre,
+    venue: props.data?.venue,
+    city: props.data?.city,
+    country: props.data?.country,
+    countryCode: props.data?.countryCode,
+    description: props.data?.description,
+  }
+
+  if (concertDataPayload) {
+    await handleFavoriteStore.addToAttended(concertDataPayload)
+    await handleFavoriteStore.getAttended()
+    await handleRemoveFromFavoriteConcerts()
+    addedToAttended.value = true
+    emit('get-addedToAttended', addedToAttended.value)
+  }
 }
 
 const handleRemoveFromFavoriteConcerts = async () => {
   const id = props.data?.id
   if (id) {
     await handleFavoriteStore.removeFavorite(id)
-    addedToAttended.value = false
   }
 }
 </script>

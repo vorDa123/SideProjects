@@ -1,33 +1,34 @@
 <script setup lang="ts">
 import EditConcerts from './EditConcertDataModal.vue'
-
-import axios from 'axios'
 import { ref } from 'vue'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+
+const handleFavoriteStore = useHandleConcertStore()
 
 const props = defineProps({
   data: Object,
 })
 
 const showModal = ref<boolean>(false)
-const emit = defineEmits(['get-showModal', 'close'])
+const attendedRemoved = ref<boolean>(false)
+const emit = defineEmits(['get-showModal', 'close', 'get-attendedRemoved'])
 
-const handleRemoveFromFavoriteConcerts = async () => {
-  try {
-    const res = await axios.delete('http://localhost:3000/api/remove-from-attended', {
-      data: {
-        id: props.data?.id,
-      },
-    })
-    console.log('Poslani podaci: ', res.data)
-    return res.data
-  } catch (error) {
-    console.error('Dogodila se greška prilikom brisanja')
+const handleRemoveFromAttendedConcerts = async () => {
+  const id = props.data?.id
+  if (id) {
+    await handleFavoriteStore.removeAttended(id)
+    handleAttendedRemoved()
   }
 }
 
 const handleShowModal = () => {
   showModal.value = !showModal.value
   emit('get-showModal', showModal.value)
+}
+
+const handleAttendedRemoved = () => {
+  attendedRemoved.value = !attendedRemoved.value
+  emit('get-attendedRemoved', attendedRemoved.value)
 }
 </script>
 <template>
@@ -44,7 +45,7 @@ const handleShowModal = () => {
         <i
           class="bi bi-trash"
           style="font-size: 1.4rem"
-          @click="handleRemoveFromFavoriteConcerts"
+          @click="handleRemoveFromAttendedConcerts"
         ></i>
       </div>
     </div>
