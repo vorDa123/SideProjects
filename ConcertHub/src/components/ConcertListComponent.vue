@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import ConcertListCard from './ConcertListCard.vue'
 import { gsap } from 'gsap'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const emit = defineEmits(['get-concert-id'])
 
+gsap.registerPlugin(ScrollTrigger)
+
 const selectedConcertId = ref<string>('')
+
+const cardAnimation = ref<any>(null)
 
 let isConcertsFetched = ref<boolean>(false)
 
@@ -41,6 +46,31 @@ const fetchConcerts = async () => {
   }
 }
 
+const playAnimation = () => {
+  nextTick(() => {
+    if (cardAnimation.value) {
+      gsap.from(cardAnimation.value.children, {
+        x: 100,
+        delay: 0.2,
+        duration: 1,
+        autoAlpha: 0,
+        stagger: 0.3,
+        ease: 'back.out(1)',
+      })
+    }
+  })
+}
+
+watch(isConcertsFetched, (val) => {
+  if (val) {
+    playAnimation()
+  }
+})
+
+watch(concertCardSearch, () => {
+  playAnimation()
+})
+
 onMounted(() => {
   fetchConcerts()
 
@@ -63,7 +93,7 @@ onUnmounted(() => {
           <i class="bi bi-search"></i>
           <input type="text" placeholder="Search" v-model="model" class="searchInput" />
         </div>
-        <div class="d-flex flex-wrap gap-4 justify-content-evenly">
+        <div class="d-flex flex-wrap gap-4 justify-content-evenly" ref="cardAnimation">
           <ConcertListCard
             v-for="concert in concertCardSearch"
             :key="concert.id"

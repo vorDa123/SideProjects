@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import LocalSuggestionCard from './LocalSuggestionCard.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch, nextTick } from 'vue'
 import axios from 'axios'
-import { gsap } from "gsap";
+import { gsap } from 'gsap'
 
 let longitude = ref<number>(0)
 let latitude = ref<number>(0)
 let concertsByLocation = ref<any[]>([])
+
+let isConcertsFetched = ref<boolean>(false)
+
+const cardAnimation = ref<any>(null)
 
 const getGeolocationData = () => {
   return new Promise((resolve, reject) => {
@@ -43,11 +47,34 @@ const handleGetConcertsByLocation = async () => {
   try {
     const res = await axios.get('http://localhost:3000/api/get-concert-by-location')
     concertsByLocation.value = res.data || []
+    isConcertsFetched.value = true
   } catch (error) {
     console.error('Server down ili error')
     concertsByLocation.value = []
+    isConcertsFetched.value = false
   }
 }
+
+const playAnimation = () => {
+  nextTick(() => {
+    if (cardAnimation.value) {
+      gsap.from(cardAnimation.value.children, {
+        y: 100,
+        delay: 0.2,
+        duration: 1,
+        autoAlpha: 0,
+        stagger: 0.3,
+        ease: 'back.out(1)',
+      })
+    }
+  })
+}
+
+watch(isConcertsFetched, (val) => {
+  if (val) {
+    playAnimation()
+  }
+})
 
 onMounted(async () => {
   try {
@@ -62,7 +89,7 @@ onMounted(async () => {
 <template>
   <div class="p-3 upcomingContainer containerBorder">
     <p class="subtitle">Local suggestions</p>
-    <div v-if="concertsByLocation.length > 0">
+    <div v-if="concertsByLocation.length > 0" ref="cardAnimation">
       <LocalSuggestionCard
         v-for="concert in concertsByLocation"
         :key="concert.id"
