@@ -19,7 +19,6 @@ const addedToAttended = ref<boolean>(false)
 
 const favoriteCardAnimation = ref<any>(null)
 const attendedCardAnimation = ref<any>(null)
-const removedCardAnimation = ref<any>(null)
 
 const emit = defineEmits(['get-showModal', 'get-addedToAttended', 'get-attendedRemoved'])
 
