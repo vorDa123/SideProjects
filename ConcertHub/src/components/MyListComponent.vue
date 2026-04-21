@@ -17,9 +17,6 @@ const showModal = ref<boolean>(false)
 
 const addedToAttended = ref<boolean>(false)
 
-const favoriteCardAnimation = ref<any>(null)
-const attendedCardAnimation = ref<any>(null)
-
 const emit = defineEmits(['get-showModal', 'get-addedToAttended', 'get-attendedRemoved'])
 
 const handleShowModal = (shownModal: boolean) => {
@@ -76,58 +73,27 @@ const fetchAttended = async () => {
   }
 }
 
-const playFavoriteCardAnimation = () => {
-  nextTick(() => {
-    if (favoriteCardAnimation.value) {
-      gsap.from(favoriteCardAnimation.value.children, {
-        y: 100,
-        delay: 0.2,
-        duration: 1,
-        autoAlpha: 0,
-        stagger: 0.3,
-        ease: 'back.out(1)',
-      })
-    }
+const onEnter = (el: any, done: () => void) => {
+  gsap.from(el, {
+    y: 100,
+    duration: 0.7,
+    autoAlpha: 0,
+    ease: 'back.out(1)',
+    delay: el.dataset.index * 0.15,
+    onComplete: done,
   })
 }
 
-const playAttendedCardAnimation = () => {
-  nextTick(() => {
-    if (attendedCardAnimation.value) {
-      gsap.from(attendedCardAnimation.value.children, {
-        y: 100,
-        delay: 0.2,
-        duration: 1,
-        autoAlpha: 0,
-        stagger: 0.3,
-        ease: 'back.out(1)',
-      })
-    }
+const onLeave = (el: any, done: () => void) => {
+  gsap.to(el, {
+    x: 100,
+    duration: 0.7,
+    autoAlpha: 1,
+    ease: 'back.out(1)',
+    delay: el.dataset.index * 0.15,
+    onComplete: done,
   })
 }
-
-const playRemovedCardAnimation = () => {
-  nextTick(() => {
-    if (attendedCardAnimation.value) {
-      gsap.from(attendedCardAnimation.value.children, {
-        y: 100,
-        delay: 0.2,
-        duration: 1,
-        autoAlpha: 0,
-        stagger: 0.3,
-        ease: 'back.out(1)',
-      })
-    }
-  })
-}
-
-watch([favoriteConcertSearch, isFavoritesFetched], () => {
-  playFavoriteCardAnimation()
-})
-
-watch([addedToAttended, isAttendedFetched, attendedConcertSearch], () => {
-  playAttendedCardAnimation()
-})
 
 onMounted(() => {
   fetchFavourites()
@@ -150,16 +116,16 @@ onUnmounted(() => {
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" v-model="favoriteModel" class="searchInput" />
             </div>
-            <div
-              v-if="isFavoritesFetched && favoriteConcertSearch.length > 0"
-              ref="favoriteCardAnimation"
-            >
-              <SavedConcerts
-                v-for="concert in favoriteConcertSearch"
-                :key="concert.id"
-                :data="concert"
-                @get-addedToAttended="handleAddedToAttended"
-              />
+            <div v-if="isFavoritesFetched && favoriteConcertSearch.length > 0">
+              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave">
+                <SavedConcerts
+                  v-for="(concert, index) in favoriteConcertSearch"
+                  :key="concert.id"
+                  :data="concert"
+                  :data-index="index"
+                  @get-addedToAttended="handleAddedToAttended"
+                />
+              </TransitionGroup>
             </div>
             <div v-else>There are no favorite concerts.</div>
           </div>
@@ -171,17 +137,17 @@ onUnmounted(() => {
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" v-model="attendedModel" class="searchInput" />
             </div>
-            <div
-              v-if="isAttendedFetched && attendedConcertSearch.length > 0"
-              ref="attendedCardAnimation"
-            >
-              <PreviousConcerts
-                v-for="concert in attendedConcertSearch"
-                :key="concert.id"
-                :data="concert"
-                @get-attendedRemoved="handleAttendedRemoved"
-                @get-showModal="handleShowModal"
-              />
+            <div v-if="isAttendedFetched && attendedConcertSearch.length > 0">
+              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave">
+                <PreviousConcerts
+                  v-for="(concert, index) in attendedConcertSearch"
+                  :key="concert.id"
+                  :data="concert"
+                  :data-index="index"
+                  @get-attendedRemoved="handleAttendedRemoved"
+                  @get-showModal="handleShowModal"
+                />
+              </TransitionGroup>
             </div>
             <div v-else>There are no attended concerts.</div>
           </div>
