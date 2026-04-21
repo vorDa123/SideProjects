@@ -6,8 +6,6 @@ import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
 let isConcertsFetched = ref<boolean>(false)
 
-let interval: ReturnType<typeof setInterval> | undefined = undefined
-
 const cardAnimation = ref<any>(null)
 
 const fetchConcertsStore = useHandleConcertStore()
@@ -45,14 +43,9 @@ watch(isConcertsFetched, (val) => {
 
 onMounted(() => {
   fetchConcerts()
-
-  interval = setInterval(() => {
-    fetchConcerts()
-  }, 60000)
 })
 
 onUnmounted(() => {
-  clearInterval(interval ?? undefined)
   isConcertsFetched.value = false
 })
 </script>

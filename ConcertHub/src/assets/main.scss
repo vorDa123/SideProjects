@@ -218,6 +218,22 @@ $spacers: map-merge($spacers, $custom-spacers);
   animation-timing-function: linear;
 }
 
+.mobileMenu {
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #1e66c9;
+  color: #f7f4f2;
+  display: inline-block;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  z-index: 100;
+}
+
 @keyframes rotate-element {
   from {
     transform: rotate(0deg);

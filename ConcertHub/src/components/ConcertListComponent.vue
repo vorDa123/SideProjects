@@ -3,11 +3,8 @@ import ConcertListCard from './ConcertListCard.vue'
 import { gsap } from 'gsap'
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const emit = defineEmits(['get-concert-id'])
-
-gsap.registerPlugin(ScrollTrigger)
 
 const selectedConcertId = ref<string>('')
 

@@ -1,20 +1,69 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NavigationList from './NavigationListComponent.vue'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { gsap } from 'gsap'
+
+let screenWidth = ref<number>(window.innerWidth)
+
+let showMobileNavigation = ref<boolean>(false)
+
+const emit = defineEmits(['get-mobileNavShown'])
+
+const handleShowMobileNav = (shownMobileNav: boolean) => {
+  showMobileNavigation.value = shownMobileNav
+
+  emit('get-mobileNavShown', shownMobileNav)
+}
+
+const handleToggleMobileNavigation = () => {
+  showMobileNavigation.value = !showMobileNavigation.value
+}
+
+const onWidthChange = () => {
+  screenWidth.value = window.innerWidth
+}
+
+const onEnter = (el: any, done: () => void) => {
+  gsap.fromTo(
+    el,
+    { x: -100, autoAlpha: 0 },
+    { x: 0, duration: 0.4, autoAlpha: 1, ease: 'back.out(0.1)', onComplete: done },
+  )
+}
+
+const onLeave = (el: any, done: () => void) => {
+  gsap.to(el, {
+    x: -100,
+    duration: 0.4,
+    autoAlpha: 0,
+    ease: 'back.in(0.1)',
+    onComplete: done,
+  })
+}
+
+onMounted(() => {
+  window.addEventListener('resize', onWidthChange)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', onWidthChange)
+})
+</script>
 <template>
-    <nav class="col-md-3 col-xxl-2 d-flex flex-column align-items-center align-items-md-stretch p-4 navigation">
-        <div class="d-flex flex-md-wrap align-items-center justify-content-end gap-8 gap-md-1 justify-content-md-between title">
-          <span>ConcertHub</span><i class="bi bi-box-arrow-left hideNavIcon"></i>
-        </div>
-        <div class="mt-8 mt-md-6 mb-6 mb-md-4 navTitle">
-          <RouterLink to="/dashboard" class="d-flex align-items-center justify-content-md-end gap-2"><i class="bi bi-house"></i><span>Dashboard</span></RouterLink>
-        </div>
-        <div class="mt-4 mt-md-6 mb-6 mb-md-4 navTitle">
-          <RouterLink to="/concerts" class="d-flex align-items-center justify-content-md-end gap-2"><i class="bi bi-music-note-list"></i><span>Concert list</span></RouterLink>
-        </div>
-        <div class="mt-4 mt-md-6 mb-6 mb-md-4 navTitle">
-          <RouterLink to="/mylist" class="d-flex align-items-center justify-content-md-end gap-2"><i class="bi bi-card-list"></i><span>My list</span></RouterLink>
-        </div>
-        <div class="mt-auto pb-5 navTitle">
-          <RouterLink to="/" class="d-flex align-items-center justify-content-md-end gap-2"><i class="bi bi-person-slash"></i><span>Log out</span></RouterLink>
-        </div>
-      </nav>
+  <NavigationList
+    v-if="screenWidth > 767"
+    :screenWidthProp="screenWidth"
+    :mobileNavigationShown="false"
+  />
+  <div v-else-if="!showMobileNavigation">
+    <i class="bi bi-list mobileMenu pointerElement" @click="handleToggleMobileNavigation"></i>
+  </div>
+  <Transition @enter="onEnter" @leave="onLeave" :css="false">
+    <NavigationList
+      :screenWidthProp="screenWidth"
+      :mobileNavigationShown="showMobileNavigation"
+      @get-mobileNavShown="handleShowMobileNav"
+      v-if="showMobileNavigation"
+    />
+  </Transition>
 </template>
