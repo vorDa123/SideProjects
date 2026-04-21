@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { gsap } from 'gsap'
 
 const props = defineProps({
   data: Object,
 })
 
 const addedToFavorite = ref<boolean>(false)
+
+const heartIconAnimation = ref<any>(null)
 
 const handleFavoriteStore = useHandleConcertStore()
 
@@ -17,24 +20,36 @@ const handleGetConcertID = () => {
   emit('get-concert-id', props.data.id)
 }
 
+let heartIconClass = computed(() => {
+  return addedToFavorite.value ? 'bi bi-heart-fill' : 'bi bi-heart'
+})
+
 const handleFavoriteConcerts = async () => {
   const concertDataPayload = {
-  id: props.data?.id,
-  name: props.data?.name,
-  image: props.data?.image,
-  date: props.data?.date,
-  time: props.data?.time,
-  dateTime: props.data?.dateTime,
-  genre: props.data?.genre,
-  venue: props.data?.venue,
-  city: props.data?.city,
-  country: props.data?.country,
-  countryCode: props.data?.countryCode,
-  description: props.data?.description,
-}
+    id: props.data?.id,
+    name: props.data?.name,
+    image: props.data?.image,
+    date: props.data?.date,
+    time: props.data?.time,
+    dateTime: props.data?.dateTime,
+    genre: props.data?.genre,
+    venue: props.data?.venue,
+    city: props.data?.city,
+    country: props.data?.country,
+    countryCode: props.data?.countryCode,
+    description: props.data?.description,
+  }
   if (concertDataPayload) {
     await handleFavoriteStore.addToFavorite(concertDataPayload)
     addedToFavorite.value = true
+    if (heartIconAnimation.value) {
+      gsap.to(heartIconAnimation.value, {
+        scale: 1.2,
+        duration: 0.2,
+        repeat: 1,
+        yoyo: true,
+      })
+    }
   }
 }
 
@@ -43,6 +58,22 @@ const handleRemoveFromFavoriteConcerts = async () => {
   if (id) {
     await handleFavoriteStore.removeFavorite(id)
     addedToFavorite.value = false
+    if (heartIconAnimation.value) {
+      gsap.to(heartIconAnimation.value, {
+        scale: 1.2,
+        duration: 0.2,
+        repeat: 1,
+        yoyo: true,
+      })
+    }
+  }
+}
+
+const handleToggleFavorite = () => {
+  if (!addedToFavorite.value) {
+    handleFavoriteConcerts()
+  } else {
+    handleRemoveFromFavoriteConcerts()
   }
 }
 
@@ -86,16 +117,10 @@ watch(
       <div class="d-flex align-items-start justify-content-between gap-2">
         <p class="concertSubtitle">{{ props.data?.name }}</p>
         <i
-          v-if="!addedToFavorite"
-          class="bi bi-heart"
-          style="font-size: 1.47rem"
-          @click="handleFavoriteConcerts"
-        ></i>
-        <i
-          v-else
-          class="bi bi-heart-fill"
-          style="font-size: 1.47rem"
-          @click="handleRemoveFromFavoriteConcerts"
+          :class="heartIconClass"
+          ref="heartIconAnimation"
+          style="font-size: 1.47rem; color: #f72f4d"
+          @click="handleToggleFavorite"
         ></i>
       </div>
       <p class="concertDescription">

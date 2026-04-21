@@ -129,10 +129,6 @@ watch([addedToAttended, isAttendedFetched, attendedConcertSearch], () => {
   playAttendedCardAnimation()
 })
 
-watch(attendedRemoved, () => {
-  playRemovedCardAnimation()
-})
-
 onMounted(() => {
   fetchFavourites()
   fetchAttended()
