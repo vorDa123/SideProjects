@@ -30,7 +30,6 @@ onMounted(async () => {
     await fetchFavourites()
 
     interval = setInterval(() => {
-      fetchFavourites()
       todayDate.value = new Date()
     }, 1000)
   } catch (error) {

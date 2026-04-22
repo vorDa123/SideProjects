@@ -2,7 +2,6 @@
 import EditConcerts from './EditConcertDataModal.vue'
 import { ref } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
-import { gsap } from 'gsap'
 
 const handleFavoriteStore = useHandleConcertStore()
 

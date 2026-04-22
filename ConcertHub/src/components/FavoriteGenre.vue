@@ -1,32 +1,21 @@
 <script setup lang="ts">
-import axios from 'axios'
-import { motion } from 'motion-v'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
-let favoriteConcerts = ref<any[]>([])
+const handleFavoriteStore = useHandleConcertStore()
+
 let favoriteGenres = ref<any[]>([])
 let sortedGenres = ref<Object>({})
 let listOfGenresWithNumber = <any[]>[]
 let interval: ReturnType<typeof setInterval> | undefined = undefined
 
-const fetchFavourites = async () => {
-  try {
-    const res = await axios.get('http://localhost:3000/api/get-favourites')
-    favoriteConcerts.value = res.data || []
-    // console.log('Favorite genre data:', res.data)
-  } catch (error) {
-    console.error('Server down ili error')
-    favoriteConcerts.value = []
-  }
-}
-
 const listOfGenreSave = () => {
   let listOfGenres = <any[]>[]
 
-  if (favoriteConcerts.value.length === 0) return
+  if (handleFavoriteStore.favorites.length === 0) return
 
   //This will save only genres of each concert in an array
-  favoriteConcerts.value.forEach((element) => listOfGenres.push(element.genre))
+  handleFavoriteStore.favorites.forEach((element) => listOfGenres.push(element.genre))
 
   if (listOfGenres.length === 0) return
 
@@ -44,17 +33,17 @@ const listOfGenreSave = () => {
       .sort(([, a], [, b]) => b - a)
       .splice(0, 3),
   )
-  
+
   //This will create an array of the sorted elements
   favoriteGenres.value = Object.keys(sortedGenres.value)
 }
 
-onMounted(() => {
-  fetchFavourites()
+onMounted(async () => {
+  await handleFavoriteStore.getFavorites()
   listOfGenreSave()
 
   interval = setInterval(() => {
-    fetchFavourites()
+    handleFavoriteStore.getFavorites()
     listOfGenreSave()
   }, 1000)
 })
