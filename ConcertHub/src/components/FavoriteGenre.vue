@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { gsap } from 'gsap'
 
 const handleFavoriteStore = useHandleConcertStore()
 
@@ -38,6 +39,28 @@ const listOfGenreSave = () => {
   favoriteGenres.value = Object.keys(sortedGenres.value)
 }
 
+const onEnter = (el: any, done: () => void) => {
+  gsap.from(el, {
+    x: 100,
+    duration: 0.7,
+    autoAlpha: 0,
+    ease: 'back.out(1)',
+    delay: el.dataset.index * 0.15,
+    onComplete: done,
+  })
+}
+
+const onLeave = (el: any, done: () => void) => {
+  gsap.to(el, {
+    x: 100,
+    duration: 0.7,
+    autoAlpha: 1,
+    ease: 'back.out(1)',
+    delay: el.dataset.index * 0.15,
+    onComplete: done,
+  })
+}
+
 onMounted(async () => {
   await handleFavoriteStore.getFavorites()
   listOfGenreSave()
@@ -56,7 +79,9 @@ onUnmounted(() => {
   <div class="p-3 containerHeight containerBorder">
     <p class="subtitle">Favorite genre</p>
     <ol v-if="favoriteGenres.length != 0" class="favoriteGenreList">
-      <li v-for="genre in favoriteGenres" :key="genre">{{ genre }}</li>
+      <TransitionGroup name="favList" :css="false" @enter="onEnter" @leave="onLeave" appear>
+        <li v-for="(genre, index) in favoriteGenres" :key="genre" :data-index="index">{{ genre }}</li>
+      </TransitionGroup>
     </ol>
   </div>
 </template>

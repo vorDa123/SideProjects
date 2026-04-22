@@ -2,7 +2,7 @@
 import PreviousConcerts from './PreviousConcerts.vue'
 import SavedConcerts from './SavedConcerts.vue'
 import { gsap } from 'gsap'
-import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
 
 let favoriteModel = defineModel<string>('favorite', { default: '' })
