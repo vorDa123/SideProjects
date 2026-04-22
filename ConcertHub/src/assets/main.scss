@@ -126,7 +126,24 @@ $spacers: map-merge($spacers, $custom-spacers);
 }
 
 .concertNumber {
+  display: inline-block;
   font-size: 2.75rem;
+}
+
+.numberDisplayWrapper {
+  overflow: hidden;
+  position: relative;
+  height: 2.75rem;
+  line-height: 2.75rem;
+  min-width: 2.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number {
+  display: inline-block;
+  position: relative;
 }
 
 .favoriteGenreList {
