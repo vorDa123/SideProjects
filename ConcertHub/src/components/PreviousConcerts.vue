@@ -32,7 +32,7 @@ const handleAttendedRemoved = () => {
 }
 </script>
 <template>
-  <div class="concertCard my-3 pointerElement">
+  <div class="concertCard containerBorder my-3 pointerElement">
     <Teleport to="body">
       <EditConcerts v-if="showModal" :data="props.data" @close="showModal = false" />
     </Teleport>

@@ -28,6 +28,7 @@ $spacers: map-merge($spacers, $custom-spacers);
 #app {
   height: 100vh;
   font-family: 'Poppins', sans-serif;
+  background-color: #fcfcfc;
 }
 
 *,
@@ -57,8 +58,9 @@ $spacers: map-merge($spacers, $custom-spacers);
 }
 
 .containerBorder {
-  border: 1px solid #c6c8cc;
+  background-color: #fdfcfc;
   border-radius: 10px;
+  box-shadow: 1px 3px 5px #b0b0b0;
 }
 
 .title {
@@ -80,7 +82,6 @@ $spacers: map-merge($spacers, $custom-spacers);
 }
 
 .concertCard {
-  border: 1px solid #c6c8cc;
   border-radius: 10px;
   padding: 10px;
 }
@@ -232,6 +233,32 @@ $spacers: map-merge($spacers, $custom-spacers);
   top: 20px;
   right: 50px;
   z-index: 100;
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateX(300px);
+}
+
+.route-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: translateX(-300px);
+}
+
+.route-leave-active {
+  transition: all 0.5s ease-in;
+}
+
+.favoriteList-move {
+  transition: all 0.3s ease;
+}
+
+.attendedList-move {
+  transition: all 0.3s ease;
 }
 
 @keyframes rotate-element {

@@ -45,7 +45,7 @@ const handleRemoveFromFavoriteConcerts = async () => {
 }
 </script>
 <template>
-  <div class="concertCard my-3 pointerElement">
+  <div class="concertCard containerBorder my-3 pointerElement">
     <div class="d-flex align-items-center justify-content-between gap-4">
       <p class="concertSubtitle">{{ props.data?.name }}</p>
       <span @click="handleAttendedConcerts">

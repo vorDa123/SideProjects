@@ -110,14 +110,14 @@ onUnmounted(() => {
     <div>
       <div class="row gx-3 gy-2 mb-2 mb-md-0">
         <div class="col-md-6">
-          <div class="containerBorder p-2 myListContainers">
+          <div class="p-2 myListContainers">
             <p class="title">My concerts</p>
             <div class="d-flex gap-2 justify-content-start align-items-center">
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" v-model="favoriteModel" class="searchInput" />
             </div>
             <div v-if="isFavoritesFetched && favoriteConcertSearch.length > 0">
-              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave">
+              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave" name="favoriteList" appear>
                 <SavedConcerts
                   v-for="(concert, index) in favoriteConcertSearch"
                   :key="concert.id"
@@ -131,14 +131,14 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="col-md-6">
-          <div class="containerBorder p-2 myListContainers">
+          <div class="p-2 myListContainers">
             <p class="title">Attended concerts</p>
             <div class="d-flex gap-2 justify-content-start align-items-center">
               <i class="bi bi-search"></i>
               <input type="text" placeholder="Search" v-model="attendedModel" class="searchInput" />
             </div>
             <div v-if="isAttendedFetched && attendedConcertSearch.length > 0">
-              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave">
+              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave" name="attendedList" appear>
                 <PreviousConcerts
                   v-for="(concert, index) in attendedConcertSearch"
                   :key="concert.id"

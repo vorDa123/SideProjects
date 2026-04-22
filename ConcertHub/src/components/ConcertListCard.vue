@@ -112,7 +112,7 @@ watch(
 </script>
 <template>
   <div class="col-lg-2 col-md-4">
-    <div class="concertCard my-3 pointerElement" @click="handleGetConcertID">
+    <div class="concertCard containerBorder my-3 pointerElement" @click="handleGetConcertID">
       <div class="imageContainer" :style="{ ...imageStyle }"></div>
       <div class="d-flex align-items-start justify-content-between gap-2">
         <p class="concertSubtitle">{{ props.data?.name }}</p>

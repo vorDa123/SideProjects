@@ -93,7 +93,7 @@ watch(
 )
 </script>
 <template>
-  <div class="concertCard my-3 pointerElement">
+  <div class="concertCard containerBorder my-3 pointerElement">
     <div class="d-flex align-items-start justify-content-between gap-2">
       <p class="concertSubtitle">{{ props.data?.name }}</p>
       <i
