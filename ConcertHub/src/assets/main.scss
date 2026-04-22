@@ -253,12 +253,20 @@ $spacers: map-merge($spacers, $custom-spacers);
   transition: all 0.5s ease-in;
 }
 
-.favoriteList-move {
-  transition: all 0.3s ease;
+.modalAnimation-enter-from {
+  opacity: 0;
 }
 
-.attendedList-move {
-  transition: all 0.3s ease;
+.modalAnimation-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.modalAnimation-leave-to {
+  opacity: 0;
+}
+
+.modalAnimation-leave-active {
+  transition: all 0.3s ease-in;
 }
 
 @keyframes rotate-element {

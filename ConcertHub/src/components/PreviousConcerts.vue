@@ -2,6 +2,7 @@
 import EditConcerts from './EditConcertDataModal.vue'
 import { ref } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { gsap } from 'gsap'
 
 const handleFavoriteStore = useHandleConcertStore()
 
@@ -34,7 +35,9 @@ const handleAttendedRemoved = () => {
 <template>
   <div class="concertCard containerBorder my-3 pointerElement">
     <Teleport to="body">
-      <EditConcerts v-if="showModal" :data="props.data" @close="showModal = false" />
+      <Transition name="modalAnimation" mode="in-out">
+        <EditConcerts v-if="showModal" :data="props.data" @close="showModal = false" />
+      </Transition>
     </Teleport>
     <div class="d-flex align-items-center justify-content-between">
       <p class="concertSubtitle">{{ props.data?.name }}</p>

@@ -34,44 +34,51 @@ const handleUpdateData = async () => {
 }
 </script>
 <template>
-  <div
-    class="modalOverlay"
-    @wheel.prevent
-    @touchmove.prevent
-    @scroll.prevent
-    @click="handleCloseModal"
-  ></div>
-  <div class="modalContainer" @wheel.prevent @touchmove.prevent @scroll.prevent>
-    <div class="d-flex align-items-center justify-content-between">
-      <p class="subtitle">Update concert data</p>
-      <i
-        class="bi bi-x-circle"
-        style="font-size: 1.4rem; padding-right: 1rem"
-        @click="handleCloseModal"
-      ></i>
-    </div>
-    <form>
-      <div>
-        <label for="concertName" class="mt-3">Name: </label>
-        <br />
-        <input type="text" name="concertName" v-model="nameModel" :placeholder="props.data?.name" />
+  <div>
+    <div
+      class="modalOverlay"
+      @wheel.prevent
+      @touchmove.prevent
+      @scroll.prevent
+      @click="handleCloseModal"
+    ></div>
+    <div class="modalContainer" @wheel.prevent @touchmove.prevent @scroll.prevent>
+      <div class="d-flex align-items-center justify-content-between">
+        <p class="subtitle">Update concert data</p>
+        <i
+          class="bi bi-x-circle pointerElement"
+          style="font-size: 1.4rem; padding-right: 1rem"
+          @click="handleCloseModal"
+        ></i>
       </div>
+      <form>
+        <div>
+          <label for="concertName" class="mt-3">Name: </label>
+          <br />
+          <input
+            type="text"
+            name="concertName"
+            v-model="nameModel"
+            :placeholder="props.data?.name"
+          />
+        </div>
+        <div>
+          <label for="concertDescription" class="mt-3">Description: </label>
+          <br />
+          <textarea
+            name="concertDescription"
+            rows="8"
+            cols="41"
+            v-model="descriptionModel"
+            :placeholder="props.data?.description"
+          ></textarea>
+        </div>
+      </form>
       <div>
-        <label for="concertDescription" class="mt-3">Description: </label>
-        <br />
-        <textarea
-          name="concertDescription"
-          rows="8"
-          cols="41"
-          v-model="descriptionModel"
-          :placeholder="props.data?.description"
-        ></textarea>
+        <button type="button" class="btn btn-primary mt-3" @click="handleUpdateData">
+          Save changes
+        </button>
       </div>
-    </form>
-    <div>
-      <button type="button" class="btn btn-primary mt-3" @click="handleUpdateData">
-        Save changes
-      </button>
     </div>
   </div>
 </template>
