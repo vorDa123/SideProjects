@@ -93,11 +93,12 @@ watch(
 )
 </script>
 <template>
-  <div class="concertCard containerBorder my-3 pointerElement">
+  <div class="concertCard containerBorder my-3">
     <div class="d-flex align-items-start justify-content-between gap-2">
       <p class="concertSubtitle">{{ props.data?.name }}</p>
       <i
         :class="heartIconClass"
+        class="pointerElement"
         ref="heartIconAnimation"
         style="font-size: 1.47rem; color: #f72f4d"
         @click="handleToggleFavorite"

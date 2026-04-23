@@ -93,17 +93,17 @@ router.get("/api/get-concert-list", async (req, res) => {
     const events = response.data._embedded.events;
 
     const formattedEvents = events.map((event) => ({
-      id: event?.id || 'unknown',
-      name: event?.name || 'Concert Test',
-      image: event?.images[0]?.url || '',
-      date: event?.dates?.start?.localDate || '18.04.2026.',
-      time: event?.dates?.start?.localTime || '16:00',
-      dateTime: event?.dates?.start?.dateTime || '',
-      genre: event?.classifications[0]?.genre?.name || 'Heavy metal',
-      venue: event?._embedded?.venues[0]?.name || 'Venue test',
-      city: event?._embedded?.venues[0]?.city?.name || 'Zagreb',
-      country: event?._embedded?.venues[0]?.country?.name || 'Croatia',
-      countryCode: event?._embedded?.venues[0]?.country?.countryCode || 'HR',
+      id: event?.id || "unknown",
+      name: event?.name || "Concert Test",
+      image: event?.images[0]?.url || "",
+      date: event?.dates?.start?.localDate || "18.04.2026.",
+      time: event?.dates?.start?.localTime || "16:00",
+      dateTime: event?.dates?.start?.dateTime || "",
+      genre: event?.classifications[0]?.genre?.name || "Heavy metal",
+      venue: event?._embedded?.venues[0]?.name || "Venue test",
+      city: event?._embedded?.venues[0]?.city?.name || "Zagreb",
+      country: event?._embedded?.venues[0]?.country?.name || "Croatia",
+      countryCode: event?._embedded?.venues[0]?.country?.countryCode || "HR",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem, tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut semper faucibus.",
     }));
@@ -148,7 +148,7 @@ router.get("/api/get-concert-by-location", async (req, res) => {
       countryCode: event?._embedded?.venues[0]?.country?.countryCode,
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem, tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut semper faucibus.",
-    }));   
+    }));
 
     res.json(formattedEvents);
   } catch (error) {
@@ -176,29 +176,37 @@ router.post("/api/add-to-favourite", (req, res, next) => {
 });
 
 router.post("/api/add-to-attended", (req, res, next) => {
-  attendedConcerts.attended.push({
-    id: req.body.id,
-    name: req.body.name,
-    image: req.body.image,
-    date: req.body.date,
-    time: req.body.time,
-    dateTime: req.body.dateTime,
-    genre: req.body.genre,
-    venue: req.body.venue,
-    city: req.body.city,
-    country: req.body.country,
-    countryCode: req.body.countryCode,
-    description: req.body.description,
-  });
-  res.json(attendedConcerts);
+  try {
+    attendedConcerts.attended.push({
+      id: req.body.id,
+      name: req.body.name,
+      image: req.body.image,
+      date: req.body.date,
+      time: req.body.time,
+      dateTime: req.body.dateTime,
+      genre: req.body.genre,
+      venue: req.body.venue,
+      city: req.body.city,
+      country: req.body.country,
+      countryCode: req.body.countryCode,
+      description: req.body.description,
+    });
+    res.json(attendedConcerts);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 router.post("/api/send-geolocation-data", (req, res, next) => {
-  geolocationData.geolocation.push({
-    lat: req.body.lat,
-    long: req.body.long,
-  });
-  res.json(geolocationData);
+  try {
+    geolocationData.geolocation.push({
+      lat: req.body.lat,
+      long: req.body.long,
+    });
+    res.json(geolocationData);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 router.get("/api/get-attended", async (req, res) => {
@@ -220,51 +228,64 @@ router.get("/api/get-favourites", async (req, res) => {
 });
 
 router.delete("/api/remove-from-favourite", (req, res, next) => {
-  const idToRemove = req.body.id;
-  const indexOfRemoved = favoriteConcerts.favorites.findIndex(
-    (el) => el.id === idToRemove,
-  );
+  try {
+    const idToRemove = req.body.id;
+    const indexOfRemoved = favoriteConcerts.favorites.findIndex(
+      (el) => el.id === idToRemove,
+    );
 
-  removedConcerts.removed = favoriteConcerts.favorites.splice(
-    indexOfRemoved,
-    1,
-  );
+    removedConcerts.removed = favoriteConcerts.favorites.splice(
+      indexOfRemoved,
+      1,
+    );
 
-  res.json(favoriteConcerts.favorites);
+    res.json(favoriteConcerts.favorites);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 router.delete("/api/remove-from-attended", (req, res, next) => {
-  const idToRemove = req.body.id;
-  const indexOfRemoved = attendedConcerts.attended.findIndex(
-    (el) => el.id === idToRemove,
-  );
+  try {
+    const idToRemove = req.body.id;
+    const indexOfRemoved = attendedConcerts.attended.findIndex(
+      (el) => el.id === idToRemove,
+    );
 
-  removedConcerts.removed = attendedConcerts.attended.splice(indexOfRemoved, 1);
+    removedConcerts.removed = attendedConcerts.attended.splice(
+      indexOfRemoved,
+      1,
+    );
 
-  res.json(attendedConcerts.attended);
+    res.json(attendedConcerts.attended);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 router.patch("/api/update-attended-concert-data", (req, res, next) => {
-  const idToUpdate = req.body.id;
-  const indexOfUpdate = attendedConcerts.attended.findIndex(
-    (el) => el.id === idToUpdate,
-  );
+  try {
+    const idToUpdate = req.body.id;
+    const indexOfUpdate = attendedConcerts.attended.findIndex(
+      (el) => el.id === idToUpdate,
+    );
 
-  const concert = attendedConcerts.attended[indexOfUpdate];
-  if (!concert) {
-    return res
-      .status(404)
-      .json({
+    const concert = attendedConcerts.attended[indexOfUpdate];
+    if (!concert) {
+      return res.status(404).json({
         message: "Concert not found",
       });
-  }
-  const updates = req.body;
-  for (let key in updates) {
-    if (concert[key] !== undefined) {
-      concert[key] = updates[key];
     }
+    const updates = req.body;
+    for (let key in updates) {
+      if (concert[key] !== undefined) {
+        concert[key] = updates[key];
+      }
+    }
+    res.json(attendedConcerts.attended);
+  } catch (error) {
+    console.error(error.message);
   }
-  res.json(attendedConcerts.attended);
 });
 
 module.exports = router;

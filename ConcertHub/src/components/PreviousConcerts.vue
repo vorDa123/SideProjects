@@ -32,7 +32,7 @@ const handleAttendedRemoved = () => {
 }
 </script>
 <template>
-  <div class="concertCard containerBorder my-3 pointerElement">
+  <div class="concertCard containerBorder my-3">
     <Teleport to="body">
       <Transition name="modalAnimation" mode="in-out">
         <EditConcerts v-if="showModal" :data="props.data" @close="showModal = false" />
@@ -42,12 +42,12 @@ const handleAttendedRemoved = () => {
       <p class="concertSubtitle">{{ props.data?.name }}</p>
       <div>
         <i
-          class="bi bi-pencil-square"
+          class="bi bi-pencil-square pointerElement"
           style="font-size: 1.4rem; padding-right: 1rem"
           @click="handleShowModal"
         ></i>
         <i
-          class="bi bi-trash"
+          class="bi bi-trash pointerElement"
           style="font-size: 1.4rem"
           @click="handleRemoveFromAttendedConcerts"
         ></i>
