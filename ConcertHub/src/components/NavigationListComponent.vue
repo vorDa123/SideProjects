@@ -35,30 +35,35 @@ let mobileNavPosition = computed(() => {
     <div
       class="d-flex flex-md-wrap align-items-center justify-content-end gap-12 gap-md-1 justify-content-md-between title"
     >
-      <span>ConcertHub</span
-      ><i
-        class="bi bi-arrow-bar-left pointerElement"
-        v-if="props.screenWidthProp! > 767 && props.mobileNavigationShown == false"
-      ></i>
+      <span>ConcertHub</span>
       <i
         class="bi bi-x pointerElement"
         style="font-size: 3rem"
         @click="handleMobileNavigation"
-        v-else-if="props.screenWidthProp! <= 767 && props.mobileNavigationShown == true"
+        v-if="props.screenWidthProp! <= 767 && props.mobileNavigationShown == true"
       ></i>
     </div>
     <div class="mt-8 mt-md-6 mb-6 mb-md-4 navTitle">
-      <RouterLink to="/dashboard" class="d-flex align-items-center justify-content-md-end gap-2"
+      <RouterLink
+        to="/dashboard"
+        class="d-flex align-items-center justify-content-md-end gap-2"
+        exactActiveClass="exactActiveRoute"
         ><i class="bi bi-house"></i><span>Dashboard</span></RouterLink
       >
     </div>
     <div class="mt-4 mt-md-6 mb-6 mb-md-4 navTitle">
-      <RouterLink to="/concerts" class="d-flex align-items-center justify-content-md-end gap-2"
+      <RouterLink
+        to="/concerts"
+        class="d-flex align-items-center justify-content-md-end gap-2"
+        exactActiveClass="exactActiveRoute"
         ><i class="bi bi-music-note-list"></i><span>Concert list</span></RouterLink
       >
     </div>
     <div class="mt-4 mt-md-6 mb-6 mb-md-4 navTitle">
-      <RouterLink to="/mylist" class="d-flex align-items-center justify-content-md-end gap-2"
+      <RouterLink
+        to="/mylist"
+        class="d-flex align-items-center justify-content-md-end gap-2"
+        exactActiveClass="exactActiveRoute"
         ><i class="bi bi-card-list"></i><span>My list</span></RouterLink
       >
     </div>
