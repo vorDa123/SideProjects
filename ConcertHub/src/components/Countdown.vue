@@ -26,7 +26,7 @@ const timeLeft = computed(() => {
   }
 })
 
-const onEnterDay = (el: Element, done: () => void) => {
+const onEnter = (el: Element, done: () => void) => {
   gsap.fromTo(
     el,
     { y: 20, opacity: 0 },
@@ -34,43 +34,7 @@ const onEnterDay = (el: Element, done: () => void) => {
   )
 }
 
-const onLeaveDay = (el: Element, done: () => void) => {
-  gsap.to(el, {
-    y: -20,
-    opacity: 0,
-    duration: 0.3,
-    ease: 'power2.in',
-    onComplete: done,
-  })
-}
-
-const onEnterMin = (el: Element, done: () => void) => {
-  gsap.fromTo(
-    el,
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8, ease: 'elastic.out(1.75, 0.5)', onComplete: done },
-  )
-}
-
-const onLeaveMin = (el: Element, done: () => void) => {
-  gsap.to(el, {
-    y: -20,
-    opacity: 0,
-    duration: 0.3,
-    ease: 'power2.in',
-    onComplete: done,
-  })
-}
-
-const onEnterHour = (el: Element, done: () => void) => {
-  gsap.fromTo(
-    el,
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8, ease: 'elastic.out(1.75, 0.5)', onComplete: done },
-  )
-}
-
-const onLeaveHour = (el: Element, done: () => void) => {
+const onLeave = (el: Element, done: () => void) => {
   gsap.to(el, {
     y: -20,
     opacity: 0,
@@ -102,7 +66,7 @@ onUnmounted(() => {
     <div class="d-flex gapContent align-items-center justify-content-center">
       <div class="countdownNumber">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <Transition @enter="onEnterDay" @leave="onLeaveDay" :css="false" mode="out-in">
+          <Transition @enter="onEnter" @leave="onLeave" :css="false" mode="out-in">
             <span :key="timeLeft?.days" class="countdownNumberFontSize">{{
               timeLeft?.days || 0
             }}</span>
@@ -113,7 +77,7 @@ onUnmounted(() => {
       <span class="countdownNumberDelimiter">:</span>
       <div class="countdownNumber">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <Transition @enter="onEnterHour" @leave="onLeaveHour" :css="false" mode="out-in">
+          <Transition @enter="onEnter" @leave="onLeave" :css="false" mode="out-in">
             <span :key="timeLeft?.hours" class="countdownNumberFontSize">{{
               timeLeft?.hours || 0
             }}</span>
@@ -124,7 +88,7 @@ onUnmounted(() => {
       <span class="countdownNumberDelimiter">:</span>
       <div class="countdownNumber">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <Transition @enter="onEnterMin" @leave="onLeaveMin" :css="false" mode="out-in">
+          <Transition @enter="onEnter" @leave="onLeave" :css="false" mode="out-in">
             <span :key="timeLeft?.minutes" class="countdownNumberFontSize">{{
               timeLeft?.minutes || 0
             }}</span>
