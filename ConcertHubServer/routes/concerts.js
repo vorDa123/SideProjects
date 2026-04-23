@@ -158,21 +158,25 @@ router.get("/api/get-concert-by-location", async (req, res) => {
 });
 
 router.post("/api/add-to-favourite", (req, res, next) => {
-  favoriteConcerts.favorites.push({
-    id: req.body.id,
-    name: req.body.name,
-    image: req.body.image,
-    date: req.body.date,
-    time: req.body.time,
-    dateTime: req.body.dateTime,
-    genre: req.body.genre,
-    venue: req.body.venue,
-    city: req.body.city,
-    country: req.body.country,
-    countryCode: req.body.countryCode,
-    description: req.body.description,
-  });
-  res.json(favoriteConcerts);
+  try {
+    favoriteConcerts.favorites.push({
+      id: req.body.id,
+      name: req.body.name,
+      image: req.body.image,
+      date: req.body.date,
+      time: req.body.time,
+      dateTime: req.body.dateTime,
+      genre: req.body.genre,
+      venue: req.body.venue,
+      city: req.body.city,
+      country: req.body.country,
+      countryCode: req.body.countryCode,
+      description: req.body.description,
+    });
+    res.json(favoriteConcerts);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 router.post("/api/add-to-attended", (req, res, next) => {
