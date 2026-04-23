@@ -160,6 +160,7 @@ $spacers: map-merge($spacers, $custom-spacers);
   border-radius: 7px;
   padding-left: 15px;
   padding-right: 15px;
+  max-width: 5rem;
 }
 
 .countdownNumberFontSize {
