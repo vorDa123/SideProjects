@@ -3,6 +3,7 @@ import ConcertListCard from './ConcertListCard.vue'
 import { gsap } from 'gsap'
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import Fuse from 'fuse.js'
 
 const emit = defineEmits(['get-concert-id'])
 
@@ -18,10 +19,18 @@ const fetchConcertsStore = useHandleConcertStore()
 
 const concertCardSearch = computed(() => {
   const search = model.value?.toLowerCase() || ''
+  const fuse = new Fuse(fetchConcertsStore.concerts, {
+    keys: ['name'],
+    threshold: 0.6,
+  })
 
   if (!search) return fetchConcertsStore.concerts
 
-  return fetchConcertsStore.concerts.filter((el: any) => el.name.toLowerCase().includes(search))
+  const fuzzySearchResult = fuse.search(search)
+
+  const fuzzySearchResultRemapped = Array.from(fuzzySearchResult, (el) => el.item)
+
+  return fuzzySearchResultRemapped
 })
 
 const handleGetConcertID = (concertId: string) => {

@@ -4,6 +4,7 @@ import SavedConcerts from './SavedConcerts.vue'
 import { gsap } from 'gsap'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import Fuse from 'fuse.js'
 
 let favoriteModel = defineModel<string>('favorite', { default: '' })
 let attendedModel = defineModel<string>('attended', { default: '' })
@@ -39,18 +40,34 @@ const handleAddedToAttended = (addedAttended: boolean) => {
 
 const favoriteConcertSearch = computed(() => {
   const search = favoriteModel.value?.toLowerCase() || ''
+  const fuse = new Fuse(fetchConcertsStore.favorites, {
+    keys: ['name'],
+    threshold: 0.6,
+  })
 
   if (!search) return fetchConcertsStore.favorites
 
-  return fetchConcertsStore.favorites.filter((el: any) => el.name.toLowerCase().includes(search))
+  const fuzzySearchResult = fuse.search(search)
+
+  const fuzzySearchResultRemapped = Array.from(fuzzySearchResult, (el) => el.item)
+
+  return fuzzySearchResultRemapped
 })
 
 const attendedConcertSearch = computed(() => {
   const search = attendedModel.value?.toLowerCase() || ''
+  const fuse = new Fuse(fetchConcertsStore.attended, {
+    keys: ['name'],
+    threshold: 0.6,
+  })
 
   if (!search) return fetchConcertsStore.attended
 
-  return fetchConcertsStore.attended.filter((el: any) => el.name.toLowerCase().includes(search))
+  const fuzzySearchResult = fuse.search(search)
+
+  const fuzzySearchResultRemapped = Array.from(fuzzySearchResult, (el) => el.item)
+
+  return fuzzySearchResultRemapped
 })
 
 const fetchFavourites = async () => {
@@ -117,7 +134,14 @@ onUnmounted(() => {
               <input type="text" placeholder="Search" v-model="favoriteModel" class="searchInput" />
             </div>
             <div v-if="isFavoritesFetched && favoriteConcertSearch.length > 0">
-              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave" name="favoriteList" appear>
+              <TransitionGroup
+                tag="div"
+                :css="false"
+                @enter="onEnter"
+                @leave="onLeave"
+                name="favoriteList"
+                appear
+              >
                 <SavedConcerts
                   v-for="(concert, index) in favoriteConcertSearch"
                   :key="concert.id"
@@ -138,7 +162,14 @@ onUnmounted(() => {
               <input type="text" placeholder="Search" v-model="attendedModel" class="searchInput" />
             </div>
             <div v-if="isAttendedFetched && attendedConcertSearch.length > 0">
-              <TransitionGroup tag="div" :css="false" @enter="onEnter" @leave="onLeave" name="attendedList" appear>
+              <TransitionGroup
+                tag="div"
+                :css="false"
+                @enter="onEnter"
+                @leave="onLeave"
+                name="attendedList"
+                appear
+              >
                 <PreviousConcerts
                   v-for="(concert, index) in attendedConcertSearch"
                   :key="concert.id"
