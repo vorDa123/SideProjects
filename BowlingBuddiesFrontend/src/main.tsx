@@ -1,10 +1,25 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router";
+import "./index.css";
+import Dashboard from './views/Dashboard.tsx'
+import Login from "./views/Login.tsx";
+import Register from "./views/Register.tsx";
+import MyProfile from "./views/MyProfile.tsx";
+import OpenJoin from "./views/OpenJoinBowling.tsx";
+import BowlingAlleys from "./views/BowlingAlleys.tsx";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<MyProfile />} />
+        <Route path="/bowlingalleys" element={<BowlingAlleys />} />
+        <Route path="/openjoin" element={<OpenJoin />} />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>
+);
