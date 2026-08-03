@@ -32,6 +32,7 @@ body {
   margin: 0;
   font-size: var(--text-mnormal);
   line-height: var(--text-mnormal--line-height);
+  color: var(--color-darkerBlue-100);
 }
 
 *,
