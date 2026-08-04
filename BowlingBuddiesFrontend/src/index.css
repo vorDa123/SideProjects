@@ -7,6 +7,8 @@
   --color-orange-100: #de7838;
   --color-lighterBlue-100: #01243b;
   --color-darkerBlue-100: #050d20;
+  --color-black-70: rgba(0, 0, 0, 0.70);
+  --color-black-00: rgba(0, 0, 0, 0);
 
   --text-mh1: 1.75rem;
   --text-mh1--line-height: 110%;
@@ -24,6 +26,10 @@
   --text-mnav--line-height: 150%;
 
   --radius-m25: 1.563rem;
+  --radius-m20: 1.25rem;
+  --radius-m15: 0.938rem;
+
+  --shadow-mob: 3px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
 body {
