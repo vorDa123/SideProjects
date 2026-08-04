@@ -4,26 +4,20 @@ import {
   faBowlingBall,
   faUsers,
   faCircleUser,
+  faBell,
+  faCircleInfo,
+  faRightFromBracket,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import Logo from "../assets/BBLogo.svg";
 
 import { NavLink } from "react-router";
 function Navigation() {
   return (
     <>
-      <nav
-        className="mt-2.5 mb-5
-                bg-lighterBlue-100
-                text-white-100
-                    rounded-m25
-                    flex flex-row
-                    justify-around
-                    items-center
-                    text-3xl
-                    py-1.5
-                    fixed
-                    bottom-0
-                    w-[87vw]"
-      >
+      {/* Mob navigacija */}
+      <nav className="mt-2.5 mb-5 bg-lighterBlue-100 text-white-100 rounded-m25 flex flex-row justify-around items-center text-3xl py-1.5 fixed bottom-0 w-[87vw] md:hidden">
         <NavLink to="/">
           <FontAwesomeIcon icon={faHouse} />
         </NavLink>
@@ -36,6 +30,38 @@ function Navigation() {
         <NavLink to="/profile">
           <FontAwesomeIcon icon={faCircleUser} />
         </NavLink>
+      </nav>
+      {/* Navigacija za sve ostale */}
+      <nav className="hidden md:block md:bg-lighterBlue-100 md:w-25 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100">
+        <div className="md:absolute md:left-21 md:top-15 md:rounded-[50%] md:w-7.5 md:h-7.5 md:text-center md:bg-lighterBlue-100">
+          <FontAwesomeIcon icon={faChevronRight} />
+        </div>
+        <div className="md:flex md:flex-col md:justify-around md:items-center md:h-full">
+          <img src={Logo} width={48} height={76} />
+          <div className="md:flex md:flex-col md:text-th3 md:gap-8">
+            <NavLink to="/">
+              <FontAwesomeIcon icon={faHouse} />
+            </NavLink>
+            <NavLink to="/bowlingalleys">
+              <FontAwesomeIcon icon={faBowlingBall} />
+            </NavLink>
+            <NavLink to="/openjoin">
+              <FontAwesomeIcon icon={faUsers} />
+            </NavLink>
+            <NavLink to="/openjoin">
+              <FontAwesomeIcon icon={faBell} />
+            </NavLink>
+            <NavLink to="/profile">
+              <FontAwesomeIcon icon={faCircleUser} />
+            </NavLink>
+            <NavLink to="/profile">
+              <FontAwesomeIcon icon={faCircleInfo} />
+            </NavLink>
+          </div>
+          <NavLink to="/login" className="md:text-th3">
+            <FontAwesomeIcon icon={faRightFromBracket} />
+          </NavLink>
+        </div>
       </nav>
     </>
   );

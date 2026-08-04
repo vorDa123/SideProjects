@@ -17,14 +17,30 @@
   --text-mh3: 1.125rem;
   --text-mh3--line-height: 150%;
   --text-mh4: 1rem;
-  --text-mh4--line-height: 1500%;
+  --text-mh4--line-height: 150%;
   --text-mnormal: 0.813rem;
-  --text-mhnormal--line-height: 120%;
+  --text-mnormal--line-height: 120%;
   --text-mlinks: 0.875rem;
   --text-mlinks--line-height: 150%;
   --text-mnav: 1.125rem;
   --text-mnav--line-height: 150%;
 
+  --text-th1: 2.875rem;
+  --text-th1--line-height: 110%;
+  --text-th2: 2.25rem;
+  --text-th2--line-height: 110%;
+  --text-th3: 1.625rem;
+  --text-th3--line-height: 150%;
+  --text-th4: 1.25rem;
+  --text-th4--line-height: 150%;
+  --text-tnormal: 1.125rem;
+  --text-tnormal--line-height: 175%;
+  --text-tlinks: 1.125rem;
+  --text-tlinks--line-height: 150%;
+  --text-tnav: 1.25rem;
+  --text-tnav--line-height: 150%;
+
+  --radius-t40: 2.5rem;
   --radius-m25: 1.563rem;
   --radius-m20: 1.25rem;
   --radius-m15: 0.938rem;
@@ -47,4 +63,15 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+@media (width >= 48rem) {
+  body {
+    height: 100dvh;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    font-size: var(--text-tnormal);
+    line-height: var(--text-tnormal--line-height);
+    color: var(--color-darkerBlue-100);
+  }
 }
