@@ -34,7 +34,7 @@ function OpenJoinCard() {
               <FontAwesomeIcon icon={faUserGroup} /> 4/6
             </span>
           </div>
-          <button className="text-mh2 bg-orange-100 h-9.5 w-33.5 rounded-m25 text-center">
+          <button className="text-mh2 font-medium bg-orange-100 h-9.5 w-33.5 rounded-m25 text-center">
             JOIN
           </button>
         </div>
