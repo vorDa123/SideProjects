@@ -3,6 +3,7 @@ import HeaderMob from "../components/Header.tsx";
 import BowlingCentersDashboard from "../components/BowlingCentersDashboard.tsx";
 import NextFreeSlotDashboard from "../components/NextFreeSlotDashboard.tsx";
 import OpenJoinDashboard from "../components/OpenJoinDashboard.tsx";
+import AchievementsDashboard from "../components/AchievementsDashboard.tsx";
 function Dashboard() {
   return (
     <>
@@ -11,10 +12,12 @@ function Dashboard() {
         <main className="mx-auto my-0 w-[87vw] relative">
           <BowlingCentersDashboard />
           <NextFreeSlotDashboard />
-          <OpenJoinDashboard/>
-          <section className="pt-2.5 pb-2.5">
-            <h1 className="text-mh1 font-semibold">Achievements</h1>
-          </section>
+          <OpenJoinDashboard />
+          <AchievementsDashboard />
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           <Navigation />
         </main>
       </div>
