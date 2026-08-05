@@ -33,7 +33,7 @@
   --text-th3--line-height: 150%;
   --text-th4: 1.25rem;
   --text-th4--line-height: 150%;
-  --text-tnormal: 1.125rem;
+  --text-tnormal: 0.938rem;
   --text-tnormal--line-height: 175%;
   --text-tlinks: 1.125rem;
   --text-tlinks--line-height: 150%;
@@ -51,8 +51,10 @@
 
   --breakpoint-sxl: 90rem;
   --breakpoint-lxl: 100rem;
+  --breakpoint-xxl: 120rem;
 
   --max-width-2hxl: 40rem;
+  --max-width-3hxl: 52rem;
   --max-width-8xl: 90rem;
   --max-width-9xl: 100rem;
 }
