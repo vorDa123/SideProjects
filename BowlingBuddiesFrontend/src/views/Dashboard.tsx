@@ -9,19 +9,21 @@ function Dashboard() {
     <>
       <div className="flex flex-col">
         <HeaderMob />
-        <Navigation />
-        <main className="mx-auto my-0 w-[87vw] relative md:w-[79.2vw] md:mx-45">
+        <div className="hidden lg:block">
+          <Navigation />
+        </div>
+        <main className="w-full max-w-2hxl mx-auto px-6 sm:px-6 lg:max-w-4xl lg:mx-28 xl:max-w-6xl sxl:max-w-7xl sxl:mx-32 lxl:max-w-9xl lxl:mx-50">
           <BowlingCentersDashboard />
-          <div className="md:flex md:flex-row md:justify-between">
+          <div className="lg:flex lg:flex-row lg:gap-3.75">
             <NextFreeSlotDashboard />
             <OpenJoinDashboard />
           </div>
           <AchievementsDashboard />
           <br />
           <br />
-          <br className="md:hidden"/>
-          <br className="md:hidden"/>
-          <div className="md:hidden">
+          <br className="md:hidden" />
+          <br className="md:hidden" />
+          <div className="lg:hidden">
             <Navigation />
           </div>
         </main>

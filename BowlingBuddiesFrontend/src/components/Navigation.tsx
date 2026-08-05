@@ -17,7 +17,7 @@ function Navigation() {
   return (
     <>
       {/* Mob navigacija */}
-      <nav className="mt-2.5 mb-5 bg-lighterBlue-100 text-white-100 rounded-m25 flex flex-row justify-around items-center text-3xl py-1.5 fixed bottom-0 w-[87vw] md:hidden">
+      <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md bg-lighterBlue-100 text-white-100 rounded-m25 flex flex-row justify-around items-center text-3xl py-2.5 z-50 lg:hidden">
         <NavLink to="/">
           <FontAwesomeIcon icon={faHouse} />
         </NavLink>
@@ -32,7 +32,7 @@ function Navigation() {
         </NavLink>
       </nav>
       {/* Navigacija za sve ostale */}
-      <nav className="hidden md:block md:bg-lighterBlue-100 md:w-25 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100">
+      <nav className="hidden lg:block md:bg-lighterBlue-100 md:w-25 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100 md:z-10">
         <div className="md:absolute md:left-21 md:top-15 md:rounded-[50%] md:w-7.5 md:h-7.5 md:text-center md:bg-lighterBlue-100">
           <FontAwesomeIcon icon={faChevronRight} />
         </div>

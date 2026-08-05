@@ -48,6 +48,13 @@
   --radius-m5: 0.313rem;
 
   --shadow-mob: 3px 4px 5px rgba(0, 0, 0, 0.25);
+
+  --breakpoint-sxl: 90rem;
+  --breakpoint-lxl: 100rem;
+
+  --max-width-2hxl: 40rem;
+  --max-width-8xl: 90rem;
+  --max-width-9xl: 100rem;
 }
 
 body {
