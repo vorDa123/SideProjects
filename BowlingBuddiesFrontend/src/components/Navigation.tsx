@@ -33,7 +33,7 @@ function Navigation() {
       </nav>
       {/* Navigacija za sve ostale */}
       <nav className="hidden lg:block md:bg-lighterBlue-100 md:w-25 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100 md:z-10">
-        <div className="md:absolute md:left-21 md:top-15 md:rounded-[50%] md:w-7.5 md:h-7.5 md:text-center md:bg-lighterBlue-100">
+        <div className="md:absolute md:left-21 md:top-24 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-100">
           <FontAwesomeIcon icon={faChevronRight} />
         </div>
         <div className="md:flex md:flex-col md:justify-around md:items-center md:h-full">
