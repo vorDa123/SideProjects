@@ -26,7 +26,7 @@ function NextFreeSlotDashboard({
             <NextFreeSlotCard />
             <NextFreeSlotCard />
             <NextFreeSlotCard />
-            <p className="text-mlinks text-right max-w-94.25 md:text-tlinks">
+            <p className="text-mlinks text-right md:text-tlinks">
               Show more {">"}
             </p>
           </div>

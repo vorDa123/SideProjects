@@ -24,7 +24,7 @@ function OpenJoinDashboard({ openJoinBowlingPage = false }: OpenJoinProps) {
             <OpenJoinCard />
             <OpenJoinCard />
             <OpenJoinCard />
-            <p className="text-mlinks text-right max-w-94.25 md:text-tlinks">
+            <p className="text-mlinks text-right md:text-tlinks">
               Show more {">"}
             </p>
           </div>
