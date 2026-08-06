@@ -1,4 +1,5 @@
 import OpenJoinCard from "./OpenJoinCard.tsx";
+import { NavLink } from "react-router";
 
 type OpenJoinProps = {
   openJoinBowlingPage?: boolean;
@@ -25,7 +26,7 @@ function OpenJoinDashboard({ openJoinBowlingPage = false }: OpenJoinProps) {
             <OpenJoinCard />
             <OpenJoinCard />
             <p className="text-mlinks text-right md:text-tlinks">
-              Show more {">"}
+              <NavLink to="/openjoin">Show more {">"}</NavLink>
             </p>
           </div>
         </section>

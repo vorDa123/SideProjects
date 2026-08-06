@@ -1,4 +1,5 @@
 import NextFreeSlotCard from "./NextFreeSlotCard.tsx";
+import { NavLink } from "react-router";
 
 type NextFreeSlotProps = {
   bowlingCenterPage?: boolean;
@@ -27,7 +28,7 @@ function NextFreeSlotDashboard({
             <NextFreeSlotCard />
             <NextFreeSlotCard />
             <p className="text-mlinks text-right md:text-tlinks">
-              Show more {">"}
+              <NavLink to="/bowlingalleys">Show more {">"}</NavLink>
             </p>
           </div>
         </section>
