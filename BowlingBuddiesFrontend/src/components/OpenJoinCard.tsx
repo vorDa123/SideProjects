@@ -8,7 +8,7 @@ import {
 
 function OpenJoinCard() {
   return (
-    <div className="rounded-m15 shadow-mob w-full max-w-94.25 h-32.5 bg-white-100">
+    <div className="rounded-m15 shadow-mob w-full h-32.5 bg-white-100">
       <div className="flex flex-col gap-3 justify-around w-full h-full px-2 py-2">
         <div className="flex flex-row justify-between">
           <p className="text-mh2 font-medium">West Bowling</p>
