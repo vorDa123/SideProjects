@@ -21,7 +21,7 @@ function Profile() {
           alt="user image"
           className="rounded-full border-6 border-white w-50 h-50 absolute left-1/2 top-1/14 transform -translate-x-1/2"
         />
-        <p className="text-mh3 text-center mt-20">Davor Kuharić</p>
+        <p className="text-mh3 text-center mt-20 font-medium">Davor Kuharić</p>
         <div className="flex flex-col items-center justify-around gap-10 mt-12">
           <NavLink to="/myprofile">
             <div className="bg-lighterBlue-100 h-15.5 w-70.5 rounded-m60 relative">
