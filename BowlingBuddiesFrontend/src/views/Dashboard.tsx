@@ -23,6 +23,7 @@ function Dashboard() {
           <br />
           <br />
           <br className="md:hidden" />
+          <br className="md:hidden" />
           <div className="lg:hidden">
             <Navigation />
           </div>
