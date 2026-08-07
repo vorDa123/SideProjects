@@ -45,10 +45,10 @@ function Navigation() {
             <NavLink to="/bowlingalleys">
               <FontAwesomeIcon icon={faBowlingBall} />
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/openjoin">
               <FontAwesomeIcon icon={faUsers} />
             </NavLink>
-            <NavLink to="/openjoin">
+            <NavLink to="/">
               <FontAwesomeIcon icon={faBell} />
             </NavLink>
             <NavLink to="/myprofile">
