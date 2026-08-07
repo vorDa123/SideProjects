@@ -1,7 +1,15 @@
+import Navigation from "../components/Navigation.tsx";
+import ProfileHeader from "../components/ProfileHeader.tsx";
+
 function MyProfile() {
   return (
     <>
-      <h1>My Profile</h1>
+      <div className="grid grid-cols-1 relative">
+        <ProfileHeader />
+        <div className="lg:hidden">
+          <Navigation />
+        </div>
+      </div>
     </>
   );
 }
