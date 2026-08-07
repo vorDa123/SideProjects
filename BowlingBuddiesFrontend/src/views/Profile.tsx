@@ -19,10 +19,10 @@ function Profile() {
         <img
           src={UserImg}
           alt="user image"
-          className="rounded-full border-6 border-white w-50 h-50 absolute left-1/2 top-1/14 transform -translate-x-1/2"
+          className="rounded-full border-6 border-white w-50 h-50 absolute left-1/2 top-1/35 transform -translate-x-1/2"
         />
-        <p className="text-mh3 text-center mt-20 font-medium">Davor Kuharić</p>
-        <div className="flex flex-col items-center justify-around gap-10 mt-12">
+        <p className="text-mh3 text-center mt-25 font-medium">Davor Kuharić</p>
+        <div className="flex flex-col items-center justify-around gap-10 mt-8">
           <NavLink to="/myprofile">
             <div className="bg-lighterBlue-100 h-15.5 w-70.5 rounded-m60 relative">
               <div className="flex flex-row gap-5 text-mh2 text-white-100 absolute left-1/6 top-1/3">

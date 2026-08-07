@@ -4,7 +4,7 @@ import type { HeaderProps } from "../types/Types.ts";
 
 function HeaderMob({ showLogo = true }: HeaderProps) {
   return (
-    <header className="flex flex-row gap-2 bg-lighterBlue-100 items-center justify-center rounded-bl-4xl rounded-br-4xl h-[21.4vh] lg:hidden">
+    <header className="flex flex-row gap-2 bg-lighterBlue-100 items-center justify-center rounded-bl-4xl rounded-br-4xl h-[16vh] lg:hidden">
       {showLogo ? (
         <>
           <img src={Logo} width={48} height={76} />

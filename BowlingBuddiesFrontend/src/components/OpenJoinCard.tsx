@@ -13,8 +13,8 @@ function OpenJoinCard() {
         <div className="flex flex-row justify-between">
           <p className="text-mh2 font-medium">West Bowling</p>
           <div className="flex flex-row gap-2">
-            <div className="bg-yellow-100 rounded-m12 px-2 pt-0.5 text-center md:rounded-m15">Fun</div>
-            <div className="bg-yellow-100 rounded-m12 px-2 pt-0.5 text-center md:rounded-m15">Professional</div>
+            <div className="bg-yellow-100 rounded-m12 px-2 pt-1 md:pt-0 text-center md:rounded-m15">Fun</div>
+            <div className="bg-yellow-100 rounded-m12 px-2 pt-1 md:pt-0 text-center md:rounded-m15">Professional</div>
           </div>
         </div>
         <div className="flex flex-row justify-between h-full items-center">
