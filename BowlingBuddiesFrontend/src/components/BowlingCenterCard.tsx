@@ -1,6 +1,5 @@
-type BowlingCenterCardProps = {
-  bowlingCenterName: string;
-};
+import type {BowlingCenterCardProps} from "../types/Types.ts"
+
 function BowlingCenterCard({ bowlingCenterName }: BowlingCenterCardProps) {
   return (
     <div className="snap-start shrink-0 w-45.25 h-48.25 shadow-mob rounded-m20 bg-[url(/src/assets/playerBowling.jpg)] bg-center bg-cover">

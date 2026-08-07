@@ -45,16 +45,16 @@ function Navigation() {
             <NavLink to="/bowlingalleys">
               <FontAwesomeIcon icon={faBowlingBall} />
             </NavLink>
-            <NavLink to="/openjoin">
+            <NavLink to="/">
               <FontAwesomeIcon icon={faUsers} />
             </NavLink>
             <NavLink to="/openjoin">
               <FontAwesomeIcon icon={faBell} />
             </NavLink>
-            <NavLink to="/profile">
+            <NavLink to="/myprofile">
               <FontAwesomeIcon icon={faCircleUser} />
             </NavLink>
-            <NavLink to="/profile">
+            <NavLink to="/">
               <FontAwesomeIcon icon={faCircleInfo} />
             </NavLink>
           </div>

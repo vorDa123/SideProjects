@@ -1,9 +1,7 @@
 import OpenJoinCard from "./OpenJoinCard.tsx";
 import { NavLink } from "react-router";
 
-type OpenJoinProps = {
-  openJoinBowlingPage?: boolean;
-};
+import type {OpenJoinProps} from "../types/Types.ts"
 
 function OpenJoinDashboard({ openJoinBowlingPage = false }: OpenJoinProps) {
   return (
