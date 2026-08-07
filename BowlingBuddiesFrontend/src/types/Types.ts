@@ -13,3 +13,7 @@ export interface NextFreeSlotProps  {
 export interface OpenJoinProps  {
   openJoinBowlingPage?: boolean;
 };
+
+export interface LabelTagProps  {
+  labelValue?: string;
+};

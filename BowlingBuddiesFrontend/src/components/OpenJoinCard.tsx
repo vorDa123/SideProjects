@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LabelTag from "./LabelTag.tsx";
 import {
   faCalendarDays,
   faClock,
@@ -13,8 +14,8 @@ function OpenJoinCard() {
         <div className="flex flex-row justify-between">
           <p className="text-mh2 font-medium">West Bowling</p>
           <div className="flex flex-row gap-2">
-            <div className="bg-yellow-100 rounded-m12 px-2 pt-1 md:pt-0 text-center md:rounded-m15">Fun</div>
-            <div className="bg-yellow-100 rounded-m12 px-2 pt-1 md:pt-0 text-center md:rounded-m15">Professional</div>
+            <LabelTag labelValue="Fun" />
+            <LabelTag labelValue="Professional" />
           </div>
         </div>
         <div className="flex flex-row justify-between h-full items-center">
