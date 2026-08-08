@@ -1,6 +1,6 @@
 import BowlingCenterCard from "./BowlingCenterCard.tsx";
 
-function BowlingCentersDashboard() {
+function BowlingCentersSection() {
   return (
     <section className="pt-5 pb-2.5 w-full lg:col-span-12 md:col-span-2 xxl:col-span-24">
       <div className="flex flex-row items-center justify-between">
@@ -18,4 +18,4 @@ function BowlingCentersDashboard() {
   );
 }
 
-export default BowlingCentersDashboard;
+export default BowlingCentersSection;

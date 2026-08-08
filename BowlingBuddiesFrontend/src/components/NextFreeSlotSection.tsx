@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 
 import type {NextFreeSlotProps} from "../types/Types.ts"
 
-function NextFreeSlotDashboard({
+function NextFreeSlotSection({
   bowlingCenterPage = false,
 }: NextFreeSlotProps) {
   return (
@@ -35,4 +35,4 @@ function NextFreeSlotDashboard({
   );
 }
 
-export default NextFreeSlotDashboard;
+export default NextFreeSlotSection;

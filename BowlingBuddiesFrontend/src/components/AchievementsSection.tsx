@@ -1,7 +1,7 @@
 import AchievementsCard from "./AchievementsCard.tsx";
 import type { MyProfileProps } from "../types/Types.ts";
 
-function AchievementsDashboard({ myProfilePage = false }: MyProfileProps) {
+function AchievementsSection({ myProfilePage = false }: MyProfileProps) {
   return (
     <>
       {myProfilePage ? (
@@ -33,4 +33,4 @@ function AchievementsDashboard({ myProfilePage = false }: MyProfileProps) {
   );
 }
 
-export default AchievementsDashboard;
+export default AchievementsSection;

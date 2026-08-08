@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 
 import type {OpenJoinProps} from "../types/Types.ts"
 
-function OpenJoinDashboard({ openJoinBowlingPage = false }: OpenJoinProps) {
+function OpenJoinSection({ openJoinBowlingPage = false }: OpenJoinProps) {
   return (
     <>
       {openJoinBowlingPage ? (
@@ -33,4 +33,4 @@ function OpenJoinDashboard({ openJoinBowlingPage = false }: OpenJoinProps) {
   );
 }
 
-export default OpenJoinDashboard;
+export default OpenJoinSection;
