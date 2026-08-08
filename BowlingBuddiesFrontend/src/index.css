@@ -53,9 +53,12 @@
   --breakpoint-sxl: 90rem;
   --breakpoint-lxl: 100rem;
   --breakpoint-xxl: 120rem;
+  --breakpoint-msm: 23.438rem;
+  --breakpoint-xsm: 26.563rem;
 
   --max-width-2hxl: 40rem;
   --max-width-3hxl: 52rem;
+  --max-width-4hxl: 58rem;
   --max-width-7hxl: 83rem;
   --max-width-8xl: 90rem;
   --max-width-9xl: 100rem;

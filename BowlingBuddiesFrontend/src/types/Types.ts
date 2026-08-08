@@ -17,3 +17,7 @@ export interface OpenJoinProps  {
 export interface LabelTagProps  {
   labelValue?: string;
 };
+
+export interface MyProfileProps  {
+  myProfilePage?: boolean;
+};
