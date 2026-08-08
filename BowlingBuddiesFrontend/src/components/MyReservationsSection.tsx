@@ -1,7 +1,7 @@
 import MyReservationCard from "./MyReservationCard.tsx";
 import { NavLink } from "react-router";
 
-function OpenJoinDashboard() {
+function MyReservations() {
   return (
     <>
       <section className="pt-2.5 pb-2.5 w-full md:col-span-3 lg:col-span-6 sxl:col-span-5 xl:col-span-5 xxl:col-span-8">
@@ -21,4 +21,4 @@ function OpenJoinDashboard() {
   );
 }
 
-export default OpenJoinDashboard;
+export default MyReservations;
