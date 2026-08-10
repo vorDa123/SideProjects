@@ -21,3 +21,7 @@ export interface LabelTagProps  {
 export interface MyProfileProps  {
   myProfilePage?: boolean;
 };
+
+export interface MyReservationsProps  {
+  myReservationPage?: boolean;
+};
