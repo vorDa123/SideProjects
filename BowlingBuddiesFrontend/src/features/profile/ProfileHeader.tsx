@@ -1,5 +1,5 @@
-import HeaderMob from "../components/Header.tsx";
-import ProfileDetails from "../components/ProfileDetails.tsx";
+import HeaderMob from "../../components/layouts/Header.tsx";
+import ProfileDetails from "./ProfileDetails.tsx";
 function ProfileHeader() {
   return (
     <>

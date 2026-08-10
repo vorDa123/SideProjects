@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import LabelTag from "./LabelTag.tsx";
+import LabelTag from "../../components/ui/LabelTag.tsx";
 import {
   faCalendarDays,
   faClock,

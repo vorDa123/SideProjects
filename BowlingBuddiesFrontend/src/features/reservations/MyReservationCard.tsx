@@ -6,7 +6,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import type { MyReservationsProps } from "../types/Types.ts";
+import type { MyReservationsProps } from "../../types/index.ts";
 
 function MyReservationCard({ myReservationPage = false }: MyReservationsProps) {
   return (

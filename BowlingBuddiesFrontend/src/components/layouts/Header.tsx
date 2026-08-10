@@ -1,6 +1,6 @@
-import Logo from "../assets/BBLogo.svg";
+import Logo from "../../assets/BBLogo.svg";
 
-import type { HeaderProps } from "../types/Types.ts";
+import type { HeaderProps } from "../../types/index.ts";
 
 function HeaderMob({ showLogo = true }: HeaderProps) {
   return (

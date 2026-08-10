@@ -1,7 +1,7 @@
-import Navigation from "../components/Navigation.tsx";
-import HeaderMob from "../components/Header.tsx";
-import BowlingCentersSection from "../components/BowlingCentersSection.tsx";
-import NextFreeSlotSection from "../components/NextFreeSlotSection.tsx";
+import Navigation from "../components/layouts/Navigation.tsx";
+import HeaderMob from "../components/layouts/Header.tsx";
+import BowlingCentersSection from "../features/bowling-centers/BowlingCentersSection.tsx";
+import NextFreeSlotSection from "../features/reservations/NextFreeSlotSection.tsx";
 function BowlingAlleys() {
   return (
     <>

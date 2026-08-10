@@ -1,8 +1,8 @@
-import Navigation from "../components/Navigation.tsx";
-import ProfileDetails from "../components/ProfileDetails.tsx";
-import MyReservationsSection from "../components/MyReservationsSection.tsx";
-import AchievementsSection from "../components/AchievementsSection.tsx";
-import ProfileHeader from "../components/ProfileHeader.tsx";
+import Navigation from "../components/layouts/Navigation.tsx";
+import ProfileDetails from "../features/profile/ProfileDetails.tsx";
+import MyReservationsSection from "../features/reservations/MyReservationsSection.tsx";
+import AchievementsSection from "../features/achievements/AchievementsSection.tsx";
+import ProfileHeader from "../features/profile/ProfileHeader.tsx";
 
 function MyProfile() {
   return (

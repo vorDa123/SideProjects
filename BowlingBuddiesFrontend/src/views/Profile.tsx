@@ -1,6 +1,6 @@
-import Navigation from "../components/Navigation.tsx";
-import ProfileHeader from "../components/ProfileHeader.tsx";
-import ProfileMenu from "../components/ProfileMenu.tsx";
+import Navigation from "../components/layouts/Navigation.tsx";
+import ProfileHeader from "../features/profile/ProfileHeader.tsx";
+import ProfileMenu from "../features/profile/ProfileMenu.tsx";
 
 function Profile() {
   return (

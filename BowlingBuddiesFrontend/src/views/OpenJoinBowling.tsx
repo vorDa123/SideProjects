@@ -1,6 +1,6 @@
-import Navigation from "../components/Navigation.tsx";
-import HeaderMob from "../components/Header.tsx";
-import OpenJoinSection from "../components/OpenJoinSection.tsx";
+import Navigation from "../components/layouts/Navigation.tsx";
+import HeaderMob from "../components/layouts/Header.tsx";
+import OpenJoinSection from "../features/open-join/OpenJoinSection.tsx";
 
 function OpenJoin() {
   return (

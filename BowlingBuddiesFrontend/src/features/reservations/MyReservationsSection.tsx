@@ -1,7 +1,7 @@
 import MyReservationCard from "./MyReservationCard.tsx";
 import { NavLink } from "react-router";
 
-import type { MyReservationsProps } from "../types/Types.ts";
+import type { MyReservationsProps } from "../../types/index.ts";
 
 function MyReservations({ myReservationPage = false }: MyReservationsProps) {
   return (

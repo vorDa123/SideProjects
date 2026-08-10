@@ -9,7 +9,7 @@ import {
   faRightFromBracket,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import Logo from "../assets/BBLogo.svg";
+import Logo from "../../assets/BBLogo.svg";
 
 import { NavLink } from "react-router";
 function WideNavigation() {

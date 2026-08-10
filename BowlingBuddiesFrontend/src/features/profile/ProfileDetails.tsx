@@ -1,4 +1,4 @@
-import UserImg from "../assets/playerBowling.jpg";
+import UserImg from "../../assets/playerBowling.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 function ProfileDetails() {

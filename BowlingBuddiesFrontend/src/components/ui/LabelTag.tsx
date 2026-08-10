@@ -1,4 +1,4 @@
-import type { LabelTagProps } from "../types/Types";
+import type { LabelTagProps } from "../../types/index.ts";
 
 function LabelTag({labelValue}: LabelTagProps) {
   return (

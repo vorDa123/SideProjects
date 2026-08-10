@@ -1,7 +1,7 @@
 import NextFreeSlotCard from "./NextFreeSlotCard.tsx";
 import { NavLink } from "react-router";
 
-import type {NextFreeSlotProps} from "../types/Types.ts"
+import type {NextFreeSlotProps} from "../../types/index.ts"
 
 function NextFreeSlotSection({
   bowlingCenterPage = false,

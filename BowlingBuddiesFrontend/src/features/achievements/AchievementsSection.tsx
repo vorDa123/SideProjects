@@ -1,5 +1,5 @@
 import AchievementsCard from "./AchievementsCard.tsx";
-import type { MyProfileProps } from "../types/Types.ts";
+import type { MyProfileProps } from "../../types/index.ts";
 
 function AchievementsSection({ myProfilePage = false }: MyProfileProps) {
   return (

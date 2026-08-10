@@ -1,9 +1,9 @@
-import Navigation from "../components/Navigation.tsx";
-import HeaderMob from "../components/Header.tsx";
-import BowlingCentersSection from "../components/BowlingCentersSection.tsx";
-import NextFreeSlotSection from "../components/NextFreeSlotSection.tsx";
-import OpenJoinSection from "../components/OpenJoinSection.tsx";
-import AchievementsSection from "../components/AchievementsSection.tsx";
+import Navigation from "../components/layouts/Navigation.tsx";
+import HeaderMob from "../components/layouts/Header.tsx";
+import BowlingCentersSection from "../features/bowling-centers/BowlingCentersSection.tsx";
+import NextFreeSlotSection from "../features/reservations/NextFreeSlotSection.tsx";
+import OpenJoinSection from "../features/open-join/OpenJoinSection.tsx";
+import AchievementsSection from "../features/achievements/AchievementsSection.tsx";
 function Dashboard() {
   return (
     <>

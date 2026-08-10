@@ -1,4 +1,4 @@
-import type {BowlingCenterCardProps} from "../types/Types.ts"
+import type {BowlingCenterCardProps} from "../../types/index.ts"
 
 function BowlingCenterCard({ bowlingCenterName }: BowlingCenterCardProps) {
   return (
