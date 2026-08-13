@@ -11,6 +11,7 @@
   --color-black-00: rgba(0, 0, 0, 0);
   --color-darkerBlue-30: rgba(5, 13, 32, 0.3);
   --color-darkerBlue-50: rgba(5, 13, 32, 0.5);
+  --color-darkerBlue-60: rgba(5, 13, 32, 0.6);
   --color-lighterBlue-95: rgba(1, 36, 59, 0.95);
 
   --text-mh1: 1.75rem;
@@ -27,6 +28,7 @@
   --text-mlinks--line-height: 150%;
   --text-mnav: 1.125rem;
   --text-mnav--line-height: 150%;
+  --text-mdisclaimer: 0.5rem;
 
   --text-th1: 2.875rem;
   --text-th1--line-height: 110%;
