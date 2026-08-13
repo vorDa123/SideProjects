@@ -25,3 +25,10 @@ export interface MyProfileProps  {
 export interface MyReservationsProps  {
   myReservationPage?: boolean;
 };
+
+export interface ButtonProps  {
+  state?: string;
+  variant: string;
+  buttonName: string;
+  classList?: string;
+};

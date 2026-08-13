@@ -6,6 +6,7 @@ import {
   faLocationDot,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
+import MainButton from "../../components/ui/MainButton.tsx";
 
 function OpenJoinCard() {
   return (
@@ -35,9 +36,7 @@ function OpenJoinCard() {
               <FontAwesomeIcon icon={faUserGroup} /> 4/6
             </span>
           </div>
-          <button className="text-mh2 font-medium bg-orange-100 py-2 px-8 rounded-m25 text-center">
-            JOIN
-          </button>
+          <MainButton variant="fill" buttonName="JOIN"/>
         </div>
       </div>
     </div>
