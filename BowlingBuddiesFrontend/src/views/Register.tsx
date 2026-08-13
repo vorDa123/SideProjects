@@ -1,4 +1,5 @@
 import HeaderMob from "../components/layouts/Header.tsx";
+import MainButton from "../components/ui/MainButton.tsx";
 import { NavLink } from "react-router";
 function Register() {
   return (
@@ -46,9 +47,11 @@ function Register() {
             ></input>
             <br />
             <NavLink to="/">
-              <button className="cursor-pointer text-mh2 font-medium bg-orange-100 py-2 px-8 rounded-m25 text-center mt-6 absolute right-0">
-                Register
-              </button>
+              <MainButton
+                variant="fill"
+                buttonName="Register"
+                classList="mt-6 absolute right-0"
+              />
             </NavLink>
           </form>
           <div className="flex flex-row mt-25 justify-center items-center gap-2">
