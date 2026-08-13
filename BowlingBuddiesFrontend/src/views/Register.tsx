@@ -45,16 +45,18 @@ function Register() {
               className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
             ></input>
             <br />
-            <button className="text-mh2 font-medium bg-orange-100 py-2 px-8 rounded-m25 text-center mt-6 absolute right-0">
-              <NavLink to="/">Register</NavLink>
-            </button>
+            <NavLink to="/">
+              <button className="cursor-pointer text-mh2 font-medium bg-orange-100 py-2 px-8 rounded-m25 text-center mt-6 absolute right-0">
+                Register
+              </button>
+            </NavLink>
           </form>
           <div className="flex flex-row mt-25 justify-center items-center gap-2">
             <div className="w-12.5 h-0.5 bg-darkerBlue-30 rounded-full"></div>
             <span>Or</span>
             <div className="w-12.5 h-0.5 bg-darkerBlue-30 rounded-full"></div>
           </div>
-          <button className="text-mh4 w-full font-medium border-[1.5px] border-orange-100 py-2 px-8 rounded-m25 text-center text-orange-100 mt-8 relative left-1/2 transform -translate-x-1/2 lg:w-3/4">
+          <button className="cursor-pointer text-mh4 w-full font-medium border-[1.5px] border-orange-100 py-2 px-8 rounded-m25 text-center text-orange-100 mt-8 relative left-1/2 transform -translate-x-1/2 lg:w-3/4">
             Continue with Google
           </button>
           <p className="my-9 text-mh4">
