@@ -8,12 +8,12 @@ function BowlingCenterBookingTable() {
         <div className="grid grid-cols-4 mt-4">
           <div className="col-span-4 border-b border-b-darkerBlue-30 py-1 md:sticky md:top-0 md:bg-white md:z-10">
             <div className="flex flex-row justify-around items-center">
-              <p className="text-mh1">{"<"}</p>
-              <div className="text-center">
+              <p className="text-mh1 cursor-pointer">{"<"}</p>
+              <div className="text-center cursor-pointer">
                 <p className="text-mh4">Thursday</p>
                 <p className="text-darkerBlue-50">14.05.2026.</p>
               </div>
-              <p className="text-mh1">{">"}</p>
+              <p className="text-mh1 cursor-pointer">{">"}</p>
             </div>
           </div>
           <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
