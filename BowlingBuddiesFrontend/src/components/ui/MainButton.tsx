@@ -15,7 +15,7 @@ function MainButton({ buttonName, variant, classList }: ButtonProps) {
     return (
       <>
         <div
-          className={`border-orange-100 text-orange-100 border-[3px] text-mh2 w-33.5 font-medium py-2 px-8 rounded-m25 text-center cursor-pointer ${classList}`}
+          className={`border-orange-100 text-orange-100 border-2 text-mh2 w-33.5 font-medium py-2 px-8 rounded-m25 text-center cursor-pointer ${classList}`}
         >
           {buttonName}
         </div>
