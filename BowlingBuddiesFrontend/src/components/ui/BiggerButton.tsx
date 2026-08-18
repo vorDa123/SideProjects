@@ -1,6 +1,6 @@
 import type { ButtonProps } from "../../types/index.ts";
 
-function MainButton({ buttonName, variant, classList }: ButtonProps) {
+function BiggerButton({ buttonName, variant, classList }: ButtonProps) {
   if (variant === "fill") {
     return (
       <>
@@ -24,4 +24,4 @@ function MainButton({ buttonName, variant, classList }: ButtonProps) {
   }
 }
 
-export default MainButton;
+export default BiggerButton;
