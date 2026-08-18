@@ -4,13 +4,13 @@ function BowlingCenterWorkingHoursTable() {
       <div className="mt-5">
         <h3 className="text-mh3 font-medium md:text-th4">Working Hours</h3>
         <div className="grid grid-cols-7 grid-rows-1 text-center gap-x-2 mb-3 mt-2">
-          <div className="bg-white-100 rounded-m5 shadow-mob py-1">Mon</div>
-          <div className="bg-white-100 rounded-m5 shadow-mob py-1">Tue</div>
-          <div className="bg-white-100 rounded-m5 shadow-mob py-1">Wed</div>
-          <div className="bg-white-100 rounded-m5 shadow-mob py-1">Thu</div>
-          <div className="bg-white-100 rounded-m5 shadow-mob py-1">Fri</div>
-          <div className="bg-white-100 rounded-m5 shadow-mob py-1">Sat</div>
-          <div className="bg-white-100 rounded-m5 shadow-mob py-1">Sun</div>
+          <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Mon</div>
+          <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Tue</div>
+          <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Wed</div>
+          <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Thu</div>
+          <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Fri</div>
+          <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Sat</div>
+          <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Sun</div>
         </div>
         <div className="grid grid-cols-7 grid-rows-2 text-center gap-2">
           <div className="bg-white-100 row-span-2 align-middle rounded-m5 shadow-mob py-1">

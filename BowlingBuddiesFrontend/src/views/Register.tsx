@@ -48,7 +48,7 @@ function Register() {
             <br />
             <NavLink to="/">
               <MainButton
-                variant="fill"
+                variant="register"
                 buttonName="Register"
                 classList="mt-6 absolute right-0"
               />

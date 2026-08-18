@@ -34,7 +34,7 @@ function Login() {
             <br />
             <NavLink to="/">
               <MainButton
-                variant="fill"
+                variant="login"
                 buttonName="Log in"
                 classList="mt-6 absolute right-0"
               />

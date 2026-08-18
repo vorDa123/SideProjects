@@ -21,7 +21,7 @@ function MyReservationCard({ myReservationPage = false }: MyReservationsProps) {
           ) : (
             <p className="font-medium text-mh3 xsm:text-mh2">West Bowling</p>
           )}
-          <span>
+          <span className="cursor-pointer">
             <FontAwesomeIcon icon={faXmark} /> Cancel
           </span>
         </div>
