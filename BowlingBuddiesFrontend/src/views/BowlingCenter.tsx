@@ -13,8 +13,8 @@ function BowlingCenter() {
         <div className="hidden lg:block">
           <Navigation />
         </div>
-        <main className="w-full max-w-4xl mx-auto px-6 sm:px-6 lg:max-w-4xl lg:mx-25 xl:max-w-6xl sxl:max-w-7hxl sxl:mx-25 lxl:mx-50 xxl:max-w-9xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 lg:grid-cols-12 lg:gap-8 xl:gap-x-6 sxl:gap-x-12 xxl:grid-cols-24 xxl:gap-16">
+        <main className="w-full max-w-4xl mx-auto px-6 sm:px-6 lg:max-w-4xl lg:mx-25 xl:max-w-6xl mxl:max-w-7hxl mxl:mx-25 lxl:mx-50 xxl:max-w-9xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 lg:grid-cols-12 lg:gap-8 xl:gap-x-6 mxl:gap-x-12 xxl:grid-cols-24 xxl:gap-16">
             <div className="md:hidden">
               <BowlingCenterGeneralInfo />
               <BowlingCenterWorkingHoursTable />

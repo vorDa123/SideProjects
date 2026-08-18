@@ -17,7 +17,7 @@ function NarrowNavigation() {
     <>
       {/* Navigacija za sve ostale */}
       <nav className="hidden lg:block md:bg-lighterBlue-100 md:w-18 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100 md:z-10">
-        <div className="md:absolute md:left-14 md:top-18 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-100 sxl:top-18 lxl:top-20">
+        <div className="md:absolute md:left-14 md:top-18 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-100 mxl:top-18 lxl:top-20">
           <FontAwesomeIcon icon={faChevronRight} />
         </div>
         <div className="md:flex md:flex-col md:justify-around md:items-center md:h-full">

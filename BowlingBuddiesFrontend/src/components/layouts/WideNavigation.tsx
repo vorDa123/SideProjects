@@ -17,7 +17,7 @@ function WideNavigation() {
     <>
       {/* Prosirena Navigacija */}
       <nav className="hidden md:bg-lighterBlue-95 md:w-100 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100 md:z-10">
-        <div className="md:absolute md:left-95 md:top-18 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-95 sxl:top-18 lxl:top-20">
+        <div className="md:absolute md:left-95 md:top-18 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-95 mxl:top-18 lxl:top-20">
           <FontAwesomeIcon icon={faChevronLeft} />
         </div>
         <div className="md:flex md:flex-col md:justify-around md:ml-8 md:h-full">

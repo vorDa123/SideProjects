@@ -44,6 +44,7 @@
   --text-tlinks--line-height: 150%;
   --text-tnav: 1.25rem;
   --text-tnav--line-height: 150%;
+  --text-tdisclaimer: 0.75rem;
 
   --radius-t40: 2.5rem;
   --radius-m60: 3.75rem;
@@ -57,7 +58,7 @@
 
   --shadow-mob: 3px 4px 5px rgba(0, 0, 0, 0.25);
 
-  --breakpoint-sxl: 90rem;
+  --breakpoint-mxl: 90rem;
   --breakpoint-lxl: 100rem;
   --breakpoint-xxl: 120rem;
   --breakpoint-msm: 23.438rem;
