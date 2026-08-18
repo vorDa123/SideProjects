@@ -12,7 +12,7 @@ function BookModalHeader() {
             <p>Zaprešićka 2, 10290, Jablanovec</p>
           </div>
           <div>
-            <FontAwesomeIcon icon={faCircleXmark} className="text-mh1" />
+            <FontAwesomeIcon icon={faCircleXmark} className="text-mh1 cursor-pointer" />
           </div>
         </div>
       </div>

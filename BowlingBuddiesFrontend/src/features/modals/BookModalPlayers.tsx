@@ -5,7 +5,7 @@ function BookModalPlayers() {
     <>
       <div className="col-span-8 mt-5">
         <p className="text-mh3">Players</p>
-        <div className="grid grid-cols-4 gap-3 mt-2.5">
+        <div className="flex flex-row gap-4 mt-2.5 overflow-x-auto pt-1">
           <Player playerName="Davor" isLeader={true}/>
           <Player playerName="Lovro"/>
           <Player playerName="Ivana"/>
