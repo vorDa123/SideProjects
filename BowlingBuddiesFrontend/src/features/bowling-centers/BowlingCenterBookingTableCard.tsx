@@ -1,5 +1,5 @@
 import MainButton from "../../components/ui/MainButton";
-import type { BookingCardProps } from "../../types";
+import type { BookingCardProps } from "../../types/index.ts";
 function BowlingCenterBookingTableCard(props: BookingCardProps) {
   return (
     <>
