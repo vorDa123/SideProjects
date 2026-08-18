@@ -4,31 +4,38 @@ export interface HeaderProps {
 
 export interface BowlingCenterCardProps {
   bowlingCenterName: string;
-};
+}
 
-export interface NextFreeSlotProps  {
+export interface NextFreeSlotProps {
   bowlingCenterPage?: boolean;
-};
+}
 
-export interface OpenJoinProps  {
+export interface OpenJoinProps {
   openJoinBowlingPage?: boolean;
-};
+}
 
-export interface LabelTagProps  {
+export interface LabelTagProps {
   labelValue?: string;
-};
+}
 
-export interface MyProfileProps  {
+export interface MyProfileProps {
   myProfilePage?: boolean;
-};
+}
 
-export interface MyReservationsProps  {
+export interface MyReservationsProps {
   myReservationPage?: boolean;
-};
+}
 
-export interface ButtonProps  {
+export interface ButtonProps {
   state?: string;
   variant: string;
   buttonName: string;
   classList?: string;
-};
+}
+
+export interface PlayerProps {
+  playerName?: string;
+  playerImg?: string;
+  addPlayer?: boolean;
+  isLeader?: boolean;
+}
