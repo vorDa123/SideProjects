@@ -1,4 +1,4 @@
-import MainButton from "../../components/ui/MainButton";
+import BowlingCenterBookingTableCard from "./BowlingCenterBookingTableCard";
 
 function BowlingCenterBookingTable() {
   return (
@@ -16,78 +16,15 @@ function BowlingCenterBookingTable() {
               <p className="text-mh1 cursor-pointer">{">"}</p>
             </div>
           </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">14:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">15:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">16:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">17:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">18:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">19:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">20:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
-          <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-            <span className="text-mh4">21:00</span>
-          </div>
-          <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-            <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-              <p className="text-mh3">6/12 Lanes booked</p>
-              <MainButton buttonName="Book" variant="fill"/>
-            </div>
-          </div>
+          <BowlingCenterBookingTableCard bookingTime="14:00"/>
+          <BowlingCenterBookingTableCard bookingTime="15:00"/>
+          <BowlingCenterBookingTableCard bookingTime="16:00"/>
+          <BowlingCenterBookingTableCard bookingTime="17:00"/>
+          <BowlingCenterBookingTableCard bookingTime="18:00"/>
+          <BowlingCenterBookingTableCard bookingTime="19:00"/>
+          <BowlingCenterBookingTableCard bookingTime="20:00"/>
+          <BowlingCenterBookingTableCard bookingTime="21:00"/>
+          <BowlingCenterBookingTableCard bookingTime="22:00"/>
         </div>
       </div>
     </>

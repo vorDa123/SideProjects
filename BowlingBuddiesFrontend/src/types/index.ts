@@ -39,3 +39,7 @@ export interface PlayerProps {
   addPlayer?: boolean;
   isLeader?: boolean;
 }
+
+export interface BookingCardProps {
+  bookingTime: string;
+}
