@@ -8,11 +8,22 @@ const cors = require('cors');
 
 const app = express();
 
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  process.env.FRONTEND_URL
+];
 
 const corsOptions ={
-    origin:'http://localhost:5173', 
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTION"],
+    origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Nije dozvoljeno putem CORS-a'));
+    }
+  },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }
 
@@ -22,5 +33,11 @@ app.use(bodyParser.json());
 
 app.use(concerts);
 
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server radi na portu ${port}`);
+  });
+}
 
-app.listen(port);
+
+module.exports = app;
