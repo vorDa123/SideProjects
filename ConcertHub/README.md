@@ -2,6 +2,8 @@
 
 <img width="1920" height="920" alt="image" src="https://github.com/user-attachments/assets/6b7c55f1-cdef-4b7d-87b5-b4ee3995865b" />
 
+Vercel link: https://concerthub-frontend.vercel.app/
+
 ConcertHub is a web application designed to help users discover concerts powered by the Ticketmaster API. Users can easily search for events accross Europe, manage their personal list of favorite concerts, and keep track of the events they have attended with custom notes.
 
 ## Tech stack
