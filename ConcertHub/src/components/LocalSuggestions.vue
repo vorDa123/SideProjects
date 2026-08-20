@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import LocalSuggestionCard from './LocalSuggestionCard.vue'
 import { ref, onMounted, watch, nextTick } from 'vue'
-import axios from 'axios'
 import { gsap } from 'gsap'
+import api from '@/api'
 
 let longitude = ref<number>(0)
 let latitude = ref<number>(0)
@@ -32,7 +32,7 @@ const getGeolocationData = () => {
 const sendGeolocationData = async () => {
   if (longitude.value === 0 && latitude.value === 0) return console.log('Koordinate su 0')
   try {
-    const res = await axios.post('http://localhost:3000/api/send-geolocation-data', {
+    const res = await api.post('/api/send-geolocation-data', {
       lat: latitude.value,
       long: longitude.value,
     })
@@ -45,7 +45,7 @@ const sendGeolocationData = async () => {
 
 const handleGetConcertsByLocation = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/get-concert-by-location')
+    const res = await api.get('/api/get-concert-by-location')
     concertsByLocation.value = res.data || []
     isConcertsFetched.value = true
   } catch (error) {

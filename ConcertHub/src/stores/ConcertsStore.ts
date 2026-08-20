@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios from 'axios'
+import api from '@/api'
 
 export const useHandleConcertStore = defineStore('favorite', {
   state: () => ({
@@ -10,7 +10,7 @@ export const useHandleConcertStore = defineStore('favorite', {
   actions: {
     async getConcerts() {
       try {
-        const res = await axios.get('http://localhost:3000/api/get-concert-list')
+        const res = await api.get('/api/get-concert-list')
         this.concerts = res.data || []
       } catch (error) {
         console.error('Server down ili error')
@@ -19,7 +19,7 @@ export const useHandleConcertStore = defineStore('favorite', {
     },
     async addToFavorite(concertData: any) {
       try {
-        const res = await axios.post('http://localhost:3000/api/add-to-favourite', concertData)
+        const res = await api.post('/api/add-to-favourite', concertData)
         this.favorites.push(concertData)
         return res.data
       } catch (error) {
@@ -28,7 +28,7 @@ export const useHandleConcertStore = defineStore('favorite', {
     },
     async addToAttended(concertData: any) {
       try {
-        const res = await axios.post('http://localhost:3000/api/add-to-attended', concertData)
+        const res = await api.post('/api/add-to-attended', concertData)
         this.attended.push(concertData)
         return res.data
       } catch (error) {
@@ -37,7 +37,7 @@ export const useHandleConcertStore = defineStore('favorite', {
     },
     async removeFavorite(concertID: any) {
       try {
-        const res = await axios.delete('http://localhost:3000/api/remove-from-favourite', {
+        const res = await api.delete('/api/remove-from-favourite', {
           data: {
             id: concertID,
           },
@@ -51,7 +51,7 @@ export const useHandleConcertStore = defineStore('favorite', {
     },
     async removeAttended(concertID: any) {
       try {
-        const res = await axios.delete('http://localhost:3000/api/remove-from-attended', {
+        const res = await api.delete('/api/remove-from-attended', {
           data: {
             id: concertID,
           },
@@ -65,7 +65,7 @@ export const useHandleConcertStore = defineStore('favorite', {
     },
     async getFavorites() {
       try {
-        const res = await axios.get('http://localhost:3000/api/get-favourites')
+        const res = await api.get('/api/get-favourites')
         this.favorites = res.data || []
       } catch (error) {
         console.error('Server down ili error')
@@ -74,7 +74,7 @@ export const useHandleConcertStore = defineStore('favorite', {
     },
      async getAttended() {
       try {
-        const res = await axios.get('http://localhost:3000/api/get-attended')
+        const res = await api.get('/api/get-attended')
         this.attended = res.data || []
       } catch (error) {
         console.error('Server down ili error')

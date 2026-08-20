@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import axios from 'axios'
+import api from '@/api'
 
 const props = defineProps({
   data: Object,
@@ -17,7 +16,7 @@ const handleCloseModal = () => {
 
 const handleUpdateData = async () => {
   try {
-    const res = await axios.patch('http://localhost:3000/api/update-attended-concert-data', {
+    const res = await api.patch('/api/update-attended-concert-data', {
       id: props.data?.id,
       name: nameModel.value || props.data?.name,
       description: descriptionModel.value || props.data?.description,
