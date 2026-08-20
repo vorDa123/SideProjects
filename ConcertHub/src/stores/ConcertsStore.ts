@@ -9,7 +9,7 @@ export const useHandleConcertStore = defineStore('favorite', {
   }),
   actions: {
     async getConcerts() {
-      console.log("Trenutni API URL koji Vite vidi:", import.meta.env.API_URL)
+      console.log("Trenutni API URL koji Vite vidi:", import.meta.env.VITE_API_URL)
       try {
         const res = await api.get('/api/get-concert-list')
         this.concerts = res.data || []
