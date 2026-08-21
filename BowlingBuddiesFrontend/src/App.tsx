@@ -9,6 +9,7 @@ import OpenJoin from "./views/OpenJoinBowling.tsx";
 import BowlingAlleys from "./views/BowlingAlleys.tsx";
 import MyReservations from "./views/MyReservations.tsx";
 import BowlingCenter from "./views/BowlingCenter.tsx";
+import EditProfile from "./views/EditProfile.tsx";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/openjoin" element={<OpenJoin />} />
         <Route path="/myreservations" element={<MyReservations />} />
         <Route path="/bowlingcenterid" element={<BowlingCenter />} />
+        <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   )
