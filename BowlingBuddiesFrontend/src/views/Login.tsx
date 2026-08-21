@@ -36,7 +36,7 @@ function Login() {
               <MainButton
                 variant="login"
                 buttonName="Log in"
-                classList="mt-6 absolute right-0"
+                classAppend="mt-6 absolute right-0"
               />
             </NavLink>
           </form>

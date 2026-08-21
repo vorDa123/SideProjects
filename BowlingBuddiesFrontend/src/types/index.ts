@@ -16,6 +16,8 @@ export interface OpenJoinProps {
 
 export interface LabelTagProps {
   labelValue?: string;
+  classOverride?: string;
+  classAppend?: string;
 }
 
 export interface MyProfileProps {
@@ -30,7 +32,8 @@ export interface ButtonProps {
   state?: string;
   variant: string;
   buttonName: string;
-  classList?: string;
+  classAppend?: string;
+  classOverride?: string;
 }
 
 export interface PlayerProps {
@@ -42,4 +45,12 @@ export interface PlayerProps {
 
 export interface BookingCardProps {
   bookingTime: string;
+}
+
+export interface InputFieldProps {
+  type: string;
+  labelName: string;
+  name: string;
+  classOverride?: string;
+  classAppend?: string;
 }

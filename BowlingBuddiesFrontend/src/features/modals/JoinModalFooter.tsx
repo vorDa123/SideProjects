@@ -6,7 +6,7 @@ function JoinModalFooter() {
         <BiggerButton
           variant="fill"
           buttonName="JOIN"
-          classList="md:absolute md:right-[-30px] md:top-[-30px] lg:right-[-10px] mxl:right-[-20px] xxl:right-[-20px] active:md:top-[-25px]"
+          classAppend="md:absolute md:right-[-30px] md:top-[-30px] lg:right-[-10px] mxl:right-[-20px] xxl:right-[-20px] active:md:top-[-25px]"
         />
       </div>
       <div className="col-span-3 mt-6 md:mt-5">

@@ -6,7 +6,7 @@ function BookModalFooter() {
         <BiggerButton
           variant="fill"
           buttonName="BOOK"
-          classList="md:absolute md:right-[-30px] md:top-[-30px] mxl:right-[-40px] xxl:right-[-50px] active:md:top-[-25px]"
+          classAppend="md:absolute md:right-[-30px] md:top-[-30px] mxl:right-[-40px] xxl:right-[-50px] active:md:top-[-25px]"
         />
       </div>
       <div className="col-span-3 mt-5">
