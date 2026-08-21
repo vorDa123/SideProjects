@@ -110,11 +110,16 @@ function BookModalForm() {
         <label htmlFor="resType" className="text-mh4">
           Type of reservation:
         </label>
-        <input
-          type="text"
+        <select
           name="resType"
+          id=""
           className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-        ></input>
+        >
+          <option value="">-- Please choose a friend --</option>
+          <option value="Fun">Fun</option>
+          <option value="Professional">Professional</option>
+          <option value="Training">Training</option>
+        </select>
       </div>
       <div className="col-span-4 mt-5 md:hidden">
         <label htmlFor="shoes" className="text-mh4">
