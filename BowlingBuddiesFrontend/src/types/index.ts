@@ -53,4 +53,6 @@ export interface InputFieldProps {
   name: string;
   classOverride?: string;
   classAppend?: string;
+  labelClassOverride?: string;
+  labelClassAppend?: string;
 }

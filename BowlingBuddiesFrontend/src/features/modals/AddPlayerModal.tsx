@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import BiggerButton from "../../components/ui/BiggerButton.tsx";
+import InputField from "../../components/ui/InputField";
 
 function AddPlayerModal() {
   return (
@@ -39,34 +40,13 @@ function AddPlayerModal() {
               </select>
             </div>
             <div className="col-span-8 mt-7 mb-1">
-              <label htmlFor="name" className="text-mh4">
-                Name:
-              </label>
-              <input
-                type="text"
-                name="name"
-                className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-              ></input>
+              <InputField name="name" type="text" labelName="Name:" />
             </div>
             <div className="col-span-8 mt-5 mb-1">
-              <label htmlFor="email" className="text-mh4">
-                E-mail:
-              </label>
-              <input
-                type="email"
-                name="email"
-                className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-              ></input>
+              <InputField name="email" type="email" labelName="Email:" />
             </div>
             <div className="col-span-8 mt-5 mb-1">
-              <label htmlFor="phone" className="text-mh4">
-                Phone:
-              </label>
-              <input
-                type="number"
-                name="phone"
-                className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-              ></input>
+              <InputField name="phone" type="number" labelName="Phone:" />
             </div>
             <div className="col-span-8 mt-7 mb-1">
               <div className="flex flex-row-reverse justify-between gap-4">

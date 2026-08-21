@@ -1,25 +1,12 @@
+import InputField from "../../components/ui/InputField";
 function BookModalForm() {
   return (
     <>
       <div className="col-span-8 mt-5 mb-1">
-        <label htmlFor="email" className="text-mh4">
-          Email:
-        </label>
-        <input
-          type="email"
-          name="email"
-          className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-        ></input>
+        <InputField name="email" type="email" labelName="Email:" />
       </div>
       <div className="col-span-8 mt-1">
-        <label htmlFor="phone" className="text-mh4">
-          Phone:
-        </label>
-        <input
-          type="number"
-          name="phone"
-          className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-        ></input>
+        <InputField name="phone" type="number" labelName="Phone:" />        
       </div>
       <div className="col-span-8 mt-5">
         <p className="text-mh4">Time</p>
@@ -37,24 +24,10 @@ function BookModalForm() {
         <span>14:45</span>
       </div>
       <div className="col-span-4 mt-5">
-        <label htmlFor="duration" className="text-mh4">
-          Duration {"(h)"}:
-        </label>
-        <input
-          type="number"
-          name="duration"
-          className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-        ></input>
+        <InputField name="duration" type="number" labelName="Duration (h):" />        
       </div>
       <div className="col-span-4 mt-5">
-        <label htmlFor="duration" className="text-mh4">
-          No. of players:
-        </label>
-        <input
-          type="number"
-          name="duration"
-          className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-        ></input>
+        <InputField name="players" type="number" labelName="No. of players:" />        
       </div>
       <div className="col-span-4 mt-5 md:col-span-2">
         <label htmlFor="shoes" className="text-mh4">
