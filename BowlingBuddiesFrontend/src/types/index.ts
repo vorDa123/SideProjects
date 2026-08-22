@@ -56,3 +56,8 @@ export interface InputFieldProps {
   labelClassOverride?: string;
   labelClassAppend?: string;
 }
+
+export interface NavigationContextTypes {
+  isWideNavigation: boolean;
+  toggleNavigation: () => void;
+}
