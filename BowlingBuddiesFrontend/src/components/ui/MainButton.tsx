@@ -10,6 +10,7 @@ function MainButton(props: ButtonProps) {
               ? props.classOverride
               : `text-mh2 w-33.5 font-semibold bg-orange-100 py-2 px-8 rounded-m25 text-center cursor-pointer hover:bg-orangeHover-100 focus:border-2 focus:border-darkerBlue-100 active:w-32 active:py-1 ${props.classAppend}`
           }
+          onClick={props.onClick}
         >
           {props.buttonName}
         </button>
@@ -24,6 +25,7 @@ function MainButton(props: ButtonProps) {
               ? props.classOverride
               : `border-orange-100 text-orange-100 border-2 text-mh2 w-33.5 font-semibold py-2 px-8 rounded-m25 text-center cursor-pointer hover:bg-orangeHover-100 hover:text-darkerBlue-100 focus:bg-orangeHover-100 focus:text-darkerBlue-100 focus:border-2 focus:border-darkerBlue-100 active:w-32 active:py-1 ${props.classAppend}`
           }
+          onClick={props.onClick}
         >
           {props.buttonName}
         </button>
@@ -38,6 +40,7 @@ function MainButton(props: ButtonProps) {
               ? props.classOverride
               : `text-mh2 w-38 font-semibold bg-orange-100 py-2 px-8 rounded-m25 text-center cursor-pointer hover:bg-orangeHover-100 focus:border-2 focus:border-darkerBlue-100 active:w-37 active:py-1 ${props.classAppend}`
           }
+          onClick={props.onClick}
         >
           {props.buttonName}
         </button>
@@ -52,6 +55,7 @@ function MainButton(props: ButtonProps) {
               ? props.classOverride
               : `text-mh2 w-40 font-semibold bg-orange-100 py-2 px-8 rounded-m25 text-center cursor-pointer hover:bg-orangeHover-100 focus:border-2 focus:border-darkerBlue-100 active:w-39 active:py-1 ${props.classAppend}`
           }
+          onClick={props.onClick}
         >
           {props.buttonName}
         </button>

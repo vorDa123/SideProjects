@@ -35,6 +35,7 @@ export interface ButtonProps {
   buttonName: string;
   classAppend?: string;
   classOverride?: string;
+  onClick?: () => void;
 }
 
 export interface PlayerProps {
@@ -42,6 +43,7 @@ export interface PlayerProps {
   playerImg?: string;
   addPlayer?: boolean;
   isLeader?: boolean;
+  onClick?: () => void;
 }
 
 export interface BookingCardProps {
@@ -61,4 +63,10 @@ export interface InputFieldProps {
 export interface NavigationContextTypes {
   isWideNavigation: boolean;
   toggleNavigation: () => void;
+}
+
+export interface ModalProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+  onAddPlayer?: () => void;
 }

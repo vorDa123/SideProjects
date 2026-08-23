@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import type { ModalProps } from "../../types";
 
-function BookModalHeader() {
+function BookModalHeader(props: ModalProps) {
   return (
     <>
       <div className="col-span-8">
@@ -12,7 +13,11 @@ function BookModalHeader() {
             <p>Zaprešićka 2, 10290, Jablanovec</p>
           </div>
           <div>
-            <FontAwesomeIcon icon={faCircleXmark} className="text-mh1 cursor-pointer" />
+            <FontAwesomeIcon
+              icon={faCircleXmark}
+              className="text-mh1 cursor-pointer"
+              onClick={props.onClose}
+            />
           </div>
         </div>
       </div>

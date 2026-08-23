@@ -5,7 +5,7 @@ import { useState } from "react";
 import { NavigationContext } from "../../context/NavigationContext.ts";
 
 function Navigation() {
-  const [isWideNavigation, setIsWideNavigation] = useState(false);
+  const [isWideNavigation, setIsWideNavigation] = useState<boolean>(false);
 
   const toggleNavigation = () => {
     setIsWideNavigation((prev) => !prev);

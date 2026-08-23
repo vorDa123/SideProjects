@@ -6,7 +6,10 @@ function Player(props: PlayerProps) {
   if (props.addPlayer) {
     return (
       <>
-        <div className="flex flex-col items-center cursor-pointer">
+        <div
+          className="flex flex-col items-center cursor-pointer"
+          onClick={props.onClick}
+        >
           <div className="rounded-[100%] border-2 border-darkerBlue-100 text-center w-17.5 h-17.5 flex flex-col justify-center items-center">
             <FontAwesomeIcon icon={faPlus} className="text-th2" />
           </div>
