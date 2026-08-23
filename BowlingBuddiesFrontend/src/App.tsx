@@ -24,7 +24,7 @@ function App() {
         <Route path="/bowlingalleys" element={<BowlingAlleys />} />
         <Route path="/openjoin" element={<OpenJoin />} />
         <Route path="/myreservations" element={<MyReservations />} />
-        <Route path="/bowlingcenterid" element={<BowlingCenter />} />
+        <Route path="/bowlingcenter/:id" element={<BowlingCenter />} />
         <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>

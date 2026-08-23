@@ -4,6 +4,7 @@ export interface HeaderProps {
 
 export interface BowlingCenterCardProps {
   bowlingCenterName: string;
+  bowlingCenterID: number;
 }
 
 export interface NextFreeSlotProps {

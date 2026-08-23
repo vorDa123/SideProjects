@@ -8,11 +8,11 @@ function BowlingCentersSection() {
         <input className="border border-darkerBlue-100 rounded-m15 h-5 py-3 px-2 w-1/3 lg:w-2/5 md:w-1/2" type="search" name="search" id="searchDashboard" placeholder="Search..."/>
       </div>
       <div className="flex flex-row flex-nowrap gap-2 snap-x py-2.5 overflow-x-auto md:gap-3.75 xl:gap-5">
-        <BowlingCenterCard bowlingCenterName="West Bowling" />
-        <BowlingCenterCard bowlingCenterName="Kooglana" />
-        <BowlingCenterCard bowlingCenterName="Kooglana" />
-        <BowlingCenterCard bowlingCenterName="Kooglana" />
-        <BowlingCenterCard bowlingCenterName="Kooglana" />
+        <BowlingCenterCard bowlingCenterName="West Bowling" bowlingCenterID={1} />
+        <BowlingCenterCard bowlingCenterName="Kooglana" bowlingCenterID={2}/>
+        <BowlingCenterCard bowlingCenterName="Kooglana" bowlingCenterID={3}/>
+        <BowlingCenterCard bowlingCenterName="Kooglana" bowlingCenterID={4}/>
+        <BowlingCenterCard bowlingCenterName="Kooglana" bowlingCenterID={5}/>
       </div>
     </section>
   );
