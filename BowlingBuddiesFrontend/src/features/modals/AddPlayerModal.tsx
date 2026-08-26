@@ -16,10 +16,6 @@ function AddPlayerModal(props: ModalProps) {
     props.onClose();
   };
 
-  const closeModal = () => {
-    props.onClose?.();
-  };
-
   const goBack = () => {
     props.onBack?.();
   };
@@ -87,7 +83,7 @@ function AddPlayerModal(props: ModalProps) {
                 <BiggerButton
                   variant="fill"
                   buttonName="ADD"
-                  onClick={closeModal}
+                  onClick={goBack}
                 />
                 <BiggerButton
                   variant="no-fill"
