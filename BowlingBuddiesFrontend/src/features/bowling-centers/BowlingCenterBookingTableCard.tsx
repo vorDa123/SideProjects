@@ -7,11 +7,16 @@ function BowlingCenterBookingTableCard(props: BookingCardProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const handleShowModal = () => {
-    setShowModal(prev => !prev);
+    setShowModal((prev) => !prev);
   };
   const handleAddPlayer = () => {
-    setShowModal(prev => !prev);
-    setShowPlayerModal(prev => !prev);
+    setShowModal((prev) => !prev);
+    setShowPlayerModal((prev) => !prev);
+  };
+
+  const handleBack = () => {
+    setShowModal((prev) => !prev);
+    setShowPlayerModal((prev) => !prev);
   };
   return (
     <>
@@ -26,6 +31,7 @@ function BowlingCenterBookingTableCard(props: BookingCardProps) {
         <AddPlayerModal
           isOpen={showPlayerModal}
           onClose={() => setShowPlayerModal(false)}
+          onBack={handleBack}
         />
       )}
       <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">

@@ -69,4 +69,10 @@ export interface ModalProps {
   isOpen?: boolean;
   onClose?: () => void;
   onAddPlayer?: () => void;
+  onBack?: () => void;
+}
+
+export interface BookingFormContextTypes {
+  isJoinClicked: boolean;
+  toggleJoinClicked: () => void;
 }

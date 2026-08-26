@@ -2,11 +2,13 @@ import BookModalForm from "./BookModalForm.tsx";
 import BookModalHeader from "./BookModalHeader.tsx";
 import BookModalFooter from "./BookModalFooter.tsx";
 import BookModalPlayers from "./BookModalPlayers.tsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import type { ModalProps } from "../../types/index.ts";
+import { BookingFormContext } from "../../context/BookFormContext.ts";
 
 function BowlingCenterBookingModal(props: ModalProps) {
+  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
     e.stopPropagation();
     if (!props.onClose) return;
@@ -14,8 +16,12 @@ function BowlingCenterBookingModal(props: ModalProps) {
   };
 
   const closeModal = () => {
-  props.onClose?.();
-};
+    props.onClose?.();
+  };
+
+  const toggleJoinClicked = () => {
+    setIsJoinClicked((prev) => !prev);
+  };
 
   useEffect(() => {
     if (props.isOpen) {
@@ -36,9 +42,16 @@ function BowlingCenterBookingModal(props: ModalProps) {
       <div className="bg-white-100 mx-auto my-5 px-6 py-7 w-9/10 h-[95dvh] fixed bottom-0 left-0 right-0 z-60 rounded-m30 md:w-8/10 lg:w-6/10 xl:w-5/10 xxl:w-4/10 md:py-5 xl:py-5 mxl:py-10 xxl:py-5">
         <div className="overflow-y-auto h-full">
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
-            <BookModalHeader onClose={closeModal}/>
-            <BookModalForm />
-            <BookModalPlayers onClose={closeModal} onAddPlayer={props.onAddPlayer}/>
+            <BookModalHeader onClose={closeModal} />
+            <BookingFormContext value={{ isJoinClicked, toggleJoinClicked }}>
+              <BookModalForm />
+              {isJoinClicked && (
+                <BookModalPlayers
+                  onClose={closeModal}
+                  onAddPlayer={props.onAddPlayer}
+                />
+              )}
+            </BookingFormContext>
             <BookModalFooter />
           </div>
         </div>

@@ -1,12 +1,16 @@
 import InputField from "../../components/ui/InputField";
+import { useContext } from "react";
+import { BookingFormContext } from "../../context/BookFormContext";
+
 function BookModalForm() {
+  const { isJoinClicked, toggleJoinClicked } = useContext(BookingFormContext);
   return (
     <>
       <div className="col-span-8 mt-5 mb-1">
         <InputField name="email" type="email" labelName="Email:" />
       </div>
       <div className="col-span-8 mt-1">
-        <InputField name="phone" type="number" labelName="Phone:" />        
+        <InputField name="phone" type="number" labelName="Phone:" />
       </div>
       <div className="col-span-8 mt-5">
         <p className="text-mh4">Time</p>
@@ -24,10 +28,10 @@ function BookModalForm() {
         <span>14:45</span>
       </div>
       <div className="col-span-4 mt-5">
-        <InputField name="duration" type="number" labelName="Duration (h):" />        
+        <InputField name="duration" type="number" labelName="Duration (h):" />
       </div>
       <div className="col-span-4 mt-5">
-        <InputField name="players" type="number" labelName="No. of players:" />        
+        <InputField name="players" type="number" labelName="No. of players:" />
       </div>
       <div className="col-span-4 mt-5 md:col-span-2">
         <label htmlFor="shoes" className="text-mh4">
@@ -60,7 +64,12 @@ function BookModalForm() {
         </label>
         <br />
         <label className="inline-flex items-center cursor-pointer w-max">
-          <input type="checkbox" className="sr-only peer" />
+          <input
+            type="checkbox"
+            className="sr-only peer"
+            checked={isJoinClicked}
+            onChange={toggleJoinClicked}
+          />
 
           <div className="w-11.25 h-11.25 bg-white-100 border border-darkerBlue-100 rounded-m7 flex items-center justify-center transition-all peer-checked:bg-white-100 peer-checked:[&>svg]:block">
             <svg
@@ -88,7 +97,7 @@ function BookModalForm() {
           id=""
           className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
         >
-          <option value="">-- Please choose a friend --</option>
+          <option value="">-- Please choose a reservation type --</option>
           <option value="Fun">Fun</option>
           <option value="Professional">Professional</option>
           <option value="Training">Training</option>
@@ -100,7 +109,12 @@ function BookModalForm() {
         </label>
         <br />
         <label className="inline-flex items-center cursor-pointer w-max">
-          <input type="checkbox" className="sr-only peer" />
+          <input
+            type="checkbox"
+            className="sr-only peer"
+            checked={isJoinClicked}
+            onChange={toggleJoinClicked}
+          />
 
           <div className="w-11.25 h-11.25 bg-white-100 border border-darkerBlue-100 rounded-m7 flex items-center justify-center transition-all peer-checked:bg-white-100 peer-checked:[&>svg]:block">
             <svg

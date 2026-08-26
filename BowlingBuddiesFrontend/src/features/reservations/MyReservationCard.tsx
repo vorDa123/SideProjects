@@ -23,6 +23,11 @@ function MyReservationCard({ myReservationPage = false }: MyReservationsProps) {
     setShowModal((prev) => !prev);
     setShowPlayerModal((prev) => !prev);
   };
+
+  const handleBack = () => {
+    setShowModal((prev) => !prev);
+    setShowPlayerModal((prev) => !prev);
+  };
   return (
     <>
       {showModal && (
@@ -36,6 +41,7 @@ function MyReservationCard({ myReservationPage = false }: MyReservationsProps) {
         <AddPlayerModal
           isOpen={showPlayerModal}
           onClose={() => setShowPlayerModal(false)}
+          onBack={handleBack}
         />
       )}
       <div
