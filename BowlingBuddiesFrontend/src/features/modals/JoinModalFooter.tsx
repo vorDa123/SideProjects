@@ -1,5 +1,6 @@
 import BiggerButton from "../../components/ui/BiggerButton.tsx";
-function JoinModalFooter() {
+import type { ModalProps } from "../../types";
+function JoinModalFooter(props: ModalProps) {
   return (
     <>
       <div className="col-span-5 mt-6 self-center md:relative md:mt-5">
@@ -7,6 +8,7 @@ function JoinModalFooter() {
           variant="fill"
           buttonName="JOIN"
           classAppend="md:absolute md:right-[-30px] md:top-[-30px] lg:right-[-10px] mxl:right-[-20px] xxl:right-[-20px] active:md:top-[-25px]"
+          onClick={props.onClose}
         />
       </div>
       <div className="col-span-3 mt-6 md:mt-5">

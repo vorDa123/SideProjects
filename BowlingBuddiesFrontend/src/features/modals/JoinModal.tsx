@@ -22,6 +22,10 @@ function JoinModal(props: ModalProps) {
     props.onClose();
   };
 
+  const closeModal = () => {
+    props.onClose?.();
+  };
+
   useEffect(() => {
     if (props.isOpen) {
       document.body.style.overflow = "hidden";
@@ -57,7 +61,7 @@ function JoinModal(props: ModalProps) {
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
             <JoinModalInfo />
             <JoinModalPlayers />
-            <JoinModalFooter />
+            <JoinModalFooter onClose={closeModal}/>
           </div>
         </div>
       </div>

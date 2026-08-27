@@ -2,13 +2,13 @@ import BookModalForm from "./BookModalForm.tsx";
 import BookModalHeader from "./BookModalHeader.tsx";
 import BookModalFooter from "./BookModalFooter.tsx";
 import BookModalPlayers from "./BookModalPlayers.tsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { ModalProps } from "../../types/index.ts";
 import { BookingFormContext } from "../../context/BookFormContext.ts";
 
 function BowlingCenterBookingModal(props: ModalProps) {
-  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
+  const isJoinClicked = props.isJoinClicked!;
   const currentHeight = isJoinClicked ? "95dvh" : "80dvh";
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
     e.stopPropagation();
@@ -21,7 +21,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
   };
 
   const toggleJoinClicked = () => {
-    setIsJoinClicked((prev) => !prev);
+    props.setIsJoinClicked?.();
   };
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
                 />
               )}
             </BookingFormContext>
-            <BookModalFooter />
+            <BookModalFooter onClose={closeModal}/>
           </div>
         </div>
       </div>

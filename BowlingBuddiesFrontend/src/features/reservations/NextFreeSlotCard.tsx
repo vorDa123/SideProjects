@@ -12,14 +12,17 @@ import { useState } from "react";
 function NextFreeSlotCard() {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
+  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
   const handleShowModal = () => {
-    setShowModal(prev => !prev);
+    setShowModal((prev) => !prev);
   };
   const handleAddPlayer = () => {
-    setShowModal(prev => !prev);
-    setShowPlayerModal(prev => !prev);
+    setShowModal((prev) => !prev);
+    setShowPlayerModal((prev) => !prev);
   };
-
+  const handleJoinClicked = () => {
+    setIsJoinClicked((prev) => !prev);
+  };
   const handleBack = () => {
     setShowModal((prev) => !prev);
     setShowPlayerModal((prev) => !prev);
@@ -29,8 +32,10 @@ function NextFreeSlotCard() {
       {showModal && (
         <BowlingCenterBookingModal
           isOpen={showModal}
-          onClose={() => setShowModal(false)}
+          onClose={handleShowModal}
           onAddPlayer={handleAddPlayer}
+          isJoinClicked={isJoinClicked}
+          setIsJoinClicked={handleJoinClicked}
         />
       )}
       {showPlayerModal && (
@@ -40,7 +45,10 @@ function NextFreeSlotCard() {
           onBack={handleBack}
         />
       )}
-      <div className="rounded-m15 shadow-mob w-full h-32.5 bg-white-100 flex flex-row cursor-pointer" onClick={handleShowModal}>
+      <div
+        className="rounded-m15 shadow-mob w-full h-32.5 bg-white-100 flex flex-row cursor-pointer"
+        onClick={handleShowModal}
+      >
         <div className="w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(/src/assets/playerBowling.jpg)] bg-center bg-cover"></div>
         <div className="flex flex-col gap-6 md:gap-5 w-2/3 px-2 py-2">
           <p className="text-mh2 font-medium">West Bowling</p>

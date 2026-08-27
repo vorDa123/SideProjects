@@ -67,9 +67,11 @@ export interface NavigationContextTypes {
 
 export interface ModalProps {
   isOpen?: boolean;
+  isJoinClicked?: boolean;
   onClose?: () => void;
   onAddPlayer?: () => void;
   onBack?: () => void;
+  setIsJoinClicked?: () => void;
 }
 
 export interface BookingFormContextTypes {

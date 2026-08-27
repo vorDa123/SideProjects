@@ -16,6 +16,7 @@ import { useState } from "react";
 function MyReservationCard({ myReservationPage = false }: MyReservationsProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
+  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -23,7 +24,9 @@ function MyReservationCard({ myReservationPage = false }: MyReservationsProps) {
     setShowModal((prev) => !prev);
     setShowPlayerModal((prev) => !prev);
   };
-
+  const handleJoinClicked = () => {
+    setIsJoinClicked((prev) => !prev);
+  };
   const handleBack = () => {
     setShowModal((prev) => !prev);
     setShowPlayerModal((prev) => !prev);
@@ -33,8 +36,10 @@ function MyReservationCard({ myReservationPage = false }: MyReservationsProps) {
       {showModal && (
         <EditBookingModal
           isOpen={showModal}
-          onClose={() => setShowModal(false)}
+          onClose={handleShowModal}
           onAddPlayer={handleAddPlayer}
+          isJoinClicked={isJoinClicked}
+          setIsJoinClicked={handleJoinClicked}
         />
       )}
       {showPlayerModal && (

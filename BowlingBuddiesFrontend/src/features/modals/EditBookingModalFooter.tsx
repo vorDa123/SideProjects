@@ -1,11 +1,20 @@
 import BiggerButton from "../../components/ui/BiggerButton.tsx";
-function EditBookModalFooter() {
+import type { ModalProps } from "../../types";
+function EditBookModalFooter(props: ModalProps) {
   return (
     <>
       <div className="col-span-5 mt-5 self-center">
         <div className="flex flex-col gap-2 md:flex-row-reverse lg:gap-5">
-          <BiggerButton variant="fill" buttonName="SAVE" />
-          <BiggerButton variant="no-fill" buttonName="CANCEL" />
+          <BiggerButton
+            variant="fill"
+            buttonName="SAVE"
+            onClick={props.onClose}
+          />
+          <BiggerButton
+            variant="no-fill"
+            buttonName="CANCEL"
+            onClick={props.onClose}
+          />
         </div>
       </div>
       <div className="col-span-3 mt-5 self-end">
