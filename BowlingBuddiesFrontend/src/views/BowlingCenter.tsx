@@ -3,12 +3,10 @@ import HeaderMob from "../components/layouts/Header.tsx";
 import BowlingCenterBookingTable from "../features/bowling-centers/BowlingCenterBookingTable.tsx";
 import BowlingCenterWorkingHoursTable from "../features/bowling-centers/BowlingCenterWorkingHoursTable.tsx";
 import BowlingCenterGeneralInfo from "../features/bowling-centers/BowlingCenterGeneralInfo.tsx";
-// import BowlingCenterBookModal from "../features/modals/BowlingCenterBookModal.tsx";
 function BowlingCenter() {
   return (
     <>
       <div className="grid grid-cols-1">
-        {/* <BowlingCenterBookModal /> */}
         <HeaderMob />
         <div className="hidden lg:block">
           <Navigation />

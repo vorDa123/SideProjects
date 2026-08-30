@@ -26,7 +26,7 @@ function Player(props: PlayerProps) {
           </div>
           <span className="inline-block mt-2">
             {props.playerName}{" "}
-            {props.isLeader ? <FontAwesomeIcon icon={faAward} /> : ""}
+            {props.isLeader && <FontAwesomeIcon icon={faAward} />}
           </span>
         </div>
       </>
