@@ -78,3 +78,100 @@ export interface BookingFormContextTypes {
   isJoinClicked: boolean;
   toggleJoinClicked: () => void;
 }
+
+export interface AddressData {
+  address: string;
+  city: string;
+  country: string;
+  address2?: string;
+  postalCode: string;
+  state?: string;
+}
+
+export interface UserPersonalData {
+  name: string;
+  surname: string;
+  gender?: string;
+  dateOfBirth?: string;
+  profileImage?: string;
+  oib?: string;
+}
+
+export interface UserContactData {
+  email: string;
+  phone?: string;
+}
+
+export interface RegisteredUserData {
+  registeredPlayer: boolean;
+  registeredClub?: string;
+}
+
+export interface UserData {
+  id: string;
+  personalData: UserPersonalData;
+  contactData: UserContactData;
+  registeredData: RegisteredUserData;
+  addressData: AddressData;
+  leader?: boolean;
+}
+
+export interface WorkingInfoData {
+  open: boolean;
+  startTime?: string;
+  endTime?: string;
+}
+
+export interface WorkingDaysData {
+  monday: WorkingInfoData;
+  tuesday: WorkingInfoData;
+  wednesday: WorkingInfoData;
+  thursday: WorkingInfoData;
+  friday: WorkingInfoData;
+  saturday: WorkingInfoData;
+  sunday: WorkingInfoData;
+}
+
+export interface BowlingCenterData {
+  id: string;
+  name: string;
+  location: string;
+  img: string;
+  workingInfo: WorkingDaysData;
+  lanes: number;
+  description?: string;
+  email: string;
+  phone: string;
+}
+
+export interface BookingSlotData {
+  id: string;
+  bowlingCenterInfo: BowlingCenterData;
+  laneNumber: number;
+  startTime: string;
+  endTime: string;
+  date: string;
+  singlePrice: number;
+  price: number;
+  shoesNeeded: boolean;
+  shoesPrice: number;
+  priceWithShoes: number;
+  openJoin: boolean;
+  duration: number;
+  numberOfPlayers: number;
+  email: string;
+  phone: string;
+  reservationType: string;
+}
+
+export type JoinStatus = "free" | "full" | "cancelled";
+
+export interface JoinData {
+  id: string;
+  leader: UserData;
+  bowlingCenterData: BowlingCenterData;
+  date: string;
+  time: string;
+  joinedPlayers: UserData[];
+  status: JoinStatus;
+}
