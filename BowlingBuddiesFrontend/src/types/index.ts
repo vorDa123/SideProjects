@@ -142,12 +142,13 @@ export interface BowlingCenterData {
   description?: string;
   email: string;
   phone: string;
+  maxPlayersPerAlley?: number;
 }
 
 export interface BookingSlotData {
   id: string;
   bowlingCenterInfo: BowlingCenterData;
-  laneNumber: number;
+  laneNumber?: number;
   startTime: string;
   endTime: string;
   date: string;
@@ -160,7 +161,7 @@ export interface BookingSlotData {
   duration: number;
   numberOfPlayers: number;
   email: string;
-  phone: string;
+  phone?: string;
   reservationType: string;
 }
 
@@ -168,10 +169,20 @@ export type JoinStatus = "free" | "full" | "cancelled";
 
 export interface JoinData {
   id: string;
-  leader: UserData;
+  host: UserData;
   bowlingCenterData: BowlingCenterData;
   date: string;
   time: string;
   joinedPlayers: UserData[];
   status: JoinStatus;
+  numberOfBookedLanes: number,
+}
+
+export interface NextSlotData {
+  id: string;
+  bowlingCenterData: BowlingCenterData;
+  date: string;
+  time: string;
+  status?: JoinStatus;
+  numberOfFreeLanes: number,
 }
