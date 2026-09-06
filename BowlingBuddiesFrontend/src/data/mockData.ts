@@ -127,7 +127,7 @@ export const BOWLING_CENTERS: BowlingCenterData[] = [
   },
 ];
 
-export const BOOKED_SLOT: BookingSlotData[] = [
+export const MY_RESERVATIONS: BookingSlotData[] = [
   {
     id: "sdsdiaodmoiuwnu122w43oawskned",
     bowlingCenterInfo: {
