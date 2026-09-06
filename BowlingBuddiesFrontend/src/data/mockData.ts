@@ -728,7 +728,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
     ],
-    status: "free",
+    status: "full",
     numberOfBookedLanes: 2,
   },
   {
@@ -1086,7 +1086,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
     ],
-    status: "free",
+    status: "full",
     numberOfBookedLanes: 2,
   },
   {
@@ -1444,7 +1444,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
     ],
-    status: "free",
+    status: "cancelled",
     numberOfBookedLanes: 2,
   },
   {
