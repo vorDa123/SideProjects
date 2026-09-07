@@ -6,6 +6,10 @@ import {
 } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
 
+import type { BookingSlotData, UserData } from "../types/index.ts";
+
+const originalMyReservations = MY_RESERVATIONS;
+
 const getBowlingCentersHandler = async () => {
   await delay(3000);
   const bowlingCenters = BOWLING_CENTERS;
@@ -40,10 +44,67 @@ const getJoinSlotHandler = async () => {
 
 const getMyReservationsHandler = async () => {
   await delay(3000);
-  const myReservations = MY_RESERVATIONS;
 
-  console.log("Fetched my reservations:", myReservations);
-  return myReservations;
+  console.log("Fetched my reservations:", originalMyReservations);
+  return originalMyReservations;
+};
+
+const createReservationHandler = async (data: BookingSlotData) => {
+  await delay(3000);
+
+  const randomID = crypto.randomUUID();
+
+  const reservationExists = originalMyReservations.some((item) => {
+    return randomID === item.id;
+  });
+
+  if (!data) return originalMyReservations;
+
+  if (reservationExists) {
+    throw new Error("Reservation already exists");
+  }
+
+  data.id = randomID;
+  console.log("Original reservation before append:", originalMyReservations);
+  console.log("Added reservation:", data);
+  originalMyReservations.push(data);
+  console.log("Original reservation after append:", originalMyReservations);
+
+  return originalMyReservations;
+};
+
+const joinPlayerHandler = async (resId: string, player: UserData) => {
+  await delay(3000);
+  const freeJoinSlotReservations = JOIN_SLOT.map((item) => item).filter(
+    (item) => {
+      return item.status === "free";
+    },
+  );
+  const reservation = freeJoinSlotReservations.find((item) => {
+    return resId === item.id;
+  });
+  console.log("Original reservation:", reservation);
+
+  if (!reservation) throw new Error("Reservation is not found");
+  const foundPlayer = reservation.joinedPlayers?.find((item) => {
+    return item.id === player.id;
+  });
+  console.log("Found player:", foundPlayer);
+  const maxNumberOfPlayers = reservation.numberOfBookedLanes * 6;
+  const numberOfJoinedPlayers = reservation.joinedPlayers?.length || 0;
+
+  if (numberOfJoinedPlayers === maxNumberOfPlayers || foundPlayer) {
+    if (numberOfJoinedPlayers === maxNumberOfPlayers) {
+      reservation.status = "full";
+    }
+    throw new Error("Reservation is full or the player is already added");
+  }
+
+  reservation.joinedPlayers?.push(player);
+
+  console.log("Updated reservation:", reservation);
+
+  return reservation;
 };
 
 export {
@@ -51,4 +112,6 @@ export {
   getJoinSlotHandler,
   getMyReservationsHandler,
   getBowlingCentersHandler,
+  createReservationHandler,
+  joinPlayerHandler,
 };

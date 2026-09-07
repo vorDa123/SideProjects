@@ -146,17 +146,17 @@ export interface BowlingCenterData {
 }
 
 export interface BookingSlotData {
-  id: string;
+  id?: string;
   bowlingCenterInfo: BowlingCenterData;
   laneNumber?: number;
   startTime: string;
-  endTime: string;
+  endTime?: string;
   date: string;
-  singlePrice: number;
-  price: number;
+  singlePrice?: number;
+  price?: number;
   shoesNeeded: boolean;
-  shoesPrice: number;
-  priceWithShoes: number;
+  shoesPrice?: number;
+  priceWithShoes?: number;
   openJoin: boolean;
   duration: number;
   numberOfPlayers: number;
@@ -173,7 +173,7 @@ export interface JoinData {
   bowlingCenterData: BowlingCenterData;
   date: string;
   time: string;
-  joinedPlayers: UserData[];
+  joinedPlayers?: UserData[];
   status: JoinStatus;
   numberOfBookedLanes: number,
 }
