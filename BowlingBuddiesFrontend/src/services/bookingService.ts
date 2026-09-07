@@ -54,6 +54,11 @@ const createReservationHandler = async (data: BookingSlotData) => {
 
   const randomID = crypto.randomUUID();
 
+  const newReservation: BookingSlotData = {
+    ...data,
+    id: randomID,
+  };
+
   const reservationExists = originalMyReservations.some((item) => {
     return randomID === item.id;
   });
@@ -63,14 +68,12 @@ const createReservationHandler = async (data: BookingSlotData) => {
   if (reservationExists) {
     throw new Error("Reservation already exists");
   }
-
-  data.id = randomID;
   console.log("Original reservation before append:", originalMyReservations);
-  console.log("Added reservation:", data);
-  originalMyReservations.push(data);
+  console.log("Added reservation:", newReservation);
+  originalMyReservations.push(newReservation);
   console.log("Original reservation after append:", originalMyReservations);
 
-  return originalMyReservations;
+  return [...originalMyReservations];
 };
 
 const joinPlayerHandler = async (resId: string, player: UserData) => {
