@@ -14,7 +14,7 @@ const getBowlingCentersHandler = async () => {
   await delay(3000);
   const bowlingCenters = BOWLING_CENTERS;
 
-  console.log("Fetched free slots:", bowlingCenters);
+  console.log("Fetched centers:", bowlingCenters);
   return bowlingCenters;
 };
 

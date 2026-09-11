@@ -4,7 +4,7 @@ export interface HeaderProps {
 
 export interface BowlingCenterCardProps {
   bowlingCenterName: string;
-  bowlingCenterID: number;
+  bowlingCenterID: string;
 }
 
 export interface NextFreeSlotProps {
@@ -175,7 +175,7 @@ export interface JoinData {
   time: string;
   joinedPlayers?: UserData[];
   status: JoinStatus;
-  numberOfBookedLanes: number,
+  numberOfBookedLanes: number;
 }
 
 export interface NextSlotData {
@@ -184,5 +184,21 @@ export interface NextSlotData {
   date: string;
   time: string;
   status?: JoinStatus;
-  numberOfFreeLanes: number,
+  numberOfFreeLanes: number;
+}
+
+export interface BookingContextTypes {
+  isLoading?: boolean;
+  error?: string | null;
+  centers?: BowlingCenterData[];
+  freeSlots?: NextSlotData[];
+  myReservations?: BookingSlotData[];
+  fetchCenters?: () => Promise<void>;
+  fetchFreeSlots?: () => Promise<void>;
+  fetchMyReservations?: () => Promise<void>;
+  createReservation?: (data: BookingSlotData) => Promise<void>;
+}
+
+export interface BookingProviderProps {
+  children: React.ReactNode;
 }
