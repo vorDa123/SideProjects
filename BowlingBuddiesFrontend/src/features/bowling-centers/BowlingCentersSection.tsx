@@ -21,6 +21,8 @@ function BowlingCentersSection() {
         <div className="bg-gray-400 shrink-0 w-45.25 h-48.25 rounded-m20"></div>
         <div className="bg-gray-400 shrink-0 w-45.25 h-48.25 rounded-m20"></div>
         <div className="bg-gray-400 shrink-0 w-45.25 h-48.25 rounded-m20"></div>
+        <div className="bg-gray-400 shrink-0 w-45.25 h-48.25 rounded-m20"></div>
+        <div className="bg-gray-400 shrink-0 w-45.25 h-48.25 rounded-m20"></div>
       </div>
     </section>
   ) : (
