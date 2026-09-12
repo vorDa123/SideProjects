@@ -8,8 +8,9 @@ import {
 import BowlingCenterBookingModal from "../modals/BowlingCenterBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
 import { useState } from "react";
+import type { NextFreeSlotCardProps } from "../../types/index.ts";
 
-function NextFreeSlotCard() {
+function NextFreeSlotCard(props: NextFreeSlotCardProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
@@ -51,22 +52,22 @@ function NextFreeSlotCard() {
       >
         <div className="w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(/src/assets/playerBowling.jpg)] bg-center bg-cover"></div>
         <div className="flex flex-col gap-6 md:gap-5 w-2/3 px-2 py-2">
-          <p className="text-mh2 font-medium">West Bowling</p>
+          <p className="text-mh2 font-medium">{props.freeSlotData.bowlingCenterData.name}</p>
           <div className="flex flex-col gap-5 md:gap-3">
             <div className="flex flex-row gap-10">
-              <span>
-                <FontAwesomeIcon icon={faCalendarDays} /> 14.05.2026.
+              <span className="w-2/3">
+                <FontAwesomeIcon icon={faCalendarDays} /> {props.freeSlotData.date}
               </span>
-              <span>
-                <FontAwesomeIcon icon={faClock} /> 18:00
+              <span className="w-1/3">
+                <FontAwesomeIcon icon={faClock} /> {props.freeSlotData.time}
               </span>
             </div>
             <div className="flex flex-row gap-10">
-              <span>
-                <FontAwesomeIcon icon={faLocationDot} /> West Gate
+              <span className="truncate w-2/3">
+                <FontAwesomeIcon icon={faLocationDot} /> {props.freeSlotData.bowlingCenterData.location}
               </span>
-              <span>
-                <FontAwesomeIcon icon={faUserGroup} /> 6
+              <span className="w-1/3">
+                <FontAwesomeIcon icon={faUserGroup} /> {props.freeSlotData.numberOfFreeLanes}
               </span>
             </div>
           </div>

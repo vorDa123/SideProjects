@@ -37,6 +37,7 @@ export const BOWLING_CENTERS: BowlingCenterData[] = [
     id: "asdkmnasjdn123sanmj",
     name: "West Bowling",
     location: "Zaprešićka 2, 10290, Jablanovec",
+    center: "West Gate",
     img: "/src/assets/playerBowling.jpg",
     workingInfo: {
       monday: {
@@ -82,6 +83,7 @@ export const BOWLING_CENTERS: BowlingCenterData[] = [
     id: "sajkdfnmasjidn13829ansjkd",
     name: "Kooglana",
     location: "Trg Drage Iblera 10, 10000, Zagreb",
+    center: "Importane Galerija",
     img: "/src/assets/playerBowling.jpg",
     workingInfo: {
       monday: {
@@ -133,7 +135,7 @@ export const MY_RESERVATIONS: BookingSlotData[] = [
     bowlingCenterInfo: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
-      location: "Zaprešićka 2, 10290, Jablanovec",
+      location: "Zaprešićka 2, 10290, Jablanovec",center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -225,6 +227,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -404,6 +407,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -583,6 +587,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -762,6 +767,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -941,6 +947,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -1120,6 +1127,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -1299,6 +1307,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -1478,6 +1487,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -1657,6 +1667,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -1836,6 +1847,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2015,6 +2027,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2194,6 +2207,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2373,6 +2387,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2552,6 +2567,7 @@ export const JOIN_SLOT: JoinData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2709,6 +2725,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2761,6 +2778,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2813,6 +2831,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2865,6 +2884,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2917,6 +2937,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -2969,6 +2990,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3021,6 +3043,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3073,6 +3096,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3125,6 +3149,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3177,6 +3202,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3229,6 +3255,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3281,6 +3308,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3333,6 +3361,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3385,6 +3414,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3437,6 +3467,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3489,6 +3520,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3541,6 +3573,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3593,6 +3626,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3645,6 +3679,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -3697,6 +3732,7 @@ export const FREE_SLOT: NextSlotData[] = [
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
       location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {

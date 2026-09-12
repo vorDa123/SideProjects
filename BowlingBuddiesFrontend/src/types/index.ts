@@ -5,10 +5,15 @@ export interface HeaderProps {
 export interface BowlingCenterCardProps {
   bowlingCenterName: string;
   bowlingCenterID: string;
+  center?: BowlingCenterData;
 }
 
 export interface NextFreeSlotProps {
   bowlingCenterPage?: boolean;
+}
+
+export interface NextFreeSlotCardProps {
+  freeSlotData: NextSlotData;
 }
 
 export interface OpenJoinProps {
@@ -27,6 +32,10 @@ export interface MyProfileProps {
 
 export interface MyReservationsProps {
   myReservationPage?: boolean;
+}
+
+export interface MyReservationsCardProps {
+  myReservationData: BookingSlotData;
 }
 
 export interface ButtonProps {
@@ -136,6 +145,7 @@ export interface BowlingCenterData {
   id: string;
   name: string;
   location: string;
+  center: string;
   img: string;
   workingInfo: WorkingDaysData;
   lanes: number;
