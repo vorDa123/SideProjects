@@ -7,12 +7,12 @@ import { useBooking } from "../../hooks/useBooking.tsx";
 import { useEffect } from "react";
 
 function NextFreeSlotSection({ bowlingCenterPage = false }: NextFreeSlotProps) {
-  const { freeSlots, fetchFreeSlots, isLoading } = useBooking();
+  const { freeSlots, fetchFreeSlots, isLoadingFreeSlots } = useBooking();
 
   useEffect(() => {
     fetchFreeSlots!();
   }, []);
-  return isLoading ? (
+  return isLoadingFreeSlots ? (
     <>
       {bowlingCenterPage ? (
         <section className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xxl:col-span-24">

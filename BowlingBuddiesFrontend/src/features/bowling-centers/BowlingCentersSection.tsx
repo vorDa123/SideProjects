@@ -3,13 +3,13 @@ import { useBooking } from "../../hooks/useBooking.tsx";
 import { useEffect } from "react";
 
 function BowlingCentersSection() {
-  const { centers, fetchCenters, isLoading } = useBooking();
+  const { centers, fetchCenters, isLoadingCenters } = useBooking();
 
   useEffect(() => {
     fetchCenters!();
   }, []);
 
-  return isLoading ? (
+  return isLoadingCenters ? (
     <section className="pt-5 pb-2.5 w-full lg:col-span-12 md:col-span-2 xxl:col-span-24">
       <div className="flex flex-row items-center justify-between gap-10">
         <div className="bg-gray-400 w-2/3 md:w-1/2 lg:w-3/5 h-7 rounded-m20"></div>
@@ -46,6 +46,7 @@ function BowlingCentersSection() {
               key={center.id}
               bowlingCenterName={center.name}
               bowlingCenterID={center.id}
+              center={center}
             />
           );
         })}

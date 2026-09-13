@@ -50,11 +50,11 @@ function NextFreeSlotCard(props: NextFreeSlotCardProps) {
         className="rounded-m15 shadow-mob w-full h-32.5 bg-white-100 flex flex-row cursor-pointer"
         onClick={handleShowModal}
       >
-        <div className="w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(/src/assets/playerBowling.jpg)] bg-center bg-cover"></div>
+        <div className={`w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(${props.freeSlotData.bowlingCenterData.img})] bg-center bg-cover`}></div>
         <div className="flex flex-col gap-6 md:gap-5 w-2/3 px-2 py-2">
           <p className="text-mh2 font-medium">{props.freeSlotData.bowlingCenterData.name}</p>
           <div className="flex flex-col gap-5 md:gap-3">
-            <div className="flex flex-row gap-10">
+            <div className="flex flex-row gap-5">
               <span className="w-2/3">
                 <FontAwesomeIcon icon={faCalendarDays} /> {props.freeSlotData.date}
               </span>
@@ -62,7 +62,7 @@ function NextFreeSlotCard(props: NextFreeSlotCardProps) {
                 <FontAwesomeIcon icon={faClock} /> {props.freeSlotData.time}
               </span>
             </div>
-            <div className="flex flex-row gap-10">
+            <div className="flex flex-row gap-5">
               <span className="truncate w-2/3">
                 <FontAwesomeIcon icon={faLocationDot} /> {props.freeSlotData.bowlingCenterData.location}
               </span>

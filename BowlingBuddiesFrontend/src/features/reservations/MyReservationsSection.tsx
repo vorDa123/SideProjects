@@ -6,13 +6,19 @@ import type { MyReservationsProps } from "../../types/index.ts";
 import { useBooking } from "../../hooks/useBooking.tsx";
 import { useEffect } from "react";
 
+import { useNavigate } from "react-router";
+
 function MyReservations({ myReservationPage = false }: MyReservationsProps) {
-  const { myReservations, fetchMyReservations, isLoading } = useBooking();
+  const { myReservations, fetchMyReservations, isLoadingMyReservations } = useBooking();
+  const navigate = useNavigate();
+  const handleNavigateMyProfile = () => {
+    navigate(`/myprofile`);
+  };
 
   useEffect(() => {
     fetchMyReservations!();
   }, []);
-  return isLoading ? (
+  return isLoadingMyReservations ? (
     <>
       {myReservationPage ? (
         <section className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xxl:col-span-24">
@@ -60,13 +66,23 @@ function MyReservations({ myReservationPage = false }: MyReservationsProps) {
     <>
       {myReservationPage ? (
         <section className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xxl:col-span-24">
-          <h1 className="text-mh1 font-semibold">My Reservations</h1>
+          <div className="text-mh1 font-semibold">
+            <span
+              className="text-darkerBlue-50 cursor-pointer"
+              onClick={handleNavigateMyProfile}
+            >
+              My Profile
+            </span>{" "}
+            {">"}{" "}
+            <span>My Reservations</span>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-3 pt-2">
             {(myReservations ?? []).map((reservation) => {
               return (
                 <MyReservationCard
                   key={reservation.id}
                   myReservationPage={true}
+                  myReservationData={reservation}
                 />
               );
             })}
@@ -78,7 +94,12 @@ function MyReservations({ myReservationPage = false }: MyReservationsProps) {
           <div className="grid grid-cols-1 gap-3 pt-2">
             {(myReservations ?? [])
               .map((reservation) => {
-                return <MyReservationCard key={reservation.id} />;
+                return (
+                  <MyReservationCard
+                    key={reservation.id}
+                    myReservationData={reservation}
+                  />
+                );
               })
               .slice(0, 5)}
             <p className="text-mlinks text-right md:text-tlinks">

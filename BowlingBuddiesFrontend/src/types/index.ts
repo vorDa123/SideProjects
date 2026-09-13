@@ -32,9 +32,6 @@ export interface MyProfileProps {
 
 export interface MyReservationsProps {
   myReservationPage?: boolean;
-}
-
-export interface MyReservationsCardProps {
   myReservationData: BookingSlotData;
 }
 
@@ -198,7 +195,9 @@ export interface NextSlotData {
 }
 
 export interface BookingContextTypes {
-  isLoading?: boolean;
+  isLoadingCenters?: boolean;
+  isLoadingFreeSlots?: boolean;
+  isLoadingMyReservations?: boolean;
   error?: string | null;
   centers?: BowlingCenterData[];
   freeSlots?: NextSlotData[];

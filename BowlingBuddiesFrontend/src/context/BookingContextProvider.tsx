@@ -18,12 +18,15 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
   const [centers, setCenters] = useState<BowlingCenterData[]>([]);
   const [freeSlots, setFreeSlots] = useState<NextSlotData[]>([]);
   const [myReservations, setMyReservations] = useState<BookingSlotData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadingCenters, setIsLoadingCenters] = useState<boolean>(false);
+  const [isLoadingFreeSlots, setIsLoadingFreeSlots] = useState<boolean>(false);
+  const [isLoadingMyReservations, setIsLoadingMyReservations] =
+    useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchCenters = async () => {
     try {
-      setIsLoading(true);
+      setIsLoadingCenters(true);
       setError(null);
       const res = await getBowlingCentersHandler();
       setCenters(res);
@@ -34,13 +37,13 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
         setError("An unknown error occurred");
       }
     } finally {
-      setIsLoading(false);
+      setIsLoadingCenters(false);
     }
   };
 
   const fetchFreeSlots = async () => {
     try {
-      setIsLoading(true);
+      setIsLoadingFreeSlots(true);
       setError(null);
       const res = await getNextFreeSlotHandler();
       setFreeSlots(res);
@@ -51,13 +54,13 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
         setError("An unknown error occurred");
       }
     } finally {
-      setIsLoading(false);
+      setIsLoadingFreeSlots(false);
     }
   };
 
   const fetchMyReservations = async () => {
     try {
-      setIsLoading(true);
+      setIsLoadingMyReservations(true);
       setError(null);
       const res = await getMyReservationsHandler();
       setMyReservations(res);
@@ -68,7 +71,7 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
         setError("An unknown error occurred");
       }
     } finally {
-      setIsLoading(false);
+      setIsLoadingMyReservations(false);
     }
   };
 
@@ -87,7 +90,9 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
   };
 
   const value: BookingContextTypes = {
-    isLoading,
+    isLoadingCenters,
+    isLoadingFreeSlots,
+    isLoadingMyReservations,
     error,
     centers,
     freeSlots,
