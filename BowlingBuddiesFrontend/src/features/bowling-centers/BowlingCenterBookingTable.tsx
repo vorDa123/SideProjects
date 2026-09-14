@@ -2,29 +2,29 @@ import BowlingCenterBookingTableCard from "./BowlingCenterBookingTableCard";
 import type { BowlingCenterDataProps } from "../../types";
 import { useState } from "react";
 import {
-  dateIntoJulian,
-  julianIntoDate,
-  formatDate,
-  getDayName,
+  formatDateIntl,
+  getDayNameIntl,
 } from "../../services/dateServices";
 
 function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
   const [today, setToday] = useState(() => new Date());
-  const todayDay = getDayName(today.getDay());
-  const dateFormatToDisplay = formatDate(today, "DD.MM.YYYY");
+  const todayDay = getDayNameIntl(today);
+  const dateFormatToDisplay = formatDateIntl(today);
 
   const handleNextDay = () => {
-    const julianToday = dateIntoJulian(today);
-    const nextDayJulian = julianToday + 1;
-    const nextDayDate = julianIntoDate(nextDayJulian);
-    setToday(nextDayDate);
+    setToday((prevDate) => {
+      const next = new Date(prevDate);
+      next.setDate(next.getDate() + 1);
+      return next;
+    });
   };
 
   const handlePreviousDay = () => {
-    const julianToday = dateIntoJulian(today);
-    const previousDayJulian = julianToday - 1;
-    const previousDayDate = julianIntoDate(previousDayJulian);
-    setToday(previousDayDate);
+    setToday((prevDate) => {
+      const prev = new Date(prevDate);
+      prev.setDate(prev.getDate() - 1);
+      return prev;
+    });
   };
   return (
     <>

@@ -26,7 +26,8 @@ const julianIntoDate = (julianDate: number) => {
   //Formula can be found in the PDF document referenced on this link: https://aa.usno.navy.mil/faq/JD_formula
   const JD = Math.floor(julianDate + 0.5);
   const f = JD + 1401;
-  const f2 = f + Math.floor((Math.floor((4 * JD + 274277) / 146097) * 3) / 4) - 38;
+  const f2 =
+    f + Math.floor((Math.floor((4 * JD + 274277) / 146097) * 3) / 4) - 38;
   const e = 4 * f2 + 3;
   const g = Math.floor((e % 1461) / 4);
   const h = 5 * g + 2;
@@ -35,7 +36,7 @@ const julianIntoDate = (julianDate: number) => {
   const year = Math.floor(e / 1461) - 4716 + Math.floor((12 + 2 - month) / 12);
 
   const dateFromJulian = new Date(year, month - 1, day);
-  
+
   return dateFromJulian;
 };
 
@@ -74,4 +75,25 @@ const formatDate = (date: Date, format: string) => {
   }
 };
 
-export { dateIntoJulian, julianIntoDate, getDayName, formatDate };
+const getDayNameIntl = (date: Date, locale = "en-US"): string => {
+  return new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
+};
+
+const formatDateIntl = (date: Date): string => {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  })
+    .format(date)
+    .replace(/\//g, ".");
+};
+
+export {
+  dateIntoJulian,
+  getDayNameIntl,
+  formatDateIntl,
+  julianIntoDate,
+  getDayName,
+  formatDate,
+};
