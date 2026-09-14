@@ -3,14 +3,9 @@ const dateIntoJulian = (date: Date) => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
-  const hours = date.getHours();
-  const minutes = date.getMinutes() / 60;
-  const seconds = date.getSeconds() / 3600;
 
   let K = year;
   let M = month;
-  const I = day;
-  const UT = hours + minutes + seconds;
 
   if (month === 1 || month === 2) {
     K = year - 1;
@@ -21,9 +16,8 @@ const dateIntoJulian = (date: Date) => {
     367 * K -
     Math.floor((7 * (K + Math.floor((M + 9) / 12))) / 4) +
     Math.floor((275 * M) / 9) +
-    I +
-    1721013.5 +
-    UT / 24;
+    day +
+    1721013.5;
 
   return julianDate;
 };
@@ -32,13 +26,13 @@ const julianIntoDate = (julianDate: number) => {
   //Formula can be found in the PDF document referenced on this link: https://aa.usno.navy.mil/faq/JD_formula
   const JD = Math.floor(julianDate + 0.5);
   const f = JD + 1401;
-  const f2 = f + Math.floor((((4 * JD + 274277) / 146097) * 3) / 4) - 38;
+  const f2 = f + Math.floor((Math.floor((4 * JD + 274277) / 146097) * 3) / 4) - 38;
   const e = 4 * f2 + 3;
   const g = Math.floor((e % 1461) / 4);
   const h = 5 * g + 2;
-  const day = Math.floor((h % 153) / 5 + 1);
-  const month = Math.floor(((h / 153 + 2) % 12) + 1);
-  const year = Math.floor(e / 1461 - 4716 + (12 + 2 - month) / 12);
+  const day = Math.floor((h % 153) / 5) + 1;
+  const month = Math.floor(((Math.floor(h / 153) + 2) % 12) + 1);
+  const year = Math.floor(e / 1461) - 4716 + Math.floor((12 + 2 - month) / 12);
 
   const dateFromJulian = new Date(year, month - 1, day);
   
