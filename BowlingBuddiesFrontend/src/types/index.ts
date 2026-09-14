@@ -211,3 +211,7 @@ export interface BookingContextTypes {
 export interface BookingProviderProps {
   children: React.ReactNode;
 }
+
+export interface BowlingCenterDataProps {
+  centerData: BowlingCenterData;
+}

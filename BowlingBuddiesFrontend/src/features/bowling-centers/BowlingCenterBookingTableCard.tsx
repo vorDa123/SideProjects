@@ -1,9 +1,9 @@
 import MainButton from "../../components/ui/MainButton";
-import type { BookingCardProps } from "../../types/index.ts";
+import type { BowlingCenterDataProps } from "../../types/index.ts";
 import BowlingCenterBookingModal from "../modals/BowlingCenterBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
 import { useState } from "react";
-function BowlingCenterBookingTableCard(props: BookingCardProps) {
+function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
@@ -21,6 +21,7 @@ function BowlingCenterBookingTableCard(props: BookingCardProps) {
   const handleJoinClicked = () => {
     setIsJoinClicked((prev) => !prev);
   };
+  console.log("Passed props:", props);
   return (
     <>
       {showModal && (
@@ -40,7 +41,7 @@ function BowlingCenterBookingTableCard(props: BookingCardProps) {
         />
       )}
       <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-        <span className="text-mh4">{props.bookingTime}</span>
+        <span className="text-mh4">15:00</span>
       </div>
       <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
         <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
