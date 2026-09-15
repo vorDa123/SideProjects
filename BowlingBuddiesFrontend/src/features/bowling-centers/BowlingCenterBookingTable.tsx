@@ -1,6 +1,6 @@
 import BowlingCenterBookingTableCard from "./BowlingCenterBookingTableCard";
 import type { BowlingCenterDataProps } from "../../types";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { formatDateIntl, getDayNameIntl } from "../../services/dateServices";
 import type { WorkingDaysData } from "../../types";
 
@@ -10,18 +10,9 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
   const dateFormatToDisplay = formatDateIntl(today);
   const todayDayLowerCase: keyof WorkingDaysData =
     todayDay.toLowerCase() as keyof WorkingDaysData;
-  const [todayClosed, setTodayClosed] = useState(false);
-  // const todayClosedd =
-  //   props.centerData !== undefined &&
-  //   props.centerData.workingInfo[todayDayLowerCase].open !== true;
-
-  const isClosedOnThisDay = (): boolean => {
-    if (props.centerData?.workingInfo[todayDayLowerCase].open === true || props.centerData === undefined) {
-      return false;
-    } else {
-      return true;
-    }
-  };
+  const todayClosed =
+    props.centerData !== undefined &&
+    props.centerData.workingInfo[todayDayLowerCase].open !== true;
 
   const handleNextDay = () => {
     setToday((prevDate) => {
@@ -38,12 +29,6 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
       return prev;
     });
   };
-
-  useEffect(() => {
-    console.log("Today: ", todayDayLowerCase);
-    console.log("isCLosed: ", isClosedOnThisDay());
-    setTodayClosed(isClosedOnThisDay());
-  }, [todayDay]);
   return (
     <>
       <div className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]">
