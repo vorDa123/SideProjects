@@ -122,7 +122,7 @@ export const BOWLING_CENTERS: BowlingCenterData[] = [
         endTime: "22:00",
       },
     },
-    lanes: 14,
+    lanes: 8,
     email: "",
     phone: "+38599 235 5700",
     maxPlayersPerAlley: 6,
