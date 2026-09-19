@@ -3,6 +3,8 @@ import {
   JOIN_SLOT,
   FREE_SLOT,
   BOWLING_CENTERS,
+  ACHIEVEMENTS,
+  BOOKED_SLOTS,
 } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
 
@@ -16,6 +18,22 @@ const getBowlingCentersHandler = async () => {
 
   console.log("Fetched centers:", bowlingCenters);
   return bowlingCenters;
+};
+
+const getAllBookedSlots = async () => {
+  await delay(3000);
+  const bookedSlots = BOOKED_SLOTS;
+
+  console.log("Fetched centers:", bookedSlots);
+  return bookedSlots;
+};
+
+const getAchievements = async () => {
+  await delay(3000);
+  const achievements = ACHIEVEMENTS;
+
+  console.log("Fetched achievements:", achievements);
+  return achievements;
 };
 
 const getNextFreeSlotHandler = async () => {
@@ -117,4 +135,6 @@ export {
   getBowlingCentersHandler,
   createReservationHandler,
   joinPlayerHandler,
+  getAchievements,
+  getAllBookedSlots,
 };

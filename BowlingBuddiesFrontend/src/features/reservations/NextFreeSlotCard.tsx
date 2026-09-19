@@ -9,6 +9,7 @@ import BowlingCenterBookingModal from "../modals/BowlingCenterBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
 import { useState } from "react";
 import type { NextFreeSlotCardProps } from "../../types/index.ts";
+import { formatDateIntl } from "../../services/dateServices.ts";
 
 function NextFreeSlotCard(props: NextFreeSlotCardProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -28,6 +29,8 @@ function NextFreeSlotCard(props: NextFreeSlotCardProps) {
     setShowModal((prev) => !prev);
     setShowPlayerModal((prev) => !prev);
   };
+
+  const dateFormatToDisplay = formatDateIntl(props.freeSlotData.date);
   return (
     <>
       {showModal && (
@@ -56,7 +59,7 @@ function NextFreeSlotCard(props: NextFreeSlotCardProps) {
           <div className="flex flex-col gap-5 md:gap-3">
             <div className="flex flex-row gap-5">
               <span className="w-2/3">
-                <FontAwesomeIcon icon={faCalendarDays} /> {props.freeSlotData.date}
+                <FontAwesomeIcon icon={faCalendarDays} /> {dateFormatToDisplay}
               </span>
               <span className="w-1/3">
                 <FontAwesomeIcon icon={faClock} /> {props.freeSlotData.time}

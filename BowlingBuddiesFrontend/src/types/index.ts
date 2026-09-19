@@ -158,7 +158,7 @@ export interface BookingSlotData {
   laneNumber?: number;
   startTime: string;
   endTime?: string;
-  date: string;
+  date: Date;
   singlePrice?: number;
   price?: number;
   shoesNeeded: boolean;
@@ -178,7 +178,7 @@ export interface JoinData {
   id: string;
   host: UserData;
   bowlingCenterData: BowlingCenterData;
-  date: string;
+  date: Date;
   time: string;
   joinedPlayers?: UserData[];
   status: JoinStatus;
@@ -188,23 +188,54 @@ export interface JoinData {
 export interface NextSlotData {
   id: string;
   bowlingCenterData: BowlingCenterData;
-  date: string;
+  date: Date;
   time: string;
   status?: JoinStatus;
   numberOfFreeLanes: number;
+}
+
+export interface BookedSlotData {
+  id: string;
+  date: Date;
+  bowlingCenterData: BowlingCenterData;
+  time: string;
+  lane: number;
+}
+
+export interface AchievementData {
+  id: string;
+  img: string;
+  name: string;
+}
+
+export interface AchievementCardProps {
+  achievementData: AchievementData;
+}
+
+export interface OpenJoinCardProps {
+  joinData: JoinData;
 }
 
 export interface BookingContextTypes {
   isLoadingCenters?: boolean;
   isLoadingFreeSlots?: boolean;
   isLoadingMyReservations?: boolean;
+  isLoadingAllBookings?: boolean;
+  isLoadingAchievements?: boolean;
+  isLoadingJoinSlots?: boolean;
   error?: string | null;
   centers?: BowlingCenterData[];
   freeSlots?: NextSlotData[];
+  joinSlots?: JoinData[];
   myReservations?: BookingSlotData[];
+  achievements?: AchievementData[];
+  allBookings?: BookedSlotData[];
   fetchCenters?: () => Promise<void>;
   fetchFreeSlots?: () => Promise<void>;
+  fetchJoinSlots?: () => Promise<void>;
   fetchMyReservations?: () => Promise<void>;
+  fetchAllBookings?: () => Promise<void>;
+  fetchAchievements?: () => Promise<void>;
   createReservation?: (data: BookingSlotData) => Promise<void>;
 }
 

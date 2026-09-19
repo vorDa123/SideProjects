@@ -4,6 +4,8 @@ import type {
   BookingSlotData,
   JoinData,
   NextSlotData,
+  AchievementData,
+  BookedSlotData,
 } from "../types/index.ts";
 
 export const CURRENT_USER: UserData = {
@@ -135,7 +137,8 @@ export const MY_RESERVATIONS: BookingSlotData[] = [
     bowlingCenterInfo: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
-      location: "Zaprešićka 2, 10290, Jablanovec",center: "West Gate",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
       img: "/src/assets/playerBowling.jpg",
       workingInfo: {
         monday: {
@@ -180,7 +183,7 @@ export const MY_RESERVATIONS: BookingSlotData[] = [
     laneNumber: 3,
     startTime: "16:15",
     endTime: "18:15",
-    date: "2026-09-12",
+    date: new Date(2026, 9, 12),
     singlePrice: 10,
     price: 30,
     shoesNeeded: true,
@@ -269,7 +272,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-24",
+    date: new Date(2026, 9, 24),
     time: "18:00",
     joinedPlayers: [
       {
@@ -449,7 +452,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-24",
+    date: new Date(2026, 9, 24),
     time: "18:00",
     joinedPlayers: [
       {
@@ -629,7 +632,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-10-24",
+    date: new Date(2026, 10, 24),
     time: "18:00",
     joinedPlayers: [
       {
@@ -809,7 +812,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-10-01",
+    date: new Date(2026, 10, 1),
     time: "20:15",
     joinedPlayers: [
       {
@@ -836,31 +839,6 @@ export const JOIN_SLOT: JoinData[] = [
           country: "Croatia",
         },
         leader: true,
-      },
-      {
-        id: "snalciuasnbciusab",
-        personalData: {
-          name: "Lovro",
-          surname: "Paladinić",
-          gender: "M",
-          oib: "",
-          dateOfBirth: "",
-        },
-        contactData: {
-          email: "",
-          phone: "",
-        },
-        registeredData: {
-          registeredPlayer: false,
-          registeredClub: "",
-        },
-        addressData: {
-          address: "",
-          city: "Zagreb",
-          postalCode: "",
-          country: "Croatia",
-        },
-        leader: false,
       },
       {
         id: "sklanmuawibndioslkdopi",
@@ -989,7 +967,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-11-22",
+    date: new Date(2026, 11, 22),
     time: "21:00",
     joinedPlayers: [
       {
@@ -1169,7 +1147,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-10-29",
+    date: new Date(2026, 10, 29),
     time: "17:00",
     joinedPlayers: [
       {
@@ -1349,7 +1327,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-25",
+    date: new Date(2026, 9, 25),
     time: "19:15",
     joinedPlayers: [
       {
@@ -1529,7 +1507,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-24",
+    date: new Date(2026, 9, 24),
     time: "18:45",
     joinedPlayers: [
       {
@@ -1709,7 +1687,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-12-07",
+    date: new Date(2026, 12, 7),
     time: "19:00",
     joinedPlayers: [
       {
@@ -1889,7 +1867,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-11-13",
+    date: new Date(2026,11, 13),
     time: "17:00",
     joinedPlayers: [
       {
@@ -2069,7 +2047,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-23",
+    date: new Date(2026, 9, 23),
     time: "20:00",
     joinedPlayers: [
       {
@@ -2249,7 +2227,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-24",
+    date: new Date(2026, 9, 24),
     time: "18:15",
     joinedPlayers: [
       {
@@ -2429,7 +2407,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-24",
+    date: new Date(2026, 9, 24),
     time: "18:30",
     joinedPlayers: [
       {
@@ -2609,7 +2587,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-28",
+    date: new Date(2026, 9, 24),
     time: "19:00",
     joinedPlayers: [
       {
@@ -2767,7 +2745,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-28",
+    date: new Date(2026, 9, 28),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2820,7 +2798,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-28",
+    date: new Date(2026, 9, 28),
     time: "20:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2873,7 +2851,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-28",
+    date: new Date(2026, 9, 28),
     time: "19:30",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2926,7 +2904,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-28",
+    date: new Date(2026, 9, 28),
     time: "20:30",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2979,7 +2957,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-29",
+    date: new Date(2026, 9, 29),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3032,7 +3010,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-10-03",
+    date: new Date(2026, 10, 3),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3085,7 +3063,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-10-03",
+    date: new Date(2026, 10, 3),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3138,7 +3116,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-11-15",
+    date: new Date(2026, 11, 15),
     time: "16:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3191,7 +3169,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-11-15",
+    date: new Date(2026, 11, 15),
     time: "17:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3244,7 +3222,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-20",
+    date: new Date(2026, 10, 20),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 5,
@@ -3297,7 +3275,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-28",
+    date: new Date(2026, 9, 28),
     time: "21:00",
     status: "free",
     numberOfFreeLanes: 2,
@@ -3350,7 +3328,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-12-12",
+    date: new Date(2026, 12, 12),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 4,
@@ -3403,7 +3381,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-22",
+    date: new Date(2026, 9, 22),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3456,7 +3434,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-21",
+    date: new Date(2026, 9, 21),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3509,7 +3487,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-11",
+    date: new Date(2026, 9, 11),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3562,7 +3540,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-12",
+    date: new Date(2026, 9, 12),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3615,7 +3593,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-14",
+    date: new Date(2026, 9, 14),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3668,7 +3646,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-10",
+    date: new Date(2026, 9, 10),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3721,7 +3699,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-18",
+    date: new Date(2026, 9, 18),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3774,9 +3752,1293 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: "2026-09-19",
+    date: new Date(2026, 9, 19),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
+  },
+];
+
+export const ACHIEVEMENTS: AchievementData[] = [
+  {
+    id: "asmdoamnouidnauoisd",
+    name: "Achievement 1",
+    img: "/src/assets/playerBowling.jpg",
+  },
+  {
+    id: "sadxycaesddfsadaweadf",
+    name: "Achievement 2",
+    img: "/src/assets/playerBowling.jpg",
+  },
+  {
+    id: "dsfdxgasdetgsfc",
+    name: "Achievement 3",
+    img: "/src/assets/playerBowling.jpg",
+  },
+  {
+    id: "qwsadxyfgrdstg",
+    name: "Achievement 4",
+    img: "/src/assets/playerBowling.jpg",
+  },
+  {
+    id: "awaredxgcvdghctrzhch",
+    name: "Achievement 5",
+    img: "/src/assets/playerBowling.jpg",
+  },
+  {
+    id: "aqw32ersyf3tgsftgdf3",
+    name: "Achievement 6",
+    img: "/src/assets/playerBowling.jpg",
+  },
+];
+
+export const BOOKED_SLOTS: BookedSlotData[] = [
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 7,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 21),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "19:00",
+    lane: 6,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 21),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "19:00",
+    lane: 8,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 22),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 7,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 14,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 6,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 9,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 10,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 12,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 2,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "19:00",
+    lane: 13,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "19:45",
+    lane: 1,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "16:00",
+    lane: 3,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:15",
+    lane: 9,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "22:00",
+    lane: 6,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "20:30",
+    lane: 11,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "20:15",
+    lane: 8,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "20:00",
+    lane: 5,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "19:00",
+    lane: 4,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "17:00",
+    lane: 14,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 2,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 9,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "18:00",
+    lane: 8,
+  },
+  {
+    id: "sadwaede2ead2ryadf3",
+    date: new Date(2026, 9, 20),
+    bowlingCenterData: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    time: "17:00",
+    lane: 8,
   },
 ];
