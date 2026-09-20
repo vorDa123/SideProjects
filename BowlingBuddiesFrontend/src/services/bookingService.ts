@@ -24,7 +24,7 @@ const getAllBookedSlots = async () => {
   await delay(3000);
   const bookedSlots = BOOKED_SLOTS;
 
-  console.log("Fetched centers:", bookedSlots);
+  console.log("Fetched all slots:", bookedSlots);
   return bookedSlots;
 };
 

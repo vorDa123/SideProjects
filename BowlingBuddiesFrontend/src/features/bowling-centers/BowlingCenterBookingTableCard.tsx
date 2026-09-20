@@ -2,11 +2,15 @@ import MainButton from "../../components/ui/MainButton";
 import type { BowlingCenterDataProps } from "../../types/index.ts";
 import BowlingCenterBookingModal from "../modals/BowlingCenterBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
-import { useState } from "react";
+import { useBooking } from "../../hooks/useBooking.tsx";
+import { useState, useEffect, useMemo } from "react";
+import { formatDate } from "../../services/dateServices.ts";
 function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
+  const { allBookings, fetchAllBookings } = useBooking();
+
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -21,6 +25,21 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
   const handleJoinClicked = () => {
     setIsJoinClicked((prev) => !prev);
   };
+
+  const bookedSlotsOnTime = useMemo(() => {
+    const dateToCompare = formatDate(props.date!);
+    return allBookings?.filter((item) => {
+      return (
+        item.bowlingCenterData.id === props.centerData.id &&
+        item.time.includes(`${props.startTime}:`) &&
+        formatDate(item.date!) === dateToCompare
+      );
+    });
+  }, [props.centerData.id, props.startTime, allBookings, props.date]);
+
+  useEffect(() => {
+    fetchAllBookings!();
+  }, []);
   return (
     <>
       {showModal && (
@@ -40,11 +59,13 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
         />
       )}
       <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-        <span className="text-mh4">15:00</span>
+        <span className="text-mh4">{props.startTime}:00</span>
       </div>
       <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
         <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-          <p className="text-mh3">6/{props.centerData?.lanes} Lanes booked</p>
+          <p className="text-mh3">
+            {bookedSlotsOnTime?.length}/{props.centerData?.lanes} Lanes booked
+          </p>
           <MainButton
             buttonName="Book"
             variant="fill"

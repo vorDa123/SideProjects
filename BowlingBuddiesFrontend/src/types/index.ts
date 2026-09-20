@@ -245,4 +245,6 @@ export interface BookingProviderProps {
 
 export interface BowlingCenterDataProps {
   centerData: BowlingCenterData;
+  startTime?: number;
+  date?: Date;
 }

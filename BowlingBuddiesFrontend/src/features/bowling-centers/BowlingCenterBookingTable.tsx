@@ -1,6 +1,6 @@
 import BowlingCenterBookingTableCard from "./BowlingCenterBookingTableCard";
 import type { BowlingCenterDataProps } from "../../types";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { formatDateIntl, getDayNameIntl } from "../../services/dateServices";
 import type { WorkingDaysData } from "../../types";
 
@@ -29,6 +29,31 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
       return prev;
     });
   };
+
+  const workingHoursArray = useMemo(() => {
+    if (!props.centerData) {
+      return [];
+    }
+
+    const workingHours = props.centerData.workingInfo[todayDayLowerCase];
+
+    if (
+      !workingHours.open ||
+      !workingHours.startTime ||
+      !workingHours.endTime
+    ) {
+      return [];
+    }
+
+    const start = Number(workingHours.startTime.slice(0, 2));
+    const end = Number(workingHours.endTime.slice(0, 2));
+
+    return Array.from(
+      { length: Math.max(0, end - start) },
+      (_, index) => start + index,
+    );
+  }, [props.centerData, todayDayLowerCase]);
+
   return (
     <>
       <div className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]">
@@ -55,15 +80,9 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
             <p>Today the center is closed</p>
           ) : (
             <>
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
-              <BowlingCenterBookingTableCard centerData={props.centerData} />
+            {workingHoursArray.map((item) => {
+              return <BowlingCenterBookingTableCard key={item} centerData={props.centerData} startTime={item} date={today}/>
+            })}
             </>
           )}
         </div>

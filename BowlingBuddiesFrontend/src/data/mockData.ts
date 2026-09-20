@@ -91,32 +91,32 @@ export const BOWLING_CENTERS: BowlingCenterData[] = [
       monday: {
         open: true,
         startTime: "16:00",
-        endTime: "00:00",
+        endTime: "24:00",
       },
       tuesday: {
         open: true,
         startTime: "16:00",
-        endTime: "00:00",
+        endTime: "24:00",
       },
       wednesday: {
         open: true,
         startTime: "16:00",
-        endTime: "00:00",
+        endTime: "24:00",
       },
       thursday: {
         open: true,
         startTime: "16:00",
-        endTime: "00:00",
+        endTime: "24:00",
       },
       friday: {
         open: true,
         startTime: "16:00",
-        endTime: "00:00",
+        endTime: "24:00",
       },
       saturday: {
         open: true,
         startTime: "15:00",
-        endTime: "00:00",
+        endTime: "24:00",
       },
       sunday: {
         open: true,
@@ -183,7 +183,7 @@ export const MY_RESERVATIONS: BookingSlotData[] = [
     laneNumber: 3,
     startTime: "16:15",
     endTime: "18:15",
-    date: new Date(2026, 9, 12),
+    date: new Date("2026, 9, 12"),
     singlePrice: 10,
     price: 30,
     shoesNeeded: true,
@@ -272,7 +272,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 24),
+    date: new Date("2026, 9, 24"),
     time: "18:00",
     joinedPlayers: [
       {
@@ -452,7 +452,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 24),
+    date: new Date("2026, 9, 24"),
     time: "18:00",
     joinedPlayers: [
       {
@@ -632,7 +632,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 10, 24),
+    date: new Date("2026, 10, 24"),
     time: "18:00",
     joinedPlayers: [
       {
@@ -812,7 +812,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 10, 1),
+    date: new Date("2026, 10, 1"),
     time: "20:15",
     joinedPlayers: [
       {
@@ -967,7 +967,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 11, 22),
+    date: new Date("2026, 11, 22"),
     time: "21:00",
     joinedPlayers: [
       {
@@ -1147,7 +1147,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 10, 29),
+    date: new Date("2026, 10, 29"),
     time: "17:00",
     joinedPlayers: [
       {
@@ -1327,7 +1327,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 25),
+    date: new Date("2026, 9, 25"),
     time: "19:15",
     joinedPlayers: [
       {
@@ -1507,7 +1507,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 24),
+    date: new Date("2026, 9, 24"),
     time: "18:45",
     joinedPlayers: [
       {
@@ -1687,7 +1687,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 12, 7),
+    date: new Date("2026, 12, 7"),
     time: "19:00",
     joinedPlayers: [
       {
@@ -1867,7 +1867,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026,11, 13),
+    date: new Date("2026, 11, 13"),
     time: "17:00",
     joinedPlayers: [
       {
@@ -2047,7 +2047,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 23),
+    date: new Date("2026, 9, 23"),
     time: "20:00",
     joinedPlayers: [
       {
@@ -2227,7 +2227,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 24),
+    date: new Date("2026, 9, 24"),
     time: "18:15",
     joinedPlayers: [
       {
@@ -2407,7 +2407,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 24),
+    date: new Date("2026, 9, 24"),
     time: "18:30",
     joinedPlayers: [
       {
@@ -2587,7 +2587,7 @@ export const JOIN_SLOT: JoinData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 24),
+    date: new Date("2026, 9, 24"),
     time: "19:00",
     joinedPlayers: [
       {
@@ -2745,7 +2745,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 28),
+    date: new Date("2026, 9, 28"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2798,7 +2798,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 28),
+    date: new Date("2026, 9, 28"),
     time: "20:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2851,7 +2851,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 28),
+    date: new Date("2026, 9, 28"),
     time: "19:30",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2904,7 +2904,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 28),
+    date: new Date("2026, 9, 28"),
     time: "20:30",
     status: "free",
     numberOfFreeLanes: 6,
@@ -2957,7 +2957,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 29),
+    date: new Date("2026, 9, 29"),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3010,7 +3010,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 10, 3),
+    date: new Date("2026, 10, 3"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3063,7 +3063,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 10, 3),
+    date: new Date("2026, 10, 3"),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3116,7 +3116,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 11, 15),
+    date: new Date("2026, 11, 15"),
     time: "16:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3169,7 +3169,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 11, 15),
+    date: new Date("2026, 11, 15"),
     time: "17:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3222,7 +3222,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 10, 20),
+    date: new Date("2026, 10, 20"),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 5,
@@ -3275,7 +3275,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 28),
+    date: new Date("2026, 9, 28"),
     time: "21:00",
     status: "free",
     numberOfFreeLanes: 2,
@@ -3328,7 +3328,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 12, 12),
+    date: new Date("2026, 12, 12"),
     time: "18:00",
     status: "free",
     numberOfFreeLanes: 4,
@@ -3381,7 +3381,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 22),
+    date: new Date("2026, 9, 22"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3434,7 +3434,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 21),
+    date: new Date("2026, 9, 21"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3487,7 +3487,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 11),
+    date: new Date("2026, 9, 11"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3540,7 +3540,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 12),
+    date: new Date("2026, 9, 12"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3593,7 +3593,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 14),
+    date: new Date("2026, 9, 14"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3646,7 +3646,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 10),
+    date: new Date("2026, 9, 10"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3699,7 +3699,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 18),
+    date: new Date("2026, 9, 18"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3752,7 +3752,7 @@ export const FREE_SLOT: NextSlotData[] = [
       phone: "+38591 555 5555",
       maxPlayersPerAlley: 6,
     },
-    date: new Date(2026, 9, 19),
+    date: new Date("2026, 9, 19"),
     time: "19:00",
     status: "free",
     numberOfFreeLanes: 6,
@@ -3794,8 +3794,8 @@ export const ACHIEVEMENTS: AchievementData[] = [
 
 export const BOOKED_SLOTS: BookedSlotData[] = [
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3846,8 +3846,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 7,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 21),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 22"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3898,8 +3898,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 6,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 21),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 22"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3950,8 +3950,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 8,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 22),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 22"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3999,11 +3999,11 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
       maxPlayersPerAlley: 6,
     },
     time: "18:00",
-    lane: 7,
+    lane: 1,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4054,8 +4054,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 14,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4106,8 +4106,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 6,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4158,8 +4158,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 9,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4210,8 +4210,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 10,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4262,8 +4262,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 12,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4314,8 +4314,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 2,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4366,8 +4366,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 13,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4418,8 +4418,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 1,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4470,8 +4470,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 3,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 22"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4519,11 +4519,11 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
       maxPlayersPerAlley: 6,
     },
     time: "18:15",
-    lane: 9,
+    lane: 11,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4574,8 +4574,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 6,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4626,8 +4626,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 11,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4678,8 +4678,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 8,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4730,8 +4730,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 5,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4782,8 +4782,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 4,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4834,8 +4834,8 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
     lane: 14,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4883,11 +4883,11 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
       maxPlayersPerAlley: 6,
     },
     time: "18:00",
-    lane: 2,
+    lane: 4,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4935,11 +4935,11 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
       maxPlayersPerAlley: 6,
     },
     time: "18:00",
-    lane: 9,
+    lane: 5,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -4987,11 +4987,11 @@ export const BOOKED_SLOTS: BookedSlotData[] = [
       maxPlayersPerAlley: 6,
     },
     time: "18:00",
-    lane: 8,
+    lane: 13,
   },
   {
-    id: "sadwaede2ead2ryadf3",
-    date: new Date(2026, 9, 20),
+    id: crypto.randomUUID(),
+    date: new Date("2026, 9, 20"),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
