@@ -10,10 +10,11 @@ import { useEffect } from "react";
 
 function BowlingCenter() {
   const params = useParams();
-  const { centers, fetchCenters } = useBooking();
+  const { centers, fetchCenters, allBookings, fetchAllBookings } = useBooking();
 
   useEffect(() => {
     fetchCenters!();
+    fetchAllBookings!();
   }, []);
   const bowlingCenterData = centers?.find((center) => {
     return center.id === params.id;
@@ -30,14 +31,14 @@ function BowlingCenter() {
             <div className="md:hidden">
               <BowlingCenterGeneralInfo centerData={bowlingCenterData!} />
               <BowlingCenterWorkingHoursTable centerData={bowlingCenterData!} />
-              <BowlingCenterBookingTable centerData={bowlingCenterData!} />
+              <BowlingCenterBookingTable centerData={bowlingCenterData!} allBookings={allBookings ?? []}/>
             </div>
             <div className="hidden md:block lg:col-span-6 xxl:col-span-12">
               <BowlingCenterGeneralInfo centerData={bowlingCenterData!} />
               <BowlingCenterWorkingHoursTable centerData={bowlingCenterData!} />
             </div>
             <div className="hidden md:block lg:col-span-6 xxl:col-span-12">
-              <BowlingCenterBookingTable centerData={bowlingCenterData!} />
+              <BowlingCenterBookingTable centerData={bowlingCenterData!} allBookings={allBookings ?? []}/>
             </div>
           </div>
           <br />

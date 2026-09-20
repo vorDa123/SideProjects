@@ -2,14 +2,12 @@ import MainButton from "../../components/ui/MainButton";
 import type { BowlingCenterDataProps } from "../../types/index.ts";
 import BowlingCenterBookingModal from "../modals/BowlingCenterBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
-import { useBooking } from "../../hooks/useBooking.tsx";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { formatDate } from "../../services/dateServices.ts";
 function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
-  const { allBookings, fetchAllBookings } = useBooking();
 
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
@@ -28,18 +26,14 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
 
   const bookedSlotsOnTime = useMemo(() => {
     const dateToCompare = formatDate(props.date!);
-    return allBookings?.filter((item) => {
+    return props.allBookings?.filter((item) => {
       return (
         item.bowlingCenterData.id === props.centerData.id &&
         item.time.includes(`${props.startTime}:`) &&
         formatDate(item.date!) === dateToCompare
       );
     });
-  }, [props.centerData.id, props.startTime, allBookings, props.date]);
-
-  useEffect(() => {
-    fetchAllBookings!();
-  }, []);
+  }, [props.centerData.id, props.startTime, props.allBookings, props.date]);
   return (
     <>
       {showModal && (

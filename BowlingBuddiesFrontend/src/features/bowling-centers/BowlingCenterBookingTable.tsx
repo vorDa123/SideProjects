@@ -56,37 +56,57 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
 
   return (
     <>
-      <div className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]">
-        <h3 className="text-mh3 font-semibold md:text-th3">Book Slot</h3>
-        <div className="grid grid-cols-4 mt-4">
-          <div className="col-span-4 border-b border-b-darkerBlue-30 py-1 md:sticky md:top-0 md:bg-white md:z-10">
-            <div className="flex flex-row justify-around items-center">
-              <p
-                className="text-mh1 cursor-pointer"
-                onClick={handlePreviousDay}
-              >
-                {"<"}
-              </p>
-              <div className="text-center cursor-pointer">
-                <p className="text-mh4">{todayDay}</p>
-                <p className="text-darkerBlue-50">{dateFormatToDisplay}</p>
+      {props.centerData ? (
+        <div className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]">
+          <h3 className="text-mh3 font-semibold md:text-th3">Book Slot</h3>
+          <div className="grid grid-cols-4 mt-4">
+            <div className="col-span-4 border-b border-b-darkerBlue-30 py-1 md:sticky md:top-0 md:bg-white md:z-10">
+              <div className="flex flex-row justify-around items-center">
+                <p
+                  className="text-mh1 cursor-pointer"
+                  onClick={handlePreviousDay}
+                >
+                  {"<"}
+                </p>
+                <div className="text-center cursor-pointer">
+                  <p className="text-mh4">{todayDay}</p>
+                  <p className="text-darkerBlue-50">{dateFormatToDisplay}</p>
+                </div>
+                <p className="text-mh1 cursor-pointer" onClick={handleNextDay}>
+                  {">"}
+                </p>
               </div>
-              <p className="text-mh1 cursor-pointer" onClick={handleNextDay}>
-                {">"}
-              </p>
             </div>
+            {todayClosed ? (
+              <p>Today the center is closed</p>
+            ) : (
+              <>
+                {workingHoursArray.map((item) => {
+                  return (
+                    <BowlingCenterBookingTableCard
+                      key={item}
+                      centerData={props.centerData}
+                      startTime={item}
+                      date={today}
+                      allBookings={props.allBookings}
+                    />
+                  );
+                })}
+              </>
+            )}
           </div>
-          {todayClosed ? (
-            <p>Today the center is closed</p>
-          ) : (
-            <>
-            {workingHoursArray.map((item) => {
-              return <BowlingCenterBookingTableCard key={item} centerData={props.centerData} startTime={item} date={today}/>
-            })}
-            </>
-          )}
         </div>
-      </div>
+      ) : (
+        <div className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]">
+          <div className="bg-gray-400 rounded-m20 w-80 h-10 mb-4"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-4"></div>
+        </div>
+      )}
     </>
   );
 }
