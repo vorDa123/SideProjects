@@ -32,7 +32,7 @@ export interface MyProfileProps {
 
 export interface MyReservationsProps {
   myReservationPage?: boolean;
-  myReservationData: BookingSlotData;
+  myReservationData?: BookingSlotData;
 }
 
 export interface ButtonProps {
@@ -64,6 +64,7 @@ export interface InputFieldProps {
   classAppend?: string;
   labelClassOverride?: string;
   labelClassAppend?: string;
+  defaultValue?: string | number;
 }
 
 export interface NavigationContextTypes {
@@ -74,6 +75,9 @@ export interface NavigationContextTypes {
 export interface ModalProps {
   isOpen?: boolean;
   isJoinClicked?: boolean;
+  freeSlotData?: NextSlotData;
+  joinSlotData?: JoinData;
+  myReservationData?: BookingSlotData;
   onClose?: () => void;
   onAddPlayer?: () => void;
   onBack?: () => void;

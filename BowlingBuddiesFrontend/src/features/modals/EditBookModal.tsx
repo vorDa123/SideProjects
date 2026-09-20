@@ -46,13 +46,14 @@ function EditBookingModal(props: ModalProps) {
       >
         <div className="overflow-y-auto h-full">
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
-            <BookModalHeader onClose={closeModal} />
+            <BookModalHeader onClose={closeModal} myReservationData={props.myReservationData}/>
             <BookingFormContext value={{ isJoinClicked, toggleJoinClicked }}>
-              <BookModalForm />
+              <BookModalForm myReservationData={props.myReservationData}/>
               {isJoinClicked && (
                 <BookModalPlayers
                   onClose={closeModal}
                   onAddPlayer={props.onAddPlayer}
+                  myReservationData={props.myReservationData}
                 />
               )}
             </BookingFormContext>

@@ -1,37 +1,95 @@
 import InputField from "../../components/ui/InputField";
 import { useContext } from "react";
 import { BookingFormContext } from "../../context/BookFormContext";
+import type { ModalProps } from "../../types";
 
-function BookModalForm() {
+function BookModalForm(props: ModalProps) {
   const { isJoinClicked, toggleJoinClicked } = useContext(BookingFormContext);
+  const hourToDisplay = props.myReservationData?.startTime.slice(0, 2);
   return (
     <>
       <div className="col-span-8 mt-5 mb-1">
-        <InputField name="email" type="email" labelName="Email:" />
+        <InputField
+          name="email"
+          type="email"
+          labelName="Email:"
+          defaultValue={props.myReservationData?.email}
+        />
       </div>
       <div className="col-span-8 mt-1">
-        <InputField name="phone" type="number" labelName="Phone:" />
+        <InputField
+          name="phone"
+          type="number"
+          labelName="Phone:"
+          defaultValue={props.myReservationData?.phone}
+        />
       </div>
       <div className="col-span-8 mt-5">
         <p className="text-mh4">Time</p>
       </div>
-      <div className="w-full col-span-2 bg-lighterBlue-100 text-white-100 text-mh3 h-17 rounded-m15 flex flex-col justify-center items-center cursor-pointer">
-        <span>14:00</span>
-      </div>
-      <div className="w-full col-span-2 bg-lighterBlue-100 text-white-100 text-mh3 h-17 rounded-m15 flex flex-col justify-center items-center cursor-pointer">
-        <span>14:15</span>
-      </div>
-      <div className="w-full col-span-2 bg-lighterBlue-100 text-white-100 text-mh3 h-17 rounded-m15 flex flex-col justify-center items-center cursor-pointer">
-        <span>14:30</span>
-      </div>
-      <div className="w-full col-span-2 bg-lighterBlue-100 text-white-100 text-mh3 h-17 rounded-m15 flex flex-col justify-center items-center cursor-pointer">
-        <span>14:45</span>
+      <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
+        <input
+          type="checkbox"
+          className="sr-only peer/full"
+          defaultChecked={
+            props.myReservationData?.startTime === `${hourToDisplay}:00`
+          }
+        />
+        <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/full:border-orange-100 peer-checked/full:border-4 peer-checked/full:rounded-m15">
+          <span>{hourToDisplay}:00</span>
+        </div>
+      </label>
+      <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
+        <input
+          type="checkbox"
+          className="sr-only peer/fifteen"
+          defaultChecked={
+            props.myReservationData?.startTime === `${hourToDisplay}:15`
+          }
+        />
+        <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/fifteen:border-orange-100 peer-checked/fifteen:border-4 peer-checked/fifteen:rounded-m15">
+          <span>{hourToDisplay}:15</span>
+        </div>
+      </label>
+      <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
+        <input
+          type="checkbox"
+          className="sr-only peer/half"
+          defaultChecked={
+            props.myReservationData?.startTime === `${hourToDisplay}:30`
+          }
+        />
+        <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/half:border-orange-100 peer-checked/half:border-4 peer-checked/half:rounded-m15">
+          <span>{hourToDisplay}:30</span>
+        </div>
+      </label>
+      <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
+        <input
+          type="checkbox"
+          className="sr-only peer/fortyfive"
+          defaultChecked={
+            props.myReservationData?.startTime === `${hourToDisplay}:45`
+          }
+        />
+        <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/fortyfive:border-orange-100 peer-checked/fortyfive:border-4 peer-checked/fortyfive:rounded-m15">
+          <span>{hourToDisplay}:45</span>
+        </div>
+      </label>
+      <div className="col-span-4 mt-5">
+        <InputField
+          name="duration"
+          type="number"
+          labelName="Duration (h):"
+          defaultValue={props.myReservationData?.duration}
+        />
       </div>
       <div className="col-span-4 mt-5">
-        <InputField name="duration" type="number" labelName="Duration (h):" />
-      </div>
-      <div className="col-span-4 mt-5">
-        <InputField name="players" type="number" labelName="No. of players:" />
+        <InputField
+          name="players"
+          type="number"
+          labelName="No. of players:"
+          defaultValue={props.myReservationData?.numberOfPlayers}
+        />
       </div>
       <div className="col-span-4 mt-5 md:col-span-2">
         <label htmlFor="shoes" className="text-mh4">
@@ -39,7 +97,11 @@ function BookModalForm() {
         </label>
         <br />
         <label className="inline-flex items-center cursor-pointer w-max">
-          <input type="checkbox" className="sr-only peer" />
+          <input
+            type="checkbox"
+            className="sr-only peer"
+            defaultChecked={props.myReservationData?.shoesNeeded}
+          />
 
           <div className="w-11.25 h-11.25 bg-white-100 border border-darkerBlue-100 rounded-m7 flex items-center justify-center transition-all peer-checked:bg-white-100 peer-checked:[&>svg]:block">
             <svg
@@ -67,7 +129,7 @@ function BookModalForm() {
           <input
             type="checkbox"
             className="sr-only peer"
-            checked={isJoinClicked}
+            defaultChecked={isJoinClicked ?? props.myReservationData?.openJoin}
             onChange={toggleJoinClicked}
           />
 
@@ -112,7 +174,7 @@ function BookModalForm() {
           <input
             type="checkbox"
             className="sr-only peer"
-            checked={isJoinClicked}
+            checked={isJoinClicked ?? props.myReservationData?.openJoin}
             onChange={toggleJoinClicked}
           />
 

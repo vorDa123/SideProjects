@@ -40,6 +40,7 @@ function NextFreeSlotCard(props: NextFreeSlotCardProps) {
           onAddPlayer={handleAddPlayer}
           isJoinClicked={isJoinClicked}
           setIsJoinClicked={handleJoinClicked}
+          freeSlotData={props.freeSlotData}
         />
       )}
       {showPlayerModal && (

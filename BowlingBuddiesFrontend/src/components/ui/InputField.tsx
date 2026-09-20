@@ -17,6 +17,7 @@ function InputField(props: InputFieldProps) {
       <input
         type={props.type}
         name={props.name}
+        defaultValue={props.defaultValue}
         className={
           props.classOverride
             ? props.classOverride
