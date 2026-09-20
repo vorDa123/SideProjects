@@ -9,7 +9,7 @@ import type {
 } from "../types/index.ts";
 
 export const CURRENT_USER: UserData = {
-  id: "absadca123adsd",
+  id: crypto.randomUUID(),
   personalData: {
     name: "Davor",
     surname: "Kuharić",
@@ -133,7 +133,7 @@ export const BOWLING_CENTERS: BowlingCenterData[] = [
 
 export const MY_RESERVATIONS: BookingSlotData[] = [
   {
-    id: "sdsdiaodmoiuwnu122w43oawskned",
+    id: crypto.randomUUID(),
     bowlingCenterInfo: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -200,9 +200,9 @@ export const MY_RESERVATIONS: BookingSlotData[] = [
 
 export const JOIN_SLOT: JoinData[] = [
   {
-    id: "sadnajksdnuiwnabdi1232ajnsdioua",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -276,7 +276,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "18:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -301,7 +301,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -326,7 +326,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -351,7 +351,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -380,9 +380,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 3,
   },
   {
-    id: "sdadfdsadasvsfasrd1323eaede2",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -456,7 +456,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "18:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -481,7 +481,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -506,7 +506,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -531,7 +531,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -560,9 +560,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 4,
   },
   {
-    id: "sdafdxcycvcaserdwa233wea",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -636,7 +636,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "18:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -661,7 +661,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -686,7 +686,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -711,7 +711,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -740,9 +740,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 2,
   },
   {
-    id: "vgfcsdvsdffaswdgew3rrfsae",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -816,7 +816,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "20:15",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -841,7 +841,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -866,7 +866,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -895,9 +895,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 4,
   },
   {
-    id: "dsffsfesfdsfwfdsgf2w34r",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -971,7 +971,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "21:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -996,7 +996,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -1021,7 +1021,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -1046,7 +1046,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -1075,9 +1075,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 2,
   },
   {
-    id: "dfgxgqwer2345trdxfg4tret4g",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -1151,7 +1151,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "17:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -1176,7 +1176,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -1201,7 +1201,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -1226,7 +1226,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -1255,9 +1255,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 6,
   },
   {
-    id: "34resdf3rtsdgfdxge3",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -1331,7 +1331,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "19:15",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -1356,7 +1356,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -1381,7 +1381,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -1406,7 +1406,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -1435,9 +1435,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 2,
   },
   {
-    id: "gxferf35tesf2325r4",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -1511,7 +1511,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "18:45",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -1536,7 +1536,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -1561,7 +1561,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -1586,7 +1586,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -1615,9 +1615,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 3,
   },
   {
-    id: "fdxf343545r4ttsd33",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -1691,7 +1691,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "19:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -1716,7 +1716,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -1741,7 +1741,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -1766,7 +1766,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -1795,9 +1795,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 2,
   },
   {
-    id: "cxvedr3455t4rsf33r",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -1871,7 +1871,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "17:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -1896,7 +1896,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -1921,7 +1921,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -1946,7 +1946,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -1975,9 +1975,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 1,
   },
   {
-    id: "fdsfes4r3r3rs223435es",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -2051,7 +2051,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "20:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -2076,7 +2076,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -2101,7 +2101,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -2126,7 +2126,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -2155,9 +2155,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 1,
   },
   {
-    id: "fxfdxfer3442342redxyf3",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -2231,7 +2231,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "18:15",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -2256,7 +2256,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -2281,7 +2281,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -2306,7 +2306,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -2335,9 +2335,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 2,
   },
   {
-    id: "xcvdesgfrghzhchgvjhge354t",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -2411,7 +2411,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "18:30",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -2436,7 +2436,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -2461,7 +2461,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -2486,7 +2486,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -2515,9 +2515,9 @@ export const JOIN_SLOT: JoinData[] = [
     numberOfBookedLanes: 2,
   },
   {
-    id: "cvhfhfhjfgddfgdcawrdxsgdfg",
+    id: crypto.randomUUID(),
     host: {
-      id: "absadca123adsd",
+      id: crypto.randomUUID(),
       personalData: {
         name: "Davor",
         surname: "Kuharić",
@@ -2591,7 +2591,7 @@ export const JOIN_SLOT: JoinData[] = [
     time: "19:00",
     joinedPlayers: [
       {
-        id: "absadca123adsd",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Davor",
           surname: "Kuharić",
@@ -2616,7 +2616,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: true,
       },
       {
-        id: "snalciuasnbciusab",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Lovro",
           surname: "Paladinić",
@@ -2641,7 +2641,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "sklanmuawibndioslkdopi",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Ivana",
           surname: "Dukić",
@@ -2666,7 +2666,7 @@ export const JOIN_SLOT: JoinData[] = [
         leader: false,
       },
       {
-        id: "pkaspodjoiahduiha",
+        id: crypto.randomUUID(),
         personalData: {
           name: "Anja",
           surname: "Kotaranin",
@@ -2698,7 +2698,7 @@ export const JOIN_SLOT: JoinData[] = [
 
 export const FREE_SLOT: NextSlotData[] = [
   {
-    id: "vnbcnzcan76caw67bw",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -2751,7 +2751,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "78zf87yet86778a9a7dhaghfh",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -2804,7 +2804,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "78stzfsg7utfdygc5vtzga",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -2857,7 +2857,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "78sfg765sfg76s78hf76sf77s",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -2910,7 +2910,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "76tgs776tgf67ser",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -2963,7 +2963,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "e73zh8augd7g763gad7",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3016,7 +3016,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "81782e72a7uz7euezawzug",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3069,7 +3069,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "uiohaszgdutz267dyt",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3122,7 +3122,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "364zuseagfd678a6f75edazu",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3175,7 +3175,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "2zuzuazuvsdiuztzu23tzud",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3228,7 +3228,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 5,
   },
   {
-    id: "t2wqtzzuswndbzut26t73b",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3281,7 +3281,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 2,
   },
   {
-    id: "djknfhjsbghfiuzqwghjfabshjg",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3334,7 +3334,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 4,
   },
   {
-    id: "člskmdloifnnqiupiowačolda",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3387,7 +3387,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "skjuanidjmaiofdiuokjkio",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3440,7 +3440,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "kidmfopqiopfuijsdnjk",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3493,7 +3493,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "dujhnsikjbnfuzbwaoifouisabfizhdasnubf",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3546,7 +3546,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "dfnmjxniujfkhnawiow0pošaolkadsfnjk",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3599,7 +3599,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "klčdfsaolnfwuizabfioksdkjbasfdj",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3652,7 +3652,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "dfmnkljanfuiwiuahsafesf",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3705,7 +3705,7 @@ export const FREE_SLOT: NextSlotData[] = [
     numberOfFreeLanes: 6,
   },
   {
-    id: "safdsfsadjasndfjhabndui22bhijr",
+    id: crypto.randomUUID(),
     bowlingCenterData: {
       id: "asdkmnasjdn123sanmj",
       name: "West Bowling",
@@ -3761,32 +3761,32 @@ export const FREE_SLOT: NextSlotData[] = [
 
 export const ACHIEVEMENTS: AchievementData[] = [
   {
-    id: "asmdoamnouidnauoisd",
+    id: crypto.randomUUID(),
     name: "Achievement 1",
     img: "/src/assets/playerBowling.jpg",
   },
   {
-    id: "sadxycaesddfsadaweadf",
+    id: crypto.randomUUID(),
     name: "Achievement 2",
     img: "/src/assets/playerBowling.jpg",
   },
   {
-    id: "dsfdxgasdetgsfc",
+    id: crypto.randomUUID(),
     name: "Achievement 3",
     img: "/src/assets/playerBowling.jpg",
   },
   {
-    id: "qwsadxyfgrdstg",
+    id: crypto.randomUUID(),
     name: "Achievement 4",
     img: "/src/assets/playerBowling.jpg",
   },
   {
-    id: "awaredxgcvdghctrzhch",
+    id: crypto.randomUUID(),
     name: "Achievement 5",
     img: "/src/assets/playerBowling.jpg",
   },
   {
-    id: "aqw32ersyf3tgsftgdf3",
+    id: crypto.randomUUID(),
     name: "Achievement 6",
     img: "/src/assets/playerBowling.jpg",
   },
