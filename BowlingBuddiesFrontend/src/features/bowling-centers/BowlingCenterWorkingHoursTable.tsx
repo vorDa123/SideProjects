@@ -117,8 +117,8 @@ function BowlingCenterWorkingHoursTable(props: BowlingCenterDataProps) {
         </div>
       ) : (
         <div className="mt-5">
-          <div className="bg-gray-400 rounded-m20 w-70 md:w-80 xl:w-120 h-7"></div>
-          <div className="bg-gray-400 rounded-m20 w-full h-[20dvh] mt-2"></div>
+          <div className="bg-gray-400 rounded-m20 w-70 md:w-80 xl:w-120 h-7 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-[20dvh] mt-2 animate-pulse"></div>
         </div>
       )}
     </>

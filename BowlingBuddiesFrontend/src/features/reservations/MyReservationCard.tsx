@@ -12,6 +12,7 @@ import type { MyReservationsProps } from "../../types/index.ts";
 import EditBookingModal from "../modals/EditBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
 import { useState } from "react";
+import { formatDateIntl } from "../../services/dateServices.ts";
 
 function MyReservationCard(props: MyReservationsProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -31,6 +32,7 @@ function MyReservationCard(props: MyReservationsProps) {
     setShowModal((prev) => !prev);
     setShowPlayerModal((prev) => !prev);
   };
+  const dateFormatToDisplay = formatDateIntl(props.myReservationData.date);
   return (
     <>
       {showModal && (
@@ -53,7 +55,9 @@ function MyReservationCard(props: MyReservationsProps) {
         className="rounded-m15 shadow-mob w-full h-32.5 bg-white-100 flex flex-row cursor-pointer"
         onClick={handleShowModal}
       >
-        <div className={`w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(${props.myReservationData.bowlingCenterInfo.img})] bg-center bg-cover`}></div>
+        <div
+          className={`w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(${props.myReservationData.bowlingCenterInfo.img})] bg-center bg-cover`}
+        ></div>
         <div className="flex flex-col gap-6 md:gap-5 w-2/3 px-2 py-2">
           <div className="flex flex-row justify-between items-center">
             {props.myReservationPage ? (
@@ -72,8 +76,7 @@ function MyReservationCard(props: MyReservationsProps) {
           <div className="flex flex-col gap-5 md:gap-3">
             <div className="flex flex-row gap-5">
               <span className="w-2/3">
-                <FontAwesomeIcon icon={faCalendarDays} />
-                {props.myReservationData.date}
+                <FontAwesomeIcon icon={faCalendarDays} /> {dateFormatToDisplay}
               </span>
               <span className="w-1/3">
                 <FontAwesomeIcon icon={faClock} />{" "}

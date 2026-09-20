@@ -98,13 +98,13 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
         </div>
       ) : (
         <div className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]">
-          <div className="bg-gray-400 rounded-m20 w-80 h-10 mb-4"></div>
-          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
-          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
-          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
-          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
-          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2"></div>
-          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-4"></div>
+          <div className="bg-gray-400 rounded-m20 w-80 h-10 mb-4 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-3 mb-2 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-28 mt-4 animate-pulse"></div>
         </div>
       )}
     </>

@@ -18,11 +18,11 @@ function BowlingCenterGeneralInfo(props: BowlingCenterDataProps) {
         </div>
       ) : (
         <div className="mt-5">
-          <div className="bg-gray-400 rounded-m20 w-full h-[20dvh] xl:h-[45dvh]"></div>
-          <div className="bg-gray-400 rounded-m20 w-50 h-7 mt-5 md:w-60 lg:w-80 xl:w-100"></div>
-          <div className="bg-gray-400 rounded-m20 w-70 h-6 mt-2 md:w-80 lg:w-100 xl:w-120"></div>
-          <div className="bg-gray-400 rounded-m20 w-30 h-6 mt-2 md:w-40 lg:w-60 xl:w-80"></div>
-          <div className="bg-gray-400 rounded-m20 w-20 h-6 mt-2 md:w-30 lg:w-50 xl:w-70"></div>
+          <div className="bg-gray-400 rounded-m20 w-full h-[20dvh] xl:h-[45dvh] animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-50 h-7 mt-5 md:w-60 lg:w-80 xl:w-100 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-70 h-6 mt-2 md:w-80 lg:w-100 xl:w-120 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-30 h-6 mt-2 md:w-40 lg:w-60 xl:w-80 animate-pulse"></div>
+          <div className="bg-gray-400 rounded-m20 w-20 h-6 mt-2 md:w-30 lg:w-50 xl:w-70 animate-pulse"></div>
         </div>
       )}
     </>
