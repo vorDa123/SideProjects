@@ -56,7 +56,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
                 />
               )}
             </BookingFormContext>
-            <BookModalFooter onClose={closeModal}/>
+            <BookModalFooter onClose={closeModal} freeSlotData={props.freeSlotData} newReservationData={props.newReservationData}/>
           </div>
         </div>
       </div>

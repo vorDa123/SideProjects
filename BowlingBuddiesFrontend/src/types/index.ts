@@ -155,6 +155,8 @@ export interface BowlingCenterData {
   email: string;
   phone: string;
   maxPlayersPerAlley?: number;
+  pricePerPerson: number;
+  shoesPricePerPerson: number;
 }
 
 export interface BookingSlotData {
@@ -189,6 +191,8 @@ export interface JoinData {
   joinedPlayers?: UserData[];
   status: JoinStatus;
   numberOfBookedLanes: number;
+  duration: number;
+  price: number;
 }
 
 export interface NextSlotData {
@@ -198,6 +202,7 @@ export interface NextSlotData {
   time: string;
   status?: JoinStatus;
   numberOfFreeLanes: number;
+  price: number;
 }
 
 export interface BookedSlotData {
@@ -206,6 +211,7 @@ export interface BookedSlotData {
   bowlingCenterData: BowlingCenterData;
   time: string;
   lane: number;
+  price: number;
 }
 
 export interface AchievementData {

@@ -57,7 +57,7 @@ function EditBookingModal(props: ModalProps) {
                 />
               )}
             </BookingFormContext>
-            <EditBookModalFooter onClose={closeModal}/>
+            <EditBookModalFooter onClose={closeModal} myReservationData={props.myReservationData}/>
           </div>
         </div>
       </div>

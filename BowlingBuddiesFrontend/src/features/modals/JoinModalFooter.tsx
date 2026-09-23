@@ -14,7 +14,7 @@ function JoinModalFooter(props: ModalProps) {
       <div className="col-span-3 mt-6 md:mt-5">
         <div className="text-center">
           <p>Price per person:</p>
-          <p className="text-mh1 font-semibold">10 EUR</p>
+          <p className="text-mh1 font-semibold">{props.joinSlotData?.price} EUR</p>
           <p className="text-mdisclaimer md:text-tdisclaimer">
             Shoes not included in price
           </p>

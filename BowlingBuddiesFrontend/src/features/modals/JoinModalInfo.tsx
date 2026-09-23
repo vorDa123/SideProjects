@@ -2,8 +2,15 @@ import LabelTag from "../../components/ui/LabelTag";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
+import type { ModalProps } from "../../types";
+import { formatDateIntl, getDayNameIntl } from "../../services/dateServices";
 
-function JoinModalInfo() {
+function JoinModalInfo(props: ModalProps) {
+  const dateToDisplay = formatDateIntl(props.joinSlotData!.date);
+  const dayNameToDisplay = getDayNameIntl(props.joinSlotData!.date);
+  const hoursFromTime = props.joinSlotData?.time.slice(0, 2);
+  const minutesFromTime = props.joinSlotData?.time.slice(3);
+  const endTime = Number(hoursFromTime) + props.joinSlotData!.duration;
   return (
     <>
       <div className="col-span-8">
@@ -12,18 +19,23 @@ function JoinModalInfo() {
             <LabelTag labelValue="Fun" />
             <LabelTag labelValue="Professional" />
           </div>
-          <p className="text-mh1 font-semibold my-1">West Bowling</p>
-          <p>Zaprešićka 2, 10290, Jablanovec</p>
+          <p className="text-mh1 font-semibold my-1">
+            {props.joinSlotData?.bowlingCenterData.name}
+          </p>
+          <p>{props.joinSlotData?.bowlingCenterData.location}</p>
         </div>
       </div>
       <div className="col-span-8 mt-7 md:mt-5">
         <p className="text-mh3 font-semibold my-1">Date & Time</p>
         <div className="flex flex-col gap-2">
           <span>
-            <FontAwesomeIcon icon={faCalendarDays} /> Thursday, 14.05.2026.
+            <FontAwesomeIcon icon={faCalendarDays} /> {dayNameToDisplay}
+            {", "}
+            {dateToDisplay}
           </span>
           <span>
-            <FontAwesomeIcon icon={faClock} /> 18:00 - 20:00
+            <FontAwesomeIcon icon={faClock} /> {props.joinSlotData?.time}{" - "}
+            {`${endTime}:${minutesFromTime}`}
           </span>
         </div>
       </div>

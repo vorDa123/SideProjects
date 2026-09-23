@@ -59,9 +59,9 @@ function JoinModal(props: ModalProps) {
         </div>
         <div className="overflow-y-auto h-full px-6 py-7 md:py-5 xl:py-5 mxl:py-10 xxl:py-5">
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
-            <JoinModalInfo />
-            <JoinModalPlayers />
-            <JoinModalFooter onClose={closeModal}/>
+            <JoinModalInfo joinSlotData={props.joinSlotData}/>
+            <JoinModalPlayers joinSlotData={props.joinSlotData}/>
+            <JoinModalFooter joinSlotData={props.joinSlotData} onClose={closeModal}/>
           </div>
         </div>
       </div>

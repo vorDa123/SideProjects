@@ -8,7 +8,7 @@ function BookModalForm(props: ModalProps) {
   const time =
     props.myReservationData?.startTime ||
     props.freeSlotData?.time ||
-    `${props.newReservationData.startTime}:00`;
+    `${props.newReservationData?.startTime}:00`;
   const hourToDisplay = time.slice(0, 2);
   return (
     <>
