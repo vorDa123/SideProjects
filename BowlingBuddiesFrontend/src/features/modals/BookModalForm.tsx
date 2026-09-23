@@ -5,7 +5,11 @@ import type { ModalProps } from "../../types";
 
 function BookModalForm(props: ModalProps) {
   const { isJoinClicked, toggleJoinClicked } = useContext(BookingFormContext);
-  const hourToDisplay = props.myReservationData?.startTime.slice(0, 2);
+  const time =
+    props.myReservationData?.startTime ||
+    props.freeSlotData?.time ||
+    `${props.newReservationData.startTime}:00`;
+  const hourToDisplay = time.slice(0, 2);
   return (
     <>
       <div className="col-span-8 mt-5 mb-1">
@@ -31,9 +35,7 @@ function BookModalForm(props: ModalProps) {
         <input
           type="checkbox"
           className="sr-only peer/full"
-          defaultChecked={
-            props.myReservationData?.startTime === `${hourToDisplay}:00`
-          }
+          defaultChecked={time === `${hourToDisplay}:00`}
         />
         <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/full:border-orange-100 peer-checked/full:border-4 peer-checked/full:rounded-m15">
           <span>{hourToDisplay}:00</span>
@@ -43,9 +45,7 @@ function BookModalForm(props: ModalProps) {
         <input
           type="checkbox"
           className="sr-only peer/fifteen"
-          defaultChecked={
-            props.myReservationData?.startTime === `${hourToDisplay}:15`
-          }
+          defaultChecked={time === `${hourToDisplay}:15`}
         />
         <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/fifteen:border-orange-100 peer-checked/fifteen:border-4 peer-checked/fifteen:rounded-m15">
           <span>{hourToDisplay}:15</span>
@@ -55,9 +55,7 @@ function BookModalForm(props: ModalProps) {
         <input
           type="checkbox"
           className="sr-only peer/half"
-          defaultChecked={
-            props.myReservationData?.startTime === `${hourToDisplay}:30`
-          }
+          defaultChecked={time === `${hourToDisplay}:30`}
         />
         <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/half:border-orange-100 peer-checked/half:border-4 peer-checked/half:rounded-m15">
           <span>{hourToDisplay}:30</span>
@@ -67,9 +65,7 @@ function BookModalForm(props: ModalProps) {
         <input
           type="checkbox"
           className="sr-only peer/fortyfive"
-          defaultChecked={
-            props.myReservationData?.startTime === `${hourToDisplay}:45`
-          }
+          defaultChecked={time === `${hourToDisplay}:45`}
         />
         <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/fortyfive:border-orange-100 peer-checked/fortyfive:border-4 peer-checked/fortyfive:rounded-m15">
           <span>{hourToDisplay}:45</span>
@@ -174,7 +170,7 @@ function BookModalForm(props: ModalProps) {
           <input
             type="checkbox"
             className="sr-only peer"
-            checked={isJoinClicked ?? props.myReservationData?.openJoin}
+            defaultChecked={isJoinClicked ?? props.myReservationData?.openJoin}
             onChange={toggleJoinClicked}
           />
 

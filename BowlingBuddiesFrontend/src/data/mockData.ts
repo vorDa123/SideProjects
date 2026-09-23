@@ -196,6 +196,172 @@ export const MY_RESERVATIONS: BookingSlotData[] = [
     phone: "+385914976618",
     reservationType: "fun",
   },
+  {
+    id: crypto.randomUUID(),
+    bowlingCenterInfo: {
+      id: "asdkmnasjdn123sanmj",
+      name: "West Bowling",
+      location: "Zaprešićka 2, 10290, Jablanovec",
+      center: "West Gate",
+      img: "/src/assets/playerBowling.jpg",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        wednesday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        thursday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        friday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        saturday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+        sunday: {
+          open: true,
+          startTime: "14:00",
+          endTime: "23:00",
+        },
+      },
+      lanes: 14,
+      email: "info@westbowling.com",
+      phone: "+38591 555 5555",
+      maxPlayersPerAlley: 6,
+    },
+    laneNumber: 3,
+    startTime: "16:15",
+    endTime: "18:15",
+    date: new Date("2026, 9, 12"),
+    singlePrice: 10,
+    price: 30,
+    shoesNeeded: true,
+    shoesPrice: 2,
+    priceWithShoes: 36,
+    openJoin: true,
+    duration: 2,
+    numberOfPlayers: 3,
+    email: "davorkuharic1997@gmail.com",
+    phone: "+385914976618",
+    reservationType: "fun",
+    joinedPlayers: [
+      {
+        id: crypto.randomUUID(),
+        personalData: {
+          name: "Davor",
+          surname: "Kuharić",
+          gender: "M",
+          oib: "40100668658",
+          dateOfBirth: "1997-04-28",
+        },
+        contactData: {
+          email: "davorkuharic1997@gmail.com",
+          phone: "+385914976618",
+        },
+        registeredData: {
+          registeredPlayer: true,
+          registeredClub: "BK Nomad",
+        },
+        addressData: {
+          address: "Turanjska ulica 3G",
+          city: "Zagreb",
+          postalCode: "10020",
+          country: "Croatia",
+        },
+        leader: true,
+      },
+      {
+        id: crypto.randomUUID(),
+        personalData: {
+          name: "Lovro",
+          surname: "Paladinić",
+          gender: "M",
+          oib: "",
+          dateOfBirth: "",
+        },
+        contactData: {
+          email: "",
+          phone: "",
+        },
+        registeredData: {
+          registeredPlayer: false,
+          registeredClub: "",
+        },
+        addressData: {
+          address: "",
+          city: "Zagreb",
+          postalCode: "",
+          country: "Croatia",
+        },
+        leader: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        personalData: {
+          name: "Ivana",
+          surname: "Dukić",
+          gender: "F",
+          oib: "",
+          dateOfBirth: "",
+        },
+        contactData: {
+          email: "",
+          phone: "",
+        },
+        registeredData: {
+          registeredPlayer: false,
+          registeredClub: "",
+        },
+        addressData: {
+          address: "",
+          city: "",
+          postalCode: "",
+          country: "",
+        },
+        leader: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        personalData: {
+          name: "Anja",
+          surname: "Kotaranin",
+          gender: "F",
+          oib: "",
+          dateOfBirth: "",
+        },
+        contactData: {
+          email: "",
+          phone: "",
+        },
+        registeredData: {
+          registeredPlayer: false,
+          registeredClub: "",
+        },
+        addressData: {
+          address: "",
+          city: "",
+          postalCode: "",
+          country: "",
+        },
+        leader: false,
+      },
+    ],
+  },
 ];
 
 export const JOIN_SLOT: JoinData[] = [

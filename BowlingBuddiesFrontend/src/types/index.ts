@@ -78,6 +78,7 @@ export interface ModalProps {
   freeSlotData?: NextSlotData;
   joinSlotData?: JoinData;
   myReservationData?: BookingSlotData;
+  newReservationData?: BowlingCenterDataProps;
   onClose?: () => void;
   onAddPlayer?: () => void;
   onBack?: () => void;
@@ -174,6 +175,7 @@ export interface BookingSlotData {
   email: string;
   phone?: string;
   reservationType: string;
+  joinedPlayers?: UserData[];
 }
 
 export type JoinStatus = "free" | "full" | "cancelled";

@@ -4,8 +4,8 @@ import type { ModalProps } from "../../types";
 import { formatDateIntl, getDayNameIntl } from "../../services/dateServices";
 
 function BookModalHeader(props: ModalProps) {
-  const dateFormatToDisplay = formatDateIntl(props.myReservationData!.date);
-  const dayNameToDisplay = getDayNameIntl(props.myReservationData!.date);
+  const dateFormatToDisplay = formatDateIntl(props.myReservationData?.date || props.freeSlotData?.date || props.newReservationData.date);
+  const dayNameToDisplay = getDayNameIntl(props.myReservationData?.date || props.freeSlotData?.date || props.newReservationData.date);
   return (
     <>
       <div className="col-span-8">
@@ -16,9 +16,9 @@ function BookModalHeader(props: ModalProps) {
               {","} {dateFormatToDisplay}
             </p>
             <p className="text-mh1 font-semibold my-1">
-              {props.myReservationData?.bowlingCenterInfo.name}
+              {props.myReservationData?.bowlingCenterInfo.name || props.freeSlotData?.bowlingCenterData.name || props.newReservationData.centerData.name}
             </p>
-            <p>{props.myReservationData?.bowlingCenterInfo.location}</p>
+            <p>{props.myReservationData?.bowlingCenterInfo.location || props.freeSlotData?.bowlingCenterData.location || props.newReservationData.centerData.location}</p>
           </div>
           <div>
             <FontAwesomeIcon

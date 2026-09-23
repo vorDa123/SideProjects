@@ -46,9 +46,9 @@ function BowlingCenterBookingModal(props: ModalProps) {
       >
         <div className="overflow-y-auto h-full">
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
-            <BookModalHeader onClose={closeModal} />
+            <BookModalHeader onClose={closeModal} freeSlotData={props.freeSlotData} newReservationData={props.newReservationData}/>
             <BookingFormContext value={{ isJoinClicked, toggleJoinClicked }}>
-              <BookModalForm />
+              <BookModalForm freeSlotData={props.freeSlotData} newReservationData={props.newReservationData}/>
               {isJoinClicked && (
                 <BookModalPlayers
                   onClose={closeModal}

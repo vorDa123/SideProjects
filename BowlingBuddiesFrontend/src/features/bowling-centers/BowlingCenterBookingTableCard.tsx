@@ -34,6 +34,14 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
       );
     });
   }, [props.centerData.id, props.startTime, props.allBookings, props.date]);
+
+  const newReservationData = {
+    centerData: props.centerData,
+    allBookings: props.allBookings,
+    startTime: props.startTime,
+    date: props.date,
+  };
+  
   return (
     <>
       {showModal && (
@@ -43,6 +51,7 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
           onAddPlayer={handleAddPlayer}
           isJoinClicked={isJoinClicked}
           setIsJoinClicked={handleJoinClicked}
+          newReservationData={newReservationData}
         />
       )}
       {showPlayerModal && (
