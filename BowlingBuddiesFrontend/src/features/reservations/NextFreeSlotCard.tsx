@@ -3,7 +3,7 @@ import {
   faCalendarDays,
   faClock,
   faLocationDot,
-  faUserGroup,
+  faRoad,
 } from "@fortawesome/free-solid-svg-icons";
 import BowlingCenterBookingModal from "../modals/BowlingCenterBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
@@ -71,7 +71,7 @@ function NextFreeSlotCard(props: NextFreeSlotCardProps) {
                 <FontAwesomeIcon icon={faLocationDot} /> {props.freeSlotData.bowlingCenterData.location}
               </span>
               <span className="w-1/3">
-                <FontAwesomeIcon icon={faUserGroup} /> {props.freeSlotData.numberOfFreeLanes}
+                <FontAwesomeIcon icon={faRoad} /> {props.freeSlotData.numberOfFreeLanes}
               </span>
             </div>
           </div>
