@@ -17,9 +17,10 @@ import { formatDateIntl } from "../../services/dateServices.ts";
 function MyReservationCard(props: MyReservationsProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
-  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
+  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(Boolean(props.myReservationData?.openJoin));
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
+    setIsJoinClicked(Boolean(props.myReservationData?.openJoin));
   };
   const handleAddPlayer = () => {
     setShowModal((prev) => !prev);

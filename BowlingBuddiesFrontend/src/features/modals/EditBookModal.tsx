@@ -8,7 +8,7 @@ import type { ModalProps } from "../../types/index.ts";
 import { BookingFormContext } from "../../context/BookFormContext.ts";
 
 function EditBookingModal(props: ModalProps) {
-  const isJoinClicked = props.isJoinClicked!;
+  const isJoinClicked = props.isJoinClicked ?? false;
   const currentHeight = isJoinClicked ? "95dvh" : "80dvh";
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
     e.stopPropagation();
@@ -46,9 +46,12 @@ function EditBookingModal(props: ModalProps) {
       >
         <div className="overflow-y-auto h-full">
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
-            <BookModalHeader onClose={closeModal} myReservationData={props.myReservationData}/>
+            <BookModalHeader
+              onClose={closeModal}
+              myReservationData={props.myReservationData}
+            />
             <BookingFormContext value={{ isJoinClicked, toggleJoinClicked }}>
-              <BookModalForm myReservationData={props.myReservationData}/>
+              <BookModalForm myReservationData={props.myReservationData} />
               {isJoinClicked && (
                 <BookModalPlayers
                   onClose={closeModal}
@@ -57,7 +60,10 @@ function EditBookingModal(props: ModalProps) {
                 />
               )}
             </BookingFormContext>
-            <EditBookModalFooter onClose={closeModal} myReservationData={props.myReservationData}/>
+            <EditBookModalFooter
+              onClose={closeModal}
+              myReservationData={props.myReservationData}
+            />
           </div>
         </div>
       </div>

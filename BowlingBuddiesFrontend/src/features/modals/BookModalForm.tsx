@@ -125,7 +125,7 @@ function BookModalForm(props: ModalProps) {
           <input
             type="checkbox"
             className="sr-only peer"
-            defaultChecked={isJoinClicked ?? props.myReservationData?.openJoin}
+            defaultChecked={isJoinClicked || props.myReservationData?.openJoin}
             onChange={toggleJoinClicked}
           />
 
@@ -170,7 +170,7 @@ function BookModalForm(props: ModalProps) {
           <input
             type="checkbox"
             className="sr-only peer"
-            defaultChecked={isJoinClicked ?? props.myReservationData?.openJoin}
+            defaultChecked={isJoinClicked || props.myReservationData?.openJoin}
             onChange={toggleJoinClicked}
           />
 
