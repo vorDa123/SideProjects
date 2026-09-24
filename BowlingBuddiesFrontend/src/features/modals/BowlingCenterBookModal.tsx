@@ -35,9 +35,9 @@ function BowlingCenterBookingModal(props: ModalProps) {
     console.log("Form data:", formData);
     console.log("Svi podaci iz forme:", data);
     const reservationData = {
-      bowlingCenterInfo: props.newReservationData.centerData,
+      bowlingCenterInfo: props.newReservationData?.centerData || props.freeSlotData?.bowlingCenterData,
       startTime: `${data.time}`,
-      date: props.newReservationData.date,
+      date: props.newReservationData?.date || props.freeSlotData?.date,
       shoesNeeded: data.shoesNeeded ? true : false,
       openJoin: data.openJoin ? true : false,
       duration: Number(data.duration),
