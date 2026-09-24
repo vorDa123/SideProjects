@@ -35,9 +35,11 @@ function BowlingCenterBookingModal(props: ModalProps) {
     console.log("Form data:", formData);
     console.log("Svi podaci iz forme:", data);
     const reservationData = {
-      bowlingCenterInfo: props.newReservationData?.centerData || props.freeSlotData?.bowlingCenterData,
+      bowlingCenterInfo:
+        props.newReservationData?.centerData! ||
+        props.freeSlotData?.bowlingCenterData!,
       startTime: `${data.time}`,
-      date: props.newReservationData?.date || props.freeSlotData?.date,
+      date: props.newReservationData?.date! || props.freeSlotData?.date!,
       shoesNeeded: data.shoesNeeded ? true : false,
       openJoin: data.openJoin ? true : false,
       duration: Number(data.duration),
@@ -45,8 +47,10 @@ function BowlingCenterBookingModal(props: ModalProps) {
       email: `${data.email}`,
       phone: `${data.phone}`,
       reservationType: `${data.resType}`,
+      price: props.newReservationData?.centerData.pricePerPerson! || props.freeSlotData?.price!
     };
-    createReservation(reservationData);
+    createReservation!(reservationData);
+    closeModal();
   };
 
   useEffect(() => {
