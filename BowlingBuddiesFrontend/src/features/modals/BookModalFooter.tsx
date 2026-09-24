@@ -5,16 +5,21 @@ function BookModalFooter(props: ModalProps) {
     <>
       <div className="col-span-5 mt-5 self-center md:relative">
         <BiggerButton
+          type="submit"
           variant="fill"
           buttonName="BOOK"
           classAppend="md:absolute md:right-[-30px] md:top-[-30px] mxl:right-[-40px] xxl:right-[-50px] active:md:top-[-25px]"
-          onClick={props.onClose}
+          // onClick={props.onClose}
         />
       </div>
       <div className="col-span-3 mt-5">
         <div className="text-center">
           <p>Price per person:</p>
-          <p className="text-mh1 font-semibold">{props.freeSlotData?.price || props.newReservationData?.centerData.pricePerPerson} EUR</p>
+          <p className="text-mh1 font-semibold">
+            {props.freeSlotData?.price ||
+              props.newReservationData?.centerData.pricePerPerson}{" "}
+            EUR
+          </p>
           <p className="text-mdisclaimer md:text-tdisclaimer">
             Shoes not included in price
           </p>

@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 export interface HeaderProps {
   showLogo?: boolean;
 }
@@ -39,6 +40,7 @@ export interface ButtonProps {
   state?: string;
   variant: string;
   buttonName: string;
+  type?: "submit" | "reset" | "button";
   classAppend?: string;
   classOverride?: string;
   onClick?: () => void;
@@ -65,6 +67,7 @@ export interface InputFieldProps {
   labelClassOverride?: string;
   labelClassAppend?: string;
   defaultValue?: string | number;
+  ref?: Ref<HTMLInputElement>;
 }
 
 export interface NavigationContextTypes {

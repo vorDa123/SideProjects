@@ -5,6 +5,7 @@ function MainButton(props: ButtonProps) {
     return (
       <>
         <button
+          type={props.type}
           className={
             props.classOverride
               ? props.classOverride
@@ -20,6 +21,7 @@ function MainButton(props: ButtonProps) {
     return (
       <>
         <button
+          type={props.type}
           className={
             props.classOverride
               ? props.classOverride
@@ -35,6 +37,7 @@ function MainButton(props: ButtonProps) {
     return (
       <>
         <button
+          type={props.type}
           className={
             props.classOverride
               ? props.classOverride
@@ -50,6 +53,7 @@ function MainButton(props: ButtonProps) {
     return (
       <>
         <button
+          type={props.type}
           className={
             props.classOverride
               ? props.classOverride

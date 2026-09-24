@@ -33,8 +33,10 @@ function BookModalForm(props: ModalProps) {
       </div>
       <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
         <input
+          name="time"
           type="checkbox"
           className="sr-only peer/full"
+          defaultValue={`${hourToDisplay}:00`}
           defaultChecked={time === `${hourToDisplay}:00`}
         />
         <div className="h-full flex flex-col justify-center items-center cursor-pointer peer-checked/full:border-orange-100 peer-checked/full:border-4 peer-checked/full:rounded-m15">
@@ -43,7 +45,9 @@ function BookModalForm(props: ModalProps) {
       </label>
       <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
         <input
+          name="time"
           type="checkbox"
+          defaultValue={`${hourToDisplay}:15`}
           className="sr-only peer/fifteen"
           defaultChecked={time === `${hourToDisplay}:15`}
         />
@@ -53,7 +57,9 @@ function BookModalForm(props: ModalProps) {
       </label>
       <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
         <input
+          name="time"
           type="checkbox"
+          defaultValue={`${hourToDisplay}:30`}
           className="sr-only peer/half"
           defaultChecked={time === `${hourToDisplay}:30`}
         />
@@ -63,7 +69,9 @@ function BookModalForm(props: ModalProps) {
       </label>
       <label className="col-span-2 rounded-m15 w-full bg-lighterBlue-100 text-white-100 text-mh3 h-17">
         <input
+          name="time"
           type="checkbox"
+          defaultValue={`${hourToDisplay}:45`}
           className="sr-only peer/fortyfive"
           defaultChecked={time === `${hourToDisplay}:45`}
         />
@@ -94,6 +102,7 @@ function BookModalForm(props: ModalProps) {
         <br />
         <label className="inline-flex items-center cursor-pointer w-max">
           <input
+            name="shoesNeeded"
             type="checkbox"
             className="sr-only peer"
             defaultChecked={props.myReservationData?.shoesNeeded}
@@ -123,6 +132,7 @@ function BookModalForm(props: ModalProps) {
         <br />
         <label className="inline-flex items-center cursor-pointer w-max">
           <input
+            name="openJoin"
             type="checkbox"
             className="sr-only peer"
             defaultChecked={isJoinClicked}
@@ -168,6 +178,7 @@ function BookModalForm(props: ModalProps) {
         <br />
         <label className="inline-flex items-center cursor-pointer w-max">
           <input
+            name="openJoin"
             type="checkbox"
             className="sr-only peer"
             defaultChecked={isJoinClicked}
