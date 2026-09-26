@@ -7,7 +7,7 @@ function BookModalForm(props: ModalProps) {
   const { isJoinClicked, toggleJoinClicked } = useContext(BookingFormContext);
   const time =
     props.myReservationData?.startTime ||
-    props.freeSlotData?.time ||
+    props.freeSlotData?.startTime ||
     `${props.newReservationData?.startTime}:00`;
   const hourToDisplay = time.slice(0, 2);
   return (

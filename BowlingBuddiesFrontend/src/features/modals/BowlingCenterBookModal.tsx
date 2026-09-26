@@ -37,7 +37,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
     const reservationData = {
       bowlingCenterInfo:
         props.newReservationData?.centerData! ||
-        props.freeSlotData?.bowlingCenterData!,
+        props.freeSlotData?.bowlingCenterInfo!,
       startTime: `${data.time}`,
       date: props.newReservationData?.date! || props.freeSlotData?.date!,
       shoesNeeded: data.shoesNeeded ? true : false,
@@ -46,7 +46,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
       numberOfPlayers: Number(data.players),
       email: `${data.email}`,
       phone: `${data.phone}`,
-      reservationType: `${data.resType}`,
+      reservationType: "booked" as const,
       price: props.newReservationData?.centerData.pricePerPerson! || props.freeSlotData?.price!
     };
     createReservation!(reservationData);

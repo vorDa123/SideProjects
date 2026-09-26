@@ -8,7 +8,7 @@ import {
 } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
 
-import type { BookingSlotData, UserData } from "../types/index.ts";
+import type { ReservationData, UserData } from "../types/index.ts";
 
 const originalMyReservations = MY_RESERVATIONS;
 
@@ -47,7 +47,7 @@ const getNextFreeSlotHandler = async () => {
 const getJoinSlotHandler = async () => {
   await delay(3000);
   const joinSlotReservations = JOIN_SLOT.map((item) => item).filter((item) => {
-    return item.status === "free";
+    return item.reservationType === "join";
   });
 
   console.log("Original fetched join slots:", JOIN_SLOT);
@@ -67,12 +67,12 @@ const getMyReservationsHandler = async () => {
   return originalMyReservations;
 };
 
-const createReservationHandler = async (data: BookingSlotData) => {
+const createReservationHandler = async (data: ReservationData) => {
   await delay(3000);
 
   const randomID = crypto.randomUUID();
 
-  const newReservation: BookingSlotData = {
+  const newReservation: ReservationData = {
     ...data,
     id: randomID,
   };
@@ -98,7 +98,7 @@ const joinPlayerHandler = async (resId: string, player: UserData) => {
   await delay(3000);
   const freeJoinSlotReservations = JOIN_SLOT.map((item) => item).filter(
     (item) => {
-      return item.status === "free";
+      return item.reservationType === "join";
     },
   );
   const reservation = freeJoinSlotReservations.find((item) => {
@@ -111,12 +111,13 @@ const joinPlayerHandler = async (resId: string, player: UserData) => {
     return item.id === player.id;
   });
   console.log("Found player:", foundPlayer);
-  const maxNumberOfPlayers = reservation.numberOfBookedLanes * 6;
+  const numberOfBookedLanes = reservation.numberOfBookedLanes || 0;
+  const maxNumberOfPlayers = numberOfBookedLanes * 6;
   const numberOfJoinedPlayers = reservation.joinedPlayers?.length || 0;
 
   if (numberOfJoinedPlayers === maxNumberOfPlayers || foundPlayer) {
     if (numberOfJoinedPlayers === maxNumberOfPlayers) {
-      reservation.status = "full";
+      reservation.reservationType = "booked";
     }
     throw new Error("Reservation is full or the player is already added");
   }

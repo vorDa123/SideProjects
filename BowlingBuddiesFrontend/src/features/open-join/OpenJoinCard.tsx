@@ -27,7 +27,7 @@ function OpenJoinCard(props: OpenJoinCardProps) {
         <div className="flex flex-col gap-3 justify-around w-full h-full px-2 py-2">
           <div className="flex flex-row justify-between">
             <p className="text-mh2 font-medium">
-              {props.joinData.bowlingCenterData.name}
+              {props.joinData.bowlingCenterInfo.name}
             </p>
             <div className="flex flex-row gap-2">
               <LabelTag labelValue="Fun" />
@@ -41,17 +41,17 @@ function OpenJoinCard(props: OpenJoinCardProps) {
               </p>
               <p className="truncate">
                 <FontAwesomeIcon icon={faLocationDot} />{" "}
-                {props.joinData.bowlingCenterData.location}
+                {props.joinData.bowlingCenterInfo.location}
               </p>
             </div>
             <div className="flex flex-col gap-5 w-1/3 pl-1 md:gap-3">
               <span>
-                <FontAwesomeIcon icon={faClock} /> {props.joinData.time}
+                <FontAwesomeIcon icon={faClock} /> {props.joinData.startTime}
               </span>
               <span className="text-orange-100">
                 <FontAwesomeIcon icon={faUserGroup} />{" "}
                 {props.joinData.joinedPlayers?.length}/
-                {props.joinData.bowlingCenterData.maxPlayersPerAlley}
+                {props.joinData.bowlingCenterInfo.maxPlayersPerAlley}
               </span>
             </div>
             <MainButton

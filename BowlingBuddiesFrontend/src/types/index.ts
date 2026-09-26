@@ -14,7 +14,7 @@ export interface NextFreeSlotProps {
 }
 
 export interface NextFreeSlotCardProps {
-  freeSlotData: NextSlotData;
+  freeSlotData: ReservationData;
 }
 
 export interface OpenJoinProps {
@@ -33,7 +33,7 @@ export interface MyProfileProps {
 
 export interface MyReservationsProps {
   myReservationPage?: boolean;
-  myReservationData?: BookingSlotData;
+  myReservationData?: ReservationData;
 }
 
 export interface ButtonProps {
@@ -78,9 +78,9 @@ export interface NavigationContextTypes {
 export interface ModalProps {
   isOpen?: boolean;
   isJoinClicked?: boolean;
-  freeSlotData?: NextSlotData;
-  joinSlotData?: JoinData;
-  myReservationData?: BookingSlotData;
+  freeSlotData?: ReservationData;
+  joinSlotData?: ReservationData;
+  myReservationData?: ReservationData;
   newReservationData?: BowlingCenterDataProps;
   onClose?: () => void;
   onAddPlayer?: () => void;
@@ -162,7 +162,9 @@ export interface BowlingCenterData {
   shoesPricePerPerson: number;
 }
 
-export interface BookingSlotData {
+export type ReservationType = "join" | "free" | "booked";
+
+export interface ReservationData {
   id?: string;
   bowlingCenterInfo: BowlingCenterData;
   laneNumber?: number;
@@ -179,42 +181,10 @@ export interface BookingSlotData {
   numberOfPlayers: number;
   email: string;
   phone?: string;
-  reservationType: string;
+  reservationType: ReservationType;
   joinedPlayers?: UserData[];
-}
-
-export type JoinStatus = "free" | "full" | "cancelled";
-
-export interface JoinData {
-  id: string;
-  host: UserData;
-  bowlingCenterData: BowlingCenterData;
-  date: Date;
-  time: string;
-  joinedPlayers?: UserData[];
-  status: JoinStatus;
-  numberOfBookedLanes: number;
-  duration: number;
-  price: number;
-}
-
-export interface NextSlotData {
-  id: string;
-  bowlingCenterData: BowlingCenterData;
-  date: Date;
-  time: string;
-  status?: JoinStatus;
-  numberOfFreeLanes: number;
-  price: number;
-}
-
-export interface BookedSlotData {
-  id: string;
-  date: Date;
-  bowlingCenterData: BowlingCenterData;
-  time: string;
-  lane: number;
-  price: number;
+  numberOfBookedLanes?: number;
+  numberOfFreeLanes?: number;
 }
 
 export interface AchievementData {
@@ -228,7 +198,7 @@ export interface AchievementCardProps {
 }
 
 export interface OpenJoinCardProps {
-  joinData: JoinData;
+  joinData: ReservationData;
 }
 
 export interface BookingContextTypes {
@@ -240,18 +210,18 @@ export interface BookingContextTypes {
   isLoadingJoinSlots?: boolean;
   error?: string | null;
   centers?: BowlingCenterData[];
-  freeSlots?: NextSlotData[];
-  joinSlots?: JoinData[];
-  myReservations?: BookingSlotData[];
+  freeSlots?: ReservationData[];
+  joinSlots?: ReservationData[];
+  myReservations?: ReservationData[];
   achievements?: AchievementData[];
-  allBookings?: BookedSlotData[];
+  allBookings?: ReservationData[];
   fetchCenters?: () => Promise<void>;
   fetchFreeSlots?: () => Promise<void>;
   fetchJoinSlots?: () => Promise<void>;
   fetchMyReservations?: () => Promise<void>;
   fetchAllBookings?: () => Promise<void>;
   fetchAchievements?: () => Promise<void>;
-  createReservation?: (data: BookingSlotData) => Promise<void>;
+  createReservation?: (data: ReservationData) => Promise<void>;
 }
 
 export interface BookingProviderProps {
@@ -260,7 +230,7 @@ export interface BookingProviderProps {
 
 export interface BowlingCenterDataProps {
   centerData: BowlingCenterData;
-  allBookings?: BookedSlotData[];
+  allBookings?: ReservationData[];
   startTime?: number;
   date?: Date;
 }

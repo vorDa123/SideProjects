@@ -2,13 +2,10 @@ import { useState } from "react";
 import { BookingContext } from "./BookingContext.tsx";
 import type {
   BookingContextTypes,
-  BookingSlotData,
   BowlingCenterData,
-  NextSlotData,
   BookingProviderProps,
   AchievementData,
-  BookedSlotData,
-  JoinData
+  ReservationData
 } from "../types/index.ts";
 import {
   getBowlingCentersHandler,
@@ -22,11 +19,11 @@ import {
 
 export function BookingContextProvider({ children }: BookingProviderProps) {
   const [centers, setCenters] = useState<BowlingCenterData[]>([]);
-  const [freeSlots, setFreeSlots] = useState<NextSlotData[]>([]);
-  const [joinSlots, setJoinSlots] = useState<JoinData[]>([]);
+  const [freeSlots, setFreeSlots] = useState<ReservationData[]>([]);
+  const [joinSlots, setJoinSlots] = useState<ReservationData[]>([]);
   const [achievements, setAchievements] = useState<AchievementData[]>([]);
-  const [allBookings, setAllBookings] = useState<BookedSlotData[]>([]);
-  const [myReservations, setMyReservations] = useState<BookingSlotData[]>([]);
+  const [allBookings, setAllBookings] = useState<ReservationData[]>([]);
+  const [myReservations, setMyReservations] = useState<ReservationData[]>([]);
   const [isLoadingCenters, setIsLoadingCenters] = useState<boolean>(false);
   const [isLoadingFreeSlots, setIsLoadingFreeSlots] = useState<boolean>(false);
   const [isLoadingJoinSlots, setIsLoadingJoinSlots] = useState<boolean>(false);
@@ -140,7 +137,7 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     }
   };
 
-  const createNewReservation = async (data: BookingSlotData) => {
+  const createNewReservation = async (data: ReservationData) => {
     try {
       await createReservationHandler(data);
       const res = await getMyReservationsHandler();

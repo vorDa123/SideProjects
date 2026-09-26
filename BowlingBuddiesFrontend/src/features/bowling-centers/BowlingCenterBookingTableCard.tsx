@@ -28,8 +28,8 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
     const dateToCompare = formatDate(props.date!);
     return props.allBookings?.filter((item) => {
       return (
-        item.bowlingCenterData.id === props.centerData.id &&
-        item.time.includes(`${props.startTime}:`) &&
+        item.bowlingCenterInfo.id === props.centerData.id &&
+        item.startTime.includes(`${props.startTime}:`) &&
         formatDate(item.date!) === dateToCompare
       );
     });

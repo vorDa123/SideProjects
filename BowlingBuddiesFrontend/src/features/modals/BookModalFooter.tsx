@@ -9,7 +9,6 @@ function BookModalFooter(props: ModalProps) {
           variant="fill"
           buttonName="BOOK"
           classAppend="md:absolute md:right-[-30px] md:top-[-30px] mxl:right-[-40px] xxl:right-[-50px] active:md:top-[-25px]"
-          // onClick={props.onClose}
         />
       </div>
       <div className="col-span-3 mt-5">
