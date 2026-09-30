@@ -5,7 +5,8 @@ import type {
   BowlingCenterData,
   BookingProviderProps,
   AchievementData,
-  ReservationData
+  ReservationData,
+  UserData,
 } from "../types/index.ts";
 import {
   getBowlingCentersHandler,
@@ -14,7 +15,9 @@ import {
   createReservationHandler,
   getAchievements,
   getAllBookedSlots,
-  getJoinSlotHandler
+  getJoinSlotHandler,
+  joinPlayerHandler,
+  addPlayerHandler,
 } from "../services/bookingService.ts";
 
 export function BookingContextProvider({ children }: BookingProviderProps) {
@@ -151,6 +154,43 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     }
   };
 
+  const joinPlayer = async (resId: string, player: UserData) => {
+    try {
+      const data = await joinPlayerHandler(resId, player);
+      await createNewReservation(data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
+  };
+
+  const addPlayer = async (resId: string, player: UserData) => {
+    try {
+      const reservationDataToUpdate = await addPlayerHandler(resId, player);
+
+      setMyReservations((prevReservations) =>
+        prevReservations.map((item) =>
+          item.id === resId ? reservationDataToUpdate : item,
+        ),
+      );
+
+      setFreeSlots((prevReservations) =>
+        prevReservations.map((item) =>
+          item.id === resId ? reservationDataToUpdate : item,
+        ),
+      );
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
+  };
+
   const value: BookingContextTypes = {
     isLoadingCenters,
     isLoadingFreeSlots,
@@ -172,6 +212,8 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     fetchAllBookings,
     fetchAchievements,
     createReservation: createNewReservation,
+    joinPlayer: joinPlayer,
+    addPlayer: addPlayer,
   };
 
   return <BookingContext value={value}>{children}</BookingContext>;

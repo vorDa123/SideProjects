@@ -3,13 +3,17 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import BiggerButton from "../../components/ui/BiggerButton.tsx";
 import InputField from "../../components/ui/InputField";
 
+import type { FormEvent } from "react";
+
 import { useEffect } from "react";
 
 import { createPortal } from "react-dom";
 
 import type { ModalProps } from "../../types/index.ts";
+import { useBooking } from "../../hooks/useBooking.tsx";
 
 function AddPlayerModal(props: ModalProps) {
+  const { addPlayer } = useBooking();
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
     e.stopPropagation();
     if (!props.onClose) return;
@@ -18,6 +22,43 @@ function AddPlayerModal(props: ModalProps) {
 
   const goBack = () => {
     props.onBack?.();
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+    console.log("Data from form:", data)
+    const reservationId =
+      props.myReservationData?.id || props.freeSlotData?.id || "";
+    const playerToAdd = {
+      id: crypto.randomUUID(),
+      personalData: {
+        name: `${data.name}` || "",
+        surname: "",
+        gender: "",
+        oib: "",
+        dateOfBirth: "",
+      },
+      contactData: {
+        email: `${data.email}` || "",
+        phone: `${data.phone}` || "",
+      },
+      registeredData: {
+        registeredPlayer: false,
+        registeredClub: "",
+      },
+      addressData: {
+        address: "",
+        city: "",
+        postalCode: "",
+        country: "",
+      },
+      leader: false,
+    };
+    console.log("Res ID:", reservationId)
+    await addPlayer!(reservationId, playerToAdd);
+    props.onBack!();
   };
 
   useEffect(() => {
@@ -53,45 +94,46 @@ function AddPlayerModal(props: ModalProps) {
                 </div>
               </div>
             </div>
-            <div className="col-span-8 mt-5 mb-1">
-              <label htmlFor="friend" className="text-mh4">
-                Choose a friend:
-              </label>
-              <br />
-              <select
-                name="friend"
-                id=""
-                className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
-              >
-                <option value="">-- Please choose a friend --</option>
-                <option value="Lovro">Lovro</option>
-                <option value="Ivana">Ivana</option>
-                <option value="Anja">Anja</option>
-              </select>
-            </div>
-            <div className="col-span-8 mt-7 mb-1">
-              <InputField name="name" type="text" labelName="Name:" />
-            </div>
-            <div className="col-span-8 mt-5 mb-1">
-              <InputField name="email" type="email" labelName="Email:" />
-            </div>
-            <div className="col-span-8 mt-5 mb-1">
-              <InputField name="phone" type="number" labelName="Phone:" />
-            </div>
-            <div className="col-span-8 mt-7 mb-1">
-              <div className="flex flex-row-reverse justify-between gap-4">
-                <BiggerButton
-                  variant="fill"
-                  buttonName="ADD"
-                  onClick={goBack}
-                />
-                <BiggerButton
-                  variant="no-fill"
-                  buttonName="BACK"
-                  onClick={goBack}
-                />
+            <form
+              className="col-span-8 grid grid-cols-8 gap-x-4 auto-rows-max"
+              onSubmit={handleSubmit}
+            >
+              <div className="col-span-8 mt-5 mb-1">
+                <label htmlFor="friend" className="text-mh4">
+                  Choose a friend:
+                </label>
+                <br />
+                <select
+                  name="friend"
+                  id=""
+                  className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
+                >
+                  <option value="">-- Please choose a friend --</option>
+                  <option value="Lovro">Lovro</option>
+                  <option value="Ivana">Ivana</option>
+                  <option value="Anja">Anja</option>
+                </select>
               </div>
-            </div>
+              <div className="col-span-8 mt-7 mb-1">
+                <InputField name="name" type="text" labelName="Name:" />
+              </div>
+              <div className="col-span-8 mt-5 mb-1">
+                <InputField name="email" type="email" labelName="Email:" />
+              </div>
+              <div className="col-span-8 mt-5 mb-1">
+                <InputField name="phone" type="number" labelName="Phone:" />
+              </div>
+              <div className="col-span-8 mt-7 mb-1">
+                <div className="flex flex-row-reverse justify-between gap-4">
+                  <BiggerButton type="submit" variant="fill" buttonName="ADD" />
+                  <BiggerButton
+                    variant="no-fill"
+                    buttonName="BACK"
+                    onClick={goBack}
+                  />
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

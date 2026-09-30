@@ -1,116 +1,72 @@
 import {
-  MY_RESERVATIONS,
-  JOIN_SLOT,
-  FREE_SLOT,
   BOWLING_CENTERS,
   ACHIEVEMENTS,
-  BOOKED_SLOTS,
+  ALL_RESERVATIONS,
 } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
 
 import type { ReservationData, UserData } from "../types/index.ts";
 
-const originalMyReservations = MY_RESERVATIONS;
-
 const getBowlingCentersHandler = async () => {
   await delay(3000);
-  const bowlingCenters = BOWLING_CENTERS;
-
-  console.log("Fetched centers:", bowlingCenters);
-  return bowlingCenters;
+  return BOWLING_CENTERS;
 };
 
 const getAllBookedSlots = async () => {
   await delay(3000);
-  const bookedSlots = BOOKED_SLOTS;
-
-  console.log("Fetched all slots:", bookedSlots);
-  return bookedSlots;
+  return ALL_RESERVATIONS.filter((item) => item.reservationType === "booked");
 };
 
 const getAchievements = async () => {
   await delay(3000);
-  const achievements = ACHIEVEMENTS;
-
-  console.log("Fetched achievements:", achievements);
-  return achievements;
+  return ACHIEVEMENTS;
 };
 
 const getNextFreeSlotHandler = async () => {
   await delay(3000);
-  const freeSlotReservations = FREE_SLOT;
-
-  console.log("Fetched free slots:", freeSlotReservations);
-  return freeSlotReservations;
+  return ALL_RESERVATIONS.filter((item) => item.reservationType === "free");
 };
 
 const getJoinSlotHandler = async () => {
   await delay(3000);
-  const joinSlotReservations = JOIN_SLOT.map((item) => item).filter((item) => {
-    return item.reservationType === "join";
-  });
-
-  console.log("Original fetched join slots:", JOIN_SLOT);
-  console.log(
-    "Mapped original fetched join slots:",
-    JOIN_SLOT.map((item) => item),
-  );
-  console.log("Filtered fetched join slots:", joinSlotReservations);
-
-  return joinSlotReservations;
+  return ALL_RESERVATIONS.filter((item) => item.reservationType === "join");
 };
 
 const getMyReservationsHandler = async () => {
   await delay(3000);
-
-  console.log("Fetched my reservations:", originalMyReservations);
-  return originalMyReservations;
+  return ALL_RESERVATIONS.filter((item) => item.reservationType === "booked");
 };
 
 const createReservationHandler = async (data: ReservationData) => {
   await delay(3000);
 
-  const randomID = crypto.randomUUID();
+  const randomID = data.id || crypto.randomUUID();
 
   const newReservation: ReservationData = {
     ...data,
     id: randomID,
   };
 
-  const reservationExists = originalMyReservations.some((item) => {
-    return randomID === item.id;
-  });
-
-  if (!data) return originalMyReservations;
+  const reservationExists = ALL_RESERVATIONS.some(
+    (item) => item.id === randomID,
+  );
 
   if (reservationExists) {
     throw new Error("Reservation already exists");
   }
-  console.log("Original reservation before append:", originalMyReservations);
-  console.log("Added reservation:", newReservation);
-  originalMyReservations.push(newReservation);
-  console.log("Original reservation after append:", originalMyReservations);
+  ALL_RESERVATIONS.push(newReservation);
 
-  return [...originalMyReservations];
+  return ALL_RESERVATIONS.filter((item) => item.reservationType === "booked");
 };
 
 const joinPlayerHandler = async (resId: string, player: UserData) => {
-  await delay(3000);
-  const freeJoinSlotReservations = JOIN_SLOT.map((item) => item).filter(
-    (item) => {
-      return item.reservationType === "join";
-    },
-  );
-  const reservation = freeJoinSlotReservations.find((item) => {
-    return resId === item.id;
-  });
-  console.log("Original reservation:", reservation);
+  await delay(1000);
+  const reservation = ALL_RESERVATIONS.find((item) => item.id === resId);
 
   if (!reservation) throw new Error("Reservation is not found");
   const foundPlayer = reservation.joinedPlayers?.find((item) => {
     return item.id === player.id;
   });
-  console.log("Found player:", foundPlayer);
   const numberOfBookedLanes = reservation.numberOfBookedLanes || 0;
   const maxNumberOfPlayers = numberOfBookedLanes * 6;
   const numberOfJoinedPlayers = reservation.joinedPlayers?.length || 0;
@@ -123,10 +79,21 @@ const joinPlayerHandler = async (resId: string, player: UserData) => {
   }
 
   reservation.joinedPlayers?.push(player);
+  reservation.numberOfPlayers = reservation.joinedPlayers?.length || 0;
+  reservation.reservationType = "booked";
 
-  console.log("Updated reservation:", reservation);
+  return { ...reservation };
+};
 
-  return reservation;
+const addPlayerHandler = async (resId: string, player: UserData) => {
+  const reservation = ALL_RESERVATIONS.find((item) => item.id === resId);
+console.log("Found reservation:", reservation)
+  if (!reservation) throw new Error("Reservation is not found");
+  const updatedJoinedPlayers = [...(reservation.joinedPlayers || []), player];
+  reservation.joinedPlayers = updatedJoinedPlayers;
+  reservation.numberOfPlayers = updatedJoinedPlayers.length;
+
+  return { ...reservation };
 };
 
 export {
@@ -138,4 +105,5 @@ export {
   joinPlayerHandler,
   getAchievements,
   getAllBookedSlots,
+  addPlayerHandler,
 };

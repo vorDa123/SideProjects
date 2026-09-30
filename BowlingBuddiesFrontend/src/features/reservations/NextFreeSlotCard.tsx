@@ -47,6 +47,7 @@ function NextFreeSlotCard(props: NextFreeSlotCardProps) {
         <AddPlayerModal
           isOpen={showPlayerModal}
           onClose={() => setShowPlayerModal(false)}
+          freeSlotData={props.freeSlotData}
           onBack={handleBack}
         />
       )}

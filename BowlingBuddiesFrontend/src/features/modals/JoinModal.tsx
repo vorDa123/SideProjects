@@ -13,8 +13,10 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import type { ModalProps } from "../../types/index.ts";
+import { useBooking } from "../../hooks/useBooking.tsx";
 
 function JoinModal(props: ModalProps) {
+  const { joinPlayer } = useBooking();
 
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
     e.stopPropagation();
@@ -22,7 +24,33 @@ function JoinModal(props: ModalProps) {
     props.onClose();
   };
 
-  const closeModal = () => {
+  const closeModal = async () => {
+    const playerToAdd = {
+      id: crypto.randomUUID(),
+      personalData: {
+        name: "Ivan",
+        surname: "Ivić",
+        gender: "M",
+        oib: "",
+        dateOfBirth: "",
+      },
+      contactData: {
+        email: "test@mail.com",
+        phone: "",
+      },
+      registeredData: {
+        registeredPlayer: false,
+        registeredClub: "",
+      },
+      addressData: {
+        address: "Test ulica 1A",
+        city: "Zagreb",
+        postalCode: "10020",
+        country: "Croatia",
+      },
+      leader: false,
+    };
+    await joinPlayer!(props.joinSlotData!.id!, playerToAdd);
     props.onClose?.();
   };
 
@@ -59,9 +87,12 @@ function JoinModal(props: ModalProps) {
         </div>
         <div className="flex-1 min-h-0 overflow-y-auto px-6 py-7 md:py-5 xl:py-5 mxl:py-10 xxl:py-5">
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
-            <JoinModalInfo joinSlotData={props.joinSlotData}/>
-            <JoinModalPlayers joinSlotData={props.joinSlotData}/>
-            <JoinModalFooter joinSlotData={props.joinSlotData} onClose={closeModal}/>
+            <JoinModalInfo joinSlotData={props.joinSlotData} />
+            <JoinModalPlayers joinSlotData={props.joinSlotData} />
+            <JoinModalFooter
+              joinSlotData={props.joinSlotData}
+              onClose={closeModal}
+            />
           </div>
         </div>
       </div>

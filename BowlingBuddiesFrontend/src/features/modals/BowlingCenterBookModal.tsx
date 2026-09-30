@@ -34,12 +34,52 @@ function BowlingCenterBookingModal(props: ModalProps) {
     console.log("e currenttarget", e.currentTarget);
     console.log("Form data:", formData);
     console.log("Svi podaci iz forme:", data);
+    const defaultCenterInfo = {
+      id: "asdkmnasjdn123sanmj",
+      name: "",
+      location: "",
+      center: "",
+      img: "",
+      workingInfo: {
+        monday: {
+          open: false,
+        },
+        tuesday: {
+          open: false,
+        },
+        wednesday: {
+          open: false,
+        },
+        thursday: {
+          open: false,
+        },
+        friday: {
+          open: false,
+        },
+        saturday: {
+          open: false,
+        },
+        sunday: {
+          open: false,
+        },
+      },
+      lanes: 0,
+      email: "",
+      phone: "",
+      maxPlayersPerAlley: 0,
+      pricePerPerson: 0,
+      shoesPricePerPerson: 0,
+    };
     const reservationData = {
       bowlingCenterInfo:
-        props.newReservationData?.centerData! ||
-        props.freeSlotData?.bowlingCenterInfo!,
+        props.newReservationData?.centerData ||
+        props.freeSlotData?.bowlingCenterInfo ||
+        defaultCenterInfo,
       startTime: `${data.time}`,
-      date: props.newReservationData?.date! || props.freeSlotData?.date!,
+      date:
+        props.newReservationData?.date ||
+        props.freeSlotData?.date ||
+        new Date(),
       shoesNeeded: data.shoesNeeded ? true : false,
       openJoin: data.openJoin ? true : false,
       duration: Number(data.duration),
@@ -47,7 +87,11 @@ function BowlingCenterBookingModal(props: ModalProps) {
       email: `${data.email}`,
       phone: `${data.phone}`,
       reservationType: "booked" as const,
-      price: props.newReservationData?.centerData.pricePerPerson! || props.freeSlotData?.price!
+      joinedPlayers: props.freeSlotData?.joinedPlayers,
+      price:
+        props.newReservationData?.centerData.pricePerPerson ||
+        props.freeSlotData?.price ||
+        0,
     };
     createReservation!(reservationData);
     closeModal();
@@ -93,6 +137,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
                   <BookModalPlayers
                     onClose={closeModal}
                     onAddPlayer={props.onAddPlayer}
+                    freeSlotData={props.freeSlotData}
                   />
                 )}
               </BookingFormContext>

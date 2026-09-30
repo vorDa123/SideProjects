@@ -50,6 +50,7 @@ function MyReservationCard(props: MyReservationsProps) {
         <AddPlayerModal
           isOpen={showPlayerModal}
           onClose={() => setShowPlayerModal(false)}
+          myReservationData={props.myReservationData}
           onBack={handleBack}
         />
       )}

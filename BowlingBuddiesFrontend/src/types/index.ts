@@ -222,6 +222,8 @@ export interface BookingContextTypes {
   fetchAllBookings?: () => Promise<void>;
   fetchAchievements?: () => Promise<void>;
   createReservation?: (data: ReservationData) => Promise<void>;
+  joinPlayer?: (resId: string, player: UserData) => Promise<void>;
+  addPlayer?: (resId: string, player: UserData) => Promise<void>;
 }
 
 export interface BookingProviderProps {

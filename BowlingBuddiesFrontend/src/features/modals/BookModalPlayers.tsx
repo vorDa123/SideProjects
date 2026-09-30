@@ -5,7 +5,7 @@ function BookModalPlayers(props: ModalProps) {
   const handleShowPlayerModal = () => {
     props.onAddPlayer?.();
   };
-  const players = props.myReservationData?.joinedPlayers;
+  const players = props.myReservationData?.joinedPlayers || props.freeSlotData?.joinedPlayers;
   return (
     <>
       <div className="col-span-8 mt-5">
