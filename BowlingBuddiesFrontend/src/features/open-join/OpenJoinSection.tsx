@@ -51,9 +51,9 @@ function OpenJoinSection({ openJoinBowlingPage = false }: OpenJoinProps) {
             <div className="rounded-m15 w-full h-32.5 bg-gray-400 animate-pulse"></div>
             <div className="rounded-m15 w-full h-32.5 bg-gray-400 animate-pulse"></div>
             <div className="rounded-m15 w-full h-32.5 bg-gray-400 animate-pulse"></div>
-            <p className="text-mlinks text-right md:text-tlinks">
-              <NavLink to="/bowlingalleys">Show more {">"}</NavLink>
-            </p>
+            <div className="relative">
+              <div className="rounded-m15 w-2/5 h-8 bg-gray-400 animate-pulse absolute right-0"></div>
+            </div>
           </div>
         </section>
       )}

@@ -43,9 +43,9 @@ function NextFreeSlotSection({ bowlingCenterPage = false }: NextFreeSlotProps) {
             <div className="rounded-m15 w-full h-32.5 bg-gray-400 animate-pulse"></div>
             <div className="rounded-m15 w-full h-32.5 bg-gray-400 animate-pulse"></div>
             <div className="rounded-m15 w-full h-32.5 bg-gray-400 animate-pulse"></div>
-            <p className="text-mlinks text-right md:text-tlinks">
-              <NavLink to="/bowlingalleys">Show more {">"}</NavLink>
-            </p>
+            <div className="relative">
+              <div className="rounded-m15 w-2/5 h-8 bg-gray-400 animate-pulse absolute right-0"></div>
+            </div>
           </div>
         </section>
       )}
@@ -57,7 +57,7 @@ function NextFreeSlotSection({ bowlingCenterPage = false }: NextFreeSlotProps) {
           <h1 className="text-mh1 font-semibold">Next Free Slot</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-3 pt-2">
             {(freeSlots ?? []).map((slot) => {
-              return <NextFreeSlotCard key={slot.id} freeSlotData={slot}/>;
+              return <NextFreeSlotCard key={slot.id} freeSlotData={slot} />;
             })}
           </div>
         </section>
@@ -67,7 +67,7 @@ function NextFreeSlotSection({ bowlingCenterPage = false }: NextFreeSlotProps) {
           <div className="grid grid-cols-1 gap-3 pt-2">
             {(freeSlots ?? [])
               .map((slot) => {
-                return <NextFreeSlotCard key={slot.id} freeSlotData={slot}/>;
+                return <NextFreeSlotCard key={slot.id} freeSlotData={slot} />;
               })
               .slice(0, 3)}
             <p className="text-mlinks text-right md:text-tlinks">
