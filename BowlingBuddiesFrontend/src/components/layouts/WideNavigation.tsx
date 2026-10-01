@@ -10,19 +10,49 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../assets/BBLogo.svg";
-import { useContext } from "react";
+import { use, useRef } from "react";
 import { NavigationContext } from "../../context/NavigationContext.ts";
 import { NavLink } from "react-router";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
+
 function WideNavigation() {
-  const { toggleNavigation } = useContext(NavigationContext);
+  const { toggleNavigation } = use(NavigationContext);
+  const navRef = useRef<HTMLElement | null>(null);
+
+  const { contextSafe } = useGSAP({ scope: navRef });
+
+  const animationClose = contextSafe(() => {
+    if (!navRef.current) return;
+    const tl = gsap.timeline({
+      onComplete: () => toggleNavigation(),
+    });
+    tl.to(".navText", { opacity: 0, duration: 0.1, ease: "power1.in" }).to(
+      navRef.current,
+      {
+        width: "4.5rem",
+        duration: 0.25,
+        ease: "power1.in",
+      },
+    );
+  });
+
   return (
     <>
       {/* Prosirena Navigacija */}
-      <nav className="hidden lg:block md:bg-lighterBlue-95 md:w-100 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100 md:z-10">
-        <div className="md:absolute md:left-95 md:top-18 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-95 mxl:top-18 lxl:top-20 cursor-pointer" onClick={toggleNavigation}>
+      <nav
+        ref={navRef}
+        className="hidden lg:block md:bg-lighterBlue-100 md:w-100 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100 md:z-10"
+      >
+        <div
+          className="md:absolute md:-right-3 md:top-18 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-95 mxl:top-18 lxl:top-20 cursor-pointer"
+          onClick={animationClose}
+        >
           <FontAwesomeIcon icon={faChevronLeft} />
         </div>
-        <div className="md:flex md:flex-col md:justify-around md:ml-8 md:h-full">
+        <div className="navText md:flex md:flex-col md:justify-around md:ml-8 md:h-full">
           <div className="md:flex md:flex-row md:gap-2">
             <img src={Logo} width={48} height={76} />
             <p className="text-white-100 font-medium text-3xl w-30">
@@ -30,47 +60,47 @@ function WideNavigation() {
             </p>
           </div>
           <div className="md:flex md:flex-col md:text-th3 md:gap-8">
-            <NavLink to="/">
+            <NavLink className="navText" to="/">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faHouse} />
                 <span>Dashboard</span>
               </div>
             </NavLink>
-            <NavLink to="/bowlingalleys">
+            <NavLink className="navText" to="/bowlingalleys">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faBowlingBall} />
                 <span>Bowling Centers</span>
               </div>
             </NavLink>
-            <NavLink to="/openjoin">
+            <NavLink className="navText" to="/openjoin">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faUsers} />
                 <span>Open Join</span>
               </div>
             </NavLink>
-            <NavLink to="/">
+            <NavLink className="navText" to="/">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faBell} />
                 <span>Notifications</span>
               </div>
             </NavLink>
-            <NavLink to="/myprofile">
+            <NavLink className="navText" to="/myprofile">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faCircleUser} />
                 <span>My Profile</span>
               </div>
             </NavLink>
-            <NavLink to="/">
+            <NavLink className="navText" to="/">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faCircleInfo} />
                 <span>About Us</span>
               </div>
             </NavLink>
           </div>
-          <NavLink to="/login" className="md:text-th3">
+          <NavLink to="/login" className="navText md:text-th3">
             <div className="md:flex md:flex-row md:gap-6 md:items-center">
               <FontAwesomeIcon icon={faRightFromBracket} />
-              <span>Log Out</span>
+              <span className="">Log Out</span>
             </div>
           </NavLink>
         </div>
