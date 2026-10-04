@@ -46,7 +46,7 @@ function NarrowNavigation() {
         className="hidden lg:block md:bg-lighterBlue-100 md:w-18 md:h-full md:fixed md:rounded-tr-t40 md:rounded-br-t40 md:text-white-100 md:z-10"
       >
         <div
-          className="md:absolute md:-right-3 md:top-18 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-100 mxl:top-18 lxl:top-20 cursor-pointer"
+          className="md:absolute md:-right-3 md:top-12 md:rounded-[50%] md:w-7 md:h-7 md:text-center md:bg-lighterBlue-100 mxl:top-12 lxl:top-14 cursor-pointer"
           onClick={animationOpen}
         >
           <FontAwesomeIcon icon={faChevronRight} />
@@ -54,26 +54,26 @@ function NarrowNavigation() {
         <div className="md:flex md:flex-col md:justify-around md:items-center md:h-full">
           <img className="navText" src={Logo} width={48} height={76} />
           <div className="md:flex md:flex-col md:text-th3 md:gap-8">
-            <NavLink className="navText" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/">
               <FontAwesomeIcon icon={faHouse} />
             </NavLink>
-            <NavLink className="navText" to="/bowlingalleys">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/bowlingalleys">
               <FontAwesomeIcon icon={faBowlingBall} />
             </NavLink>
-            <NavLink className="navText" to="/openjoin">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/openjoin">
               <FontAwesomeIcon icon={faUsers} />
             </NavLink>
-            <NavLink className="navText" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/">
               <FontAwesomeIcon icon={faBell} />
             </NavLink>
-            <NavLink className="navText" to="/myprofile">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/myprofile">
               <FontAwesomeIcon icon={faCircleUser} />
             </NavLink>
-            <NavLink className="navText" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/">
               <FontAwesomeIcon icon={faCircleInfo} />
             </NavLink>
           </div>
-          <NavLink to="/login" className="navText md:text-th3">
+          <NavLink to="/login" className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15 md:text-th3">
             <FontAwesomeIcon icon={faRightFromBracket} />
           </NavLink>
         </div>
