@@ -1,9 +1,28 @@
 import type { BowlingCenterDataProps } from "../../types";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 function BowlingCenterGeneralInfo(props: BowlingCenterDataProps) {
+  const container = useRef<HTMLDivElement>(null);
+  const isLoading = props.centerData ? false : true;
+
+  useGSAP(
+    () => {
+      if (!container.current) return;
+      gsap.fromTo(
+        container.current,
+        { opacity: 0, y: 150 },
+        { opacity: 1, y: 0, duration: 0.65 },
+      );
+    },
+    { dependencies: [isLoading] },
+  );
   return (
     <>
       {props.centerData ? (
-        <div className="mt-5">
+        <div ref={container} className="mt-5">
           <img
             src={props.centerData.img}
             alt="bowling center image"

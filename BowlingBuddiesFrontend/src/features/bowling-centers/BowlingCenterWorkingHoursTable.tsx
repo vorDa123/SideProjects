@@ -1,9 +1,28 @@
 import type { BowlingCenterDataProps } from "../../types";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 function BowlingCenterWorkingHoursTable(props: BowlingCenterDataProps) {
+  const container = useRef<HTMLDivElement>(null);
+  const isLoading = props.centerData ? false : true;
+
+  useGSAP(
+    () => {
+      if (!container.current) return;
+      gsap.fromTo(
+        container.current,
+        { opacity: 0, y: 150 },
+        { opacity: 1, y: 0, duration: 0.9 },
+      );
+    },
+    { dependencies: [isLoading] },
+  );
   return (
     <>
       {props.centerData ? (
-        <div className="mt-5">
+        <div ref={container} className="mt-5">
           <h3 className="text-mh3 font-medium md:text-th4">Working Hours</h3>
           <div className="grid grid-cols-7 grid-rows-1 text-center gap-x-2 mb-3 mt-2">
             <div className="bg-yellow-100 rounded-m5 shadow-mob py-1">Mon</div>

@@ -1,11 +1,26 @@
 import AchievementsCard from "./AchievementsCard.tsx";
 import type { MyProfileProps } from "../../types/index.ts";
 import { useBooking } from "../../hooks/useBooking.tsx";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 function AchievementsSection({ myProfilePage = false }: MyProfileProps) {
   const { achievements, fetchAchievements, isLoadingAchievements } =
     useBooking();
+    const scopeRef = useRef<HTMLDivElement>(null)
+  
+  useGSAP(() => {
+    if (isLoadingAchievements || !scopeRef.current) return;
+    gsap.fromTo(
+      '.achievement-card',
+      { opacity: 0, x: 55 },
+      { opacity: 1, x: 0, duration: 0.65, stagger: 0.2 },
+    );
+  }, {dependencies: [isLoadingAchievements], scope: scopeRef});
 
   useEffect(() => {
     fetchAchievements!();
@@ -34,7 +49,7 @@ function AchievementsSection({ myProfilePage = false }: MyProfileProps) {
   ) : (
     <>
       {myProfilePage ? (
-        <section className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xl:col-span-4 xxl:col-span-12">
+        <section ref={scopeRef} className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xl:col-span-4 xxl:col-span-12">
           <h1 className="text-mh1 font-semibold">Achievements</h1>
           <div className="flex flex-row flex-nowrap gap-3 snap-x py-2.5 overflow-x-auto md:overflow-x-hidden md:gap-x-3.75 md:gap-y-3 md:flex-wrap mxl:gap-x-2 xxl:gap-x-7">
             {achievements?.map((item) => {
@@ -43,7 +58,7 @@ function AchievementsSection({ myProfilePage = false }: MyProfileProps) {
           </div>
         </section>
       ) : (
-        <section className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xl:col-span-4 xxl:col-span-12">
+        <section ref={scopeRef} className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xl:col-span-4 xxl:col-span-12">
           <h1 className="text-mh1 font-semibold">Achievements</h1>
           <div className="flex flex-row flex-nowrap gap-3 snap-x py-2.5 overflow-x-auto md:overflow-x-hidden md:gap-x-3.75 md:gap-y-3 md:flex-wrap mxl:gap-x-2 xxl:gap-x-7">
             {achievements?.map((item) => {

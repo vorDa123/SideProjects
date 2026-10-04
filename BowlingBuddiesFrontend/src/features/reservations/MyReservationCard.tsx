@@ -55,7 +55,7 @@ function MyReservationCard(props: MyReservationsProps) {
         />
       )}
       <div
-        className="rounded-m15 shadow-mob w-full h-32.5 bg-white-100 flex flex-row cursor-pointer"
+        className="slot-card rounded-m15 shadow-mob w-full h-32.5 bg-white-100 flex flex-row cursor-pointer"
         onClick={handleShowModal}
       >
         <div

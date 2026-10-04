@@ -41,7 +41,7 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
     startTime: props.startTime,
     date: props.date,
   };
-  
+
   return (
     <>
       {showModal && (
@@ -61,19 +61,21 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
           onBack={handleBack}
         />
       )}
-      <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
-        <span className="text-mh4">{props.startTime}:00</span>
-      </div>
-      <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
-        <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
-          <p className="text-mh3">
-            {bookedSlotsOnTime?.length}/{props.centerData?.lanes} Lanes booked
-          </p>
-          <MainButton
-            buttonName="Book"
-            variant="fill"
-            onClick={handleShowModal}
-          />
+      <div className="book-card col-span-4 grid grid-cols-4">
+        <div className="col-span-1 border-b border-b-darkerBlue-30 py-2">
+          <span className="text-mh4">{props.startTime}:00</span>
+        </div>
+        <div className="col-span-3 border-b border-b-darkerBlue-30 py-2">
+          <div className="rounded-m25 bg-white-100 shadow-mob flex flex-col justify-center items-center py-5 gap-2">
+            <p className="text-mh3">
+              {bookedSlotsOnTime?.length}/{props.centerData?.lanes} Lanes booked
+            </p>
+            <MainButton
+              buttonName="Book"
+              variant="fill"
+              onClick={handleShowModal}
+            />
+          </div>
         </div>
       </div>
     </>

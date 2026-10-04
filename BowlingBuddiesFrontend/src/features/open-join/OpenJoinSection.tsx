@@ -2,12 +2,30 @@ import OpenJoinCard from "./OpenJoinCard.tsx";
 import { NavLink } from "react-router";
 
 import { useBooking } from "../../hooks/useBooking.tsx";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 import type { OpenJoinProps } from "../../types/index.ts";
 
 function OpenJoinSection({ openJoinBowlingPage = false }: OpenJoinProps) {
   const { joinSlots, fetchJoinSlots, isLoadingJoinSlots } = useBooking();
+  const scopeRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (isLoadingJoinSlots || !scopeRef.current) return;
+      gsap.fromTo(
+        ".slot-card",
+        { opacity: 0, y: 55, scale: 0.8 },
+        { opacity: 1, y: 0, duration: 0.65, scale: 1, stagger: 0.2 },
+      );
+    },
+    { dependencies: [isLoadingJoinSlots], scope: scopeRef },
+  );
 
   useEffect(() => {
     fetchJoinSlots!();
@@ -61,7 +79,10 @@ function OpenJoinSection({ openJoinBowlingPage = false }: OpenJoinProps) {
   ) : (
     <>
       {openJoinBowlingPage ? (
-        <section className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xxl:col-span-24">
+        <section
+          ref={scopeRef}
+          className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xxl:col-span-24"
+        >
           <h1 className="text-mh1 font-semibold">Open Join</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-3 pt-2">
             {joinSlots?.map((item) => {
@@ -70,7 +91,10 @@ function OpenJoinSection({ openJoinBowlingPage = false }: OpenJoinProps) {
           </div>
         </section>
       ) : (
-        <section className="pt-2.5 pb-2.5 w-full lg:col-span-6 xl:col-span-4 xxl:col-span-6">
+        <section
+          ref={scopeRef}
+          className="pt-2.5 pb-2.5 w-full lg:col-span-6 xl:col-span-4 xxl:col-span-6"
+        >
           <h1 className="text-mh1 font-semibold">Open Join</h1>
           <div className="grid grid-cols-1 gap-3 pt-2">
             {joinSlots

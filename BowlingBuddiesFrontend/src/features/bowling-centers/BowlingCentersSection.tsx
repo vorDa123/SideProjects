@@ -1,9 +1,24 @@
 import BowlingCenterCard from "./BowlingCenterCard.tsx";
 import { useBooking } from "../../hooks/useBooking.tsx";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 function BowlingCentersSection() {
   const { centers, fetchCenters, isLoadingCenters } = useBooking();
+  const scopeRef = useRef<HTMLDivElement>(null)
+  
+  useGSAP(() => {
+    if (isLoadingCenters || !scopeRef.current) return;
+    gsap.fromTo(
+      '.center-card',
+      { opacity: 0, x: 95, },
+      { opacity: 1, x: 0, duration: 0.65, stagger: 0.2 },
+    );
+  }, {dependencies: [isLoadingCenters], scope: scopeRef});
 
   useEffect(() => {
     fetchCenters!();
@@ -39,7 +54,7 @@ function BowlingCentersSection() {
           placeholder="Search..."
         />
       </div>
-      <div className="flex flex-row flex-nowrap gap-2 snap-x py-2.5 overflow-x-auto md:gap-3.75 xl:gap-5">
+      <div ref={scopeRef} className="flex flex-row flex-nowrap gap-2 snap-x py-2.5 overflow-x-auto md:gap-3.75 xl:gap-5">
         {(centers ?? []).map((center) => {
           return (
             <BowlingCenterCard

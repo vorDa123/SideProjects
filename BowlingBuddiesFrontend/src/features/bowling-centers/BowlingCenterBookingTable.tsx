@@ -1,11 +1,17 @@
 import BowlingCenterBookingTableCard from "./BowlingCenterBookingTableCard";
 import type { BowlingCenterDataProps } from "../../types";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { formatDateIntl, getDayNameIntl } from "../../services/dateServices";
 import type { WorkingDaysData } from "../../types";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
+
 function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
   const [today, setToday] = useState(() => new Date());
+  const scopeRef = useRef<HTMLDivElement>(null);
   const todayDay = getDayNameIntl(today);
   const dateFormatToDisplay = formatDateIntl(today);
   const todayDayLowerCase: keyof WorkingDaysData =
@@ -13,6 +19,7 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
   const todayClosed =
     props.centerData !== undefined &&
     props.centerData.workingInfo[todayDayLowerCase].open !== true;
+  const isLoading = props.centerData ? false : true;
 
   const handleNextDay = () => {
     setToday((prevDate) => {
@@ -29,6 +36,18 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
       return prev;
     });
   };
+
+  useGSAP(
+    () => {
+      if (!scopeRef.current) return;
+      gsap.fromTo(
+        ".book-card",
+        { opacity: 0, y: 55 },
+        { opacity: 1, y: 0, duration: 0.65, stagger: 0.2 },
+      );
+    },
+    { dependencies: [isLoading, todayDayLowerCase], scope: scopeRef },
+  );
 
   const workingHoursArray = useMemo(() => {
     if (!props.centerData) {
@@ -57,7 +76,10 @@ function BowlingCenterBookingTable(props: BowlingCenterDataProps) {
   return (
     <>
       {props.centerData ? (
-        <div className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]">
+        <div
+          ref={scopeRef}
+          className="mt-5 md:px-2 md:overflow-y-auto md:relative md:h-[70dvh] lg:h-[87dvh]"
+        >
           <h3 className="text-mh3 font-semibold md:text-th3">Book Slot</h3>
           <div className="grid grid-cols-4 mt-4">
             <div className="col-span-4 border-b border-b-darkerBlue-30 py-1 md:sticky md:top-0 md:bg-white md:z-10">

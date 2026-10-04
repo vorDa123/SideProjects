@@ -4,12 +4,26 @@ import { NavLink } from "react-router";
 import type { MyReservationsProps } from "../../types/index.ts";
 
 import { useBooking } from "../../hooks/useBooking.tsx";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 import { useNavigate } from "react-router";
 
 function MyReservations({ myReservationPage = false }: MyReservationsProps) {
   const { myReservations, fetchMyReservations, isLoadingMyReservations } = useBooking();
+  const scopeRef = useRef<HTMLDivElement>(null)
+  
+  useGSAP(() => {
+    if (isLoadingMyReservations || !scopeRef.current) return;
+    gsap.fromTo(
+      '.slot-card',
+      { opacity: 0, y: 55, scale: 0.8 },
+      { opacity: 1, y: 0, duration: 0.65, scale: 1, stagger: 0.2 },
+    );
+  }, {dependencies: [isLoadingMyReservations], scope: scopeRef});
   const navigate = useNavigate();
   const handleNavigateMyProfile = () => {
     navigate(`/myprofile`);
@@ -65,7 +79,7 @@ function MyReservations({ myReservationPage = false }: MyReservationsProps) {
   ) : (
     <>
       {myReservationPage ? (
-        <section className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xxl:col-span-24">
+        <section ref={scopeRef} className="pt-2.5 pb-2.5 w-full md:col-span-2 lg:col-span-12 xxl:col-span-24">
           <div className="text-mh1 font-semibold">
             <span
               className="text-darkerBlue-50 cursor-pointer"
@@ -89,7 +103,7 @@ function MyReservations({ myReservationPage = false }: MyReservationsProps) {
           </div>
         </section>
       ) : (
-        <section className="pt-2.5 pb-2.5 w-full md:col-span-3 lg:col-span-6 mxl:col-span-5 xl:col-span-5 xxl:col-span-8">
+        <section ref={scopeRef} className="pt-2.5 pb-2.5 w-full md:col-span-3 lg:col-span-6 mxl:col-span-5 xl:col-span-5 xxl:col-span-8">
           <h1 className="text-mh1 font-semibold">My Reservations</h1>
           <div className="grid grid-cols-1 gap-3 pt-2">
             {(myReservations ?? [])
