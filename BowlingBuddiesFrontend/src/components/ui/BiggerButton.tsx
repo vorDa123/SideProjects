@@ -6,6 +6,7 @@ function BiggerButton(props: ButtonProps) {
       <>
         <button
           type={props.type}
+          ref={props.ref}
           className={
             props.classOverride
               ? props.classOverride
@@ -22,6 +23,7 @@ function BiggerButton(props: ButtonProps) {
       <>
         <button
           type={props.type}
+          ref={props.ref}
           className={
             props.classOverride
               ? props.classOverride

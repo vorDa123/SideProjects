@@ -8,21 +8,51 @@ import {
   faMapLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { createPortal } from "react-dom";
 
 import type { ModalProps } from "../../types/index.ts";
 import { useBooking } from "../../hooks/useBooking.tsx";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
+
 function JoinModal(props: ModalProps) {
   const { joinPlayer } = useBooking();
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
     e.stopPropagation();
-    if (!props.onClose) return;
-    props.onClose();
+    handleCloseAnimation()
   };
+  const handleCloseAnimation = () => {
+    if (!modalRef.current) {
+      props.onClose?.();
+      return;
+    }
+    gsap.to(modalRef.current, {
+      y: -300,
+      opacity: 0,
+      onComplete: () => {
+        props.onClose?.();
+      },
+    });
+  };
+
+  useGSAP(
+    () => {
+      if (!modalRef.current) return;
+      gsap.fromTo(
+        modalRef.current,
+        { y: -300, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
+      );
+    },
+    { dependencies: [props.isOpen] },
+  );
 
   const closeModal = async () => {
     const playerToAdd = {
@@ -51,7 +81,7 @@ function JoinModal(props: ModalProps) {
       leader: false,
     };
     await joinPlayer!(props.joinSlotData!.id!, playerToAdd);
-    props.onClose?.();
+    handleCloseAnimation()
   };
 
   useEffect(() => {
@@ -71,7 +101,7 @@ function JoinModal(props: ModalProps) {
         className="z-50 bg-darkerBlue-60 h-dvh w-dvw fixed inset-0 touch-none"
         onClick={handleCloseModal}
       ></div>
-      <div className="bg-white-100 mx-auto my-5 w-9/10 h-[90dvh] fixed top-0 left-0 right-0 z-60 rounded-m30 md:w-8/10 md:h-[95dvh] lg:w-5/10 xl:w-4/10 xxl:w-3/10 xxl:h-[85dvh] flex flex-col overflow-hidden">
+      <div ref={modalRef} className="bg-white-100 mx-auto my-5 w-9/10 h-[90dvh] fixed top-0 left-0 right-0 z-60 rounded-m30 md:w-8/10 md:h-[95dvh] lg:w-5/10 xl:w-4/10 xxl:w-3/10 xxl:h-[85dvh] flex flex-col overflow-hidden">
         <div className="shrink-0 col-span-8 bg-[url(/src/assets/playerBowling.jpg)] bg-center bg-cover w-full h-64">
           <div className="w-full h-full flex flex-col justify-between items-end">
             <FontAwesomeIcon

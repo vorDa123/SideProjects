@@ -44,6 +44,7 @@ export interface ButtonProps {
   classAppend?: string;
   classOverride?: string;
   onClick?: () => void;
+  ref?: Ref<HTMLButtonElement>;
 }
 
 export interface PlayerProps {
@@ -82,6 +83,7 @@ export interface ModalProps {
   joinSlotData?: ReservationData;
   myReservationData?: ReservationData;
   newReservationData?: BowlingCenterDataProps;
+  ref?: Ref<HTMLDivElement>;
   onClose?: () => void;
   onAddPlayer?: () => void;
   onBack?: () => void;

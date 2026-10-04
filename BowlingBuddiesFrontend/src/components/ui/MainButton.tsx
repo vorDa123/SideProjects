@@ -6,6 +6,7 @@ function MainButton(props: ButtonProps) {
       <>
         <button
           type={props.type}
+          ref={props.ref}
           className={
             props.classOverride
               ? props.classOverride
@@ -22,6 +23,7 @@ function MainButton(props: ButtonProps) {
       <>
         <button
           type={props.type}
+          ref={props.ref}
           className={
             props.classOverride
               ? props.classOverride
@@ -38,6 +40,7 @@ function MainButton(props: ButtonProps) {
       <>
         <button
           type={props.type}
+          ref={props.ref}
           className={
             props.classOverride
               ? props.classOverride
@@ -54,6 +57,7 @@ function MainButton(props: ButtonProps) {
       <>
         <button
           type={props.type}
+          ref={props.ref}
           className={
             props.classOverride
               ? props.classOverride
