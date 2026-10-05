@@ -1,6 +1,6 @@
 import BowlingCenterCard from "./BowlingCenterCard.tsx";
 import { useBooking } from "../../hooks/useBooking.tsx";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -9,20 +9,45 @@ gsap.registerPlugin(useGSAP);
 
 function BowlingCentersSection() {
   const { centers, fetchCenters, isLoadingCenters } = useBooking();
-  const scopeRef = useRef<HTMLDivElement>(null)
-  
-  useGSAP(() => {
-    if (isLoadingCenters || !scopeRef.current) return;
-    gsap.fromTo(
-      '.center-card',
-      { opacity: 0, x: 95, },
-      { opacity: 1, x: 0, duration: 0.65, stagger: 0.2 },
+  const scopeRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const [filteredCenters, setFilteredCenters] = useState(centers);
+  console.log("Search value:", searchRef.current?.value);
+  const filterCenters = () => {
+    const searchValue = searchRef.current?.value.toLowerCase();
+
+    if (!searchValue || searchValue == "") {
+      return setFilteredCenters(centers);
+    }
+
+    return setFilteredCenters(
+      centers?.filter((el) => {
+        return el.name.toLowerCase().includes(searchValue);
+      }),
     );
-  }, {dependencies: [isLoadingCenters], scope: scopeRef});
+  };
+
+  useGSAP(
+    () => {
+      if (isLoadingCenters || !scopeRef.current) return;
+      gsap.fromTo(
+        ".center-card",
+        { opacity: 0, x: 95 },
+        { opacity: 1, x: 0, duration: 0.65, stagger: 0.2 },
+      );
+    },
+    { dependencies: [isLoadingCenters, filteredCenters], scope: scopeRef },
+  );
 
   useEffect(() => {
     fetchCenters!();
   }, []);
+
+  useEffect(() => {
+    if (centers) {
+      setFilteredCenters(centers);
+    }
+  }, [centers]);
 
   return isLoadingCenters ? (
     <section className="pt-5 pb-2.5 w-full lg:col-span-12 md:col-span-2 xxl:col-span-24">
@@ -47,15 +72,20 @@ function BowlingCentersSection() {
           Bowling Center
         </h1>
         <input
+          ref={searchRef}
           className="border border-darkerBlue-100 rounded-m15 h-5 py-3 px-2 w-1/3 lg:w-2/5 md:w-1/2"
           type="search"
           name="search"
           id="searchDashboard"
           placeholder="Search..."
+          onKeyUp={filterCenters}
         />
       </div>
-      <div ref={scopeRef} className="flex flex-row flex-nowrap gap-2 snap-x py-2.5 overflow-x-auto md:gap-3.75 xl:gap-5">
-        {(centers ?? []).map((center) => {
+      <div
+        ref={scopeRef}
+        className="flex flex-row flex-nowrap gap-2 snap-x py-2.5 overflow-x-auto md:gap-3.75 xl:gap-5"
+      >
+        {(filteredCenters ?? []).map((center) => {
           return (
             <BowlingCenterCard
               key={center.id}
