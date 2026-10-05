@@ -5,19 +5,23 @@ import InputField from "../../components/ui/InputField";
 
 import type { FormEvent } from "react";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { createPortal } from "react-dom";
 
 import type { ModalProps } from "../../types/index.ts";
 import { useBooking } from "../../hooks/useBooking.tsx";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 function AddPlayerModal(props: ModalProps) {
   const { addPlayer } = useBooking();
+  const modalRef = useRef<HTMLDivElement>(null);
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
     e.stopPropagation();
-    if (!props.onClose) return;
-    props.onClose();
+    handleCloseAnimation()
   };
 
   const goBack = () => {
@@ -60,6 +64,31 @@ function AddPlayerModal(props: ModalProps) {
     await addPlayer!(reservationId, playerToAdd);
     props.onBack!();
   };
+  const handleCloseAnimation = () => {
+    if (!modalRef.current) {
+      props.onClose?.();
+      return;
+    }
+    gsap.to(modalRef.current, {
+      y: -300,
+      opacity: 0,
+      onComplete: () => {
+        props.onClose?.();
+      },
+    });
+  };
+
+  useGSAP(
+    () => {
+      if (!modalRef.current) return;
+      gsap.fromTo(
+        modalRef.current,
+        { y: -300, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
+      );
+    },
+    { dependencies: [props.isOpen] },
+  );
 
   useEffect(() => {
     if (props.isOpen) {
@@ -77,7 +106,7 @@ function AddPlayerModal(props: ModalProps) {
         className="z-50 bg-darkerBlue-60 h-dvh w-dvw fixed inset-0 touch-none"
         onClick={handleCloseModal}
       ></div>
-      <div className="bg-white-100 mx-auto my-5 px-6 py-7 w-9/10 fixed top-0 left-0 right-0 z-60 rounded-m30 md:w-8/10 lg:w-6/10 xl:w-5/10 xxl:w-3/10 md:py-5 xl:py-5 mxl:py-10 xxl:py-5">
+      <div ref={modalRef} className="bg-white-100 mx-auto my-5 px-6 py-7 w-9/10 fixed top-0 left-0 right-0 z-60 rounded-m30 md:w-8/10 lg:w-6/10 xl:w-5/10 xxl:w-3/10 md:py-5 xl:py-5 mxl:py-10 xxl:py-5">
         <div className="overflow-y-auto h-full">
           <div className="grid grid-cols-8 gap-x-4 auto-rows-max">
             <div className="col-span-8">
