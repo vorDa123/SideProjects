@@ -23,11 +23,9 @@ function BowlingCenterGeneralInfo(props: BowlingCenterDataProps) {
     <>
       {props.centerData ? (
         <div ref={container} className="mt-5">
-          <img
-            src={props.centerData.img}
-            alt="bowling center image"
-            className="rounded-m20 shadow-mob"
-          />
+          <div
+            className={`w-full h-[30dvh] md:h-[40dvh] lg:h-[50dvh] rounded-m20 shadow-mob bg-[url(${props.centerData.img})] bg-center bg-cover`}
+          ></div>
           <h1 className="text-mh1 mt-5 font-semibold">
             {props.centerData.name}
           </h1>
