@@ -5,7 +5,7 @@
 
 Vercel link: https://bowling-buddies.vercel.app/
 
-Bowling Buddies is a web application built for bowling enthusiasts to effortlessly browse bowling centers, book available time slots, and connect with other players to organize or join matches. It streamline the entire booking process while featuring personalized user profiles and event management.
+Bowling Buddies is a web application built for bowling enthusiasts to effortlessly browse bowling centers, book available time slots, and connect with other players to organize or join matches. It streamlines the entire booking process while featuring personalized user profiles and event management.
 
 ## Tech stack
 
@@ -16,31 +16,37 @@ Bowling Buddies is a web application built for bowling enthusiasts to effortless
 - React Context
 - TypeScript
 - GSAP
+- Vercel
 
 ## Key features
-
 
 - Matchmaking: Create open matches or join existing groups to play with other bowlers
 - Slot booking: Seamlessly search bowling centers and reserve available time slots
 - User profiles: View booked slots, edit profile details
 - Interactive UI: Smooth animations done using GSAP
-- Responsive design: Fully optimized for both desktop and mobile devices 
+- Responsive design: Fully optimized for both desktop and mobile devices
+- Mockup data: Mockup data is used temporarily until backend integration is completed
+- Skeleton loading
+
 ## Getting started
 
+To run this project locally, follow these steps:
+
 - Install all of the packages:
-  - npm install
+``` npm install ```
 - Run the app:
-  - npm run dev
+``` npm run dev ```
 
 ## Future roadmap
 
-This application is far from finished, as any other web application. While I have completed the core functionality, I am excited to continue building upon this foundation:
+This application is far from finished, just like any other web application. While I have completed the core functionality, I am excited to continue building upon this foundation:
 
-- Integration of my own backend using PHP and MySQL
-- Adding log in and register functionalities
-- Adding more animations and data displayed
-- Adding more pages (Notifications and About us are the priorities)
-- Chat functionality and friend list
+- Backend integration using PHP and MySQL
+- Authentication system (Log in and Register)
+- Additional animations and richer data visualization
+- New pages (Notifications and About us as priorities)
+- Real time chat functionality and a friends list
+- And many more
 
 ## Feedback
 
