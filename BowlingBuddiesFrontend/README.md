@@ -1,75 +1,44 @@
-# React + TypeScript + Vite
+# Bowling Buddies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vercel link: https://bowling-buddies.vercel.app/
 
-Currently, two official plugins are available:
+Bowling Buddies is a web application built for bowling enthusiasts to effortlessly browse bowling centers, book available time slots, and connect with other players to organize or join matches. It streamline the entire booking process while featuring personalized user profiles and event management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech stack
 
-## React Compiler
+- React
+- HTML
+- Tailwind CSS
+- React Router
+- React Context
+- TypeScript
+- GSAP
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key features
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Matchmaking: Create open matches or join existing groups to play with other bowlers
+- Slot booking: Seamlessly search bowling centers and reserve available time slots
+- User profiles: View booked slots, edit profile details
+- Interactive UI: Smooth animations done using GSAP
+- Responsive design: Fully optimized for both desktop and mobile devices 
+## Getting started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Install all of the packages:
+  - npm install
+- Run the app:
+  - npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Future roadmap
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This application is far from finished, as any other web application. While I have completed the core functionality, I am excited to continue building upon this foundation:
 
-```
+- Integration of my own backend using PHP and MySQL
+- Adding log in and register functionalities
+- Adding more animations and data displayed
+- Adding more pages (Notifications and About us are the priorities)
+- Chat functionality and friend list
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Feedback
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+This project is implemented as a part of my portfolio. Even though primarily it is developed for the educational purposes, I would love to hear other opinions. If you have any suggestions, spot a bug, or have an advice on how to optimize the code, I would love to hear your thoughts. Whether it is a critique or a feature request, every bit of feedback is welcome and invaluable in helping me refine my skills and become a better developer.
