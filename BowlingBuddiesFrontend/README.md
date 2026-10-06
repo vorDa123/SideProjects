@@ -1,5 +1,8 @@
 # Bowling Buddies
 
+<img width="1921" height="912" alt="image" src="https://github.com/user-attachments/assets/66afb729-d62f-4a21-8f55-ab8138408a62" />
+
+
 Vercel link: https://bowling-buddies.vercel.app/
 
 Bowling Buddies is a web application built for bowling enthusiasts to effortlessly browse bowling centers, book available time slots, and connect with other players to organize or join matches. It streamline the entire booking process while featuring personalized user profiles and event management.
