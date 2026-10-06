@@ -44,10 +44,10 @@ function ProfileMenu() {
             </div>
           </div>
         </NavLink>
-        <br/>
-        <br/>
-        <br/>
       </div>
+      <br />
+      <br />
+      <br />
     </>
   );
 }
