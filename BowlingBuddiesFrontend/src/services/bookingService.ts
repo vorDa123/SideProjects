@@ -1,11 +1,19 @@
-import {
-  BOWLING_CENTERS,
-  ACHIEVEMENTS,
-  ALL_RESERVATIONS,
-} from "../data/mockData.ts";
+import { BOWLING_CENTERS, ACHIEVEMENTS, ALL_RESERVATIONS } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
+import axios from "axios";
 
 import type { ReservationData, UserData } from "../types/index.ts";
+
+// const getAllReservations = async () => {
+//   try {
+//     const res = await axios.get(
+//       "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
+//     );
+//     return res.data;
+//   } catch (error) {
+//     console.error("Server down ili error");
+//   }
+// };
 
 const getBowlingCentersHandler = async () => {
   await delay(3000);
@@ -13,8 +21,14 @@ const getBowlingCentersHandler = async () => {
 };
 
 const getAllBookedSlots = async () => {
-  await delay(3000);
-  return ALL_RESERVATIONS.filter((item) => item.reservationType === "booked");
+  try {
+    const res = await axios.get(
+      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
+    );
+    return res.data.filter((item: any) => item.reservationType === "booked");
+  } catch (error) {
+    console.error("Server down ili error");
+  }
 };
 
 const getAchievements = async () => {
@@ -23,18 +37,36 @@ const getAchievements = async () => {
 };
 
 const getNextFreeSlotHandler = async () => {
-  await delay(3000);
-  return ALL_RESERVATIONS.filter((item) => item.reservationType === "free");
+  try {
+    const res = await axios.get(
+      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
+    );
+    return res.data.filter((item: any) => item.reservationType === "free");
+  } catch (error) {
+    console.error("Server down ili error");
+  }
 };
 
 const getJoinSlotHandler = async () => {
-  await delay(3000);
-  return ALL_RESERVATIONS.filter((item) => item.reservationType === "join");
+  try {
+    const res = await axios.get(
+      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
+    );
+    return res.data.filter((item: any) => item.reservationType === "join");
+  } catch (error) {
+    console.error("Server down ili error");
+  }
 };
 
 const getMyReservationsHandler = async () => {
-  await delay(3000);
-  return ALL_RESERVATIONS.filter((item) => item.reservationType === "booked");
+  try {
+    const res = await axios.get(
+      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
+    );
+    return res.data.filter((item: any) => item.reservationType === "booked");
+  } catch (error) {
+    console.error("Server down ili error");
+  }
 };
 
 const createReservationHandler = async (data: ReservationData) => {
@@ -87,7 +119,7 @@ const joinPlayerHandler = async (resId: string, player: UserData) => {
 
 const addPlayerHandler = async (resId: string, player: UserData) => {
   const reservation = ALL_RESERVATIONS.find((item) => item.id === resId);
-console.log("Found reservation:", reservation)
+  console.log("Found reservation:", reservation);
   if (!reservation) throw new Error("Reservation is not found");
   const updatedJoinedPlayers = [...(reservation.joinedPlayers || []), player];
   reservation.joinedPlayers = updatedJoinedPlayers;

@@ -76,16 +76,19 @@ const formatDate = (date: Date, format?: string) => {
 };
 
 const getDayNameIntl = (date: Date, locale = "en-US"): string => {
-  return new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
+  const dateToFormat = date instanceof Date ? date : new Date(date);
+  return new Intl.DateTimeFormat(locale, { weekday: "long" }).format(dateToFormat);
 };
 
 const formatDateIntl = (date: Date): string => {
+  console.log("Datum koji dobivam: ", date);
+  const dateToFormat = date instanceof Date ? date : new Date(date);
   return new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
   })
-    .format(date)
+    .format(dateToFormat)
     .replace(/\//g, ".");
 };
 

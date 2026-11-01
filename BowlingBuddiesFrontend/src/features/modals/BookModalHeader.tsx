@@ -16,9 +16,9 @@ function BookModalHeader(props: ModalProps) {
               {","} {dateFormatToDisplay}
             </p>
             <p className="text-mh1 font-semibold my-1">
-              {props.myReservationData?.bowlingCenterInfo.name || props.freeSlotData?.bowlingCenterInfo.name || props.newReservationData?.centerData.name}
+              {props.myReservationData?.bowlingCenterInfo?.name || props.freeSlotData?.bowlingCenterInfo?.name || props.newReservationData?.centerData.name}
             </p>
-            <p>{props.myReservationData?.bowlingCenterInfo.location || props.freeSlotData?.bowlingCenterInfo.location || props.newReservationData?.centerData.location}</p>
+            <p>{props.myReservationData?.bowlingCenterInfo?.location || props.freeSlotData?.bowlingCenterInfo?.location || props.newReservationData?.centerData.location}</p>
           </div>
           <div>
             <FontAwesomeIcon

@@ -28,7 +28,7 @@ function BowlingCenterBookingTableCard(props: BowlingCenterDataProps) {
     const dateToCompare = formatDate(props.date!);
     return props.allBookings?.filter((item) => {
       return (
-        item.bowlingCenterInfo.id === props.centerData.id &&
+        item.bowlingCenterInfo?.id === props.centerData.id &&
         item.startTime.includes(`${props.startTime}:`) &&
         formatDate(item.date!) === dateToCompare
       );
