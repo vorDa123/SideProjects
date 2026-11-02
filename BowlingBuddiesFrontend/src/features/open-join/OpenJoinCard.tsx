@@ -50,7 +50,7 @@ function OpenJoinCard(props: OpenJoinCardProps) {
               </span>
               <span className="text-orange-100">
                 <FontAwesomeIcon icon={faUserGroup} />{" "}
-                {props.joinData?.joinedPlayers?.length}/
+                {props.joinData?.joinedPlayers?.length || 0}/
                 {props.joinData?.bowlingCenterInfo?.maxPlayersPerAlley}
               </span>
             </div>
