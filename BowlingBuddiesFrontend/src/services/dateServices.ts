@@ -62,9 +62,10 @@ const getDayName = (dayNumber: number) => {
 };
 
 const formatDate = (date: Date, format?: string) => {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
+  const dateToFormat = date instanceof Date ? date : new Date(date);
+  const year = dateToFormat.getFullYear();
+  const month = dateToFormat.getMonth() + 1;
+  const day = dateToFormat.getDate();
 
   if (format === "YYYY.MM.DD") {
     return `${year}.${month}.${day}`;
