@@ -1,5 +1,4 @@
 import {
-  BOWLING_CENTERS,
   ACHIEVEMENTS,
   ALL_RESERVATIONS,
 } from "../data/mockData.ts";
@@ -8,16 +7,16 @@ import axios from "axios";
 
 import type { ReservationData, UserData } from "../types/index.ts";
 
-const getAllReservations = async () => {
-  try {
-    const res = await axios.get(
-      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
-    );
-    return res.data;
-  } catch (error) {
-    console.error("Server down ili error");
-  }
-};
+// const getAllReservations = async () => {
+//   try {
+//     const res = await axios.get(
+//       "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
+//     );
+//     return res.data;
+//   } catch (error) {
+//     console.error("Server down ili error");
+//   }
+// };
 
 const getBowlingCentersHandler = async () => {
   try {

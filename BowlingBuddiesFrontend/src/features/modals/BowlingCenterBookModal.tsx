@@ -10,10 +10,12 @@ import { useBooking } from "../../hooks/useBooking.tsx";
 import type { FormEvent } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useParams } from "react-router-dom";
 
 gsap.registerPlugin(useGSAP);
 
 function BowlingCenterBookingModal(props: ModalProps) {
+  const { id } = useParams();
   const { createReservation } = useBooking();
   const modalRef = useRef<HTMLDivElement>(null);
   const isJoinClicked = props.isJoinClicked!;
@@ -60,6 +62,12 @@ function BowlingCenterBookingModal(props: ModalProps) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    if (id) {
+      formData.append("center_id", id);
+    }
+    if (props.newReservationData?.date) {
+      formData.append("date", `${props.newReservationData?.date}`);
+    }
     const data = Object.fromEntries(formData);
     const defaultCenterInfo = {
       id: "asdkmnasjdn123sanmj",

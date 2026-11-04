@@ -172,7 +172,7 @@ function BookModalForm(props: ModalProps) {
         </select>
       </div>
       <div className="col-span-4 mt-5 md:hidden">
-        <label htmlFor="shoes" className="text-mh4">
+        <label htmlFor="openJoin" className="text-mh4">
           Open join?
         </label>
         <br />
