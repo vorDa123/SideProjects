@@ -76,7 +76,7 @@ const getMyReservationsHandler = async () => {
   }
 };
 
-const createReservationHandler = async (data: any) => {
+const createReservationHandler = async (data: ReservationData) => {
   try {
     const res = await axios.post(
       "http://localhost/BowlingBuddiesAPI/api/createReservation.php",

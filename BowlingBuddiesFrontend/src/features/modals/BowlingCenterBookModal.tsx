@@ -77,7 +77,30 @@ function BowlingCenterBookingModal(props: ModalProps) {
         formData.append("date", formattedDate);
       }
     }
-    createReservation!(formData);
+    const data = Object.fromEntries(formData);
+    const reservationData = {
+      bowlingCenterInfo:
+        props.newReservationData?.centerData ||
+        props.freeSlotData?.bowlingCenterInfo,
+      startTime: `${data.time}`,
+      date:
+        props.newReservationData?.date ||
+        props.freeSlotData?.date ||
+        new Date(),
+      shoesNeeded: data.shoesNeeded ? true : false,
+      openJoin: data.openJoin ? true : false,
+      duration: Number(data.duration),
+      numberOfPlayers: Number(data.players),
+      email: `${data.email}`,
+      phone: `${data.phone}`,
+      reservationType: "booked" as const,
+      joinedPlayers: props.freeSlotData?.joinedPlayers,
+      price:
+        props.newReservationData?.centerData.pricePerPerson ||
+        props.freeSlotData?.price ||
+        0,
+    };
+    createReservation!(reservationData);
     fetchAllBookings!();
     closeModal();
   };

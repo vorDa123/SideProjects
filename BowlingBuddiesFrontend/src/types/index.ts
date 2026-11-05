@@ -168,7 +168,7 @@ export type ReservationType = "join" | "free" | "booked";
 
 export interface ReservationData {
   id?: string;
-  bowlingCenterInfo: BowlingCenterData;
+  bowlingCenterInfo: BowlingCenterData | undefined;
   laneNumber?: number;
   startTime: string;
   endTime?: string;
@@ -223,7 +223,7 @@ export interface BookingContextTypes {
   fetchMyReservations?: () => Promise<void>;
   fetchAllBookings?: () => Promise<void>;
   fetchAchievements?: () => Promise<void>;
-  createReservation?: (data: any) => Promise<void>;
+  createReservation?: (data: ReservationData) => Promise<void>;
   joinPlayer?: (resId: string, player: UserData) => Promise<void>;
   addPlayer?: (resId: string, player: UserData) => Promise<void>;
 }
