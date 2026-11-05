@@ -93,12 +93,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
       numberOfPlayers: Number(data.players),
       email: `${data.email}`,
       phone: `${data.phone}`,
-      reservationType: "booked" as const,
-      joinedPlayers: props.freeSlotData?.joinedPlayers,
-      price:
-        props.newReservationData?.centerData.pricePerPerson ||
-        props.freeSlotData?.price ||
-        0,
+      reservationType: "booked" as const   
     };
     createReservation!(reservationData);
     fetchAllBookings!();
