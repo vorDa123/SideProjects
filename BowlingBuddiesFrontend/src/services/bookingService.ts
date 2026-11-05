@@ -1,7 +1,4 @@
-import {
-  ACHIEVEMENTS,
-  ALL_RESERVATIONS,
-} from "../data/mockData.ts";
+import { ACHIEVEMENTS, ALL_RESERVATIONS } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
 import axios from "axios";
 
@@ -23,7 +20,7 @@ const getBowlingCentersHandler = async () => {
     const res = await axios.get(
       "http://localhost/BowlingBuddiesAPI/api/getBowlingCenters.php",
     );
-    console.log("Res: ", res.data)
+    console.log("Res: ", res.data);
     return res.data;
   } catch (error) {
     console.error("Server down ili error");
@@ -79,26 +76,16 @@ const getMyReservationsHandler = async () => {
   }
 };
 
-const createReservationHandler = async (data: ReservationData) => {
-  await delay(3000);
-
-  const randomID = data.id || crypto.randomUUID();
-
-  const newReservation: ReservationData = {
-    ...data,
-    id: randomID,
-  };
-
-  const reservationExists = ALL_RESERVATIONS.some(
-    (item) => item.id === randomID,
-  );
-
-  if (reservationExists) {
-    throw new Error("Reservation already exists");
+const createReservationHandler = async (data: any) => {
+  try {
+    const res = await axios.post(
+      "http://localhost/BowlingBuddiesAPI/api/createReservation.php",
+      data,
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Server down ili error");
   }
-  ALL_RESERVATIONS.push(newReservation);
-
-  return ALL_RESERVATIONS.filter((item) => item.reservationType === "booked");
 };
 
 const joinPlayerHandler = async (resId: string, player: UserData) => {

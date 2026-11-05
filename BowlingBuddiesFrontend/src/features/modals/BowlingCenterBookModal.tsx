@@ -11,12 +11,13 @@ import type { FormEvent } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useParams } from "react-router-dom";
+import { formatDate } from "../../services/dateServices.ts";
 
 gsap.registerPlugin(useGSAP);
 
 function BowlingCenterBookingModal(props: ModalProps) {
   const { id } = useParams();
-  const { createReservation } = useBooking();
+  const { createReservation, fetchAllBookings } = useBooking();
   const modalRef = useRef<HTMLDivElement>(null);
   const isJoinClicked = props.isJoinClicked!;
   const currentHeight = isJoinClicked ? "95dvh" : "80dvh";
@@ -65,70 +66,19 @@ function BowlingCenterBookingModal(props: ModalProps) {
     if (id) {
       formData.append("center_id", id);
     }
-    if (props.newReservationData?.date) {
-      formData.append("date", `${props.newReservationData?.date}`);
+
+    const rawDate = props.newReservationData?.date;
+
+    if (rawDate) {
+      const dateObj = new Date(rawDate);
+
+      if (!isNaN(dateObj.getTime())) {
+        const formattedDate = formatDate(dateObj);
+        formData.append("date", formattedDate);
+      }
     }
-    const data = Object.fromEntries(formData);
-    const defaultCenterInfo = {
-      id: "asdkmnasjdn123sanmj",
-      name: "",
-      location: "",
-      center: "",
-      img: "",
-      workingInfo: {
-        monday: {
-          open: false,
-        },
-        tuesday: {
-          open: false,
-        },
-        wednesday: {
-          open: false,
-        },
-        thursday: {
-          open: false,
-        },
-        friday: {
-          open: false,
-        },
-        saturday: {
-          open: false,
-        },
-        sunday: {
-          open: false,
-        },
-      },
-      lanes: 0,
-      email: "",
-      phone: "",
-      maxPlayersPerAlley: 0,
-      pricePerPerson: 0,
-      shoesPricePerPerson: 0,
-    };
-    const reservationData = {
-      bowlingCenterInfo:
-        props.newReservationData?.centerData ||
-        props.freeSlotData?.bowlingCenterInfo ||
-        defaultCenterInfo,
-      startTime: `${data.time}`,
-      date:
-        props.newReservationData?.date ||
-        props.freeSlotData?.date ||
-        new Date(),
-      shoesNeeded: data.shoesNeeded ? true : false,
-      openJoin: data.openJoin ? true : false,
-      duration: Number(data.duration),
-      numberOfPlayers: Number(data.players),
-      email: `${data.email}`,
-      phone: `${data.phone}`,
-      reservationType: "booked" as const,
-      joinedPlayers: props.freeSlotData?.joinedPlayers,
-      price:
-        props.newReservationData?.centerData.pricePerPerson ||
-        props.freeSlotData?.price ||
-        0,
-    };
-    createReservation!(reservationData);
+    createReservation!(formData);
+    fetchAllBookings!();
     closeModal();
   };
 
@@ -163,6 +113,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
             <form
               onSubmit={handleSubmit}
               className="col-span-8 grid grid-cols-8 gap-x-4 auto-rows-max"
+              method="POST"
             >
               <BookingFormContext value={{ isJoinClicked, toggleJoinClicked }}>
                 <BookModalForm

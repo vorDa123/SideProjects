@@ -223,7 +223,7 @@ export interface BookingContextTypes {
   fetchMyReservations?: () => Promise<void>;
   fetchAllBookings?: () => Promise<void>;
   fetchAchievements?: () => Promise<void>;
-  createReservation?: (data: ReservationData) => Promise<void>;
+  createReservation?: (data: any) => Promise<void>;
   joinPlayer?: (resId: string, player: UserData) => Promise<void>;
   addPlayer?: (resId: string, player: UserData) => Promise<void>;
 }
