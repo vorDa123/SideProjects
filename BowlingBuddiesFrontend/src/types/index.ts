@@ -187,6 +187,7 @@ export interface ReservationData {
   joinedPlayers?: UserData[];
   numberOfBookedLanes?: number;
   numberOfFreeLanes?: number;
+  center_id?: string;
 }
 
 export interface AchievementData {
