@@ -20,7 +20,6 @@ const getBowlingCentersHandler = async () => {
     const res = await axios.get(
       "http://localhost/BowlingBuddiesAPI/api/getBowlingCenters.php",
     );
-    console.log("Res: ", res.data);
     return res.data;
   } catch (error) {
     console.error("Server down ili error");
@@ -37,6 +36,17 @@ const getAllBookedSlots = async () => {
     console.error("Server down ili error");
   }
 };
+
+// const getReservation = async (id: string) => {
+//   try {
+//     const res = await axios.get(
+//       `http://localhost/BowlingBuddiesAPI/api/getAllReservations.php?reservationId=${id}`,
+//     );
+//     return res.data;
+//   } catch (error) {
+//     console.error("Server down ili error");
+//   }
+// };
 
 const getAchievements = async () => {
   await delay(3000);
