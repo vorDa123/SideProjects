@@ -32,35 +32,16 @@ function AddPlayerModal(props: ModalProps) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
-    console.log("Data from form:", data)
     const reservationId =
       props.myReservationData?.id || props.freeSlotData?.id || "";
     const playerToAdd = {
       id: crypto.randomUUID(),
-      personalData: {
-        name: `${data.name}` || "",
-        surname: "",
-        gender: "",
-        oib: "",
-        dateOfBirth: "",
-      },
-      contactData: {
-        email: `${data.email}` || "",
-        phone: `${data.phone}` || "",
-      },
-      registeredData: {
-        registeredPlayer: false,
-        registeredClub: "",
-      },
-      addressData: {
-        address: "",
-        city: "",
-        postalCode: "",
-        country: "",
-      },
+      reservationId: reservationId,
+      name: `${data.name}`,
+      email: `${data.email}`,
+      phone: `${data.phone}`,
       leader: false,
     };
-    console.log("Res ID:", reservationId)
     await addPlayer!(reservationId, playerToAdd);
     props.onBack!();
   };

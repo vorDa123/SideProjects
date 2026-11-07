@@ -132,6 +132,16 @@ export interface UserData {
   leader?: boolean;
 }
 
+export interface PlayerData {
+  id: string;
+  reservationId: string;
+  name: string;
+  surname?: string;
+  email: string;
+  phone: string;
+  leader?: boolean;
+}
+
 export interface WorkingInfoData {
   open: boolean;
   startTime?: string;
@@ -184,7 +194,7 @@ export interface ReservationData {
   email: string;
   phone?: string;
   reservationType: ReservationType;
-  joinedPlayers?: UserData[];
+  joinedPlayers?: PlayerData[];
   numberOfBookedLanes?: number;
   numberOfFreeLanes?: number;
   center_id?: string;
@@ -225,8 +235,8 @@ export interface BookingContextTypes {
   fetchAllBookings?: () => Promise<void>;
   fetchAchievements?: () => Promise<void>;
   createReservation?: (data: ReservationData) => Promise<void>;
-  joinPlayer?: (resId: string, player: UserData) => Promise<void>;
-  addPlayer?: (resId: string, player: UserData) => Promise<void>;
+  joinPlayer?: (resId: string, player: PlayerData) => Promise<void>;
+  addPlayer?: (resId: string, player: PlayerData) => Promise<void>;
 }
 
 export interface BookingProviderProps {

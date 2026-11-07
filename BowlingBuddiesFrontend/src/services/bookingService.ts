@@ -2,7 +2,7 @@ import { ACHIEVEMENTS, ALL_RESERVATIONS } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
 import axios from "axios";
 
-import type { ReservationData, UserData } from "../types/index.ts";
+import type { ReservationData, PlayerData } from "../types/index.ts";
 
 // const getAllReservations = async () => {
 //   try {
@@ -37,16 +37,16 @@ const getAllBookedSlots = async () => {
   }
 };
 
-// const getReservation = async (id: string) => {
-//   try {
-//     const res = await axios.get(
-//       `http://localhost/BowlingBuddiesAPI/api/getAllReservations.php?reservationId=${id}`,
-//     );
-//     return res.data;
-//   } catch (error) {
-//     console.error("Server down ili error");
-//   }
-// };
+const getReservation = async (id: string) => {
+  try {
+    const res = await axios.get(
+      `http://localhost/BowlingBuddiesAPI/api/getAllReservations.php?reservationId=${id}`,
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Server down ili error");
+  }
+};
 
 const getAchievements = async () => {
   await delay(3000);
@@ -98,7 +98,19 @@ const createReservationHandler = async (data: ReservationData) => {
   }
 };
 
-const joinPlayerHandler = async (resId: string, player: UserData) => {
+const addPlayerFunction = async (data: PlayerData) => {
+  try {
+    const res = await axios.patch(
+      "http://localhost/BowlingBuddiesAPI/api/addPlayer.php",
+      data,
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Server down ili error");
+  }
+};
+
+const joinPlayerHandler = async (resId: string, player: PlayerData) => {
   await delay(1000);
   const reservation = ALL_RESERVATIONS.find((item) => item.id === resId);
 
@@ -124,15 +136,13 @@ const joinPlayerHandler = async (resId: string, player: UserData) => {
   return { ...reservation };
 };
 
-const addPlayerHandler = async (resId: string, player: UserData) => {
-  const reservation = ALL_RESERVATIONS.find((item) => item.id === resId);
+const addPlayerHandler = async (resId: string, player: PlayerData) => {
+  const reservation = await getReservation(resId);
   console.log("Found reservation:", reservation);
   if (!reservation) throw new Error("Reservation is not found");
-  const updatedJoinedPlayers = [...(reservation.joinedPlayers || []), player];
-  reservation.joinedPlayers = updatedJoinedPlayers;
-  reservation.numberOfPlayers = updatedJoinedPlayers.length;
-
-  return { ...reservation };
+  await addPlayerFunction(player);
+  const updatedReservation = await getReservation(resId);
+  return { ...updatedReservation };
 };
 
 export {

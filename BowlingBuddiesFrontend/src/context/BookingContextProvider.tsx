@@ -6,7 +6,7 @@ import type {
   BookingProviderProps,
   AchievementData,
   ReservationData,
-  UserData,
+  PlayerData,
 } from "../types/index.ts";
 import {
   getBowlingCentersHandler,
@@ -154,7 +154,7 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     }
   };
 
-  const joinPlayer = async (resId: string, player: UserData) => {
+  const joinPlayer = async (resId: string, player: PlayerData) => {
     try {
       const data = await joinPlayerHandler(resId, player);
       await createNewReservation(data);
@@ -167,21 +167,12 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     }
   };
 
-  const addPlayer = async (resId: string, player: UserData) => {
+  const addPlayer = async (resId: string, player: PlayerData) => {
     try {
-      const reservationDataToUpdate = await addPlayerHandler(resId, player);
+      await addPlayerHandler(resId, player);
 
-      setMyReservations((prevReservations) =>
-        prevReservations.map((item) =>
-          item.id === resId ? reservationDataToUpdate : item,
-        ),
-      );
-
-      setFreeSlots((prevReservations) =>
-        prevReservations.map((item) =>
-          item.id === resId ? reservationDataToUpdate : item,
-        ),
-      );
+      await fetchMyReservations();
+      await fetchFreeSlots();
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);

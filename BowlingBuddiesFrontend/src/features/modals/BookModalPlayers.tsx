@@ -13,7 +13,7 @@ function BookModalPlayers(props: ModalProps) {
         <div className="flex flex-row gap-4 mt-2.5 overflow-x-auto pt-1">
           {players?.map((player) => {
             return(
-              <Player key={player.id} playerName={player.personalData.name} isLeader={player.leader} />
+              <Player key={player.id} playerName={player.name} isLeader={player.leader} />
             )
           })}
           <Player addPlayer={true} onClick={handleShowPlayerModal} />

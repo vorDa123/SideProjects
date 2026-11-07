@@ -82,7 +82,6 @@ const getDayNameIntl = (date: Date, locale = "en-US"): string => {
 };
 
 const formatDateIntl = (date: Date): string => {
-  console.log("Datum koji dobivam: ", date);
   const dateToFormat = date instanceof Date ? date : new Date(date);
   return new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",

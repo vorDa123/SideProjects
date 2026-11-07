@@ -12,7 +12,7 @@ function JoinModalPlayers(props: ModalProps) {
             return (
               <Player
                 key={player.id}
-                playerName={player.personalData.name}
+                playerName={player.name}
                 isLeader={player.leader}
               />
             );
