@@ -96,17 +96,17 @@ export interface BookingFormContextTypes {
 }
 
 export interface AddressData {
-  address: string;
-  city: string;
-  country: string;
+  address?: string;
+  city?: string;
+  country?: string;
   address2?: string;
-  postalCode: string;
+  postalCode?: string;
   state?: string;
 }
 
 export interface UserPersonalData {
-  name: string;
-  surname: string;
+  name?: string;
+  surname?: string;
   gender?: string;
   dateOfBirth?: string;
   profileImage?: string;
@@ -119,16 +119,16 @@ export interface UserContactData {
 }
 
 export interface RegisteredUserData {
-  registeredPlayer: boolean;
+  registeredPlayer?: boolean;
   registeredClub?: string;
 }
 
 export interface UserData {
   id: string;
-  personalData: UserPersonalData;
+  personalData?: UserPersonalData;
   contactData: UserContactData;
-  registeredData: RegisteredUserData;
-  addressData: AddressData;
+  registeredData?: RegisteredUserData;
+  addressData?: AddressData;
   leader?: boolean;
 }
 

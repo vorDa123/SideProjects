@@ -13,11 +13,16 @@ import EditBookingModal from "../modals/EditBookModal.tsx";
 import AddPlayerModal from "../modals/AddPlayerModal.tsx";
 import { useState } from "react";
 import { formatDateIntl } from "../../services/dateServices.ts";
+import { useBooking } from "../../hooks/useBooking.tsx";
 
 function MyReservationCard(props: MyReservationsProps) {
+  const { myReservations } = useBooking();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const [isJoinClicked, setIsJoinClicked] = useState<boolean>(Boolean(props.myReservationData?.openJoin));
+  const currentReservationData =
+    myReservations?.find((slot) => slot.id === props.myReservationData?.id) ||
+    props.myReservationData;
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
     setIsJoinClicked(Boolean(props.myReservationData?.openJoin));
@@ -33,7 +38,7 @@ function MyReservationCard(props: MyReservationsProps) {
     setShowModal((prev) => !prev);
     setShowPlayerModal((prev) => !prev);
   };
-  const dateFormatToDisplay = formatDateIntl(props.myReservationData!.date);
+  const dateFormatToDisplay = formatDateIntl(currentReservationData!.date);
   return (
     <>
       {showModal && (
@@ -43,14 +48,14 @@ function MyReservationCard(props: MyReservationsProps) {
           onAddPlayer={handleAddPlayer}
           isJoinClicked={isJoinClicked}
           setIsJoinClicked={handleJoinClicked}
-          myReservationData={props.myReservationData}
+          myReservationData={currentReservationData}
         />
       )}
       {showPlayerModal && (
         <AddPlayerModal
           isOpen={showPlayerModal}
           onClose={() => setShowPlayerModal(false)}
-          myReservationData={props.myReservationData}
+          myReservationData={currentReservationData}
           onBack={handleBack}
         />
       )}
@@ -59,17 +64,17 @@ function MyReservationCard(props: MyReservationsProps) {
         onClick={handleShowModal}
       >
         <div
-          className={`w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(${props.myReservationData?.bowlingCenterInfo?.img})] bg-center bg-cover`}
+          className={`w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(${currentReservationData?.bowlingCenterInfo?.img})] bg-center bg-cover`}
         ></div>
         <div className="flex flex-col gap-6 md:gap-5 w-2/3 px-2 py-2">
           <div className="flex flex-row justify-between items-center">
             {props.myReservationPage ? (
               <p className="font-medium text-mh3 xsm:text-mh2 md:text-th4">
-                {props.myReservationData?.bowlingCenterInfo?.name}
+                {currentReservationData?.bowlingCenterInfo?.name}
               </p>
             ) : (
               <p className="font-medium text-mh3 xsm:text-mh2">
-                {props.myReservationData?.bowlingCenterInfo?.name}
+                {currentReservationData?.bowlingCenterInfo?.name}
               </p>
             )}
             <span className="cursor-pointer">
@@ -83,18 +88,18 @@ function MyReservationCard(props: MyReservationsProps) {
               </span>
               <span className="w-1/3">
                 <FontAwesomeIcon icon={faClock} />{" "}
-                {props.myReservationData?.startTime}
+                {currentReservationData?.startTime}
               </span>
             </div>
             <div className="flex flex-row gap-5">
               <span className="truncate w-2/3">
                 <FontAwesomeIcon icon={faLocationDot} />{" "}
-                {props.myReservationData?.bowlingCenterInfo?.location}
+                {currentReservationData?.bowlingCenterInfo?.location}
               </span>
               <span className="w-1/3">
                 <FontAwesomeIcon icon={faUserGroup} />{" "}
-                {props.myReservationData?.numberOfPlayers} {" / "}
-                {props.myReservationData?.bowlingCenterInfo?.maxPlayersPerAlley}
+                {currentReservationData?.numberOfPlayers} {" / "}
+                {currentReservationData?.bowlingCenterInfo?.maxPlayersPerAlley}
               </span>
             </div>
           </div>

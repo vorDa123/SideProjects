@@ -171,8 +171,33 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     try {
       await addPlayerHandler(resId, player);
 
-      await fetchMyReservations();
-      await fetchFreeSlots();
+      setFreeSlots((prevSlots) =>
+        prevSlots.map((slot) =>
+          slot.id === resId
+            ? {
+                ...slot,
+                joinedPlayers: slot.joinedPlayers
+                  ? [...slot.joinedPlayers, player]
+                  : [player],
+                numberOfPlayers: (slot.numberOfPlayers || 0) + 1,
+              }
+            : slot,
+        ),
+      );
+
+      setMyReservations((prevReservations) =>
+        prevReservations.map((res) =>
+          res.id === resId
+            ? {
+                ...res,
+                joinedPlayers: res.joinedPlayers
+                  ? [...res.joinedPlayers, player]
+                  : [player],
+                numberOfPlayers: (res.numberOfPlayers || 0) + 1,
+              }
+            : res,
+        ),
+      );
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);

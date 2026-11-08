@@ -1,6 +1,11 @@
 import HeaderMob from "../components/layouts/Header.tsx";
 import MainButton from "../components/ui/MainButton.tsx";
 import { NavLink } from "react-router";
+
+const registerPlayer = () => {
+  console.log("Registered player");
+};
+
 function Register() {
   return (
     <>
@@ -9,7 +14,7 @@ function Register() {
         <div className="hidden lg:block lg:bg-[url(/src/assets/bowlingpins.jpg)] lg:bg-center lg:bg-cover lg:w-full lg:rounded-tr-m30 lg:rounded-br-m30"></div>
         <main className="w-full md:w-[85%] max-w-4xl mx-auto px-6 lg:mt-10 xxl:w-[75%]">
           <h1 className="text-mh1 font-semibold my-15 lg:text-th2">Register</h1>
-          <form className="relative">
+          <form className="relative" onSubmit={registerPlayer}>
             <label htmlFor="email" className="text-mh4">
               E-mail:
             </label>
@@ -48,6 +53,7 @@ function Register() {
             <br />
             <NavLink to="/">
               <MainButton
+                type="submit"
                 variant="register"
                 buttonName="Register"
                 classAppend="mt-6 absolute right-0"
