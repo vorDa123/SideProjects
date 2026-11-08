@@ -79,6 +79,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
     }
     const data = Object.fromEntries(formData);
     const reservationData = {
+      id: props.freeSlotData?.id,
       bowlingCenterInfo:
         props.newReservationData?.centerData ||
         props.freeSlotData?.bowlingCenterInfo,
@@ -94,6 +95,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
       email: `${data.email}`,
       phone: `${data.phone}`,
       reservationType: "booked" as const,
+      joinedPlayers: props.freeSlotData?.joinedPlayers,
       center_id: `${data.centerId}`,
     };
     createReservation!(reservationData);

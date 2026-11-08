@@ -23,7 +23,7 @@ function BookModalForm(props: ModalProps) {
       <div className="col-span-8 mt-1">
         <InputField
           name="phone"
-          type="number"
+          type="text"
           labelName="Phone:"
           defaultValue={props.myReservationData?.phone}
         />

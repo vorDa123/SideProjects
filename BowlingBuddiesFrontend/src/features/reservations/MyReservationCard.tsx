@@ -59,17 +59,17 @@ function MyReservationCard(props: MyReservationsProps) {
         onClick={handleShowModal}
       >
         <div
-          className={`w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(${props.myReservationData?.bowlingCenterInfo.img})] bg-center bg-cover`}
+          className={`w-1/3 rounded-tl-m15 rounded-bl-m15 bg-[url(${props.myReservationData?.bowlingCenterInfo?.img})] bg-center bg-cover`}
         ></div>
         <div className="flex flex-col gap-6 md:gap-5 w-2/3 px-2 py-2">
           <div className="flex flex-row justify-between items-center">
             {props.myReservationPage ? (
               <p className="font-medium text-mh3 xsm:text-mh2 md:text-th4">
-                {props.myReservationData?.bowlingCenterInfo.name}
+                {props.myReservationData?.bowlingCenterInfo?.name}
               </p>
             ) : (
               <p className="font-medium text-mh3 xsm:text-mh2">
-                {props.myReservationData?.bowlingCenterInfo.name}
+                {props.myReservationData?.bowlingCenterInfo?.name}
               </p>
             )}
             <span className="cursor-pointer">
@@ -89,12 +89,12 @@ function MyReservationCard(props: MyReservationsProps) {
             <div className="flex flex-row gap-5">
               <span className="truncate w-2/3">
                 <FontAwesomeIcon icon={faLocationDot} />{" "}
-                {props.myReservationData?.bowlingCenterInfo.location}
+                {props.myReservationData?.bowlingCenterInfo?.location}
               </span>
               <span className="w-1/3">
                 <FontAwesomeIcon icon={faUserGroup} />{" "}
                 {props.myReservationData?.numberOfPlayers} {" / "}
-                {props.myReservationData?.bowlingCenterInfo.maxPlayersPerAlley}
+                {props.myReservationData?.bowlingCenterInfo?.maxPlayersPerAlley}
               </span>
             </div>
           </div>

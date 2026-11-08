@@ -14,7 +14,7 @@ import { formatDateIntl } from "../../services/dateServices.ts";
 function NextFreeSlotCard(props: NextFreeSlotCardProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
-  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(false);
+  const [isJoinClicked, setIsJoinClicked] = useState<boolean>(props.freeSlotData.openJoin ?? false);
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
   };
