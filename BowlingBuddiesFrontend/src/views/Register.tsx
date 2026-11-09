@@ -1,12 +1,27 @@
 import HeaderMob from "../components/layouts/Header.tsx";
 import MainButton from "../components/ui/MainButton.tsx";
-import { NavLink } from "react-router";
-
-const registerPlayer = () => {
-  console.log("Registered player");
-};
+import { NavLink, useNavigate } from "react-router";
+import type { FormEvent } from "react";
+import { registerPlayer } from "../services/loginRegister.ts";
 
 function Register() {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+    if (data.password !== data.confirmPassword) {
+      alert("Passwords are not the same!");
+      return;
+    }
+    try {
+      await registerPlayer(formData);
+      navigate("/");
+    } catch (error) {
+      console.error("Registration failed", error);
+    }
+  };
   return (
     <>
       <div className="grid grid-cols-1 lg:h-dvh lg:grid-cols-2">
@@ -14,7 +29,7 @@ function Register() {
         <div className="hidden lg:block lg:bg-[url(/src/assets/bowlingpins.jpg)] lg:bg-center lg:bg-cover lg:w-full lg:rounded-tr-m30 lg:rounded-br-m30"></div>
         <main className="w-full md:w-[85%] max-w-4xl mx-auto px-6 lg:mt-10 xxl:w-[75%]">
           <h1 className="text-mh1 font-semibold my-15 lg:text-th2">Register</h1>
-          <form className="relative" onSubmit={registerPlayer}>
+          <form className="relative" onSubmit={handleSubmit}>
             <label htmlFor="email" className="text-mh4">
               E-mail:
             </label>
@@ -23,6 +38,7 @@ function Register() {
               type="email"
               name="email"
               placeholder="Enter your e-mail"
+              required
               className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
             ></input>
             <br />
@@ -33,6 +49,7 @@ function Register() {
             <input
               type="password"
               name="password"
+              required
               placeholder="Enter your password"
               className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
             ></input>
@@ -48,17 +65,16 @@ function Register() {
               type="password"
               name="confirmPassword"
               placeholder="Confirm your password"
+              required
               className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
             ></input>
             <br />
-            <NavLink to="/">
-              <MainButton
-                type="submit"
-                variant="register"
-                buttonName="Register"
-                classAppend="mt-6 absolute right-0"
-              />
-            </NavLink>
+            <MainButton
+              type="submit"
+              variant="register"
+              buttonName="Register"
+              classAppend="mt-6 absolute right-0"
+            />
           </form>
           <div className="flex flex-row mt-25 justify-center items-center gap-2">
             <div className="w-12.5 h-0.5 bg-darkerBlue-30 rounded-full"></div>

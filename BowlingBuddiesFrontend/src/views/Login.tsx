@@ -1,7 +1,23 @@
 import HeaderMob from "../components/layouts/Header.tsx";
 import MainButton from "../components/ui/MainButton.tsx";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import type { FormEvent } from "react";
+import { loginPlayer } from "../services/loginRegister.ts";
+
 function Login() {
+  const navigate = useNavigate();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await loginPlayer(formData);
+      console.log("Login result: ", response);
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed", error);
+    }
+  };
   return (
     <>
       <div className="grid grid-cols-1 lg:h-dvh lg:grid-cols-2">
@@ -9,7 +25,7 @@ function Login() {
         <div className="hidden lg:block lg:bg-[url(/src/assets/bowlingpins.jpg)] lg:bg-center lg:bg-cover lg:w-full lg:rounded-tr-m30 lg:rounded-br-m30"></div>
         <main className="w-full md:w-[85%] max-w-4xl mx-auto px-6 lg:mt-20 xxl:w-[75%]">
           <h1 className="text-mh1 font-semibold my-15 lg:text-th2">Log in</h1>
-          <form className="relative">
+          <form className="relative" onSubmit={handleSubmit}>
             <label htmlFor="email" className="text-mh4">
               E-mail:
             </label>
@@ -18,6 +34,7 @@ function Login() {
               type="email"
               name="email"
               placeholder="Enter your e-mail"
+              required
               className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
             ></input>
             <br />
@@ -29,16 +46,16 @@ function Login() {
               type="password"
               name="password"
               placeholder="Enter your password"
+              required
               className="h-11.25 border border-darkerBlue-100 rounded-m7 w-full px-2"
             ></input>
             <br />
-            <NavLink to="/">
-              <MainButton
-                variant="login"
-                buttonName="Log in"
-                classAppend="mt-6 absolute right-0"
-              />
-            </NavLink>
+            <MainButton
+              type="submit"
+              variant="login"
+              buttonName="Log in"
+              classAppend="mt-6 absolute right-0"
+            />
           </form>
           <div className="flex flex-row mt-25 justify-center items-center gap-2">
             <div className="w-12.5 h-0.5 bg-darkerBlue-30 rounded-full"></div>
