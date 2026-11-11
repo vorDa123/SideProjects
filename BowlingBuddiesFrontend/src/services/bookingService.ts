@@ -111,11 +111,10 @@ const addPlayerFunction = async (data: PlayerData) => {
 };
 
 const joinPlayerHandler = async (resId: string, player: PlayerData) => {
-  await delay(1000);
-  const reservation = ALL_RESERVATIONS.find((item) => item.id === resId);
+  const reservation = await getReservation(resId);
 
   if (!reservation) throw new Error("Reservation is not found");
-  const foundPlayer = reservation.joinedPlayers?.find((item) => {
+  const foundPlayer = reservation.joinedPlayers?.find((item: PlayerData) => {
     return item.id === player.id;
   });
   const numberOfBookedLanes = reservation.numberOfBookedLanes || 0;
@@ -138,7 +137,6 @@ const joinPlayerHandler = async (resId: string, player: PlayerData) => {
 
 const addPlayerHandler = async (resId: string, player: PlayerData) => {
   const reservation = await getReservation(resId);
-  console.log("Found reservation:", reservation);
   if (!reservation) throw new Error("Reservation is not found");
   await addPlayerFunction(player);
   const updatedReservation = await getReservation(resId);

@@ -5,6 +5,7 @@ const loginPlayer = async (data: FormData) => {
     const res = await axios.post(
       "http://localhost/BowlingBuddiesAPI/api/loginPlayer.php",
       data,
+      { withCredentials: true }
     );
     return res.data;
   } catch (error) {
