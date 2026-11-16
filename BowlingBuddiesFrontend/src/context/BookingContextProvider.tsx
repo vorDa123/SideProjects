@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BookingContext } from "./BookingContext.tsx";
 import type {
   BookingContextTypes,
@@ -7,6 +7,7 @@ import type {
   AchievementData,
   ReservationData,
   PlayerData,
+  UserData,
 } from "../types/index.ts";
 import {
   getBowlingCentersHandler,
@@ -19,6 +20,7 @@ import {
   joinPlayerHandler,
   addPlayerHandler,
 } from "../services/bookingService.ts";
+import { getLoggedInUser } from "../services/loginRegister.ts";
 
 export function BookingContextProvider({ children }: BookingProviderProps) {
   const [centers, setCenters] = useState<BowlingCenterData[]>([]);
@@ -37,6 +39,25 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
   const [isLoadingMyReservations, setIsLoadingMyReservations] =
     useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<UserData>();
+
+  const getUser = useCallback(async () => {
+    try {
+      setError(null);
+      const res = await getLoggedInUser();
+      setUser(res[0]);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    void getUser();
+  }, [getUser]);
 
   const fetchCenters = async () => {
     try {
@@ -221,6 +242,8 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     allBookings,
     achievements,
     joinSlots,
+    user,
+    getUser,
     fetchJoinSlots,
     fetchCenters,
     fetchFreeSlots,

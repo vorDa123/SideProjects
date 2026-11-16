@@ -14,6 +14,22 @@ const loginPlayer = async (data: FormData) => {
   }
 };
 
+const getLoggedInUser = async () => {
+  try {
+    const res = await axios.get(
+      "http://localhost/BowlingBuddiesAPI/api/getProfile.php",
+      {
+        withCredentials: true,
+      },
+    );
+    console.log("Logged in user: ", res.data);
+    return res.data;
+  } catch (error) {
+    console.log("Server down ili error");
+    throw error;
+  }
+};
+
 const registerPlayer = async (data: FormData) => {
   try {
     const res = await axios.post(
@@ -27,4 +43,4 @@ const registerPlayer = async (data: FormData) => {
   }
 };
 
-export { loginPlayer, registerPlayer };
+export { loginPlayer, registerPlayer, getLoggedInUser };

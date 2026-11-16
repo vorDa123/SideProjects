@@ -36,6 +36,10 @@ export interface MyReservationsProps {
   myReservationData?: ReservationData;
 }
 
+export interface EditProfileProps {
+  userData?: UserData;
+}
+
 export interface ButtonProps {
   state?: string;
   variant: string;
@@ -228,6 +232,8 @@ export interface BookingContextTypes {
   myReservations?: ReservationData[];
   achievements?: AchievementData[];
   allBookings?: ReservationData[];
+  user?: UserData;
+  getUser?: () => Promise<void>;
   fetchCenters?: () => Promise<void>;
   fetchFreeSlots?: () => Promise<void>;
   fetchJoinSlots?: () => Promise<void>;

@@ -2,9 +2,11 @@ import UserImg from "../../assets/playerBowling.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
+import { useBooking } from "../../hooks/useBooking";
 
 function ProfileDetails() {
   const navigate = useNavigate();
+  const { user } = useBooking();
   const handleNavigateEditProfile = () => {
     navigate(`/editprofile`);
   };
@@ -26,10 +28,14 @@ function ProfileDetails() {
         </div>
         <div className="lg:mt-0 text-center lg:text-start">
           <p className="text-mh3 font-medium lg:font-semibold lg:text-th4">
-            Davor Kuharić
+            {user?.personalData?.name} {user?.personalData?.surname}
           </p>
-          <p className="mt-2">davorkuharic1997@gmail.com</p>
-          <p className="mt-2">Registered in BK Nomad</p>
+          <p className="mt-2">{user?.contactData?.email}</p>
+          {user?.registeredData?.registeredPlayer && (
+            <p className="mt-2">
+              Registered in {user?.registeredData?.registeredClub}
+            </p>
+          )}
         </div>
       </div>
     </>

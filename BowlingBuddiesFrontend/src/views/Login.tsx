@@ -3,16 +3,18 @@ import MainButton from "../components/ui/MainButton.tsx";
 import { NavLink, useNavigate } from "react-router";
 import type { FormEvent } from "react";
 import { loginPlayer } from "../services/loginRegister.ts";
+import { useBooking } from "../hooks/useBooking.tsx";
 
 function Login() {
+  const { getUser } = useBooking();
   const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await loginPlayer(formData);
-      console.log("Login result: ", response);
+      await loginPlayer(formData);
+      await getUser!();
       navigate("/");
     } catch (error) {
       console.error("Login failed", error);
