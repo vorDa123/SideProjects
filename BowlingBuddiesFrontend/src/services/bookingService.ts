@@ -91,6 +91,7 @@ const createReservationHandler = async (data: ReservationData) => {
     const res = await axios.post(
       "http://localhost/BowlingBuddiesAPI/api/createReservation.php",
       data,
+      { withCredentials: true },
     );
     return res.data;
   } catch (error) {

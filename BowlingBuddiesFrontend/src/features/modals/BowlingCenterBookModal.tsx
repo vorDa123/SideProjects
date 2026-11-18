@@ -17,7 +17,7 @@ gsap.registerPlugin(useGSAP);
 
 function BowlingCenterBookingModal(props: ModalProps) {
   const { id } = useParams();
-  const { createReservation, fetchAllBookings } = useBooking();
+  const { createReservation, fetchAllBookings, user } = useBooking();
   const modalRef = useRef<HTMLDivElement>(null);
   const isJoinClicked = props.isJoinClicked!;
   const currentHeight = isJoinClicked ? "95dvh" : "80dvh";
@@ -140,6 +140,7 @@ function BowlingCenterBookingModal(props: ModalProps) {
                 <BookModalForm
                   freeSlotData={props.freeSlotData}
                   newReservationData={props.newReservationData}
+                  userData={user}
                 />
                 {isJoinClicked && (
                   <BookModalPlayers

@@ -17,7 +17,9 @@ function BookModalForm(props: ModalProps) {
           name="email"
           type="email"
           labelName="Email:"
-          defaultValue={props.myReservationData?.email}
+          defaultValue={
+            props.myReservationData?.email || props.userData?.contactData?.email
+          }
         />
       </div>
       <div className="col-span-8 mt-1">
@@ -25,7 +27,9 @@ function BookModalForm(props: ModalProps) {
           name="phone"
           type="text"
           labelName="Phone:"
-          defaultValue={props.myReservationData?.phone}
+          defaultValue={
+            props.myReservationData?.phone || props.userData?.contactData?.phone
+          }
         />
       </div>
       <div className="col-span-8 mt-5">

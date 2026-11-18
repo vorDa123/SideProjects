@@ -87,6 +87,7 @@ export interface ModalProps {
   joinSlotData?: ReservationData;
   myReservationData?: ReservationData;
   newReservationData?: BowlingCenterDataProps;
+  userData?: UserData;
   ref?: Ref<HTMLDivElement>;
   onClose?: () => void;
   onAddPlayer?: () => void;
