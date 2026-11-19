@@ -177,8 +177,9 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
 
   const joinPlayer = async (resId: string, player: PlayerData) => {
     try {
-      const data = await joinPlayerHandler(resId, player);
-      await createNewReservation(data);
+      await joinPlayerHandler(resId, player);
+      const reservations = await getMyReservationsHandler();
+      setMyReservations(reservations);
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);

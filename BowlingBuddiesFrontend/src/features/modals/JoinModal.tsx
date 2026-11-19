@@ -21,7 +21,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 function JoinModal(props: ModalProps) {
-  const { joinPlayer } = useBooking();
+  const { joinPlayer, user } = useBooking();
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleCloseModal = (e: React.MouseEvent<Element>) => {
@@ -56,28 +56,12 @@ function JoinModal(props: ModalProps) {
 
   const closeModal = async () => {
     const playerToAdd = {
-      id: crypto.randomUUID(),
-      personalData: {
-        name: "Ivan",
-        surname: "Ivić",
-        gender: "M",
-        oib: "",
-        dateOfBirth: "",
-      },
-      contactData: {
-        email: "test@mail.com",
-        phone: "",
-      },
-      registeredData: {
-        registeredPlayer: false,
-        registeredClub: "",
-      },
-      addressData: {
-        address: "Test ulica 1A",
-        city: "Zagreb",
-        postalCode: "10020",
-        country: "Croatia",
-      },
+      id: user?.id!,
+      reservationId: props.joinSlotData?.id!,
+      name: user?.personalData?.name!,
+      surname: user?.personalData?.surname!,
+      email: user?.contactData?.email!,
+      phone: user?.contactData?.phone!,
       leader: false,
     };
     await joinPlayer!(props.joinSlotData!.id!, playerToAdd);

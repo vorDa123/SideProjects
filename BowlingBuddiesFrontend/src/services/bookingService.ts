@@ -78,7 +78,8 @@ const getJoinSlotHandler = async () => {
 const getMyReservationsHandler = async () => {
   try {
     const res = await axios.get(
-      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php?reservationType=booked",
+      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php",
+      { withCredentials: true },
     );
     return res.data;
   } catch (error) {
@@ -111,29 +112,25 @@ const addPlayerFunction = async (data: PlayerData) => {
   }
 };
 
+const joinPlayerFunction = async (data: PlayerData) => {
+  try {
+    const res = await axios.patch(
+      "http://localhost/BowlingBuddiesAPI/api/joinPlayer.php",
+      data,
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Server down ili error");
+  }
+};
+
 const joinPlayerHandler = async (resId: string, player: PlayerData) => {
   const reservation = await getReservation(resId);
 
   if (!reservation) throw new Error("Reservation is not found");
-  const foundPlayer = reservation.joinedPlayers?.find((item: PlayerData) => {
-    return item.id === player.id;
-  });
-  const numberOfBookedLanes = reservation.numberOfBookedLanes || 0;
-  const maxNumberOfPlayers = numberOfBookedLanes * 6;
-  const numberOfJoinedPlayers = reservation.joinedPlayers?.length || 0;
-
-  if (numberOfJoinedPlayers === maxNumberOfPlayers || foundPlayer) {
-    if (numberOfJoinedPlayers === maxNumberOfPlayers) {
-      reservation.reservationType = "booked";
-    }
-    throw new Error("Reservation is full or the player is already added");
-  }
-
-  reservation.joinedPlayers?.push(player);
-  reservation.numberOfPlayers = reservation.joinedPlayers?.length || 0;
-  reservation.reservationType = "booked";
-
-  return { ...reservation };
+  await joinPlayerFunction(player);
+  const updatedReservation = await getReservation(resId);
+  return { ...updatedReservation };
 };
 
 const addPlayerHandler = async (resId: string, player: PlayerData) => {
