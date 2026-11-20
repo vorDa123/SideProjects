@@ -54,7 +54,7 @@ function NarrowNavigation() {
         <div className="md:flex md:flex-col md:justify-around md:items-center md:h-full">
           <img className="navText" src={Logo} width={48} height={76} />
           <div className="md:flex md:flex-col md:text-th3 md:gap-8">
-            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/dashboard">
               <FontAwesomeIcon icon={faHouse} />
             </NavLink>
             <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/bowlingalleys">
@@ -63,17 +63,17 @@ function NarrowNavigation() {
             <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/openjoin">
               <FontAwesomeIcon icon={faUsers} />
             </NavLink>
-            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/dashboard">
               <FontAwesomeIcon icon={faBell} />
             </NavLink>
             <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/myprofile">
               <FontAwesomeIcon icon={faCircleUser} />
             </NavLink>
-            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15" to="/dashboard">
               <FontAwesomeIcon icon={faCircleInfo} />
             </NavLink>
           </div>
-          <NavLink to="/login" className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15 md:text-th3">
+          <NavLink to="/" className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-m15 md:text-th3">
             <FontAwesomeIcon icon={faRightFromBracket} />
           </NavLink>
         </div>

@@ -20,7 +20,7 @@ function ProfileMenu() {
             </div>
           </div>
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/dashboard">
           <div className="bg-lighterBlue-100 h-15.5 w-70.5 rounded-m60 relative">
             <div className="flex flex-row gap-5 text-mh2 text-white-100 absolute left-1/6 top-1/3">
               <FontAwesomeIcon icon={faBell} />
@@ -28,7 +28,7 @@ function ProfileMenu() {
             </div>
           </div>
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/dashboard">
           <div className="bg-lighterBlue-100 h-15.5 w-70.5 rounded-m60 relative">
             <div className="flex flex-row gap-5 text-mh2 text-white-100 absolute left-1/6 top-1/3">
               <FontAwesomeIcon icon={faCircleInfo} />
@@ -36,7 +36,7 @@ function ProfileMenu() {
             </div>
           </div>
         </NavLink>
-        <NavLink to="/login">
+        <NavLink to="/">
           <div className="bg-lighterBlue-100 h-15.5 w-70.5 rounded-m60 relative">
             <div className="flex flex-row gap-5 text-mh2 text-white-100 absolute left-1/6 top-1/3">
               <FontAwesomeIcon icon={faRightFromBracket} />

@@ -15,7 +15,7 @@ function Login() {
     try {
       await loginPlayer(formData);
       await getUser!();
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Login failed", error);
     }

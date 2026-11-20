@@ -31,11 +31,13 @@ function EditProfile() {
               </span>{" "}
               {">"} Profile Edit
             </h1>
-            <EditProfilePersonal userData={user} />
-            <EditProfileAddress userData={user} />
-            <EditProfileContact userData={user} />
-            <EditProfileRegisteredPlayer userData={user} />
-            <EditProfileFooter />
+            <form className="md:col-span-2 lg:col-span-12 xxl:col-span-24 grid grid-cols-1 md:grid-cols-2 md:gap-x-3 lg:grid-cols-12 lg:gap-4 xl:gap-x-6 mxl:gap-x-4 xxl:grid-cols-24 xxl:gap-4">
+              <EditProfilePersonal userData={user} />
+              <EditProfileAddress userData={user} />
+              <EditProfileContact userData={user} />
+              <EditProfileRegisteredPlayer userData={user} />
+              <EditProfileFooter />
+            </form>
           </div>
           <br />
           <br />

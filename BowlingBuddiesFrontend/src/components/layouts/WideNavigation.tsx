@@ -62,7 +62,7 @@ function WideNavigation() {
           <div className="md:flex md:flex-col md:text-th3 md:gap-8">
             <NavLink
               className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-tl-m15 rounded-bl-m15"
-              to="/"
+              to="/dasboard"
             >
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faHouse} />
@@ -81,7 +81,7 @@ function WideNavigation() {
                 <span>Open Join</span>
               </div>
             </NavLink>
-            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-tl-m15 rounded-bl-m15" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-tl-m15 rounded-bl-m15" to="/dashboard">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faBell} />
                 <span>Notifications</span>
@@ -93,14 +93,14 @@ function WideNavigation() {
                 <span>My Profile</span>
               </div>
             </NavLink>
-            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-tl-m15 rounded-bl-m15" to="/">
+            <NavLink className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-tl-m15 rounded-bl-m15" to="/dashboard">
               <div className="md:flex md:flex-row md:gap-6 md:items-center">
                 <FontAwesomeIcon icon={faCircleInfo} />
                 <span>About Us</span>
               </div>
             </NavLink>
           </div>
-          <NavLink to="/login" className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-tl-m15 rounded-bl-m15 md:text-th3">
+          <NavLink to="/" className="navText hover:bg-darkerBlue-100 py-2 px-2 rounded-tl-m15 rounded-bl-m15 md:text-th3">
             <div className="md:flex md:flex-row md:gap-6 md:items-center">
               <FontAwesomeIcon icon={faRightFromBracket} />
               <span className="">Log Out</span>

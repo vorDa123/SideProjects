@@ -17,7 +17,7 @@ function Register() {
     }
     try {
       await registerPlayer(formData);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Registration failed", error);
     }
@@ -86,7 +86,7 @@ function Register() {
           </button>
           <p className="my-9 text-mh4">
             Already have an account?{" "}
-            <NavLink to="/login" className="text-orange-100">
+            <NavLink to="/" className="text-orange-100">
               Log in here
             </NavLink>
           </p>

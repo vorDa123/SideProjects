@@ -12,7 +12,7 @@ function MobileNavigation() {
     <>
       {/* Mob navigacija */}
       <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md bg-lighterBlue-100 text-white-100 rounded-m25 flex flex-row justify-around items-center text-3xl py-2.5 z-40 lg:hidden">
-        <NavLink to="/">
+        <NavLink to="/dashboard">
           <FontAwesomeIcon icon={faHouse} />
         </NavLink>
         <NavLink to="/bowlingalleys">
