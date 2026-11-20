@@ -2,7 +2,7 @@
 import ConcertCard from './UpcomingConcertCard.vue'
 import { gsap } from 'gsap'
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
-import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { useHandleConcertStore } from '../stores/ConcertsStore'
 
 let isConcertsFetched = ref<boolean>(false)
 

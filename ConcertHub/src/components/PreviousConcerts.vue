@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EditConcerts from './EditConcertDataModal.vue'
 import { ref } from 'vue'
-import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { useHandleConcertStore } from '../stores/ConcertsStore'
 
 const handleFavoriteStore = useHandleConcertStore()
 

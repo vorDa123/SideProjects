@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { useHandleConcertStore } from '../stores/ConcertsStore'
 import { gsap } from 'gsap'
 
 const handleFavoriteStore = useHandleConcertStore()

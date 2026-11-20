@@ -9,7 +9,6 @@ export const useHandleConcertStore = defineStore('favorite', {
   }),
   actions: {
     async getConcerts() {
-      console.log("Trenutni API URL koji Vite vidi:", import.meta.env.VITE_API_URL)
       try {
         const res = await api.get('/api/get-concert-list')
         this.concerts = res.data || []
@@ -43,7 +42,6 @@ export const useHandleConcertStore = defineStore('favorite', {
             id: concertID,
           },
         })
-        console.log('Poslani podaci: ', res.data)
         this.favorites = this.favorites.filter(c => c.id !== concertID)
         return res.data
       } catch (error) {
@@ -57,7 +55,6 @@ export const useHandleConcertStore = defineStore('favorite', {
             id: concertID,
           },
         })
-        console.log('Poslani podaci: ', res.data)
         this.attended = this.attended.filter(c => c.id !== concertID)
         return res.data
       } catch (error) {

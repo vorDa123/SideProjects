@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
-import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { useHandleConcertStore } from '../stores/ConcertsStore'
 import { gsap } from 'gsap'
 
 const props = defineProps({

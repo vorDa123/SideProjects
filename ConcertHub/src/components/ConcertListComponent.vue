@@ -2,7 +2,7 @@
 import ConcertListCard from './ConcertListCard.vue'
 import { gsap } from 'gsap'
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
-import { useHandleConcertStore } from '../stores/ConcertsStore.ts'
+import { useHandleConcertStore } from '../stores/ConcertsStore'
 import Fuse from 'fuse.js'
 
 const emit = defineEmits(['get-concert-id'])
