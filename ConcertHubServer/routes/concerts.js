@@ -90,20 +90,20 @@ router.get("/api/get-concert-list", async (req, res) => {
       },
     );
 
-    const events = response.data._embedded.events;
+    const events = response.data._embedded.events || [];
 
     const formattedEvents = events.map((event) => ({
       id: event?.id || "unknown",
       name: event?.name || "Concert Test",
-      image: event?.images[0]?.url || "",
+      image: event?.images?.[0]?.url || "",
       date: event?.dates?.start?.localDate || "18.04.2026.",
       time: event?.dates?.start?.localTime || "16:00",
       dateTime: event?.dates?.start?.dateTime || "",
-      genre: event?.classifications[0]?.genre?.name || "Heavy metal",
-      venue: event?._embedded?.venues[0]?.name || "Venue test",
-      city: event?._embedded?.venues[0]?.city?.name || "Zagreb",
-      country: event?._embedded?.venues[0]?.country?.name || "Croatia",
-      countryCode: event?._embedded?.venues[0]?.country?.countryCode || "HR",
+      genre: event?.classifications?.[0]?.genre?.name || "Heavy metal",
+      venue: event?._embedded?.venues?.[0]?.name || "Venue test",
+      city: event?._embedded?.venues?.[0]?.city?.name || "Zagreb",
+      country: event?._embedded?.venues?.[0]?.country?.name || "Croatia",
+      countryCode: event?._embedded?.venues?.[0]?.country?.countryCode || "HR",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem, tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut semper faucibus.",
     }));
@@ -123,8 +123,13 @@ router.get("/api/get-concert-list", async (req, res) => {
 
 router.get("/api/get-concert-by-location", async (req, res) => {
   try {
+    const latestLocation = geolocationData.geolocation.at(-1);
+
+    if (!latestLocation) {
+      return res.status(400).json({ error: "Geolocation data not provided yet" });
+    }
     const response = await axios.get(
-      `https://app.ticketmaster.com/discovery/v2/events.json?size=10&apikey=${APIKey}&latlong=${geolocationData.geolocation[0].lat},${geolocationData.geolocation[0].long}&radius=500&unit=km&locale=*&sort=date,asc&classificationName=Music`,
+      `https://app.ticketmaster.com/discovery/v2/events.json?size=10&apikey=${APIKey}&latlong=${latestLocation.lat},${latestLocation.long}&radius=500&unit=km&locale=*&sort=date,asc&classificationName=Music`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -137,15 +142,15 @@ router.get("/api/get-concert-by-location", async (req, res) => {
     const formattedEvents = events.map((event) => ({
       id: event?.id,
       name: event?.name,
-      image: event?.images[0]?.url,
+      image: event?.images?.[0]?.url,
       date: event?.dates?.start?.localDate,
       time: event?.dates?.start?.localTime,
       dateTime: event?.dates?.start?.dateTime,
-      genre: event?.classifications[0]?.genre?.name,
-      venue: event?._embedded?.venues[0]?.name,
-      city: event?._embedded?.venues[0]?.city?.name,
-      country: event?._embedded?.venues[0]?.country?.name,
-      countryCode: event?._embedded?.venues[0]?.country?.countryCode,
+      genre: event?.classifications?.[0]?.genre?.name,
+      venue: event?._embedded?.venues?.[0]?.name,
+      city: event?._embedded?.venues?.[0]?.city?.name,
+      country: event?._embedded?.venues?.[0]?.country?.name,
+      countryCode: event?._embedded?.venues?.[0]?.country?.countryCode,
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor arcu at urna accumsan, a faucibus massa lobortis. Curabitur quis maximus nulla. Pellentesque mauris lorem, tincidunt at purus et, imperdiet scelerisque est. Aliquam erat volutpat. Fusce aliquam sem ut semper faucibus.",
     }));
