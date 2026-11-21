@@ -65,10 +65,10 @@ onMounted(async () => {
   await handleFavoriteStore.getFavorites()
   listOfGenreSave()
 
-  interval = setInterval(() => {
-    handleFavoriteStore.getFavorites()
-    listOfGenreSave()
-  }, 1000)
+  // interval = setInterval(() => {
+  //   handleFavoriteStore.getFavorites()
+  //   listOfGenreSave()
+  // }, 1000)
 })
 
 onUnmounted(() => {
