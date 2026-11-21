@@ -153,7 +153,7 @@ router.get("/api/get-concert-by-location", async (req, res) => {
     res.json(formattedEvents);
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({ error: "Failed to fetch concerts" });
+    res.status(500).json({ error: `Failed to fetch concerts: ${error.message}` });
   }
 });
 
