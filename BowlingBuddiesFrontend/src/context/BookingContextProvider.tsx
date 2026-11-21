@@ -19,6 +19,7 @@ import {
   getJoinSlotHandler,
   joinPlayerHandler,
   addPlayerHandler,
+  updateUserDataHandler,
 } from "../services/bookingService.ts";
 import { getLoggedInUser } from "../services/loginRegister.ts";
 
@@ -229,6 +230,19 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     }
   };
 
+  const updateUserData = async (userData: UserData[]) => {
+    try {
+      const res = await updateUserDataHandler(userData[0]);
+      setUser(res[0]);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
+  };
+
   const value: BookingContextTypes = {
     isLoadingCenters,
     isLoadingFreeSlots,
@@ -254,6 +268,7 @@ export function BookingContextProvider({ children }: BookingProviderProps) {
     createReservation: createNewReservation,
     joinPlayer: joinPlayer,
     addPlayer: addPlayer,
+    updateUserData,
   };
 
   return <BookingContext value={value}>{children}</BookingContext>;

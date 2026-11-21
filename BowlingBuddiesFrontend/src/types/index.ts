@@ -244,6 +244,7 @@ export interface BookingContextTypes {
   createReservation?: (data: ReservationData) => Promise<void>;
   joinPlayer?: (resId: string, player: PlayerData) => Promise<void>;
   addPlayer?: (resId: string, player: PlayerData) => Promise<void>;
+  updateUserData?: (userData: UserData[]) => Promise<void>;
 }
 
 export interface BookingProviderProps {

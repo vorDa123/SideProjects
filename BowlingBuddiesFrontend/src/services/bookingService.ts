@@ -1,8 +1,8 @@
-import { ACHIEVEMENTS, ALL_RESERVATIONS } from "../data/mockData.ts";
+import { ACHIEVEMENTS } from "../data/mockData.ts";
 import delay from "./asyncUtils.ts";
 import axios from "axios";
 
-import type { ReservationData, PlayerData } from "../types/index.ts";
+import type { ReservationData, PlayerData, UserData } from "../types/index.ts";
 
 // const getAllReservations = async () => {
 //   try {
@@ -141,6 +141,19 @@ const addPlayerHandler = async (resId: string, player: PlayerData) => {
   return { ...updatedReservation };
 };
 
+const updateUserDataHandler = async (userData: UserData) => {
+  try {
+    const res = await axios.patch(
+      "http://localhost/BowlingBuddiesAPI/api/updateUserData.php",
+      userData,
+      { withCredentials: true },
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Server down ili error");
+  }
+};
+
 export {
   getNextFreeSlotHandler,
   getJoinSlotHandler,
@@ -151,4 +164,5 @@ export {
   getAchievements,
   getAllBookedSlots,
   addPlayerHandler,
+  updateUserDataHandler,
 };

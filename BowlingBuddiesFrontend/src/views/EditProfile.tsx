@@ -7,11 +7,45 @@ import EditProfileRegisteredPlayer from "../features/profile/EditProfileRegister
 import EditProfileFooter from "../features/profile/EditProfileFooter.tsx";
 import { useNavigate } from "react-router";
 import { useBooking } from "../hooks/useBooking.tsx";
+import type { FormEvent } from "react";
 function EditProfile() {
   const navigate = useNavigate();
-  const { user } = useBooking();
+  const { user, updateUserData } = useBooking();
   const handleNavigateMyProfile = () => {
     navigate(`/myprofile`);
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+    if (!user) return;
+    const userData = [
+      {
+        id: user?.id,
+        personalData: {
+          name: `${data.name}`,
+          surname: `${data.surname}`,
+          gender: `${data.gender}`,
+          oib: `${data.oib}`,
+          dateOfBirth: `${data.dob}`,
+        },
+        contactData: {
+          email: `${data.email}`,
+          phone: `${data.phone}`,
+        },
+        registeredData: {
+          registeredClub: `${data.bowlingclub}`,
+        },
+        addressData: {
+          address: `${data.address}`,
+          city: `${data.city}`,
+          postalCode: `${data.postcode}`,
+          country: `${data.country}`,
+        },
+      },
+    ];
+    updateUserData!(userData);
   };
   return (
     <>
@@ -31,7 +65,10 @@ function EditProfile() {
               </span>{" "}
               {">"} Profile Edit
             </h1>
-            <form className="md:col-span-2 lg:col-span-12 xxl:col-span-24 grid grid-cols-1 md:grid-cols-2 md:gap-x-3 lg:grid-cols-12 lg:gap-4 xl:gap-x-6 mxl:gap-x-4 xxl:grid-cols-24 xxl:gap-4">
+            <form
+              className="md:col-span-2 lg:col-span-12 xxl:col-span-24 grid grid-cols-1 md:grid-cols-2 md:gap-x-3 lg:grid-cols-12 lg:gap-4 xl:gap-x-6 mxl:gap-x-4 xxl:grid-cols-24 xxl:gap-4"
+              onSubmit={handleSubmit}
+            >
               <EditProfilePersonal userData={user} />
               <EditProfileAddress userData={user} />
               <EditProfileContact userData={user} />
