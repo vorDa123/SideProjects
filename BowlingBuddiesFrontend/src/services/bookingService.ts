@@ -29,7 +29,7 @@ const getBowlingCentersHandler = async () => {
 const getAllBookedSlots = async () => {
   try {
     const res = await axios.get(
-      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php?reservationType=booked",
+      "http://localhost/BowlingBuddiesAPI/api/getAllReservations.php?reservationType=booked,full",
     );
     return res.data;
   } catch (error) {

@@ -179,7 +179,7 @@ export interface BowlingCenterData {
   shoesPricePerPerson: number;
 }
 
-export type ReservationType = "join" | "free" | "booked";
+export type ReservationType = "join" | "free" | "booked" | "full";
 
 export interface ReservationData {
   id?: string;
